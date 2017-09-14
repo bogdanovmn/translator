@@ -18,5 +18,12 @@
 		<module>translator-lib-google</module>
 		<module>translator-lib-yandex</module>
 	</modules>
-    
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.bogdanovmn</groupId>
+			<artifactId>translator-core</artifactId>
+		</dependency>
+	</dependencies>
+
 </project>
