@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>translator-cli</module>
+		<module>translator-cli-meta</module>
 		<module>translator-web-app</module>
 		<module>translator-core</module>
 		<module>translator-lib-meta</module>
