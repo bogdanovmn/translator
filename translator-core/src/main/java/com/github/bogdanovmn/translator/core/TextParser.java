@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.core;
 
-import java.util.List;
+import java.io.IOException;
 
 public interface TextParser {
-	List<String> getTokens();
+	String getText() throws IOException;
 }
