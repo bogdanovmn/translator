@@ -55,6 +55,7 @@ public class EnglishText {
 
 	public void printStatistic() {
 		this.parse();
+
 		System.out.println("---- Statistic ----");
 		this.words.keySet().stream()
 			.sorted(Comparator.comparingLong(words::get))
@@ -76,5 +77,14 @@ public class EnglishText {
 					)
 				)
 			);
+		System.out.println(
+			String.format(
+				"Total %d passed (%d unique)\nIgnored %d (%d unique)",
+					this.words.values().stream().mapToInt(Integer::intValue).sum(),
+					this.words.size(),
+					this.ignoreTokens.values().stream().mapToInt(Integer::intValue).sum(),
+					this.ignoreTokens.size()
+				)
+		);
 	}
 }
