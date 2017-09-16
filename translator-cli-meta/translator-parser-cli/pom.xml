@@ -13,14 +13,22 @@
     <artifactId>translator-parser-cli</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.github.bogdanovmn</groupId>
+			<artifactId>translator-parser-pdf</artifactId>
+		</dependency>
+	</dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
+					<finalName>parser</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>App</mainClass>
+                            <mainClass>com.github.bogdanovmn.translator.parser.cli.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

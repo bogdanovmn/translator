@@ -1,17 +1,22 @@
-package com.github.bogdanovmn.translator.cli;
+package com.github.bogdanovmn.translator.parser.cli;
 
 
+import com.github.bogdanovmn.translator.core.EnglishText;
+import com.github.bogdanovmn.translator.parser.pdf.PdfTextContent;
 import org.apache.commons.cli.*;
 
+import java.io.File;
+import java.io.IOException;
+
 public class App {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Options cliOptions = new Options();
 		cliOptions
 			.addOption(
-				Option.builder("x")
-					.longOpt("xxx")
-					.hasArg().argName("LIMIT")
-					.desc("max memory (bytes) for first level cache")
+				Option.builder("s")
+					.longOpt("source")
+					.hasArg().argName("SOURCE")
+					.desc("text source (PDF file)")
 					.required()
 				.build()
 			);
@@ -19,6 +24,13 @@ public class App {
 		CommandLineParser cmdLineParser = new DefaultParser();
 		try {
 			CommandLine cmdLine = cmdLineParser.parse(cliOptions, args);
+			String sourceFileName = cmdLine.getOptionValue("s");
+
+			new EnglishText(
+				new PdfTextContent(
+					new File(sourceFileName)
+				).getText()
+			).printStatistic();
 		}
 		catch (ParseException e) {
 			System.err.println(e.getMessage());
@@ -29,10 +41,10 @@ public class App {
 	private static void printHelp(Options opts) {
 		new HelpFormatter()
 			.printHelp(
-				"app",
-				"Translator CLI",
+				"java -jar parser.jar",
+				"Text parser cli",
 				opts,
-				".",
+				"",
 				true
 			);
 	}
