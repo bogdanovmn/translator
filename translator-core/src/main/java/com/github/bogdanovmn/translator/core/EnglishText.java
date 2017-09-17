@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.core;
 import java.util.*;
 
 public class EnglishText {
-	private final String VOWELS = "qwrtpsdfghkljzxcvbnm";
+	private final static String VOWELS = "qwrtpsdfghkljzxcvbnm";
 	private final String text;
 	private final Map<String, Integer> words = new HashMap<>();
 	private final Map<String, Integer> ignoreTokens = new HashMap<>();
@@ -15,29 +15,29 @@ public class EnglishText {
 
 	private void parse() {
 		if (!this.isAlreadyParsed) {
-			for (String token : this.text.split("(\\W|\\d|_)+")) {
-				String normalizedToken = token.toLowerCase();
+			for (String token : this.text.split("(\\W|\\d)+")) {
+				for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("_")) {
+					if (
+						(normalizedToken.length() < 3)
+							||
+							(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + VOWELS + "]{3}.*"))
+							||
+							(normalizedToken.matches(".*[" + VOWELS + "]{5}.*"))
+							||
+							normalizedToken.matches(".*(.)\\1{2,}.*")
+						) {
+						this.ignoreTokens.put(
+							normalizedToken,
+							this.ignoreTokens.getOrDefault(normalizedToken, 0) + 1
+						);
+						continue;
+					}
 
-				if (
-					(normalizedToken.length() < 3)
-					||
-					(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + VOWELS + "]{3}.*"))
-					||
-					(normalizedToken.matches(".*[" + VOWELS + "]{5}.*"))
-					||
-					normalizedToken.matches(".*(.)\\1{2,}.*")
-				) {
-					this.ignoreTokens.put(
+					this.words.put(
 						normalizedToken,
-						this.ignoreTokens.getOrDefault(normalizedToken, 0) + 1
+						this.words.getOrDefault(normalizedToken, 0) + 1
 					);
-					continue;
 				}
-
-				this.words.put(
-					normalizedToken,
-					this.words.getOrDefault(normalizedToken, 0) + 1
-				);
 			}
 			this.isAlreadyParsed = true;
 		}
@@ -57,26 +57,11 @@ public class EnglishText {
 		this.parse();
 
 		System.out.println("---- Statistic ----");
-		this.words.keySet().stream()
-			.sorted(Comparator.comparingLong(words::get))
-			.forEach(x ->
-				System.out.println(
-					String.format(
-						"[%3d] %s", words.get(x), x
-					)
-				)
-			);
+		this.printTokens(this.words);
 
 		System.out.println("---- Ignore statistic ----");
-		this.ignoreTokens.keySet().stream()
-			.sorted(Comparator.comparingLong(ignoreTokens::get))
-			.forEach(x ->
-				System.out.println(
-					String.format(
-						"[%3d] %s", ignoreTokens.get(x), x
-					)
-				)
-			);
+		this.printTokens(this.ignoreTokens);
+
 		System.out.println(
 			String.format(
 				"Total %d passed (%d unique)\nIgnored %d (%d unique)",
@@ -86,5 +71,20 @@ public class EnglishText {
 					this.ignoreTokens.size()
 				)
 		);
+	}
+
+	private void printTokens(Map<String, Integer> tokensCache) {
+		tokensCache.keySet().stream()
+			.sorted(
+				Comparator.comparing((String x) -> tokensCache.get(x))
+					.thenComparing(String::length)
+			)
+			.forEach(x ->
+				System.out.println(
+					String.format(
+						"[%3d] %s", tokensCache.get(x), x
+					)
+				)
+			);
 	}
 }

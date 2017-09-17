@@ -13,7 +13,8 @@ public class EnglishTextTest {
 			"size_t hello_World  " +
 			"a aa " +
 			"goood iii " +
-			"bsd sdk cxxldflags"
+			"bsd sdk cxxldflags " +
+			"executorDriver ExecutorClassName "
 		);
 
 		text.printStatistic();
@@ -24,11 +25,14 @@ public class EnglishTextTest {
 		assertEquals("t freq"      , 0, text.getWordFrequance("t"));
 		assertEquals("a freq"      , 0, text.getWordFrequance("a"));
 		assertEquals("aa freq"     , 0, text.getWordFrequance("aa"));
-//		assertEquals("aaa freq"    , 0, text.getWordFrequance("aaa"));
 		assertEquals("sdk freq"    , 0, text.getWordFrequance("bsd"));
 		assertEquals("goood freq"  , 0, text.getWordFrequance("goood"));
 		assertEquals("iii freq"    , 0, text.getWordFrequance("iii"));
 		assertEquals("cxxldflag freq", 0, text.getWordFrequance("cxxldflag"));
+		assertEquals("executor freq" , 2, text.getWordFrequance("executor"));
+		assertEquals("driver freq"   , 1, text.getWordFrequance("driver"));
+		assertEquals("class freq"    , 1, text.getWordFrequance("class"));
+		assertEquals("name freq"     , 1, text.getWordFrequance("name"));
 	}
 
 	@Test
