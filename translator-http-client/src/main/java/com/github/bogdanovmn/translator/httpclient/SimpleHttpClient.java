@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator;
+package com.github.bogdanovmn.translator.httpclient;
 
 import org.apache.http.client.fluent.Request;
 

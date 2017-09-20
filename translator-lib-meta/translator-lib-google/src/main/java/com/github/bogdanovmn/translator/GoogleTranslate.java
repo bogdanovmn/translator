@@ -4,6 +4,8 @@ import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.core.TranslateServiceException;
 import com.github.bogdanovmn.translator.core.TranslateServiceUnavailableException;
 import com.github.bogdanovmn.translator.core.TranslateServiceUnknownWordException;
+import com.github.bogdanovmn.translator.httpclient.HttpClient;
+import com.github.bogdanovmn.translator.httpclient.SimpleHttpClient;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

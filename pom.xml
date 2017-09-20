@@ -15,6 +15,7 @@
 		<module>translator-core</module>
 		<module>translator-lib-meta</module>
 		<module>translator-parser-meta</module>
+		<module>translator-http-client</module>
 	</modules>
 
 	<properties>
@@ -37,6 +38,11 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn</groupId>
 				<artifactId>translator-lib-google</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn</groupId>
+				<artifactId>translator-http-client</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
