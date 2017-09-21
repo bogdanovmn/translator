@@ -1,5 +1,7 @@
 package com.github.bogdanovmn.translator.core;
 
-public interface TranslateService {
+import java.io.Closeable;
+
+public interface TranslateService extends Closeable {
 	String translate(String phrase) throws TranslateServiceException;
 }

@@ -4,16 +4,14 @@ import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.core.TranslateServiceException;
 import com.github.bogdanovmn.translator.core.TranslateServiceUnavailableException;
 import com.github.bogdanovmn.translator.core.TranslateServiceUnknownWordException;
-import com.github.bogdanovmn.translator.httpclient.HttpClient;
-import com.github.bogdanovmn.translator.httpclient.SimpleHttpClient;
+import com.github.bogdanovmn.translator.httpclient.PhantomJsHttpClient;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
 public class GoogleTranslate implements TranslateService {
-	private HttpClient httpClient = new SimpleHttpClient("https://translate.google.ru/?ie=UTF-8#en/ru/");
+	private final PhantomJsHttpClient httpClient = new PhantomJsHttpClient("https://translate.google.ru/?ie=UTF-8#en/ru/");
 
 	@Override
 	public String translate(String phrase) throws TranslateServiceException {
@@ -45,5 +43,10 @@ public class GoogleTranslate implements TranslateService {
 			result = resultBoxText;
 		}
 		return result;
+	}
+
+	@Override
+	public void close() throws IOException {
+		this.httpClient.close();
 	}
 }

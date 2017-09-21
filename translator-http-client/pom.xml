@@ -24,7 +24,17 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.10.3</version>
 		</dependency>
-
+		<dependency>
+			<groupId>ch.racic.selenium</groupId>
+			<artifactId>selenium-driver-helper-phantomjs</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.5.3</version>
+		</dependency>
 	</dependencies>
+
 
 </project>

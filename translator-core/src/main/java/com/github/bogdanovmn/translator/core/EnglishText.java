@@ -1,6 +1,9 @@
 package com.github.bogdanovmn.translator.core;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class EnglishText {
 	private final static String VOWELS = "qwrtpsdfghkljzxcvbnm";

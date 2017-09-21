@@ -18,4 +18,8 @@ public class SimpleHttpClient implements HttpClient {
 			.execute()
 				.returnContent().asString();
 	}
+
+	@Override
+	public void close() throws IOException {
+	}
 }

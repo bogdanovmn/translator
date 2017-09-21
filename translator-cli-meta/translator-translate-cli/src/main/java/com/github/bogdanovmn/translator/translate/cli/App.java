@@ -2,11 +2,14 @@ package com.github.bogdanovmn.translator.translate.cli;
 
 
 import com.github.bogdanovmn.translator.GoogleTranslate;
-import com.github.bogdanovmn.translator.core.TranslateServiceUnavailableException;
+import com.github.bogdanovmn.translator.core.TranslateService;
+import com.github.bogdanovmn.translator.core.TranslateServiceException;
 import org.apache.commons.cli.*;
 
+import java.io.IOException;
+
 public class App {
-	public static void main(String[] args) throws TranslateServiceUnavailableException {
+	public static void main(String[] args) throws TranslateServiceException, IOException {
 		Options cliOptions = new Options();
 		cliOptions
 			.addOption(
@@ -19,15 +22,15 @@ public class App {
 			);
 
 		CommandLineParser cmdLineParser = new DefaultParser();
-		try {
+		try (TranslateService translateService = new GoogleTranslate())
+		{
 			CommandLine cmdLine = cmdLineParser.parse(cliOptions, args);
 			System.out.println(
 				String.format(
 					"Translate: %s",
-					new GoogleTranslate()
-						.translate(
-							cmdLine.getOptionValue("t")
-						)
+					translateService.translate(
+						cmdLine.getOptionValue("t")
+					)
 				)
 			);
 		}
