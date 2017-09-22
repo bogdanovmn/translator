@@ -11,30 +11,37 @@ import java.io.IOException;
 public class PhantomJsHttpClient implements HttpClient {
 	private final String urlPrefix;
 	private PhantomJSDriver webDriver;
+	private final int pageLoadTime;
 
 	public PhantomJsHttpClient(String urlPrefix) {
 		this.urlPrefix = urlPrefix;
+		this.pageLoadTime = 100;
+	}
+	public PhantomJsHttpClient(String urlPrefix, int pageLoadTime) {
+		this.urlPrefix = urlPrefix;
+		this.pageLoadTime = pageLoadTime;
 	}
 
 	@Override
 	public String get(String url) throws IOException {
 		PhantomJSDriver browser = this.getWebDriver();
 		browser.get(this.urlPrefix + url);
+		try {
+			Thread.sleep(this.pageLoadTime);
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-		return browser.getPageSource();
+		String result = browser.getPageSource();
+		browser.get("about:blank");
+
+		return result;
 	}
 
 	private PhantomJSDriver getWebDriver() throws IOException {
 		if (this.webDriver == null) {
 			DesiredCapabilities caps = new DesiredCapabilities();
-
-//			LoggingPreferences logs = new LoggingPreferences();
-//			logs.enable(LogType.BROWSER, Level.OFF);
-//			logs.enable(LogType.CLIENT, Level.OFF);
-//			logs.enable(LogType.DRIVER, Level.OFF);
-//			logs.enable(LogType.PERFORMANCE, Level.OFF);
-//			logs.enable(LogType.SERVER, Level.OFF);
-//			caps.setCapability(CapabilityType.LOGGING_PREFS, logs);
 
 			try {
 				PhantomJSDriverService service = new PhantomJSDriverService.Builder()

@@ -33,6 +33,20 @@ public class App {
 					)
 				)
 			);
+
+			System.out.println(
+				String.format(
+					"Translate: %s",
+					translateService.translate("express")
+				)
+			);
+
+			System.out.println(
+				String.format(
+					"Translate: %s",
+					translateService.translate("hello")
+				)
+			);
 		}
 		catch (ParseException e) {
 			System.err.println(e.getMessage());
