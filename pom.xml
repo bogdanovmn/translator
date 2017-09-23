@@ -10,11 +10,11 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>translator-cli-meta</module>
-		<module>translator-web-app</module>
 		<module>translator-core</module>
+		<module>translator-cli-meta</module>
 		<module>translator-lib-meta</module>
 		<module>translator-parser-meta</module>
+		<module>translator-web-meta</module>
 		<module>translator-http-client</module>
 	</modules>
 
@@ -48,6 +48,11 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn</groupId>
 				<artifactId>translator-lib-yandex</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn</groupId>
+				<artifactId>translator-web-orm</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
 
