@@ -18,6 +18,10 @@
 			<groupId>com.github.bogdanovmn</groupId>
 			<artifactId>translator-lib-google</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.bogdanovmn</groupId>
+			<artifactId>translator-lib-yandex</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -45,6 +45,11 @@
 				<artifactId>translator-http-client</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn</groupId>
+				<artifactId>translator-lib-yandex</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.jsoup</groupId>

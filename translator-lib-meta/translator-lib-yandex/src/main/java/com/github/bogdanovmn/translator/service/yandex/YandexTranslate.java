@@ -1,8 +1,12 @@
 package com.github.bogdanovmn.translator.service.yandex;
 
 import com.github.bogdanovmn.translator.core.HttpTranslateService;
-import com.github.bogdanovmn.translator.httpclient.HttpClient;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceParserException;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnavailableException;
 import com.github.bogdanovmn.translator.httpclient.SimpleHttpClient;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class YandexTranslate extends HttpTranslateService {
 	public YandexTranslate() {
@@ -13,8 +17,47 @@ public class YandexTranslate extends HttpTranslateService {
 		);
 	}
 
+	/*
+	 {
+		 code: 200,
+		 lang: "en-ru",
+		 text: [
+		 	"особенность"
+		 ]
+	 }
+ 	 */
 	@Override
-	protected String parseServiceRawAnswer(String htmlText) {
-		return null;
+	protected String parseServiceRawAnswer(String jsonText)
+		throws TranslateServiceException
+	{
+		String result;
+
+		try {
+			JsonObject json = new JsonParser()
+				.parse(jsonText).getAsJsonObject();
+
+			int code = json.get("code").getAsInt();
+			if (code == 200) {
+				result = json.get("text").getAsJsonArray()
+					.get(0).getAsString();
+			}
+			else {
+				throw new TranslateServiceUnavailableException(
+					String.format(
+						"bad response code: %d", code
+					)
+				);
+			}
+		}
+		catch (RuntimeException e) {
+			throw new TranslateServiceParserException(
+				String.format(
+					"Parse json error: %s\nJSON: %s",
+						e.getMessage(), jsonText
+				)
+			);
+		}
+
+		return result;
 	}
 }

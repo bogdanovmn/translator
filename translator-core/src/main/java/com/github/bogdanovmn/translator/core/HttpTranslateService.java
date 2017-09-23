@@ -6,6 +6,7 @@ import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnknownWo
 import com.github.bogdanovmn.translator.httpclient.HttpClient;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public abstract class HttpTranslateService implements TranslateService {
 	private final HttpClient httpClient;
@@ -14,7 +15,7 @@ public abstract class HttpTranslateService implements TranslateService {
 		this.httpClient = httpClient;
 	}
 
-	protected abstract String parseServiceRawAnswer(String htmlText);
+	protected abstract String parseServiceRawAnswer(String htmlText) throws TranslateServiceException;
 
 	@Override
 	public final String translate(String phrase) throws TranslateServiceException {
@@ -26,19 +27,21 @@ public abstract class HttpTranslateService implements TranslateService {
 			throw new TranslateServiceUnavailableException(e);
 		}
 
-		String translatedValue = this.parseServiceRawAnswer(htmlText);
-		if (translatedValue != null) {
-			if (translatedValue.isEmpty()) {
-				throw new TranslateServiceUnavailableException("Empty result. Something wrong...");
-			}
-			if (translatedValue.equals(phrase)) {
-				throw new TranslateServiceUnknownWordException(
-					String.format(
-						"No translate for '%s'", phrase
-					)
-				);
-			}
+		String translatedValue = this.parseServiceRawAnswer(
+			Objects.toString(htmlText, "")
+		);
+
+		if (translatedValue.isEmpty()) {
+			throw new TranslateServiceUnavailableException("Empty result. Something wrong...");
 		}
+		if (translatedValue.equals(phrase)) {
+			throw new TranslateServiceUnknownWordException(
+				String.format(
+					"No translate for '%s'", phrase
+				)
+			);
+		}
+
 		return translatedValue;
 	}
 
