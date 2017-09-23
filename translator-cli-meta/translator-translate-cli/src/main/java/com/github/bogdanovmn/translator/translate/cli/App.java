@@ -1,9 +1,9 @@
 package com.github.bogdanovmn.translator.translate.cli;
 
 
-import com.github.bogdanovmn.translator.GoogleTranslate;
 import com.github.bogdanovmn.translator.core.TranslateService;
-import com.github.bogdanovmn.translator.core.TranslateServiceException;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
+import com.github.bogdanovmn.translator.service.GoogleTranslate;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
@@ -21,32 +21,19 @@ public class App {
 				.build()
 			);
 
-		CommandLineParser cmdLineParser = new DefaultParser();
-		try (TranslateService translateService = new GoogleTranslate())
-		{
-			CommandLine cmdLine = cmdLineParser.parse(cliOptions, args);
-			System.out.println(
-				String.format(
-					"Translate: %s",
-					translateService.translate(
-						cmdLine.getOptionValue("t")
+		try {
+			CommandLine cmdLine = new DefaultParser().parse(cliOptions, args);
+			try (TranslateService translateService = new GoogleTranslate())
+			{
+				System.out.println(
+					String.format(
+						"Translate: %s",
+						translateService.translate(
+							cmdLine.getOptionValue("t")
+						)
 					)
-				)
-			);
-
-			System.out.println(
-				String.format(
-					"Translate: %s",
-					translateService.translate("express")
-				)
-			);
-
-			System.out.println(
-				String.format(
-					"Translate: %s",
-					translateService.translate("hello")
-				)
-			);
+				);
+			}
 		}
 		catch (ParseException e) {
 			System.err.println(e.getMessage());
