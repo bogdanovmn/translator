@@ -15,8 +15,8 @@
     <packaging>pom</packaging>
 
     <modules>
-		<module>translator-translate-cli</module>
-		<module>translator-parser-cli</module>
+		<module>translator-cli-translate</module>
+		<module>translator-cli-parser</module>
 	</modules>
 
 	<dependencies>
@@ -36,6 +36,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.1.0</version>
 				<configuration>
 					<skipAssembly>true</skipAssembly>
 					<descriptorRefs>
