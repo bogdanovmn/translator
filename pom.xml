@@ -25,6 +25,9 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- Modules -->
+
 			<dependency>
 				<groupId>com.github.bogdanovmn</groupId>
 				<artifactId>translator-core</artifactId>
@@ -55,6 +58,16 @@
 				<artifactId>translator-web-orm</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
+
+			<!-- My Libs -->
+
+			<dependency>
+				<groupId>com.github.bogdanovmn</groupId>
+				<artifactId>cmdline-app</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+
+			<!-- Libs -->
 
 			<dependency>
 				<groupId>org.jsoup</groupId>
