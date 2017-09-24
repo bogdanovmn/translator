@@ -1,13 +1,14 @@
 package com.github.bogdanovmn.translator.web.orm.entity.app;
 
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntity;
+import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntityWithUniqueName;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-public class User extends BaseEntity {
+public class User extends BaseEntityWithUniqueName {
 	@Column(nullable = false)
 	private String email;
 
