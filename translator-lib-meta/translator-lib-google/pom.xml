@@ -13,5 +13,15 @@
     <artifactId>translator-lib-google</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.bogdanovmn</groupId>
+            <artifactId>http-client-impl-phantomjs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+        </dependency>
+    </dependencies>
     
 </project>

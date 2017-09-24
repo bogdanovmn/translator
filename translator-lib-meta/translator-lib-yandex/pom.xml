@@ -20,5 +20,9 @@
 			<version>2.8.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.github.bogdanovmn</groupId>
+			<artifactId>http-client-impl-simple</artifactId>
+		</dependency>
 	</dependencies>
 </project>

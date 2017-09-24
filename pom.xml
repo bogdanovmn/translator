@@ -15,7 +15,6 @@
 		<module>translator-lib-meta</module>
 		<module>translator-parser-meta</module>
 		<module>translator-web-meta</module>
-		<module>translator-http-client</module>
 	</modules>
 
 	<properties>
@@ -66,6 +65,21 @@
 				<artifactId>cmdline-app</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn</groupId>
+				<artifactId>http-client-core</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn</groupId>
+				<artifactId>http-client-impl-simple</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn</groupId>
+				<artifactId>http-client-impl-phantomjs</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
 
 			<!-- Libs -->
 
@@ -81,7 +95,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

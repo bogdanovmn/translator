@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.bogdanovmn</groupId>
-            <artifactId>translator-http-client</artifactId>
+            <artifactId>http-client-core</artifactId>
         </dependency>
     </dependencies>
 </project>

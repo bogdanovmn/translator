@@ -1,10 +1,10 @@
 package com.github.bogdanovmn.translator.service.yandex;
 
+import com.github.bogdanovmn.httpclient.simple.SimpleHttpClient;
 import com.github.bogdanovmn.translator.core.HttpTranslateService;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceParserException;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnavailableException;
-import com.github.bogdanovmn.translator.httpclient.SimpleHttpClient;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 

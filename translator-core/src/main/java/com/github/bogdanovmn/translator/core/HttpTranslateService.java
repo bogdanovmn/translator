@@ -1,9 +1,9 @@
 package com.github.bogdanovmn.translator.core;
 
+import com.github.bogdanovmn.httpclient.core.HttpClient;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnavailableException;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnknownWordException;
-import com.github.bogdanovmn.translator.httpclient.HttpClient;
 
 import java.io.IOException;
 import java.util.Objects;
