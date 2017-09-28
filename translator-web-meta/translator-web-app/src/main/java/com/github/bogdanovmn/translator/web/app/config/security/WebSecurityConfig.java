@@ -1,7 +1,5 @@
-package com.github.bogdanovmn.translator.web.app.config;
+package com.github.bogdanovmn.translator.web.app.config.security;
 
-import com.github.bogdanovmn.translator.web.app.security.TranslateUserDetailsService;
-import com.github.bogdanovmn.translator.web.app.security.Md5PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

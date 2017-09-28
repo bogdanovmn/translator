@@ -17,10 +17,6 @@ public class UserRegistrationForm {
 	@Size(min=1, max=32)
 	private String passwordConfirm;
 
-	@Null
-	@Size(min=3, max=32)
-	private String hearthpwnName;
-
 	@NotNull
 	private String email;
 
@@ -49,15 +45,6 @@ public class UserRegistrationForm {
 
 	public UserRegistrationForm setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
-		return this;
-	}
-
-	public String getHearthpwnName() {
-		return hearthpwnName;
-	}
-
-	public UserRegistrationForm setHearthpwnName(String hearthpwnName) {
-		this.hearthpwnName = hearthpwnName;
 		return this;
 	}
 

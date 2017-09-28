@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.security;
+package com.github.bogdanovmn.translator.web.app.config.security;
 
 
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;

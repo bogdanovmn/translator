@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.security;
+package com.github.bogdanovmn.translator.web.app.config.security;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.DigestUtils;

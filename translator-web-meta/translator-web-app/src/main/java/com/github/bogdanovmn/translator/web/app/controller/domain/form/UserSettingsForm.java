@@ -12,24 +12,12 @@ public class UserSettingsForm {
 	@Size(min=1, max=32)
 	private String newPasswordConfirm;
 
-	@Size(min=3, max=32)
-	private String hearthpwnUserName;
-
 	public String getNewPassword() {
 		return newPassword;
 	}
 
 	public UserSettingsForm setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
-		return this;
-	}
-
-	public String getHearthpwnUserName() {
-		return hearthpwnUserName;
-	}
-
-	public UserSettingsForm setHearthpwnUserName(String hearthpwnUserName) {
-		this.hearthpwnUserName = hearthpwnUserName;
 		return this;
 	}
 

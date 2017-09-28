@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.web.app.controller;
 import com.github.bogdanovmn.translator.web.app.PersistedEntityWithUniqueNameFactory;
 import com.github.bogdanovmn.translator.web.app.controller.common.FormErrors;
 import com.github.bogdanovmn.translator.web.app.controller.domain.form.UserRegistrationForm;
-import com.github.bogdanovmn.translator.web.app.security.TranslateSecurityService;
+import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
 import com.github.bogdanovmn.translator.web.orm.entity.app.UserRole;
 import com.github.bogdanovmn.translator.web.orm.repository.app.UserRepository;

@@ -2,8 +2,8 @@ package com.github.bogdanovmn.translator.web.app.controller;
 
 import com.github.bogdanovmn.translator.web.app.controller.common.FormErrors;
 import com.github.bogdanovmn.translator.web.app.controller.domain.form.UserSettingsForm;
-import com.github.bogdanovmn.translator.web.app.security.Md5PasswordEncoder;
-import com.github.bogdanovmn.translator.web.app.security.TranslateSecurityService;
+import com.github.bogdanovmn.translator.web.app.config.security.Md5PasswordEncoder;
+import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
 import com.github.bogdanovmn.translator.web.orm.repository.app.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

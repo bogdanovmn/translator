@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.controller;
 
-import com.github.bogdanovmn.translator.web.app.security.TranslateSecurityService;
+import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
