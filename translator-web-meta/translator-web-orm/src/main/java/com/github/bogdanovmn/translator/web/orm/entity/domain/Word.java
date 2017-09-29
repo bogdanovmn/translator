@@ -1,9 +1,11 @@
 package com.github.bogdanovmn.translator.web.orm.entity.domain;
 
-import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntity;
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntityWithUniqueName;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
@@ -15,6 +17,7 @@ public class Word extends BaseEntityWithUniqueName {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
 	private Set<WordSource> sources;
+
 
 	public Set<Translate> getTranslates() {
 		return translates;

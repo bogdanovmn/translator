@@ -1,9 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm.entity.app;
 
-import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntity;
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntityWithUniqueName;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.util.Set;

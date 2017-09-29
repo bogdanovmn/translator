@@ -1,11 +1,11 @@
 package com.github.bogdanovmn.translator.web.app.controller;
 
-import com.github.bogdanovmn.translator.web.app.PersistedEntityWithUniqueNameFactory;
+import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.app.controller.common.FormErrors;
 import com.github.bogdanovmn.translator.web.app.controller.domain.form.UserRegistrationForm;
-import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
 import com.github.bogdanovmn.translator.web.orm.entity.app.UserRole;
+import com.github.bogdanovmn.translator.web.orm.factory.EntityFactory;
 import com.github.bogdanovmn.translator.web.orm.repository.app.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,6 @@ import java.util.HashSet;
 
 @Controller
 public class Registration {
-
 	@Autowired
 	private UserRepository userRepository;
 
@@ -30,7 +29,7 @@ public class Registration {
 	private TranslateSecurityService securityService;
 
 	@Autowired
-	private PersistedEntityWithUniqueNameFactory entityFactory;
+	private EntityFactory entityFactory;
 
 	@GetMapping("/registration")
 	public ModelAndView registration(Model model) {
@@ -73,7 +72,9 @@ public class Registration {
 				.setRoles(
 					new HashSet<UserRole>() {{
 						add(
-							entityFactory.get(UserRole.class, "User")
+							(UserRole) entityFactory.getPersistBaseEntityWithUniqueName(
+								new UserRole().setName("User")
+							)
 						);
 					}}
 				)

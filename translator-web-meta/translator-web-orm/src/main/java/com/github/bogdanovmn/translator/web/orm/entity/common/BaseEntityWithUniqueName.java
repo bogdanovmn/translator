@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm.entity.common;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class BaseEntityWithUniqueName extends BaseEntity {

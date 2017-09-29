@@ -9,6 +9,7 @@ public class WordSource extends BaseEntity {
 	private WordSourceType type;
 	private String author;
 	private String title;
+	private String contentHash;
 
 	public WordSourceType getType() {
 		return type;

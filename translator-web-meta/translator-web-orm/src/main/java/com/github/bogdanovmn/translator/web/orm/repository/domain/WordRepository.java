@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm.repository.domain;
 
 import com.github.bogdanovmn.translator.web.orm.entity.domain.Word;
-import org.springframework.data.repository.CrudRepository;
+import com.github.bogdanovmn.translator.web.orm.repository.common.BaseEntityWithUniqueNameRepository;
 
-public interface WordRepository extends CrudRepository<Word, Integer> {
+public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word> {
 }

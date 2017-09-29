@@ -1,0 +1,48 @@
+a,body,table,tr,td,li,p,input,textarea,pre {font-family:verdana,arial;color:#101610;padding:0;margin:0}
+table{width:auto;table-layout:fixed;border-collapse:collapse;text-align:left}
+
+div.main { width: 1000px; margin: 0 auto; text-align: center; }
+
+#top_menu { position: static; font-size: 100%; }
+	#links     { float: left;  width: 70%; background: #ddd; padding: 5px; }
+	#user_info { padding: 5px; width: 30%; background: #ddd; margin-left: 70%; text-align: right;}
+
+#mid_area { width: 100%; }
+	#left_menu { float: left; width: 20%; }
+	#data_area { width: 80%; margin-left: 20%;  border-left: 1px solid gray; padding: 0px 10px; }
+
+div.card { display: inline-block; text-align: center; }
+div.counter { display: inline; border: 1px solid gray; padding: 6px 8px; text-align: center; cursor: pointer; }
+
+div.filter               { font-size: 13px; }
+div.filter b             { color: gray; }
+div.filter div.values    { padding-left: 20px; margin: 5px 0px; }
+div.filter div.values td { padding: 4px 3px; }
+div.filter div.values p  { margin: 4px 3px; }
+
+td.progress { text-align: right; }
+
+span.progress { color: green; font-size: 70%; }
+span.progress_in  { color: green; }
+span.progress_out { color: red; }
+
+div.counter    { font-weight: bold; }
+div.norm_count { color: gray; border: 1px solid gray; }
+div.gold_count { color: gold; border: 1px solid gold; }
+
+form table    { margin: 0 auto; }
+form table td { padding: 10px; }
+
+a.logout { text-decoration: none; font-weight: bold; color: #a11e0d; }
+a.rarity_filter { text-decoration: none; }
+a.reset { text-decoration: none; border-bottom: 1px dotted red; font-size: 70%; color: red; }
+
+div.rarity_filter   { width: 17px; height: 17px; display: inline-block; cursor: pointer; border: 3px solid white; } 
+div.rarity_filter_2          { border-color: gray; } 
+div.rarity_filter_2_selected { border-color: gray; background: gray; } 
+div.rarity_filter_3          { border-color: blue; } 
+div.rarity_filter_3_selected { border-color: blue; background: blue; } 
+div.rarity_filter_4          { border-color: magenta; } 
+div.rarity_filter_4_selected { border-color: magenta; background: magenta; } 
+div.rarity_filter_5          { border-color: gold; } 
+div.rarity_filter_5_selected { border-color: gold; background: gold; } 

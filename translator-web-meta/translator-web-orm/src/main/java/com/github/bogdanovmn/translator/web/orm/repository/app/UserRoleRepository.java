@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm.repository.app;
 
 import com.github.bogdanovmn.translator.web.orm.entity.app.UserRole;
-import org.springframework.data.repository.CrudRepository;
+import com.github.bogdanovmn.translator.web.orm.repository.common.BaseEntityWithUniqueNameRepository;
 
-public interface UserRoleRepository extends CrudRepository<UserRole, Integer> {
+public interface UserRoleRepository extends BaseEntityWithUniqueNameRepository<UserRole> {
 }

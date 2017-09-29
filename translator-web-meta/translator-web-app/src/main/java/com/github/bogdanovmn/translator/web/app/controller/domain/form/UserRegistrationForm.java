@@ -1,7 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.controller.domain.form;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 public class UserRegistrationForm {
