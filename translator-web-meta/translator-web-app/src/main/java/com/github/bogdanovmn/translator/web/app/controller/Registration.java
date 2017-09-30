@@ -88,6 +88,6 @@ public class Registration {
 			user.getPasswordHash()
 		);
 
-		return new ModelAndView("redirect:/collection/in");
+		return new ModelAndView("redirect:/to-remember");
 	}
 }

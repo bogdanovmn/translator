@@ -1,0 +1,17 @@
+{{> inc/header_main}}
+
+{{#words}}
+		<div id="{{id}}" class=word-to-remember>
+			{{word.name}}
+		</div>
+{{/words}}
+
+{{^words}}
+	<h2>Пусто</h2>
+{{/words}}
+
+<script>
+
+</script>
+
+{{>inc/footer_main}}
