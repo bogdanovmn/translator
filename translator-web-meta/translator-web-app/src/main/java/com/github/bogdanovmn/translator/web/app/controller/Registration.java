@@ -3,6 +3,7 @@ package com.github.bogdanovmn.translator.web.app.controller;
 import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.app.controller.common.FormErrors;
 import com.github.bogdanovmn.translator.web.app.controller.domain.form.UserRegistrationForm;
+import com.github.bogdanovmn.translator.web.app.service.RegistrationService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
 import com.github.bogdanovmn.translator.web.orm.entity.app.UserRole;
 import com.github.bogdanovmn.translator.web.orm.factory.EntityFactory;
@@ -22,14 +23,14 @@ import java.util.HashSet;
 
 @Controller
 public class Registration {
-	@Autowired
-	private UserRepository userRepository;
+	private final RegistrationService registrationService;
+	private final TranslateSecurityService securityService;
 
 	@Autowired
-	private TranslateSecurityService securityService;
-
-	@Autowired
-	private EntityFactory entityFactory;
+	public Registration(RegistrationService registrationService, TranslateSecurityService securityService) {
+		this.registrationService = registrationService;
+		this.securityService = securityService;
+	}
 
 	@GetMapping("/registration")
 	public ModelAndView registration(Model model) {
@@ -49,7 +50,10 @@ public class Registration {
 		if (!userForm.getPassword().equals(userForm.getPasswordConfirm())) {
 			formErrors.add("passwordConfirm", "Пароль не совпадает");
 		}
-		else if (this.userRepository.findFirstByName(userForm.getName()) != null) {
+		else if (this.registrationService.isUserExists(userForm.getEmail())) {
+			formErrors.addCustom("Пользователь с таким email уже существует");
+		}
+		else if (this.registrationService.isUserNameExists(userForm.getName())) {
 			formErrors.addCustom("Пользователь с таким именем уже существует");
 		}
 
@@ -58,30 +62,7 @@ public class Registration {
 			return new ModelAndView("registration", model.asMap());
 		}
 
-		User user = this.userRepository.save(
-			(User) new User()
-				.setEmail(
-					userForm.getEmail()
-				)
-				.setPasswordHash(
-					DigestUtils.md5DigestAsHex(
-						userForm.getPassword().getBytes()
-					)
-				)
-				.setRegisterDate(new Date())
-				.setRoles(
-					new HashSet<UserRole>() {{
-						add(
-							(UserRole) entityFactory.getPersistBaseEntityWithUniqueName(
-								new UserRole().setName("User")
-							)
-						);
-					}}
-				)
-				.setName(
-					userForm.getName()
-				)
-		);
+		User user = this.registrationService.addUser(userForm);
 
 		this.securityService.login(
 			user.getName(),

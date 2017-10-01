@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 public class User extends BaseEntityWithUniqueName {
-	@Column(nullable = false)
+	@Column(unique = true, nullable = false)
 	private String email;
 
 	@Column(nullable = false)
