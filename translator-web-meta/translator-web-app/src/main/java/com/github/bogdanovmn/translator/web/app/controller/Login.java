@@ -19,7 +19,7 @@ public class Login {
 	@GetMapping("/login")
 	public ModelAndView form(Model model, String error) {
 		if (this.securityService.isLogged()) {
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/to-remember/all");
 		}
 
 		if (error != null) {

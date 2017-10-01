@@ -5,21 +5,15 @@ import com.github.bogdanovmn.translator.web.app.controller.common.FormErrors;
 import com.github.bogdanovmn.translator.web.app.controller.domain.form.UserRegistrationForm;
 import com.github.bogdanovmn.translator.web.app.service.RegistrationService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
-import com.github.bogdanovmn.translator.web.orm.entity.app.UserRole;
-import com.github.bogdanovmn.translator.web.orm.factory.EntityFactory;
-import com.github.bogdanovmn.translator.web.orm.repository.app.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.HashSet;
 
 @Controller
 public class Registration {

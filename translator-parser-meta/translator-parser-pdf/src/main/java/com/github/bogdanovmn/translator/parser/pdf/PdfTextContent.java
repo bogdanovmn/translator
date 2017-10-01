@@ -14,7 +14,6 @@ public class PdfTextContent implements TextParser {
 		this.source = source;
 	}
 
-
 	@Override
 	public String getText() throws IOException {
 		return new PDFTextStripper()

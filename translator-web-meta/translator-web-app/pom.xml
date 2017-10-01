@@ -15,10 +15,25 @@
 
 
     <dependencies>
+
+        <!-- Modules -->
+
         <dependency>
             <groupId>com.github.bogdanovmn</groupId>
             <artifactId>translator-web-orm</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.bogdanovmn</groupId>
+            <artifactId>translator-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.bogdanovmn</groupId>
+            <artifactId>translator-parser-pdf</artifactId>
+        </dependency>
+
+        <!-- Spring -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -41,10 +56,12 @@
             <artifactId>spring-boot-starter-mustache</artifactId>
         </dependency>
 
+        <!-- Other -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
