@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.parser.cli;
 
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
 import com.github.bogdanovmn.translator.core.EnglishText;
-import com.github.bogdanovmn.translator.parser.pdf.PdfTextContent;
+import com.github.bogdanovmn.translator.parser.pdf.PdfContent;
 
 import java.io.File;
 
@@ -16,7 +16,7 @@ public class App {
 			.withEntryPoint(
 				cmdLine -> {
 					new EnglishText(
-						new PdfTextContent(
+						new PdfContent(
 							new File(
 								cmdLine.getOptionValue("s")
 							)

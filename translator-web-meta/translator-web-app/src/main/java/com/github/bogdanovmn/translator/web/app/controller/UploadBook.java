@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.web.app.controller;
 
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceUploadDuplicateException;
 import com.github.bogdanovmn.translator.web.app.controller.domain.common.HeadMenu;
 import com.github.bogdanovmn.translator.web.app.service.UploadBookService;
-import org.apache.tomcat.util.http.fileupload.FileUploadBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +30,7 @@ public class UploadBook extends BaseController {
 	public String upload(
 		@RequestParam("file") MultipartFile file,
    		RedirectAttributes redirectAttributes
-	) throws FileUploadBase.FileSizeLimitExceededException
-	{
+	) {
 		try {
 			this.uploadBookService.process(file);
 			redirectAttributes.addFlashAttribute("msg", "OK!");
@@ -39,6 +38,9 @@ public class UploadBook extends BaseController {
 		catch (IOException e) {
 			e.printStackTrace();
 			redirectAttributes.addFlashAttribute("customError", "Что-то пошло не так при загрузке файла");
+		}
+		catch (TranslateServiceUploadDuplicateException e) {
+			redirectAttributes.addFlashAttribute("customError", e.getMessage());
 		}
 
 		return "redirect:/upload-book";

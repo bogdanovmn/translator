@@ -2,20 +2,24 @@ package com.github.bogdanovmn.translator.web.orm.entity.domain;
 
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntityWithUniqueName;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Word extends BaseEntityWithUniqueName {
+	private boolean isHidden = false;
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
 	private Set<Translate> translates;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "word_id")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(
+		name = "word2word_source",
+		joinColumns = @JoinColumn(name = "word_id", referencedColumnName = "id"),
+		inverseJoinColumns = @JoinColumn(name = "word_source_id", referencedColumnName = "id")
+	)
 	private Set<WordSource> sources;
 
 
@@ -34,6 +38,14 @@ public class Word extends BaseEntityWithUniqueName {
 
 	public Word setSources(Set<WordSource> sources) {
 		this.sources = sources;
+		return this;
+	}
+
+	public Word addSource(WordSource source) {
+		if (this.sources == null) {
+			this.sources = new HashSet<>();
+		}
+		this.sources.add(source);
 		return this;
 	}
 }

@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class PdfTextContentTest {
 	@Test
 	public void getText() throws Exception {
-		PdfTextContent pdf = new PdfTextContent(
+		PdfContent pdf = new PdfContent(
 			new File(
 				getClass().getResource("/sample.pdf").getFile()
 			)
