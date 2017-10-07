@@ -12,6 +12,7 @@ public class WordSource extends BaseEntity {
 	private WordSourceType type;
 	private String author;
 	private String title;
+	private String rawName;
 
 	@Column(length = 32, unique = true)
 	private String contentHash;
@@ -61,6 +62,15 @@ public class WordSource extends BaseEntity {
 
 	public WordSource setWords(Set<Word> words) {
 		this.words = words;
+		return this;
+	}
+
+	public String getRawName() {
+		return rawName;
+	}
+
+	public WordSource setRawName(String rawName) {
+		this.rawName = rawName;
 		return this;
 	}
 }

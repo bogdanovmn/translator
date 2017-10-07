@@ -43,4 +43,16 @@ public class PdfContent implements TextContentParser {
 		this.prepare();
 		return this.document.getDocumentInformation().getTitle();
 	}
+
+	public void printMeta() {
+		this.document.getDocumentInformation().getMetadataKeys().forEach(
+			key -> System.out.println(
+				String.format(
+					"%s = %s",
+						key,
+						this.document.getDocumentInformation().getCustomMetadataValue(key)
+				)
+			)
+		);
+	}
 }

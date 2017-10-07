@@ -56,10 +56,9 @@ public class UploadBookService {
 			content.getText()
 		);
 
-		text.printStatistic();
-
 		source = this.wordSourceRepository.save(
 			new WordSource()
+				.setRawName(file.getOriginalFilename())
 				.setContentHash(fileMd5)
 				.setType(WordSourceType.BOOK)
 				.setTitle(content.getTitle())

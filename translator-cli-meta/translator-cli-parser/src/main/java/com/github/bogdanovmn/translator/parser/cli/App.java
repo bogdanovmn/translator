@@ -15,13 +15,17 @@ public class App {
 			.withArg("source", "Source file name (PDF)")
 			.withEntryPoint(
 				cmdLine -> {
+					PdfContent content = new PdfContent(
+						new File(
+							cmdLine.getOptionValue("s")
+						)
+					);
+
 					new EnglishText(
-						new PdfContent(
-							new File(
-								cmdLine.getOptionValue("s")
-							)
-						).getText()
+						content.getText()
 					).printStatistic();
+
+					content.printMeta();
 				}
 			).build().run();
 	}
