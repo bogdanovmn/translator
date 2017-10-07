@@ -67,9 +67,10 @@ public class UploadBookService {
 
 		for (String wordStr : text.words()) {
 			Word word = (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(
-				new Word().setName(wordStr)
+				new Word()
+					.addSource(source)
+					.setName(wordStr)
 			);
-			word.addSource(source);
 			this.wordRepository.save(word);
 
 			this.wordSourceStatisticRepository.save(

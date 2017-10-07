@@ -1,9 +1,21 @@
 {{> inc/header_main}}
 
 {{#words}}
-		<div id="{{id}}" class=word-to-remember>
-			{{word.name}}
+	<div id="word-{{id}}" class=word-to-remember-block>
+		<div class="word">
+			{{name}}
+			<span class="translate">{{#translates}}{{.}}{{/translates}}</span>
 		</div>
+
+		{{^translates}}
+			<div data-id="translate" data-href="/ajax/translate/{{id}}" class="button button-translate">Перевести</div>
+		{{/translates}}
+
+		<div data-id="hold-over" data-href="/ajax/hold-over/{{id}}" class="button button-hold-over {{^translates}}hidden{{/translates}}">OK</div>
+
+		<div data-id="remembered" data-href="/ajax/remembered/{{id}}" class="button button-remembered">Запомнил!</div>
+		<div data-id="black-list" data-href="/admin/ajax/black-list/{{id}}" class="button button-black-list">Удалить</div>
+	</div>
 {{/words}}
 
 {{^words}}
@@ -11,7 +23,61 @@
 {{/words}}
 
 <script>
+	$('div.word-to-remember-block div.button').click(
+		function() {
+			var button = $(this);
+			var actionUrl = button.attr("data-href")
+			var wordBlock = button.parent();
+			switch (button.attr("data-id")) {
+				case "translate":
+					translate(wordBlock, actionUrl);
+					break;
+				case "hold-over":
+					actionAndHide(wordBlock, actionUrl);
+					break;
+				case "remembered":
+					actionAndHide(wordBlock, actionUrl);
+					break;
+				case "black-list":
+					actionAndHide(wordBlock, actionUrl);
+					break;
+			}
+		}
+	);
 
+	function translate(wordBlock, url) {
+		console.log("[translate] " + wordBlock + " " + url)
+		$.ajax(url)
+			.done(function(resp) {
+				wordBlock.find('.translate').text(resp);
+				wordBlock.find("[data-id=translate]").hide();
+				wordBlock.find("[data-id=hold-over]").show();
+				console.log('[OK] ' + url);
+			})
+			.fail(function (jqXHR, excpetion) {
+				console.log("[ERROR]" + url + "\n" + excpetion)
+			})
+			.always(function () {
+				wordBlock.find('.translate').text(": перевод слова");
+				wordBlock.find("[data-id=translate]").hide();
+				wordBlock.find("[data-id=hold-over]").toggleClass("hidden");
+			});
+	}
+
+	function actionAndHide(wordBlock, url) {
+		console.log("[action and hide] " + wordBlock + " " + url)
+		$.ajax(url)
+			.done(function(resp) {
+				console.log('[OK] ' + url);
+			})
+			.fail(function (jqXHR, excpetion) {
+				console.log("[ERROR]" + url + "\n" + excpetion)
+			})
+			.always(function () {
+				wordBlock.hide();
+				wordBlock.empty();
+			});
+	}
 </script>
 
 {{>inc/footer_main}}

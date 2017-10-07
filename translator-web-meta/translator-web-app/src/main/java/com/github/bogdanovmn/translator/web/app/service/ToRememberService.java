@@ -27,9 +27,9 @@ public class ToRememberService {
 			.map(UserRememberedWord::getWord)
 			.collect(Collectors.toSet());
 
-		this.wordRepository.findAll().forEach(
+		this.wordRepository.findAllByHiddenFalse().forEach(
 			word -> {
-				if (userWords.contains(word)) {
+				if (!userWords.contains(word)) {
 					result.add(word);
 				}
 			}

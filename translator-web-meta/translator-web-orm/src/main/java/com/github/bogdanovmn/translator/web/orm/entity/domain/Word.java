@@ -8,7 +8,8 @@ import java.util.Set;
 
 @Entity
 public class Word extends BaseEntityWithUniqueName {
-	private boolean isHidden = false;
+	@Column(nullable = false)
+	private boolean hidden = false;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
@@ -46,6 +47,15 @@ public class Word extends BaseEntityWithUniqueName {
 			this.sources = new HashSet<>();
 		}
 		this.sources.add(source);
+		return this;
+	}
+
+	public boolean isHidden() {
+		return hidden;
+	}
+
+	public Word setHidden(boolean hidden) {
+		this.hidden = hidden;
 		return this;
 	}
 }
