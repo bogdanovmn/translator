@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 public class Word extends BaseEntityWithUniqueName {
 	@Column(nullable = false)
-	private boolean hidden = false;
+	private boolean blackList = false;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
@@ -50,12 +50,12 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
-	public boolean isHidden() {
-		return hidden;
+	public boolean isBlackList() {
+		return blackList;
 	}
 
-	public Word setHidden(boolean hidden) {
-		this.hidden = hidden;
+	public Word setBlackList(boolean blackList) {
+		this.blackList = blackList;
 		return this;
 	}
 }

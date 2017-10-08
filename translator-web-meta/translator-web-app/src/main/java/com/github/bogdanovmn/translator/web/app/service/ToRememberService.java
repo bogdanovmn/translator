@@ -37,7 +37,7 @@ public class ToRememberService {
 					.map(UserRememberedWord::getWord)
 					.collect(Collectors.toSet());
 
-		this.wordRepository.findAllByHiddenFalse().forEach(
+		this.wordRepository.findAllByBlackListFalse().forEach(
 			word -> {
 				if (!userWords.contains(word)) {
 					result.add(word);
@@ -68,6 +68,11 @@ public class ToRememberService {
 	}
 
 	public void blackListWord(Integer wordId) {
-
+		Word word = this.wordRepository.findOne(wordId);
+		if (word != null) {
+			this.wordRepository.save(
+				word.setBlackList(true)
+			);
+		}
 	}
 }

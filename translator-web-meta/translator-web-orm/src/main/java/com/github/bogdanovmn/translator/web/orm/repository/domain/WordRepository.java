@@ -6,5 +6,5 @@ import com.github.bogdanovmn.translator.web.orm.repository.common.BaseEntityWith
 import java.util.Set;
 
 public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word> {
-	Set<Word> findAllByHiddenFalse();
+	Set<Word> findAllByBlackListFalse();
 }

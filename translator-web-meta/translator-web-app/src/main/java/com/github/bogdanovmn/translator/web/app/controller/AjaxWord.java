@@ -2,6 +2,7 @@ package com.github.bogdanovmn.translator.web.app.controller;
 
 import com.github.bogdanovmn.translator.web.app.service.ToRememberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +19,9 @@ public class AjaxWord extends BaseController {
 	}
 
 	@GetMapping("/remembered")
-	public Object remembered(@PathVariable Integer id) {
+	public ResponseEntity remembered(@PathVariable Integer id) {
 		this.toRememberService.rememberWord(id);
-		return null;
+		return ResponseEntity.ok().build();
 	}
 
 	@GetMapping("/translate")
@@ -36,9 +37,9 @@ public class AjaxWord extends BaseController {
 	}
 
 	@GetMapping("/black-list")
-	public Object blackList(@PathVariable Integer id) {
+	public ResponseEntity blackList(@PathVariable Integer id) {
 		this.toRememberService.blackListWord(id);
-		return null;
+		return ResponseEntity.ok().build();
 	}
 
 }
