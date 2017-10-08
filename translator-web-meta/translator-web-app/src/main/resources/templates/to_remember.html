@@ -23,11 +23,24 @@
 {{/words}}
 
 <script>
+	var wordBlockInAction = {};
+
 	$('div.word-to-remember-block div.button').click(
 		function() {
 			var button = $(this);
 			var actionUrl = button.attr("data-href")
 			var wordBlock = button.parent();
+			var wordBlockId = wordBlock.attr('id');
+
+			console.log(wordBlock)
+			console.log(wordBlockInAction)
+
+			if (wordBlockInAction[wordBlockId]) {
+				return
+			}
+			wordBlockInAction[wordBlockId] = true;
+			wordBlock.toggleClass("in-action");
+
 			switch (button.attr("data-id")) {
 				case "translate":
 					translate(wordBlock, actionUrl);
@@ -58,9 +71,8 @@
 				console.log("[ERROR]" + url + "\n" + excpetion)
 			})
 			.always(function () {
-				wordBlock.find('.translate').text(": перевод слова");
-				wordBlock.find("[data-id=translate]").hide();
-				wordBlock.find("[data-id=hold-over]").toggleClass("hidden");
+				wordBlockInAction[wordBlock.attr('id')] = false;
+				wordBlock.toggleClass("in-action");
 			});
 	}
 

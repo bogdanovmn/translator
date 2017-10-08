@@ -35,3 +35,4 @@ div.word-to-remember-block div.button-hold-over  { border-color: cornflowerblue;
 div.word-to-remember-block div.button-black-list { border-color: darkred; color: darkred; }
 
 div.word-to-remember-block div.hidden { display: none; }
+div.in-action div.button { border: 1px dotted gray; color: gray; }
