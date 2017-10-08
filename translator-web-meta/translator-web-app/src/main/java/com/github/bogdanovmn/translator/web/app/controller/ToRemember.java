@@ -27,7 +27,7 @@ public class ToRemember extends BaseController {
 			new HashMap<String, Object>() {{
 				put("menu"    , new HeadMenu(HeadMenu.HMI_TO_REMEMBER).getItems());
 				put("userName", getUser().getName());
-				put("words"   , toRememberService.getAll(getUser()));
+				put("words"   , toRememberService.getAll());
 			}}
 		);
 	}

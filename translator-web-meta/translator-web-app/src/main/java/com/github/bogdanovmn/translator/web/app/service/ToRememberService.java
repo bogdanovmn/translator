@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -48,7 +49,14 @@ public class ToRememberService {
 	}
 
 	public void rememberWord(Integer wordId) {
-
+		if (null == this.userRememberedWordRepository.findFirstByUserAndWordId(this.getUser(), wordId)) {
+			this.userRememberedWordRepository.save(
+				new UserRememberedWord()
+					.setUser(this.getUser())
+					.setWord((Word) new Word().setId(wordId))
+					.setUpdated(new Date())
+			);
+		}
 	}
 
 	public void translateWord(Integer wordId) {

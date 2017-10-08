@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface UserRememberedWordRepository extends CrudRepository<UserRememberedWord, Integer> {
 	List<UserRememberedWord> getUserRememberedWordsByUser(User user);
+
+	UserRememberedWord findFirstByUserAndWordId(User user, Integer wordId);
 }

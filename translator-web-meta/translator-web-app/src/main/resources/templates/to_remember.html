@@ -51,7 +51,7 @@
 			.done(function(resp) {
 				wordBlock.find('.translate').text(resp);
 				wordBlock.find("[data-id=translate]").hide();
-				wordBlock.find("[data-id=hold-over]").show();
+				wordBlock.find("[data-id=hold-over]").toggleClass("hidden");
 				console.log('[OK] ' + url);
 			})
 			.fail(function (jqXHR, excpetion) {
