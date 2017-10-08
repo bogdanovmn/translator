@@ -1,6 +1,6 @@
-{{>inc/header_min}}
+{{>inc/header_main}}
 
-<h1>Загрузка файла</h1>
+<h1>Загрузка файла (PDF)</h1>
 
 {{>inc/error_msg}}
 
@@ -10,14 +10,12 @@
 	<form method=post enctype="multipart/form-data">
 		<table>
 		<tr>
-			<td>Выберете файл в формате PDF
 			<td><input type=file name=file value='{{UploadBookForm.file}'>
             <td>{{formError.file}}
 		<tr>
-			<td colspan=3><input type=submit value='  Загрузить  '>
-			&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{referer}}">Отмена</a>
+			<td colspan=2><input type=submit value='  Загрузить  '>
 		</table>
 	</form>
 </div>
 
-{{>inc/footer_min}}
+{{>inc/footer_main}}

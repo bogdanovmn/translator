@@ -32,9 +32,9 @@ public class HeadMenu {
 	private void prepare() {
 		if (!this.isPrepared) {
 			this.items = new ArrayList<>(3);
-			this.items.add(new HeadMenuItem(HMI_REMEMBERED , "/remembered/" , "Уже изучено"));
-			this.items.add(new HeadMenuItem(HMI_TO_REMEMBER, "/to-remember/", "Изучить"));
-			this.items.add(new HeadMenuItem(HMI_UPLOAD_BOOK, "/upload-book/", "Загрузить книгу"));
+			this.items.add(new HeadMenuItem(HMI_REMEMBERED , "/remembered" , "Уже изучено"));
+			this.items.add(new HeadMenuItem(HMI_TO_REMEMBER, "/to-remember/all", "Изучить"));
+			this.items.add(new HeadMenuItem(HMI_UPLOAD_BOOK, "/upload-book", "Загрузить книгу"));
 		}
 		this.isPrepared = true;
 	}
