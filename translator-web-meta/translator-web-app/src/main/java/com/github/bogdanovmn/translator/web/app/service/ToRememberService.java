@@ -2,9 +2,11 @@ package com.github.bogdanovmn.translator.web.app.service;
 
 import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
+import com.github.bogdanovmn.translator.web.orm.entity.app.UserHoldOverWord;
 import com.github.bogdanovmn.translator.web.orm.entity.app.UserRememberedWord;
 import com.github.bogdanovmn.translator.web.orm.entity.domain.Word;
-import com.github.bogdanovmn.translator.web.orm.repository.domain.UserRememberedWordRepository;
+import com.github.bogdanovmn.translator.web.orm.repository.app.UserHoldOverWordRepository;
+import com.github.bogdanovmn.translator.web.orm.repository.app.UserRememberedWordRepository;
 import com.github.bogdanovmn.translator.web.orm.repository.domain.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ public class ToRememberService {
 	@Autowired
 	private UserRememberedWordRepository userRememberedWordRepository;
 	@Autowired
+	private UserHoldOverWordRepository userHoldOverWordRepository;
+	@Autowired
 	private WordRepository wordRepository;
 
 	private User getUser() {
@@ -29,23 +33,21 @@ public class ToRememberService {
 	}
 
 	public List<Word> getAll() {
-		List<Word> result = new ArrayList<>();
-
-		Set<Word> userWords = this.userRememberedWordRepository
-			.getUserRememberedWordsByUser(this.getUser())
+		Set<Word> userRememberedWords = this.userRememberedWordRepository
+			.findAllByUser(this.getUser())
 				.stream()
 					.map(UserRememberedWord::getWord)
 					.collect(Collectors.toSet());
 
-		this.wordRepository.findAllByBlackListFalse().forEach(
-			word -> {
-				if (!userWords.contains(word)) {
-					result.add(word);
-				}
-			}
-		);
+		Set<Word> userHoldOverWords = this.userHoldOverWordRepository
+			.findAllByUser(this.getUser())
+				.stream()
+					.map(UserHoldOverWord::getWord)
+					.collect(Collectors.toSet());
 
-		return result;
+		return this.wordRepository.findAllByBlackListFalse().stream()
+			.filter(x -> !userRememberedWords.contains(x) && !userHoldOverWords.contains(x))
+			.collect(Collectors.toList());
 	}
 
 	public void rememberWord(Integer wordId) {
@@ -59,11 +61,18 @@ public class ToRememberService {
 		}
 	}
 
-	public void translateWord(Integer wordId) {
-
+	public void holdOverWord(Integer wordId) {
+		if (null == this.userHoldOverWordRepository.findFirstByUserAndWordId(this.getUser(), wordId)) {
+			this.userHoldOverWordRepository.save(
+				new UserHoldOverWord()
+					.setUser(this.getUser())
+					.setWord((Word) new Word().setId(wordId))
+					.setUpdated(new Date())
+			);
+		}
 	}
 
-	public void holdOverWord(Integer wordId) {
+	public void translateWord(Integer wordId) {
 
 	}
 
