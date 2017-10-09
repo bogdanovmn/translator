@@ -44,7 +44,7 @@ public class ToRememberService {
 					.map(UserHoldOverWord::getWord)
 					.collect(Collectors.toSet());
 
-		return this.wordRepository.findAllByBlackListFalse().stream()
+		return this.wordRepository.findAllByBlackListFalseOrderBySourcesCountDescFrequenceDesc().stream()
 			.filter(x -> !userRememberedWords.contains(x) && !userHoldOverWords.contains(x))
 			.collect(Collectors.toList());
 	}

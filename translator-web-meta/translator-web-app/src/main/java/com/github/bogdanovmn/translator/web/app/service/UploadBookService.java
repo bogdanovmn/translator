@@ -9,6 +9,7 @@ import com.github.bogdanovmn.translator.web.orm.entity.domain.Word;
 import com.github.bogdanovmn.translator.web.orm.entity.domain.WordSource;
 import com.github.bogdanovmn.translator.web.orm.factory.EntityFactory;
 import com.github.bogdanovmn.translator.web.orm.repository.domain.SourceRepository;
+import com.github.bogdanovmn.translator.web.orm.repository.domain.WordRepository;
 import com.github.bogdanovmn.translator.web.orm.repository.domain.WordSourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ import java.util.List;
 
 @Service
 public class UploadBookService {
+	@Autowired
+	private WordRepository wordRepository;
 	@Autowired
 	private SourceRepository sourceRepository;
 	@Autowired
@@ -66,6 +69,11 @@ public class UploadBookService {
 		for (String wordStr : text.words()) {
 			Word word = (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(
 				new Word(wordStr)
+			);
+
+			this.wordRepository.save(
+				word.incFrequence(text.getWordFrequance(wordStr))
+					.incSourcesCount()
 			);
 
 			this.wordSourceRepository.save(

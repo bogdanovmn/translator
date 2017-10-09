@@ -7,6 +7,9 @@ import java.util.Set;
 
 @Entity
 public class Word extends BaseEntityWithUniqueName {
+	private int frequence;
+	private int sourcesCount;
+
 	@Column(nullable = false)
 	private boolean blackList = false;
 
@@ -52,6 +55,34 @@ public class Word extends BaseEntityWithUniqueName {
 
 	public Word setBlackList(boolean blackList) {
 		this.blackList = blackList;
+		return this;
+	}
+
+	public Integer getFrequence() {
+		return frequence;
+	}
+
+	public Word setFrequence(Integer frequence) {
+		this.frequence = frequence;
+		return this;
+	}
+
+	public Integer getSourcesCount() {
+		return sourcesCount;
+	}
+
+	public Word setSourcesCount(Integer sourcesCount) {
+		this.sourcesCount = sourcesCount;
+		return this;
+	}
+
+	public Word incSourcesCount() {
+		this.sourcesCount += 1;
+		return this;
+	}
+
+	public Word incFrequence(int incValue) {
+		this.frequence += incValue;
 		return this;
 	}
 }
