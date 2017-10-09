@@ -21,7 +21,7 @@ public class RegistrationService {
 
 	public User addUser(UserRegistrationForm userForm) {
 		return this.userRepository.save(
-			(User) new User()
+			new User(userForm.getName())
 				.setEmail(
 					userForm.getEmail()
 				)
@@ -35,13 +35,10 @@ public class RegistrationService {
 					new HashSet<UserRole>() {{
 						add(
 							(UserRole) entityFactory.getPersistBaseEntityWithUniqueName(
-								new UserRole().setName("User")
+								new UserRole("User")
 							)
 						);
 					}}
-				)
-				.setName(
-					userForm.getName()
 				)
 		);
 	}

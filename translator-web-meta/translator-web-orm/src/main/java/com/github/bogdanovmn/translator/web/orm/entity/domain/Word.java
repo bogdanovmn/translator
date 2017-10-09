@@ -3,11 +3,13 @@ package com.github.bogdanovmn.translator.web.orm.entity.domain;
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntityWithUniqueName;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Word extends BaseEntityWithUniqueName {
+	private int frequence;
+	private int sourcesCount;
+
 	@Column(nullable = false)
 	private boolean blackList = false;
 
@@ -15,14 +17,28 @@ public class Word extends BaseEntityWithUniqueName {
 	@JoinColumn(name = "word_id")
 	private Set<Translate> translates;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(
-		name = "word2word_source",
-		joinColumns = @JoinColumn(name = "word_id", referencedColumnName = "id"),
-		inverseJoinColumns = @JoinColumn(name = "word_source_id", referencedColumnName = "id")
-	)
-	private Set<WordSource> sources;
+	@OneToMany(mappedBy = "word")
+	private Set<WordSource> wordSources;
 
+	public Word(String name) {
+		super(name);
+	}
+
+	public Word(Integer id) {
+		super(id);
+	}
+
+	public Word() {
+	}
+
+	public Set<WordSource> getWordSources() {
+		return wordSources;
+	}
+
+	public Word setWordSources(Set<WordSource> wordSources) {
+		this.wordSources = wordSources;
+		return this;
+	}
 
 	public Set<Translate> getTranslates() {
 		return translates;
@@ -33,29 +49,40 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
-	public Set<WordSource> getSources() {
-		return sources;
-	}
-
-	public Word setSources(Set<WordSource> sources) {
-		this.sources = sources;
-		return this;
-	}
-
-	public Word addSource(WordSource source) {
-		if (this.sources == null) {
-			this.sources = new HashSet<>();
-		}
-		this.sources.add(source);
-		return this;
-	}
-
 	public boolean isBlackList() {
 		return blackList;
 	}
 
 	public Word setBlackList(boolean blackList) {
 		this.blackList = blackList;
+		return this;
+	}
+
+	public Integer getFrequence() {
+		return frequence;
+	}
+
+	public Word setFrequence(Integer frequence) {
+		this.frequence = frequence;
+		return this;
+	}
+
+	public Integer getSourcesCount() {
+		return sourcesCount;
+	}
+
+	public Word setSourcesCount(Integer sourcesCount) {
+		this.sourcesCount = sourcesCount;
+		return this;
+	}
+
+	public Word incSourcesCount() {
+		this.sourcesCount += 1;
+		return this;
+	}
+
+	public Word incFrequence(int incValue) {
+		this.frequence += incValue;
 		return this;
 	}
 }

@@ -8,6 +8,19 @@ public abstract class BaseEntityWithUniqueName extends BaseEntity {
 	@Column(unique = true, nullable = false)
 	private String name;
 
+	public BaseEntityWithUniqueName() {
+		super();
+	}
+
+	public BaseEntityWithUniqueName(String name) {
+		super();
+		this.name = name;
+	}
+
+	public BaseEntityWithUniqueName(Integer id) {
+		super(id);
+	}
+
 	public String getName() {
 		return name;
 	}

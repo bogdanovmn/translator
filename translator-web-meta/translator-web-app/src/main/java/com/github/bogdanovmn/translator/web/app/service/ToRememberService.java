@@ -44,7 +44,7 @@ public class ToRememberService {
 					.map(UserHoldOverWord::getWord)
 					.collect(Collectors.toSet());
 
-		return this.wordRepository.findAllByBlackListFalse().stream()
+		return this.wordRepository.findAllByBlackListFalseOrderBySourcesCountDescFrequenceDesc().stream()
 			.filter(x -> !userRememberedWords.contains(x) && !userHoldOverWords.contains(x))
 			.collect(Collectors.toList());
 	}
@@ -54,7 +54,7 @@ public class ToRememberService {
 			this.userRememberedWordRepository.save(
 				new UserRememberedWord()
 					.setUser(this.getUser())
-					.setWord((Word) new Word().setId(wordId))
+					.setWord(new Word(wordId))
 					.setUpdated(new Date())
 			);
 		}
@@ -65,7 +65,7 @@ public class ToRememberService {
 			this.userHoldOverWordRepository.save(
 				new UserHoldOverWord()
 					.setUser(this.getUser())
-					.setWord((Word) new Word().setId(wordId))
+					.setWord(new Word(wordId))
 					.setUpdated(new Date())
 			);
 		}

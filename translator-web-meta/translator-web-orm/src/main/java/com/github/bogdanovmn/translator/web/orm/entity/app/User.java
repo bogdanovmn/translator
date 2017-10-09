@@ -25,6 +25,12 @@ public class User extends BaseEntityWithUniqueName {
 	)
 	private Set<UserRole> roles;
 
+	public User() {}
+
+	public User(String name) {
+		super(name);
+	}
+
 	public String getEmail() {
 		return email;
 	}
