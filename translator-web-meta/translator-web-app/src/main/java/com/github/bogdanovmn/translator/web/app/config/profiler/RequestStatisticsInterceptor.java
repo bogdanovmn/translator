@@ -13,7 +13,7 @@ public class RequestStatisticsInterceptor implements AsyncHandlerInterceptor {
 
 	private ThreadLocal<Long> time = new ThreadLocal<>();
 
-	private static final Logger log = LoggerFactory.getLogger(RequestStatisticsInterceptor.class);
+	private static final Logger LOG = LoggerFactory.getLogger(RequestStatisticsInterceptor.class);
 
 	@Autowired
 	private HibernateStatisticsInterceptor statisticsInterceptor;
@@ -37,7 +37,7 @@ public class RequestStatisticsInterceptor implements AsyncHandlerInterceptor {
 		Long queryCount = statisticsInterceptor.getQueryCount();
 		statisticsInterceptor.clearCounter();
 		time.remove();
-		log.info("[Time: {} ms] [Queries: {}] {} {}", duration, queryCount, request.getMethod(), request.getRequestURI());
+		LOG.info("[Time: {} ms] [SQL: {}] {} {}", duration, queryCount, request.getMethod(), request.getRequestURI());
 	}
 
 	@Override
