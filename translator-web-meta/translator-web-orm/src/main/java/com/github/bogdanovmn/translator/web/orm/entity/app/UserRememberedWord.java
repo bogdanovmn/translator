@@ -26,6 +26,9 @@ public class UserRememberedWord extends BaseEntity {
 	@Column(nullable = false)
 	private Date updated;
 
+	public UserRememberedWord() {
+	}
+
 	public User getUser() {
 		return user;
 	}

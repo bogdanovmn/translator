@@ -13,13 +13,16 @@ public class Translate extends BaseEntity {
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "translate_source_id")
-	private TranslateSource source;
+	private TranslateProvider source;
 
-	public TranslateSource getSource() {
+	public Translate() {
+	}
+
+	public TranslateProvider getSource() {
 		return source;
 	}
 
-	public Translate setSource(TranslateSource source) {
+	public Translate setSource(TranslateProvider source) {
 		this.source = source;
 		return this;
 	}

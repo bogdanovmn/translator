@@ -54,7 +54,7 @@ public class ToRememberService {
 			this.userRememberedWordRepository.save(
 				new UserRememberedWord()
 					.setUser(this.getUser())
-					.setWord((Word) new Word().setId(wordId))
+					.setWord(new Word(wordId))
 					.setUpdated(new Date())
 			);
 		}
@@ -65,7 +65,7 @@ public class ToRememberService {
 			this.userHoldOverWordRepository.save(
 				new UserHoldOverWord()
 					.setUser(this.getUser())
-					.setWord((Word) new Word().setId(wordId))
+					.setWord(new Word(wordId))
 					.setUpdated(new Date())
 			);
 		}

@@ -7,7 +7,13 @@ public abstract class BaseEntity {
 	@Id
 	@GeneratedValue
 	@Access(AccessType.PROPERTY)
-	private Integer id;
+	protected Integer id;
+
+	public BaseEntity(Integer id) {
+		this.id = id;
+	}
+
+	public BaseEntity() {}
 
 	public Integer getId() {
 		return id;

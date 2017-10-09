@@ -11,6 +11,13 @@ public class UserRole extends BaseEntityWithUniqueName {
 	@ManyToMany(mappedBy = "roles")
 	private Set<User> users;
 
+	public UserRole() {
+	}
+
+	public UserRole(String name) {
+		super(name);
+	}
+
 	public Set<User> getUsers() {
 		return users;
 	}

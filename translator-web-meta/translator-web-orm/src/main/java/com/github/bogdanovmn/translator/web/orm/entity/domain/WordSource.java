@@ -2,75 +2,48 @@ package com.github.bogdanovmn.translator.web.orm.entity.domain;
 
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import java.util.Set;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "word2source")
 public class WordSource extends BaseEntity {
-	private WordSourceType type;
-	private String author;
-	private String title;
-	private String rawName;
+	private Integer count;
 
-	@Column(length = 32, unique = true)
-	private String contentHash;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "word_id")
+	private Word word;
 
-	@ManyToMany(mappedBy = "sources")
-	private Set<Word> words;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "source_id")
+	private Source source;
 
-	public WordSourceType getType() {
-		return type;
+	public WordSource() {
 	}
 
-	public WordSource setType(WordSourceType type) {
-		this.type = type;
+	public Integer getCount() {
+		return count;
+	}
+
+	public WordSource setCount(Integer count) {
+		this.count = count;
 		return this;
 	}
 
-	public String getAuthor() {
-		return author;
+	public Word getWord() {
+		return word;
 	}
 
-	public WordSource setAuthor(String author) {
-		this.author = author;
+	public WordSource setWord(Word word) {
+		this.word = word;
 		return this;
 	}
 
-	public String getTitle() {
-		return title;
+	public Source getSource() {
+		return source;
 	}
 
-	public WordSource setTitle(String title) {
-		this.title = title;
-		return this;
-	}
-
-	public String getContentHash() {
-		return contentHash;
-	}
-
-	public WordSource setContentHash(String contentHash) {
-		this.contentHash = contentHash;
-		return this;
-	}
-
-	public Set<Word> getWords() {
-		return words;
-	}
-
-	public WordSource setWords(Set<Word> words) {
-		this.words = words;
-		return this;
-	}
-
-	public String getRawName() {
-		return rawName;
-	}
-
-	public WordSource setRawName(String rawName) {
-		this.rawName = rawName;
+	public WordSource setSource(Source source) {
+		this.source = source;
 		return this;
 	}
 }
