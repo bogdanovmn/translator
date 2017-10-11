@@ -2,16 +2,13 @@ package com.github.bogdanovmn.translator.web.orm.entity.domain;
 
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Translate extends BaseEntity {
 	private String value;
 
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinColumn(name = "translate_source_id")
 	private TranslateProvider source;
 

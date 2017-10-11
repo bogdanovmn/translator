@@ -33,10 +33,9 @@ public class ToRememberService {
 
 	public List<Word> getAll() {
 		Set<Word> userRememberedWords = this.userRememberedWordRepository
-			.findAllByUser(this.getUser())
-				.stream()
-					.map(UserRememberedWord::getWord)
-					.collect(Collectors.toSet());
+			.findAllByUser(this.getUser()).stream()
+				.map(UserRememberedWord::getWord)
+				.collect(Collectors.toSet());
 
 		Set<Word> userHoldOverWords = this.userHoldOverWordRepository
 			.findAllByUser(this.getUser())

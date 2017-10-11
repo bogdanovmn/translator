@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@NamedEntityGraph(
+	name = "wordsWithTranslate",
+	attributeNodes = @NamedAttributeNode("translates")
+)
 public class Word extends BaseEntityWithUniqueName {
 	private int frequence;
 	private int sourcesCount;
@@ -13,8 +17,9 @@ public class Word extends BaseEntityWithUniqueName {
 	@Column(nullable = false)
 	private boolean blackList = false;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "word_id")
+//	@Fetch(FetchMode.JOIN)
 	private Set<Translate> translates;
 
 	@OneToMany(mappedBy = "word")
