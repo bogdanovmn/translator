@@ -1,5 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.service;
 
+import com.github.bogdanovmn.translator.core.HttpTranslateService;
+import com.github.bogdanovmn.translator.core.TranslateService;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
+import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
 import com.github.bogdanovmn.translator.web.orm.entity.app.UserHoldOverWord;
@@ -11,6 +15,7 @@ import com.github.bogdanovmn.translator.web.orm.repository.domain.WordRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +31,8 @@ public class ToRememberService {
 	private UserHoldOverWordRepository userHoldOverWordRepository;
 	@Autowired
 	private WordRepository wordRepository;
+	@Autowired
+	private TranslateService translateService;
 
 	private User getUser() {
 		return securityService.getLoggedInUser();
@@ -43,7 +50,7 @@ public class ToRememberService {
 					.map(UserHoldOverWord::getWord)
 					.collect(Collectors.toSet());
 
-		return this.wordRepository.findAllByBlackListFalseOrderBySourcesCountDescFrequenceDesc().stream()
+		return this.wordRepository.findTop10ByBlackListFalseOrderBySourcesCountDescFrequenceDesc().stream()
 			.filter(x -> !userRememberedWords.contains(x) && !userHoldOverWords.contains(x))
 			.collect(Collectors.toList());
 	}
@@ -70,8 +77,10 @@ public class ToRememberService {
 		}
 	}
 
-	public void translateWord(Integer wordId) {
-
+	public String translateWord(Integer wordId) throws TranslateServiceException, IOException {
+		return translateService.translate(
+			this.wordRepository.findOne(wordId).getName()
+		);
 	}
 
 	public void blackListWord(Integer wordId) {

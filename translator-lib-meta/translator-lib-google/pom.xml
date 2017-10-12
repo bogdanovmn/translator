@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.bogdanovmn</groupId>
-            <artifactId>http-client-impl-phantomjs</artifactId>
+            <artifactId>http-client-impl-selenium</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>

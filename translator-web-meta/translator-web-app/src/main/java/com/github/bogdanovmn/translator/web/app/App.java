@@ -1,5 +1,8 @@
 package com.github.bogdanovmn.translator.web.app;
 
+import com.github.bogdanovmn.translator.core.TranslateService;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
+import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 import com.github.bogdanovmn.translator.web.orm.factory.EntityFactory;
 import com.github.bogdanovmn.translator.web.orm.factory.EntityMapFactory;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +27,11 @@ public class App {
 	@Bean(initMethod = "init")
 	public EntityMapFactory getEntityMapFactory() {
 		return new EntityMapFactory();
+	}
+
+	@Bean
+	public TranslateService getTranslateService() throws TranslateServiceException {
+		return new GoogleTranslate();
 	}
 }
 

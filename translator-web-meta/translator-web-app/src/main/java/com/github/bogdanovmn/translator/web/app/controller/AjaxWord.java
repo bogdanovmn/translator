@@ -1,12 +1,20 @@
 package com.github.bogdanovmn.translator.web.app.controller;
 
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceParserException;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnavailableException;
+import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnknownWordException;
 import com.github.bogdanovmn.translator.web.app.service.ToRememberService;
+import com.github.bogdanovmn.translator.web.orm.entity.domain.Word;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/ajax/word/{id}")
@@ -25,9 +33,25 @@ public class AjaxWord extends BaseController {
 	}
 
 	@GetMapping("/translate")
-	public Object translate(@PathVariable Integer id) {
-		this.toRememberService.translateWord(id);
-		return null;
+	public ResponseEntity<String> translate(@PathVariable Integer id) {
+		String result = null;
+		try {
+			result = this.toRememberService.translateWord(id);
+		}
+		catch (TranslateServiceUnknownWordException e) {
+			return ResponseEntity.notFound().build();
+		}
+		catch (TranslateServiceException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+				.body(e.getMessage());
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity
+			.status(HttpStatus.OK)
+			.body(result);
 	}
 
 	@GetMapping("/hold-over")

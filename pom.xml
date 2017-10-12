@@ -72,7 +72,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn</groupId>
-				<artifactId>http-client-impl-phantomjs</artifactId>
+				<artifactId>http-client-impl-selenium</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
 
