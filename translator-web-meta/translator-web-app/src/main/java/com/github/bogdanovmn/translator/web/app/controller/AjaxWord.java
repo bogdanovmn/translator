@@ -1,11 +1,8 @@
 package com.github.bogdanovmn.translator.web.app.controller;
 
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
-import com.github.bogdanovmn.translator.core.exception.TranslateServiceParserException;
-import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnavailableException;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceUnknownWordException;
 import com.github.bogdanovmn.translator.web.app.service.ToRememberService;
-import com.github.bogdanovmn.translator.web.orm.entity.domain.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

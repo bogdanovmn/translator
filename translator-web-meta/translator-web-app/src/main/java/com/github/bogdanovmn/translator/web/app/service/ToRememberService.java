@@ -1,9 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.service;
 
-import com.github.bogdanovmn.translator.core.HttpTranslateService;
 import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
-import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.entity.app.User;
 import com.github.bogdanovmn.translator.web.orm.entity.app.UserHoldOverWord;
