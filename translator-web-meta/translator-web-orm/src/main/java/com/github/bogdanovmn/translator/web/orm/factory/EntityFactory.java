@@ -13,7 +13,7 @@ public class EntityFactory {
 	private final Map<Class<?>, Iterable> setEntityCache = new ConcurrentHashMap<>();
 
 	@Autowired
-	private EntityMapFactory entityMapFactory;
+	private EntityRepositoryMapFactory entityRepositoryMapFactory;
 
 	public EntityFactory() {}
 
@@ -29,7 +29,14 @@ public class EntityFactory {
 		}
 
 		if (!this.singleEntityCache.get(entityClass).containsKey(name)) {
-			BaseEntityWithUniqueNameRepository repository = entityMapFactory.getRepository(entityClass);
+			BaseEntityWithUniqueNameRepository repository = entityRepositoryMapFactory.getRepository(entityClass);
+
+			if (repository == null) {
+				throw new RuntimeException(
+					String.format("No map repository found for %s", entityClass)
+				);
+			}
+
 			result = repository.findFirstByName(name);
 
 			if (result != null) {
@@ -50,7 +57,7 @@ public class EntityFactory {
 	public Iterable getAll(Class<? extends BaseEntityWithUniqueName> entClass) {
 		return this.setEntityCache.computeIfAbsent(
 			entClass,
-			x -> entityMapFactory.getRepository(entClass).findAll()
+			x -> entityRepositoryMapFactory.getRepository(entClass).findAll()
 		);
 	}
 }

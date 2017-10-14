@@ -19,7 +19,6 @@ public class Word extends BaseEntityWithUniqueName {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "word_id")
-//	@Fetch(FetchMode.JOIN)
 	private Set<Translate> translates;
 
 	@OneToMany(mappedBy = "word")

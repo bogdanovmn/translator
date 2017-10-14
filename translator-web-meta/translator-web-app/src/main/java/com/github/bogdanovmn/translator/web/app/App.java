@@ -4,7 +4,7 @@ import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceException;
 import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 import com.github.bogdanovmn.translator.web.orm.factory.EntityFactory;
-import com.github.bogdanovmn.translator.web.orm.factory.EntityMapFactory;
+import com.github.bogdanovmn.translator.web.orm.factory.EntityRepositoryMapFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -25,8 +25,8 @@ public class App {
 	}
 
 	@Bean(initMethod = "init")
-	public EntityMapFactory getEntityMapFactory() {
-		return new EntityMapFactory();
+	public EntityRepositoryMapFactory getEntityMapFactory() {
+		return new EntityRepositoryMapFactory();
 	}
 
 	@Bean

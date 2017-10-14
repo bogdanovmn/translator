@@ -4,7 +4,7 @@
 	<div id="word-{{id}}" class=word-to-remember-block>
 		<div class="word">
 			{{name}} <div class=stats>{{frequence}} упоминаний / {{sourcesCount}} источников</div>
-			<span class="translate">{{#translates}}{{.}}{{/translates}}</span>
+			<span class="translate">{{#translates}}{{value}}{{/translates}}</span>
 		</div>
 
 		{{^translates}}

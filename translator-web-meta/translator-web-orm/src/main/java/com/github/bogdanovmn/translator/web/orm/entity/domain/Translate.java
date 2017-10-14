@@ -9,18 +9,22 @@ public class Translate extends BaseEntity {
 	private String value;
 
 	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JoinColumn(name = "translate_source_id")
-	private TranslateProvider source;
+	@JoinColumn(name = "provider_id")
+	private TranslateProvider provider;
+
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@JoinColumn(name = "word_id")
+	private Word word;
 
 	public Translate() {
 	}
 
-	public TranslateProvider getSource() {
-		return source;
+	public TranslateProvider getProvider() {
+		return provider;
 	}
 
-	public Translate setSource(TranslateProvider source) {
-		this.source = source;
+	public Translate setProvider(TranslateProvider provider) {
+		this.provider = provider;
 		return this;
 	}
 
@@ -30,6 +34,15 @@ public class Translate extends BaseEntity {
 
 	public Translate setValue(String value) {
 		this.value = value;
+		return this;
+	}
+
+	public Word getWord() {
+		return word;
+	}
+
+	public Translate setWord(Word word) {
+		this.word = word;
 		return this;
 	}
 }
