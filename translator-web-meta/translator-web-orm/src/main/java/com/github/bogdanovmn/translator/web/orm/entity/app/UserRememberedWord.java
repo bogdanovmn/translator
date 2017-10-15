@@ -15,11 +15,11 @@ import java.util.Date;
 	}
 )
 public class UserRememberedWord extends BaseEntity {
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "word_id")
 	private Word word;
 

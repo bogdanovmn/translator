@@ -13,6 +13,7 @@ import com.github.bogdanovmn.translator.web.orm.entity.domain.Word;
 import com.github.bogdanovmn.translator.web.orm.factory.EntityFactory;
 import com.github.bogdanovmn.translator.web.orm.repository.app.UserHoldOverWordRepository;
 import com.github.bogdanovmn.translator.web.orm.repository.app.UserRememberedWordRepository;
+import com.github.bogdanovmn.translator.web.orm.repository.app.UserRepository;
 import com.github.bogdanovmn.translator.web.orm.repository.domain.TranslateRepository;
 import com.github.bogdanovmn.translator.web.orm.repository.domain.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class ToRememberService {
@@ -40,26 +39,16 @@ public class ToRememberService {
 	private EntityFactory entityFactory;
 	@Autowired
 	private TranslateRepository translateRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 	private User getUser() {
 		return securityService.getLoggedInUser();
 	}
 
 	public List<Word> getAll() {
-		Set<Word> userRememberedWords = this.userRememberedWordRepository
-			.findAllByUser(this.getUser()).stream()
-				.map(UserRememberedWord::getWord)
-				.collect(Collectors.toSet());
-
-		Set<Word> userHoldOverWords = this.userHoldOverWordRepository
-			.findAllByUser(this.getUser())
-				.stream()
-					.map(UserHoldOverWord::getWord)
-					.collect(Collectors.toSet());
-
-		return this.wordRepository.findTop10ByBlackListFalseOrderBySourcesCountDescFrequenceDesc().stream()
-			.filter(x -> !userRememberedWords.contains(x) && !userHoldOverWords.contains(x))
-			.collect(Collectors.toList());
+		List<Word> result = this.userRepository.getWordsToRemember(this.getUser().getId());
+		return result;
 	}
 
 	public void rememberWord(Integer wordId) {

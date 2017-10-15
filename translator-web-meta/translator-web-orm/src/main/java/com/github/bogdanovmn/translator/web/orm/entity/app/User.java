@@ -1,12 +1,27 @@
 package com.github.bogdanovmn.translator.web.orm.entity.app;
 
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntityWithUniqueName;
+import com.github.bogdanovmn.translator.web.orm.entity.domain.Word;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
+@NamedNativeQuery(
+	name = "User.getWordsToRemember",
+	resultClass = Word.class,
+	query =
+		"select w.*"
+		+ " from  word w"
+		+ " left join user_hold_over_word uhow on w.id = uhow.word_id and uhow.user_id = ?1 "
+		+ " left join user_remembered_word urw on w.id = urw.word_id and urw.user_id = ?1 "
+		+ " where urw.word_id is NULL "
+		+ " and   uhow.word_id is NULL "
+		+ " and   w.black_list = 0 "
+		+ " order by w.sources_count desc, w.frequence desc "
+		+ " limit 10"
+)
 public class User extends BaseEntityWithUniqueName {
 	@Column(unique = true, nullable = false)
 	private String email;
@@ -24,6 +39,12 @@ public class User extends BaseEntityWithUniqueName {
 		inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
 	)
 	private Set<UserRole> roles;
+
+	@OneToMany(mappedBy = "user")
+	private Set<UserHoldOverWord> holdOverWords;
+
+	@OneToMany(mappedBy = "user")
+	private Set<UserRememberedWord> rememberedWords;
 
 	public User() {}
 
@@ -64,6 +85,24 @@ public class User extends BaseEntityWithUniqueName {
 
 	public User setRoles(Set<UserRole> roles) {
 		this.roles = roles;
+		return this;
+	}
+
+	public Set<UserHoldOverWord> getHoldOverWords() {
+		return holdOverWords;
+	}
+
+	public User setHoldOverWords(Set<UserHoldOverWord> holdOverWords) {
+		this.holdOverWords = holdOverWords;
+		return this;
+	}
+
+	public Set<UserRememberedWord> getRememberedWords() {
+		return rememberedWords;
+	}
+
+	public User setRememberedWords(Set<UserRememberedWord> rememberedWords) {
+		this.rememberedWords = rememberedWords;
 		return this;
 	}
 }

@@ -17,7 +17,7 @@ public class Word extends BaseEntityWithUniqueName {
 	@Column(nullable = false)
 	private boolean blackList = false;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
 	private Set<Translate> translates;
 
