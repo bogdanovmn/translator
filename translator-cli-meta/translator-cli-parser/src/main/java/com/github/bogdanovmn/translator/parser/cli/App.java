@@ -3,6 +3,7 @@ package com.github.bogdanovmn.translator.parser.cli;
 
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
 import com.github.bogdanovmn.translator.core.EnglishText;
+import com.github.bogdanovmn.translator.core.NormalizedWords;
 import com.github.bogdanovmn.translator.parser.pdf.PdfContent;
 
 import java.io.File;
@@ -21,9 +22,13 @@ public class App {
 						)
 					);
 
-					new EnglishText(
+					EnglishText text = new EnglishText(
 						content.getText()
-					).printStatistic();
+					);
+					text.printStatistic();
+
+					new NormalizedWords(text.words())
+						.printWordsWithForms();
 
 					content.printMeta();
 				}
