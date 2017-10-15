@@ -20,7 +20,7 @@ import java.util.Set;
 		+ " and   uhow.word_id is NULL "
 		+ " and   w.black_list = 0 "
 		+ " order by w.sources_count desc, w.frequence desc "
-		+ " limit 10"
+		+ " limit 5"
 )
 public class User extends BaseEntityWithUniqueName {
 	@Column(unique = true, nullable = false)

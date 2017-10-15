@@ -47,8 +47,7 @@ public class ToRememberService {
 	}
 
 	public List<Word> getAll() {
-		List<Word> result = this.userRepository.getWordsToRemember(this.getUser().getId());
-		return result;
+		return this.userRepository.getWordsToRemember(this.getUser().getId());
 	}
 
 	public void rememberWord(Integer wordId) {
