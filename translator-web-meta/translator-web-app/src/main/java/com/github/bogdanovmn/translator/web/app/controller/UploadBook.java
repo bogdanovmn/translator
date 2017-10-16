@@ -3,6 +3,7 @@ package com.github.bogdanovmn.translator.web.app.controller;
 import com.github.bogdanovmn.translator.core.exception.TranslateServiceUploadDuplicateException;
 import com.github.bogdanovmn.translator.web.app.controller.domain.common.HeadMenu;
 import com.github.bogdanovmn.translator.web.app.service.UploadBookService;
+import com.github.bogdanovmn.translator.web.orm.entity.domain.Source;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,9 @@ public class UploadBook extends BaseController {
    		RedirectAttributes redirectAttributes
 	) {
 		try {
-			this.uploadBookService.process(file);
+			Source source = this.uploadBookService.upload(file);
 			redirectAttributes.addFlashAttribute("msg", "OK!");
+			redirectAttributes.addFlashAttribute("source", source);
 		}
 		catch (IOException e) {
 			e.printStackTrace();

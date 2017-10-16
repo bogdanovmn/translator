@@ -33,7 +33,7 @@ public class UploadBookService {
 	private EntityFactory entityFactory;
 
 	@Transactional
-	public void process(MultipartFile file)
+	public Source upload(MultipartFile file)
 		throws IOException, TranslateServiceUploadDuplicateException
 	{
 		String fileMd5 = DigestUtils.md5DigestAsHex(file.getBytes());
@@ -89,6 +89,7 @@ public class UploadBookService {
 			);
 		}
 
+		return source;
 	}
 
 	public List<Object> getHistory() {
