@@ -2,11 +2,10 @@ package com.github.bogdanovmn.translator.core;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class NormalizedWordsTest {
 	@Test
@@ -14,16 +13,22 @@ public class NormalizedWordsTest {
 		NormalizedWords normalizedWords = new NormalizedWords(
 			Arrays.asList(
 				"question", "questioning", "questions",
-				"talk", "talks", "talking",
+				"talk", "talks", "talking", "talked",
+
+				"connect", "reconnect",
+				"system", "subsystem",
+
 				"someWord"
 			)
 		);
 
 		normalizedWords.printWordsWithForms();
 		assertEquals(
-			new HashSet<>(Arrays.asList("talk", "question")),
+			new HashSet<>(Arrays.asList("talk", "question", "someWord", "connect", "system")),
 			normalizedWords.get()
 		);
+
+		assertEquals(5, normalizedWords.get().size());
 	}
 
 }

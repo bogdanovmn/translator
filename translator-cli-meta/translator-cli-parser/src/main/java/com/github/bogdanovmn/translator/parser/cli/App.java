@@ -27,10 +27,17 @@ public class App {
 					);
 					text.printStatistic();
 
-					new NormalizedWords(text.words())
-						.printWordsWithForms();
-
+					NormalizedWords normalizedWords = new NormalizedWords(text.words());
 					content.printMeta();
+
+					System.out.println(
+						String.format(
+							"Total uniq words: %d\nTotal normalized words: %d (%.0f%%)",
+								text.words().size(),
+								normalizedWords.get().size(),
+								100 * ((float) normalizedWords.get().size() / text.words().size())
+						)
+					);
 				}
 			).build().run();
 	}

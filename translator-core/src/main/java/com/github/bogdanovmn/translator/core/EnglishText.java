@@ -11,6 +11,7 @@ public class EnglishText {
 	private final Map<String, Integer> words = new HashMap<>();
 	private final Map<String, Integer> ignoreTokens = new HashMap<>();
 	private boolean isAlreadyParsed = false;
+	private NormalizedWords normalizedWords;
 
 	public EnglishText(String text) {
 		this.text = text;
@@ -41,6 +42,7 @@ public class EnglishText {
 						this.words.getOrDefault(normalizedToken, 0) + 1
 					);
 				}
+				this.normalizedWords = new NormalizedWords(this.words.keySet());
 			}
 			this.isAlreadyParsed = true;
 		}
@@ -51,9 +53,29 @@ public class EnglishText {
 		return this.words.keySet();
 	}
 
+	public Set<String> normalizedWords() {
+		this.parse();
+		return this.normalizedWords.get();
+	}
+
 	public int getWordFrequance(String word) {
 		this.parse();
 		return this.words.getOrDefault(word, 0);
+	}
+
+	public int getWordFormsFrequance(String word) {
+		this.parse();
+		int result = 0;
+		if (this.words.containsKey(word)) {
+			result += this.words.get(word);
+			Set<String> forms = this.normalizedWords.getFormsForWord(word);
+			if (forms != null) {
+				for (String wordForm : forms) {
+					result += this.words.get(wordForm);
+				}
+			}
+		}
+		return result;
 	}
 
 	public void printStatistic() {
@@ -61,6 +83,9 @@ public class EnglishText {
 
 		System.out.println("---- Statistic ----");
 		this.printTokens(this.words);
+
+		System.out.println("---- Word forms ----");
+		this.normalizedWords.printWordsWithForms();
 
 		System.out.println("---- Ignore statistic ----");
 		this.printTokens(this.ignoreTokens);

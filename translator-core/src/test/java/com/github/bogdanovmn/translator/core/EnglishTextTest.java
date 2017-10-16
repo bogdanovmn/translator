@@ -7,6 +7,24 @@ import static org.junit.Assert.assertEquals;
 
 public class EnglishTextTest {
 	@Test
+	public void getWordFormsFrequance() throws Exception {
+		EnglishText text = new EnglishText(
+			"question questioning questions " +
+			"talk talks talking talked " +
+			"connect reconnect " +
+			"system subsystem " +
+			"someword"
+		);
+
+		text.printStatistic();
+
+		assertEquals("question forms freq", 3, text.getWordFormsFrequance("question"));
+		assertEquals("talk forms freq"    , 4, text.getWordFormsFrequance("talk"));
+		assertEquals("someword forms freq", 1, text.getWordFormsFrequance("someword"));
+		assertEquals("blabla forms freq"  , 0, text.getWordFormsFrequance("blabla"));
+	}
+
+	@Test
 	public void getWordFrequance() throws Exception {
 		EnglishText text = new EnglishText(
 			"hello, world! hello, man! " +

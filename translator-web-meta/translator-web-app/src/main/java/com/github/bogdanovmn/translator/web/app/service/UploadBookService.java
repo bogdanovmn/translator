@@ -18,6 +18,7 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -56,6 +57,8 @@ public class UploadBookService {
 			content.getText()
 		);
 
+		Collection<String> words = text.normalizedWords();
+
 		source = this.sourceRepository.save(
 			new Source()
 				.setRawName(file.getOriginalFilename())
@@ -63,16 +66,18 @@ public class UploadBookService {
 				.setType(SourceType.BOOK)
 				.setTitle(content.getTitle())
 				.setAuthor(content.getAuthor())
-				.setWordsCount(text.words().size())
+				.setWordsCount(words.size())
 		);
 
-		for (String wordStr : text.words()) {
+		for (String wordStr : words) {
 			Word word = (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(
 				new Word(wordStr)
 			);
 
+			int wordFrequanceInSource = text.getWordFormsFrequance(wordStr);
+
 			this.wordRepository.save(
-				word.incFrequence(text.getWordFrequance(wordStr))
+				word.incFrequence(wordFrequanceInSource)
 					.incSourcesCount()
 			);
 
@@ -80,9 +85,7 @@ public class UploadBookService {
 				new WordSource()
 					.setSource(source)
 					.setWord(word)
-					.setCount(
-						text.getWordFrequance(wordStr)
-					)
+					.setCount(wordFrequanceInSource)
 			);
 		}
 
