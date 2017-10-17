@@ -19,7 +19,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user/settings")
-public class UserSettings {
+public class UserSettings extends BaseController {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -40,7 +40,6 @@ public class UserSettings {
 		User user = this.securityService.getLoggedInUser();
 
 		model.addAttribute("referer", referer);
-		model.addAttribute("userName", user.getName());
 		model.addAttribute("userEmail", user.getEmail());
 		model.addAttribute("userRegistrationDate", user.getRegisterDate());
 		model.addAttribute(
@@ -90,7 +89,6 @@ public class UserSettings {
 		if (formErrors.isNotEmpty()) {
 			model.addAllAttributes(formErrors.getModel());
 			model.addAttribute("referer", referer);
-			model.addAttribute("userName", user.getName());
 			return new ModelAndView("user_settings");
 		}
 

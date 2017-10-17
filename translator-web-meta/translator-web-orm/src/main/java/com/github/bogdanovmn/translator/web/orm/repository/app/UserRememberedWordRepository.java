@@ -10,4 +10,6 @@ public interface UserRememberedWordRepository extends CrudRepository<UserRemembe
 	List<UserRememberedWord> findAllByUser(User user);
 
 	UserRememberedWord findFirstByUserAndWordId(User user, Integer wordId);
+
+	Integer countByUser(User user);
 }

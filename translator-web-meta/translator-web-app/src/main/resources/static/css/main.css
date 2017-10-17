@@ -17,7 +17,7 @@ div.filter div.values    { padding-left: 20px; margin: 5px 0; }
 div.filter div.values td { padding: 4px 3px; }
 div.filter div.values p  { margin: 4px 3px; }
 
-td.progress { text-align: right; }
+span.progress { text-align: right; color: forestgreen; }
 
 form table    { margin: 0 auto; }
 form table td { padding: 10px; }
