@@ -41,9 +41,8 @@ public class UploadBookService {
 		if (source != null) {
 			throw new TranslateServiceUploadDuplicateException(
 				String.format(
-					"Content already exists: %s - %s (md5: %s)",
-						source.getAuthor(),
-						source.getTitle(),
+					"Такая книга уже загружена: %s (md5: %s)",
+						source.toString(),
 						source.getContentHash()
 				)
 			);

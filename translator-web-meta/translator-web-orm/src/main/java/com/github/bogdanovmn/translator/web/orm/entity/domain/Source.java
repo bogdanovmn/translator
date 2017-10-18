@@ -24,6 +24,16 @@ public class Source extends BaseEntity {
 	public Source() {
 	}
 
+	@Override
+	public String toString() {
+		if (this.author != null && this.title != null) {
+			return String.format("%s - %s", this.author, this.title);
+		}
+		else {
+			return this.rawName;
+		}
+	}
+
 	public SourceType getType() {
 		return type;
 	}

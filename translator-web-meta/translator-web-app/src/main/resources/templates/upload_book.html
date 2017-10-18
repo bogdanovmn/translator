@@ -1,11 +1,9 @@
 {{>inc/header_main}}
 
-{{>inc/error_msg}}
-
 {{#source}}
 <h1>Книга загуржена</h1>
 
-<table>
+<table class="upload-source-info">
 	<tr><td>Имя файла</td>  <td>{{rawName}}</td></tr>
 	<tr><td>Автор</td>      <td>{{author}}</td></tr>
 	<tr><td>Заголовок</td>  <td>{{title}}</td></tr>
@@ -16,6 +14,8 @@
 
 {{^source}}
 <h1>Загрузка файла (PDF)</h1>
+
+{{>inc/error_msg}}
 
 <div class=form>
 	<form method=post enctype="multipart/form-data">

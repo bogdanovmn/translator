@@ -11,6 +11,8 @@ div.main { width: 1000px; margin: 0 auto; text-align: center; }
 	#left_menu { float: left; width: 20%; }
 	#data_area { width: 80%; margin-left: 20%;  border-left: 1px solid gray; padding: 0 10px; }
 
+#top_menu a { text-decoration: none; }
+
 div.filter               { font-size: 13px; }
 div.filter b             { color: gray; }
 div.filter div.values    { padding-left: 20px; margin: 5px 0; }
@@ -24,12 +26,18 @@ form table td { padding: 10px; }
 
 a.logout { text-decoration: none; font-weight: bold; color: #a11e0d; }
 
+div.error { border-radius: 10px; border: 1px solid #d47d7d; background: #f5cccc; text-align: center; color: #4c260b; padding: 10px 30px; }
+
 div.word-to-remember-block {
-	display: inline-block; text-align: left; font-size: 160%; background: #fafcfd; border: 1px dotted #bed5e0; margin: 10px; padding: 5px 5px 12px 5px; }
+	display: inline-block; margin: 10px; padding: 5px 5px 12px 5px;
+	text-align: left; font-size: 160%;
+	background: #fafcfd; border-radius: 10px; border: 1px dotted #bed5e0;
+}
 div.word-to-remember-block div.word  { margin: 5px; }
-div.word-to-remember-block div.stats { font-size: 50%; color: #d4d4d4; }
+div.word-to-remember-block div.stats { font-size: 50%; color: #d4d4d4; text-align: right; }
 div.word-to-remember-block span.translate { color: cornflowerblue; font-weight: bold; }
-div.word-to-remember-block div.button { border: 1px solid; text-align: center; padding: 3px 7px; font-size: 70%; display: inline; margin: 3px 5px; cursor: pointer; }
+div.word-to-remember-block div.button {
+	border-radius: 25px; border: 1px solid; text-align: center; padding: 3px 10px; font-size: 70%; display: inline; margin: 3px 5px; cursor: pointer; }
 div.word-to-remember-block div.button:hover { border: 1px dotted; }
 div.word-to-remember-block div.button-remembered { border-color: seagreen; color: seagreen; }
 div.word-to-remember-block div.button-translate  { border-color: cornflowerblue; color: cornflowerblue; }
@@ -38,3 +46,6 @@ div.word-to-remember-block div.button-black-list { border-color: darkred; color:
 
 div.word-to-remember-block div.hidden { display: none; }
 div.in-action div.button { border: 1px dotted gray; color: gray; }
+
+table.upload-source-info td { padding: 5px 10px; }
+table.upload-source-info td:first-child { font-weight: bold; }
