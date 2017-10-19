@@ -31,7 +31,7 @@ public abstract class HttpTranslateService implements TranslateService {
 			Objects.toString(htmlText, "")
 		);
 
-		if (translatedValue.isEmpty()) {
+		if (translatedValue == null || translatedValue.isEmpty()) {
 			throw new TranslateServiceUnavailableException("Empty result. Something wrong...");
 		}
 		if (translatedValue.equals(phrase)) {

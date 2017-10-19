@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<translator-import>
+    <words>
+        <word id="" name="" blackList="0" frequence="" sourcesCount=""/>
+    </words>
+
+    <sources>
+        <source id="123" author="Author" title="Title" rawName="Title.pdf" type="0" contentHash="..." wordsCount="123" />
+    </sources>
+
+    <translate-providers>
+        <translate-provider id="123" name="Some word" />
+    </translate-providers>
+
+    <translates>
+        <translate value="Перевод слова" wordId="123" providerId="123" />
+    </translates>
+
+    <word-to-source-link>
+        <link wordId="123" sourceId="123" count="123"/>
+    </word-to-source-link>
+</translator-import>

@@ -2,13 +2,12 @@ package com.github.bogdanovmn.translator.web.orm.entity.domain;
 
 import com.github.bogdanovmn.translator.web.orm.entity.common.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 public class Source extends BaseEntity {
+	@Enumerated(EnumType.STRING)
 	private SourceType type;
 	private String author;
 	private String title;
