@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.config.security;
 
 
-import com.github.bogdanovmn.translator.web.orm.entity.app.User;
+import com.github.bogdanovmn.translator.web.orm.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

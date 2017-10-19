@@ -21,11 +21,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.bogdanovmn.translator</groupId>
-			<artifactId>translator-core</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.github.bogdanovmn.cmdline</groupId>
 			<artifactId>cmdline-app</artifactId>
 		</dependency>
