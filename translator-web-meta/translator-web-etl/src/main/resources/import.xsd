@@ -7,7 +7,7 @@
                 <xs:element name="sources">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
-                            <xs:element name="source" type="SourceType"/>
+                            <xs:element name="source" type="Source"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -15,7 +15,7 @@
                 <xs:element name="translateProviders">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
-                            <xs:element name="translateProvider" type="TranslateProviderType"/>
+                            <xs:element name="translateProvider" type="TranslateProvider"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -23,7 +23,7 @@
                 <xs:element name="words">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
-                            <xs:element name="word" type="WordType"/>
+                            <xs:element name="word" type="Word"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -31,7 +31,7 @@
                 <xs:element name="wordsToSourceLink">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
-                            <xs:element name="link" type="WordToSourceLinkType"/>
+                            <xs:element name="link" type="WordToSourceLink"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -39,7 +39,7 @@
                 <xs:element name="translates">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
-                            <xs:element name="translate" type="TranslateType"/>
+                            <xs:element name="translate" type="Translate"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -47,7 +47,7 @@
                 <xs:element name="users">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
-                            <xs:element name="user" type="UserType"/>
+                            <xs:element name="user" type="User"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -56,7 +56,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="SourceType">
+    <xs:complexType name="Source">
         <xs:attribute name="id"      type="xs:positiveInteger"/>
         <xs:attribute name="author"  type="xs:string"/>
         <xs:attribute name="title"   type="xs:string"/>
@@ -66,12 +66,12 @@
         <xs:attribute name="wordsCount"  type="xs:nonNegativeInteger"/>
     </xs:complexType>
 
-    <xs:complexType name="TranslateProviderType">
+    <xs:complexType name="TranslateProvider">
         <xs:attribute name="id"   type="xs:positiveInteger"/>
         <xs:attribute name="name" type="xs:string"/>
     </xs:complexType>
 
-    <xs:complexType name="WordType">
+    <xs:complexType name="Word">
         <xs:attribute name="id"           type="xs:positiveInteger"/>
         <xs:attribute name="name"         type="xs:string"/>
         <xs:attribute name="blackList"    type="xs:boolean"/>
@@ -79,19 +79,19 @@
         <xs:attribute name="sourcesCount" type="xs:positiveInteger"/>
     </xs:complexType>
 
-    <xs:complexType name="WordToSourceLinkType">
+    <xs:complexType name="WordToSourceLink">
         <xs:attribute name="wordId"   type="xs:positiveInteger"/>
         <xs:attribute name="sourceId" type="xs:positiveInteger"/>
         <xs:attribute name="count"    type="xs:positiveInteger"/>
     </xs:complexType>
 
-    <xs:complexType name="TranslateType">
+    <xs:complexType name="Translate">
         <xs:attribute name="wordId"   type="xs:positiveInteger"/>
         <xs:attribute name="sourceId" type="xs:positiveInteger"/>
         <xs:attribute name="value"    type="xs:string"/>
     </xs:complexType>
 
-    <xs:complexType name="UserType">
+    <xs:complexType name="User">
         <xs:sequence>
             <xs:element name="rememberedWords">
                 <xs:complexType>
