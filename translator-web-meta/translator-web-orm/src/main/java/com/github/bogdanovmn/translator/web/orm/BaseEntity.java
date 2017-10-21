@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAttribute;
 
 @MappedSuperclass
 public abstract class BaseEntity {
@@ -15,6 +16,7 @@ public abstract class BaseEntity {
 
 	public BaseEntity() {}
 
+	@XmlAttribute
 	public Integer getId() {
 		return id;
 	}

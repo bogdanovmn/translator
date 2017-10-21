@@ -1,11 +1,13 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.util.Set;
 
 @Entity
+@XmlType
 public class Source extends BaseEntity {
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	private SourceType type;
 	private String author;
 	private String title;
@@ -30,7 +32,7 @@ public class Source extends BaseEntity {
 			return this.rawName;
 		}
 	}
-
+	@XmlAttribute
 	public SourceType getType() {
 		return type;
 	}
@@ -40,6 +42,7 @@ public class Source extends BaseEntity {
 		return this;
 	}
 
+	@XmlAttribute
 	public String getAuthor() {
 		return author;
 	}
@@ -49,6 +52,7 @@ public class Source extends BaseEntity {
 		return this;
 	}
 
+	@XmlAttribute
 	public String getTitle() {
 		return title;
 	}
@@ -58,6 +62,7 @@ public class Source extends BaseEntity {
 		return this;
 	}
 
+	@XmlAttribute
 	public String getContentHash() {
 		return contentHash;
 	}
@@ -67,6 +72,7 @@ public class Source extends BaseEntity {
 		return this;
 	}
 
+	@XmlTransient
 	public Set<WordSource> getWordSources() {
 		return wordSources;
 	}
@@ -76,6 +82,7 @@ public class Source extends BaseEntity {
 		return this;
 	}
 
+	@XmlAttribute
 	public String getRawName() {
 		return rawName;
 	}
@@ -85,6 +92,7 @@ public class Source extends BaseEntity {
 		return this;
 	}
 
+	@XmlAttribute
 	public Integer getWordsCount() {
 		return wordsCount;
 	}
