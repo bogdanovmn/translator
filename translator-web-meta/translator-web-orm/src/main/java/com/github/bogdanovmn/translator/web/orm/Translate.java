@@ -1,6 +1,8 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 public class Translate extends BaseEntity {
@@ -17,6 +19,7 @@ public class Translate extends BaseEntity {
 	public Translate() {
 	}
 
+	@XmlTransient
 	public TranslateProvider getProvider() {
 		return provider;
 	}
@@ -26,6 +29,7 @@ public class Translate extends BaseEntity {
 		return this;
 	}
 
+	@XmlAttribute
 	public String getValue() {
 		return value;
 	}
@@ -35,6 +39,7 @@ public class Translate extends BaseEntity {
 		return this;
 	}
 
+	@XmlTransient
 	public Word getWord() {
 		return word;
 	}

@@ -1,7 +1,11 @@
 package com.github.bogdanovmn.translator.web.orm;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Set;
 
 @Entity

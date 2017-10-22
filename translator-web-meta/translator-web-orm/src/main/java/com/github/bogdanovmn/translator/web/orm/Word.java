@@ -1,6 +1,8 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Set;
 
 @Entity
@@ -37,11 +39,13 @@ public class Word extends BaseEntityWithUniqueName {
 		return wordSources;
 	}
 
+	@XmlTransient
 	public Word setWordSources(Set<WordSource> wordSources) {
 		this.wordSources = wordSources;
 		return this;
 	}
 
+	@XmlTransient
 	public Set<Translate> getTranslates() {
 		return translates;
 	}
@@ -51,6 +55,7 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
+	@XmlAttribute
 	public boolean isBlackList() {
 		return blackList;
 	}
@@ -60,6 +65,7 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
+	@XmlTransient
 	public Integer getFrequence() {
 		return frequence;
 	}
@@ -69,6 +75,7 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
+	@XmlTransient
 	public Integer getSourcesCount() {
 		return sourcesCount;
 	}

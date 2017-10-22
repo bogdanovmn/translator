@@ -1,6 +1,8 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlIDREF;
 
 @Entity
 @Table(name = "word2source")
@@ -18,6 +20,7 @@ public class WordSource extends BaseEntity {
 	public WordSource() {
 	}
 
+	@XmlAttribute
 	public Integer getCount() {
 		return count;
 	}
@@ -27,6 +30,8 @@ public class WordSource extends BaseEntity {
 		return this;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "wid")
 	public Word getWord() {
 		return word;
 	}
@@ -36,6 +41,8 @@ public class WordSource extends BaseEntity {
 		return this;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "sid")
 	public Source getSource() {
 		return source;
 	}

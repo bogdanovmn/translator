@@ -2,11 +2,10 @@ package com.github.bogdanovmn.translator.web.app;
 
 import com.github.bogdanovmn.translator.web.orm.*;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @XmlRootElement(name = "translatorExport")
 public class ExportSchema {
@@ -32,7 +31,7 @@ public class ExportSchema {
 
 	@XmlElementWrapper(name = "users")
 	@XmlElement(name = "user")
-	private List<ExportSchema.User> users;
+	private List<ExportSchema.ExportUser> users = new ArrayList<>();
 
 	public ExportSchema setSources(List<Source> sources) {
 		this.sources = sources;
@@ -59,16 +58,44 @@ public class ExportSchema {
 		return this;
 	}
 
-	public ExportSchema setUsers(List<UserRememberedWord> users) {
-		this.users = users;
+	public ExportSchema setUsers(List<User> users) {
+		for (User user : users) {
+			this.users.add(
+				new ExportUser()
+					.setEmail(user.getEmail())
+					.setRememberedWords(
+						user.getRememberedWords().stream()
+							.map(x -> x.getWord().getId())
+							.collect(Collectors.toList())
+					)
+			);
+		}
 		return this;
 	}
 
-	private class User {
-		@XmlAttribute
+	public static class ExportUser {
 		private String email;
-		@XmlElementWrapper
-		@XmlElement(name = "word")
+
 		private List<Integer> rememberedWords;
+
+		@XmlAttribute
+		public String getEmail() {
+			return email;
+		}
+
+		public ExportUser setEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		@XmlList
+		public List<Integer> getRememberedWords() {
+			return rememberedWords;
+		}
+
+		public ExportUser setRememberedWords(List<Integer> rememberedWords) {
+			this.rememberedWords = rememberedWords;
+			return this;
+		}
 	}
 }

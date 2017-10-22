@@ -2,6 +2,7 @@ package com.github.bogdanovmn.translator.web.orm;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.xml.bind.annotation.XmlAttribute;
 
 @MappedSuperclass
 public abstract class BaseEntityWithUniqueName extends BaseEntity {
@@ -21,6 +22,7 @@ public abstract class BaseEntityWithUniqueName extends BaseEntity {
 		super(id);
 	}
 
+	@XmlAttribute
 	public String getName() {
 		return name;
 	}

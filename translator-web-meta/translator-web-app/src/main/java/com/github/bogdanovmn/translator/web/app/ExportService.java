@@ -53,7 +53,7 @@ public class ExportService {
 					this.wordSourceRepository.findAll()
 				)
 				.setUsers(
-					this.userRememberedWordRepository.findAll()
+					this.userRepository.findAll()
 				),
 			outputStream
 		);

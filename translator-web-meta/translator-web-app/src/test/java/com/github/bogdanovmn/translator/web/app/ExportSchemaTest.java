@@ -11,10 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-
 import java.io.FileOutputStream;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

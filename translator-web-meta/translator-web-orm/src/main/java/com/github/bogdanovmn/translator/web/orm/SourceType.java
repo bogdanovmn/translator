@@ -1,8 +1,5 @@
 package com.github.bogdanovmn.translator.web.orm;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlType;
-
 //@XmlEnum
 public enum SourceType {
 	BOOK,
