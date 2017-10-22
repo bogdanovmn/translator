@@ -3,6 +3,7 @@ package com.github.bogdanovmn.translator.web.orm;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,7 @@ public class Word extends BaseEntityWithUniqueName {
 	private int sourcesCount;
 
 	@Column(nullable = false)
-	private boolean blackList = false;
+	private Boolean blackList = false;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
@@ -56,11 +57,12 @@ public class Word extends BaseEntityWithUniqueName {
 	}
 
 	@XmlAttribute
-	public boolean isBlackList() {
+	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
+	public Boolean isBlackList() {
 		return blackList;
 	}
 
-	public Word setBlackList(boolean blackList) {
+	public Word setBlackList(Boolean blackList) {
 		this.blackList = blackList;
 		return this;
 	}
