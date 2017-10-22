@@ -1,0 +1,34 @@
+{{>inc/header_main}}
+
+{{#exportResult}}
+	<h1>Импорт завершен</h1>
+	{{#sources}}
+		<table class="import-info">
+			<tr><td>Имя файла</td>  <td>{{rawName}}</td></tr>
+			<tr><td>Автор</td>      <td>{{author}}</td></tr>
+			<tr><td>Заголовок</td>  <td>{{title}}</td></tr>
+			<tr><td>Кол-во слов</td><td>{{wordsCount}}</td></tr>
+		</table>
+	{{/sources}}
+	<a href="">Импортировать еще</a>
+{{/exportResult}}
+
+{{^source}}
+<h1>Импорт из XML</h1>
+
+{{>inc/error_msg}}
+
+<div class=form>
+	<form method=post enctype="multipart/form-data">
+		<table>
+		<tr>
+			<td><input type=file name=file value='{{ImportForm.file}'>
+            <td>{{formError.file}}
+		<tr>
+			<td colspan=2><input type=submit value='  Импорт в БД  '>
+		</table>
+	</form>
+</div>
+{{/source}}
+
+{{>inc/footer_main}}

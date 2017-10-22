@@ -22,7 +22,7 @@ public class ToRememberController extends BaseController {
 
 	@ModelAttribute
 	public void addControllerCommonAttributes(Model model) {
-		model.addAttribute("menu", new HeadMenu(HeadMenu.HMI_TO_REMEMBER).getItems());
+		model.addAttribute("menu", new HeadMenu(HeadMenu.ITEM.TO_REMEMBER).getItems());
 
 	}
 

@@ -26,7 +26,7 @@ public class UploadBookController extends BaseController {
 
 	@ModelAttribute
 	public void addControllerCommonAttributes(Model model) {
-		model.addAttribute("menu", new HeadMenu(HeadMenu.HMI_UPLOAD_BOOK).getItems());
+		model.addAttribute("menu", new HeadMenu(HeadMenu.ITEM.UPLOAD_BOOK).getItems());
 	}
 
 	@PostMapping

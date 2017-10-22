@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @XmlRootElement(name = "translatorExport")
-public class ExportSchema {
+class ExportSchema {
 	@XmlElementWrapper
 	@XmlElement(name = "source")
 	private List<Source> sources;
@@ -33,32 +33,32 @@ public class ExportSchema {
 	@XmlElement(name = "user")
 	private List<ExportSchema.ExportUser> users = new ArrayList<>();
 
-	public ExportSchema setSources(List<Source> sources) {
+	ExportSchema setSources(List<Source> sources) {
 		this.sources = sources;
 		return this;
 	}
 
-	public ExportSchema setTranslateProviders(List<TranslateProvider> translateProviders) {
+	ExportSchema setTranslateProviders(List<TranslateProvider> translateProviders) {
 		this.translateProviders = translateProviders;
 		return this;
 	}
 
-	public ExportSchema setWords(List<Word> words) {
+	ExportSchema setWords(List<Word> words) {
 		this.words = words;
 		return this;
 	}
 
-	public ExportSchema setTranslates(List<Translate> translates) {
+	ExportSchema setTranslates(List<Translate> translates) {
 		this.translates = translates;
 		return this;
 	}
 
-	public ExportSchema setWordSources(List<WordSource> wordSources) {
+	ExportSchema setWordSources(List<WordSource> wordSources) {
 		this.wordSources = wordSources;
 		return this;
 	}
 
-	public ExportSchema setUsers(List<User> users) {
+	ExportSchema setUsers(List<User> users) {
 		for (User user : users) {
 			this.users.add(
 				new ExportUser()
@@ -73,6 +73,30 @@ public class ExportSchema {
 		return this;
 	}
 
+	public List<Source> getSources() {
+		return sources;
+	}
+
+	public List<TranslateProvider> getTranslateProviders() {
+		return translateProviders;
+	}
+
+	public List<Word> getWords() {
+		return words;
+	}
+
+	public List<Translate> getTranslates() {
+		return translates;
+	}
+
+	public List<WordSource> getWordSources() {
+		return wordSources;
+	}
+
+	public List<ExportUser> getUsers() {
+		return users;
+	}
+
 	public static class ExportUser {
 		private String email;
 
@@ -83,7 +107,7 @@ public class ExportSchema {
 			return email;
 		}
 
-		public ExportUser setEmail(String email) {
+		ExportUser setEmail(String email) {
 			this.email = email;
 			return this;
 		}
@@ -93,7 +117,7 @@ public class ExportSchema {
 			return rememberedWords;
 		}
 
-		public ExportUser setRememberedWords(List<Integer> rememberedWords) {
+		ExportUser setRememberedWords(List<Integer> rememberedWords) {
 			this.rememberedWords = rememberedWords;
 			return this;
 		}

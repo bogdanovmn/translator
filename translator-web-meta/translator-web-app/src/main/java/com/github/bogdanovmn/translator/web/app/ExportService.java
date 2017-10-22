@@ -7,7 +7,12 @@ import org.springframework.stereotype.Service;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ExportService {
@@ -57,5 +62,19 @@ public class ExportService {
 				),
 			outputStream
 		);
+	}
+
+	public Map<String, Object> importFromFile(InputStream inputStream)
+		throws JAXBException
+	{
+		Unmarshaller marshaller = JAXBContext.newInstance(ExportSchema.class)
+			.createUnmarshaller();
+
+		ExportSchema exportSchema = (ExportSchema) marshaller.unmarshal(inputStream);
+		List<Source> sources = exportSchema.getSources();
+
+		return new HashMap<String, Object>() {{
+			put("sources", sources);
+		}};
 	}
 }
