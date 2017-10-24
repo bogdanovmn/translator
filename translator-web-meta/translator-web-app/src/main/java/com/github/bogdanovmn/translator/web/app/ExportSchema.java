@@ -5,6 +5,7 @@ import com.github.bogdanovmn.translator.web.orm.*;
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @XmlRootElement(name = "translatorExport")
@@ -49,26 +50,33 @@ class ExportSchema {
 	}
 
 	ExportSchema setTranslates(List<Translate> translates) {
-		this.translates = translates;
+		this.translates = translates.stream()
+			.map(x -> (Translate) x.setId(null))
+			.collect(Collectors.toList());
 		return this;
 	}
 
 	ExportSchema setWordSources(List<WordSource> wordSources) {
-		this.wordSources = wordSources;
+		this.wordSources = wordSources.stream()
+			.map(x -> (WordSource) x.setId(null))
+			.collect(Collectors.toList());
 		return this;
 	}
 
 	ExportSchema setUsers(List<User> users) {
 		for (User user : users) {
-			this.users.add(
-				new ExportUser()
-					.setEmail(user.getEmail())
-					.setRememberedWords(
-						user.getRememberedWords().stream()
-							.map(x -> x.getWord().getId())
-							.collect(Collectors.toList())
-					)
-			);
+			Set<UserRememberedWord> rememberedWords = user.getRememberedWords();
+			if (!rememberedWords.isEmpty()) {
+				this.users.add(
+					new ExportUser()
+						.setEmail(user.getEmail())
+						.setRememberedWords(
+							rememberedWords.stream()
+								.map(x -> x.getWord().getId())
+								.collect(Collectors.toList())
+						)
+				);
+			}
 		}
 		return this;
 	}

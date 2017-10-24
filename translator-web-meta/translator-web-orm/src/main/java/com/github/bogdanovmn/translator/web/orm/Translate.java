@@ -50,4 +50,24 @@ public class Translate extends BaseEntity {
 		this.word = word;
 		return this;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Translate translate = (Translate) o;
+
+		if (!value.equals(translate.value)) return false;
+		if (!provider.equals(translate.provider)) return false;
+		return word.equals(translate.word);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = value.hashCode();
+		result = 31 * result + provider.hashCode();
+		result = 31 * result + word.hashCode();
+		return result;
+	}
 }
