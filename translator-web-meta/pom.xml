@@ -17,7 +17,6 @@
 	<modules>
 		<module>translator-web-app</module>
 		<module>translator-web-orm</module>
-		<module>translator-web-etl</module>
 	</modules>
 
 

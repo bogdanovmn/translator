@@ -10,28 +10,16 @@ import java.util.stream.Collectors;
 
 @XmlRootElement(name = "translatorExport")
 class ExportSchema {
-	@XmlElementWrapper
-	@XmlElement(name = "source")
 	private List<Source> sources;
 
-	@XmlElementWrapper
-	@XmlElement(name = "translateProvider")
 	private List<TranslateProvider> translateProviders;
 
-	@XmlElementWrapper
-	@XmlElement(name = "word")
 	private List<Word> words;
 
-	@XmlElementWrapper
-	@XmlElement(name = "translate")
 	private List<Translate> translates;
 
-	@XmlElementWrapper
-	@XmlElement(name = "link")
 	private List<WordSource> wordSources;
 
-	@XmlElementWrapper(name = "users")
-	@XmlElement(name = "user")
 	private List<ExportSchema.ExportUser> users = new ArrayList<>();
 
 	ExportSchema setSources(List<Source> sources) {
@@ -50,16 +38,12 @@ class ExportSchema {
 	}
 
 	ExportSchema setTranslates(List<Translate> translates) {
-		this.translates = translates.stream()
-			.map(x -> (Translate) x.setId(null))
-			.collect(Collectors.toList());
+		this.translates = translates;
 		return this;
 	}
 
 	ExportSchema setWordSources(List<WordSource> wordSources) {
-		this.wordSources = wordSources.stream()
-			.map(x -> (WordSource) x.setId(null))
-			.collect(Collectors.toList());
+		this.wordSources = wordSources;
 		return this;
 	}
 
@@ -81,26 +65,38 @@ class ExportSchema {
 		return this;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "source")
 	public List<Source> getSources() {
 		return sources;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "translateProvider")
 	public List<TranslateProvider> getTranslateProviders() {
 		return translateProviders;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "word")
 	public List<Word> getWords() {
 		return words;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "translate")
 	public List<Translate> getTranslates() {
 		return translates;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "link")
 	public List<WordSource> getWordSources() {
 		return wordSources;
 	}
 
+	@XmlElementWrapper(name = "users")
+	@XmlElement(name = "user")
 	public List<ExportUser> getUsers() {
 		return users;
 	}

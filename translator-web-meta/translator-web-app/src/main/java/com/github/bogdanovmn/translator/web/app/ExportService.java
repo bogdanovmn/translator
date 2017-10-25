@@ -83,7 +83,6 @@ public class ExportService {
 
 		// Sources with words
 
-
 		List<Source> sources = exportSchema.getSources();
 		for (Source source : sources) {
 			Integer sourceExportId = source.getId();
