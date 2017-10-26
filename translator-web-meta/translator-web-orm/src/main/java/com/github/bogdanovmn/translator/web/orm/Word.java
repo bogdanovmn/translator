@@ -3,6 +3,7 @@ package com.github.bogdanovmn.translator.web.orm;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 	name = "wordsWithTranslate",
 	attributeNodes = @NamedAttributeNode("translates")
 )
+@XmlType
 public class Word extends BaseEntityWithUniqueName {
 	private int frequence;
 	private int sourcesCount;

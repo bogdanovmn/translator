@@ -3,9 +3,11 @@ package com.github.bogdanovmn.translator.web.orm;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Table(name = "word2source")
+@XmlType
 public class WordSource extends BaseEntity {
 	private Integer count;
 
