@@ -98,13 +98,16 @@ public class ExportService {
 
 			List<WordSource> wordSources = importSchema.getWordSources().stream()
 				.filter(x -> x.getSourceId() == sourceExportId)
-				.map(x ->
-					new WordSource()
-						.setWord(
-							wordsByExportId.get(x.getWordId())
-						)
+				.map(x -> {
+					Word word = wordsByExportId.get(x.getWordId());
+					word.incFrequence(x.getCount());
+					word.incSourcesCount();
+
+					return new WordSource()
+						.setWord(word)
 						.setSource(persistSource)
-						.setCount(x.getCount())
+						.setCount(x.getCount());
+					}
 				)
 				.collect(Collectors.toList());
 			this.wordSourceRepository.save(wordSources);
@@ -140,11 +143,14 @@ public class ExportService {
 		for (ImportSchema.ImportUser importUser : importSchema.getUsers()) {
 			User user = this.userRepository.findFirstByEmail(importUser.getEmail());
 			if (user != null) {
-				user.setRememberedWords(
+				Date date = new Date();
+				this.userRememberedWordRepository.save(
 					importUser.getRememberedWords().stream()
 						.map(x ->
 							new UserRememberedWord()
 								.setWord(wordsByExportId.get(x))
+								.setUser(user)
+								.setUpdated(date)
 						)
 						.collect(Collectors.toSet())
 				);

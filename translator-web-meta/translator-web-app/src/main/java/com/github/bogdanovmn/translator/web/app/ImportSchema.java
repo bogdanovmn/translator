@@ -33,36 +33,6 @@ class ImportSchema {
 	@XmlElementWrapper
 	@XmlElement(name = "user")
 	private List<ImportUser> users = new ArrayList<>();
-//
-//	ImportSchema setSources(List<ImportSource> sources) {
-//		this.sources = sources;
-//		return this;
-//	}
-//
-//	ImportSchema setTranslateProviders(List<ImportTranslateProvider> translateProviders) {
-//		this.translateProviders = translateProviders;
-//		return this;
-//	}
-//
-//	ImportSchema setWords(List<ImportWord> words) {
-//		this.words = words;
-//		return this;
-//	}
-//
-//	ImportSchema setTranslates(List<ImportTranslate> translates) {
-//		this.translates = translates;
-//		return this;
-//	}
-//
-//	ImportSchema setWordSources(List<ExWordSource> wordSources) {
-//		this.wordSources = wordSources;
-//		return this;
-//	}
-//
-//	ImportSchema setUsers(List<ImportUser> users) {
-//		this.users = users;
-//		return this;
-//	}
 
 	List<ImportSource> getSources() {
 		return sources;
