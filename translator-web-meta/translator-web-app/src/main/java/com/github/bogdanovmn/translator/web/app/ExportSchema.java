@@ -22,31 +22,43 @@ class ExportSchema {
 
 	private List<ExportSchema.ExportUser> users = new ArrayList<>();
 
+	@XmlElementWrapper
+	@XmlElement(name = "source")
 	ExportSchema setSources(List<Source> sources) {
 		this.sources = sources;
 		return this;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "translateProvider")
 	ExportSchema setTranslateProviders(List<TranslateProvider> translateProviders) {
 		this.translateProviders = translateProviders;
 		return this;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "word")
 	ExportSchema setWords(List<Word> words) {
 		this.words = words;
 		return this;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "translate")
 	ExportSchema setTranslates(List<Translate> translates) {
 		this.translates = translates;
 		return this;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "link")
 	ExportSchema setWordSources(List<WordSource> wordSources) {
 		this.wordSources = wordSources;
 		return this;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "user")
 	ExportSchema setUsers(List<User> users) {
 		for (User user : users) {
 			Set<UserRememberedWord> rememberedWords = user.getRememberedWords();
@@ -65,65 +77,54 @@ class ExportSchema {
 		return this;
 	}
 
-	@XmlElementWrapper
-	@XmlElement(name = "source")
-	public List<Source> getSources() {
+	List<Source> getSources() {
 		return sources;
 	}
 
-	@XmlElementWrapper
-	@XmlElement(name = "translateProvider")
-	public List<TranslateProvider> getTranslateProviders() {
+	List<TranslateProvider> getTranslateProviders() {
 		return translateProviders;
 	}
 
-	@XmlElementWrapper
-	@XmlElement(name = "word")
-	public List<Word> getWords() {
+	List<Word> getWords() {
 		return words;
 	}
 
-	@XmlElementWrapper
-	@XmlElement(name = "translate")
-	public List<Translate> getTranslates() {
+	List<Translate> getTranslates() {
 		return translates;
 	}
 
-	@XmlElementWrapper
-	@XmlElement(name = "link")
-	public List<WordSource> getWordSources() {
+	List<WordSource> getWordSources() {
 		return wordSources;
 	}
 
-	@XmlElementWrapper(name = "users")
-	@XmlElement(name = "user")
-	public List<ExportUser> getUsers() {
+	List<ExportUser> getUsers() {
 		return users;
 	}
 
-	public static class ExportUser {
+	static class ExportUser {
 		private String email;
 
 		private List<Integer> rememberedWords;
 
-		@XmlAttribute
-		public String getEmail() {
+		String getEmail() {
 			return email;
 		}
 
+		@XmlAttribute
 		ExportUser setEmail(String email) {
 			this.email = email;
 			return this;
 		}
 
-		@XmlList
-		public List<Integer> getRememberedWords() {
+		List<Integer> getRememberedWords() {
 			return rememberedWords;
 		}
 
+		@XmlList
 		ExportUser setRememberedWords(List<Integer> rememberedWords) {
 			this.rememberedWords = rememberedWords;
 			return this;
 		}
 	}
 }
+

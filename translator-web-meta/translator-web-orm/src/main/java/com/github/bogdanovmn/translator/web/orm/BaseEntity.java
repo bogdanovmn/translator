@@ -32,6 +32,7 @@ public abstract class BaseEntity {
 
 	public BaseEntity setId(Integer id) {
 		this.id = id;
+		this.ref = id;
 		return this;
 	}
 
@@ -39,7 +40,7 @@ public abstract class BaseEntity {
 	@XmlAttribute(name = "ref")
 	@XmlJavaTypeAdapter(ExportToXmlIdAdapter.class)
 	public Integer getRef() {
-		return this.id;
+		return this.ref;
 	}
 
 	public BaseEntity setRef(Integer ref) {

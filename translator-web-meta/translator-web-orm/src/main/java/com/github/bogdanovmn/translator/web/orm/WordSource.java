@@ -3,11 +3,9 @@ package com.github.bogdanovmn.translator.web.orm;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlIDREF;
-import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Table(name = "word2source")
-@XmlType
 public class WordSource extends BaseEntity {
 	private Integer count;
 
@@ -22,33 +20,33 @@ public class WordSource extends BaseEntity {
 	public WordSource() {
 	}
 
-	@XmlAttribute
 	public Integer getCount() {
 		return count;
 	}
 
+	@XmlAttribute
 	public WordSource setCount(Integer count) {
 		this.count = count;
 		return this;
 	}
 
-	@XmlIDREF
-	@XmlAttribute(name = "wid")
 	public Word getWord() {
 		return word;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "wid")
 	public WordSource setWord(Word word) {
 		this.word = word;
 		return this;
 	}
 
-	@XmlIDREF
-	@XmlAttribute(name = "sid")
 	public Source getSource() {
 		return source;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "sid")
 	public WordSource setSource(Source source) {
 		this.source = source;
 		return this;

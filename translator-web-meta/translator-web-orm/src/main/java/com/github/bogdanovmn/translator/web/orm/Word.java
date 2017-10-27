@@ -3,7 +3,6 @@ package com.github.bogdanovmn.translator.web.orm;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Set;
 
@@ -12,7 +11,6 @@ import java.util.Set;
 	name = "wordsWithTranslate",
 	attributeNodes = @NamedAttributeNode("translates")
 )
-@XmlType
 public class Word extends BaseEntityWithUniqueName {
 	private int frequence;
 	private int sourcesCount;
@@ -48,42 +46,42 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
-	@XmlTransient
 	public Set<Translate> getTranslates() {
 		return translates;
 	}
 
+	@XmlTransient
 	public Word setTranslates(Set<Translate> translates) {
 		this.translates = translates;
 		return this;
 	}
 
-	@XmlAttribute
-	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	public Boolean isBlackList() {
 		return blackList;
 	}
 
+	@XmlAttribute
+	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	public Word setBlackList(Boolean blackList) {
 		this.blackList = blackList;
 		return this;
 	}
 
-	@XmlTransient
 	public Integer getFrequence() {
 		return frequence;
 	}
 
+	@XmlTransient
 	public Word setFrequence(Integer frequence) {
 		this.frequence = frequence;
 		return this;
 	}
 
-	@XmlTransient
 	public Integer getSourcesCount() {
 		return sourcesCount;
 	}
 
+	@XmlTransient
 	public Word setSourcesCount(Integer sourcesCount) {
 		this.sourcesCount = sourcesCount;
 		return this;

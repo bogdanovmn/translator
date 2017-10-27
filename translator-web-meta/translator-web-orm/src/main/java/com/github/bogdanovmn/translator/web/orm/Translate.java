@@ -3,10 +3,8 @@ package com.github.bogdanovmn.translator.web.orm;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlIDREF;
-import javax.xml.bind.annotation.XmlType;
 
 @Entity
-@XmlType
 public class Translate extends BaseEntity {
 	private String value;
 
@@ -21,40 +19,40 @@ public class Translate extends BaseEntity {
 	public Translate() {
 	}
 
-	@XmlIDREF
-	@XmlAttribute(name = "pid", required = true)
 	public TranslateProvider getProvider() {
 		return provider;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "pid", required = true)
 	public Translate setProvider(TranslateProvider provider) {
 		this.provider = provider;
 		return this;
 	}
 
-	@XmlAttribute
 	public String getValue() {
 		return value;
 	}
 
+	@XmlAttribute
 	public Translate setValue(String value) {
 		this.value = value;
 		return this;
 	}
 
-	@XmlIDREF
-	@XmlAttribute(name = "wid", required = true)
 	public Word getWord() {
 		return word;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "wid", required = true)
 	public Translate setWord(Word word) {
 		this.word = word;
 		return this;
 	}
 
-//	@Override
-	public boolean equals1(Object o) {
+	@Override
+	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 

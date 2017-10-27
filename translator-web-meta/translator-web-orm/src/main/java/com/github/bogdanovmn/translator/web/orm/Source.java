@@ -3,11 +3,9 @@ package com.github.bogdanovmn.translator.web.orm;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Set;
 
 @Entity
-@XmlType
 public class Source extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private SourceType type;
@@ -34,71 +32,71 @@ public class Source extends BaseEntity {
 			return this.rawName;
 		}
 	}
-	@XmlAttribute
 	public SourceType getType() {
 		return type;
 	}
 
+	@XmlAttribute
 	public Source setType(SourceType type) {
 		this.type = type;
 		return this;
 	}
 
-	@XmlAttribute
 	public String getAuthor() {
 		return author;
 	}
 
+	@XmlAttribute
 	public Source setAuthor(String author) {
 		this.author = author;
 		return this;
 	}
 
-	@XmlAttribute
 	public String getTitle() {
 		return title;
 	}
 
+	@XmlAttribute
 	public Source setTitle(String title) {
 		this.title = title;
 		return this;
 	}
 
-	@XmlAttribute
 	public String getContentHash() {
 		return contentHash;
 	}
 
+	@XmlAttribute
 	public Source setContentHash(String contentHash) {
 		this.contentHash = contentHash;
 		return this;
 	}
 
-	@XmlTransient
 	public Set<WordSource> getWordSources() {
 		return wordSources;
 	}
 
+	@XmlTransient
 	public Source setWordSources(Set<WordSource> wordSources) {
 		this.wordSources = wordSources;
 		return this;
 	}
 
-	@XmlAttribute
 	public String getRawName() {
 		return rawName;
 	}
 
+	@XmlAttribute
 	public Source setRawName(String rawName) {
 		this.rawName = rawName;
 		return this;
 	}
 
-	@XmlAttribute
 	public Integer getWordsCount() {
 		return wordsCount;
 	}
 
+	@XmlAttribute
 	public Source setWordsCount(Integer wordsCount) {
 		this.wordsCount = wordsCount;
 		return this;
