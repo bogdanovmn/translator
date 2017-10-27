@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class Word extends BaseEntityWithUniqueName {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
-	private Set<Translate> translates;
+	private Set<Translate> translates = new HashSet<>();
 
 	@OneToMany(mappedBy = "word")
 	private Set<WordSource> wordSources;

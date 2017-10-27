@@ -29,7 +29,13 @@ public class ImportTest {
 	@Test
 	public void sources() throws Exception {
 		assertEquals("Sources count", 2, data.getSources().size());
-		assertEquals("Source rawName", "ReferenceCardForMac.pdf", data.getSources().get(0).getRawName());
+		assertEquals("Source rawName", "ReferenceCardForMac.pdf", data.getSources().get(0).toDomain().getRawName());
+	}
+
+	@Test
+	public void translateProviders() throws Exception {
+		assertEquals("TranslateProviders count" , 1, data.getTranslateProviders().size());
+		assertEquals("TranslateProvider name", "Google", data.getTranslateProviders().get(0).getName());
 	}
 
 	@Test

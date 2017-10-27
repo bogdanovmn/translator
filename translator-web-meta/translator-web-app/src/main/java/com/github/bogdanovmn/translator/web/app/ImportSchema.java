@@ -1,5 +1,8 @@
 package com.github.bogdanovmn.translator.web.app;
 
+import com.github.bogdanovmn.translator.web.orm.Source;
+import com.github.bogdanovmn.translator.web.orm.SourceType;
+
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,19 +12,19 @@ import java.util.List;
 class ImportSchema {
 	@XmlElementWrapper
 	@XmlElement(name = "source")
-	private List<ExSource> sources;
+	private List<ImportSource> sources;
 
 	@XmlElementWrapper
 	@XmlElement(name = "translateProvider")
-	private List<ExTranslateProvider> translateProviders;
+	private List<ImportTranslateProvider> translateProviders;
 
 	@XmlElementWrapper
 	@XmlElement(name = "word")
-	private List<ExWord> words;
+	private List<ImportWord> words;
 
 	@XmlElementWrapper
 	@XmlElement(name = "translate")
-	private List<ExTranslate> translates;
+	private List<ImportTranslate> translates;
 
 	@XmlElementWrapper
 	@XmlElement(name = "link")
@@ -29,51 +32,51 @@ class ImportSchema {
 
 	@XmlElementWrapper
 	@XmlElement(name = "user")
-	private List<ImportSchema.ExUser> users = new ArrayList<>();
+	private List<ImportUser> users = new ArrayList<>();
+//
+//	ImportSchema setSources(List<ImportSource> sources) {
+//		this.sources = sources;
+//		return this;
+//	}
+//
+//	ImportSchema setTranslateProviders(List<ImportTranslateProvider> translateProviders) {
+//		this.translateProviders = translateProviders;
+//		return this;
+//	}
+//
+//	ImportSchema setWords(List<ImportWord> words) {
+//		this.words = words;
+//		return this;
+//	}
+//
+//	ImportSchema setTranslates(List<ImportTranslate> translates) {
+//		this.translates = translates;
+//		return this;
+//	}
+//
+//	ImportSchema setWordSources(List<ExWordSource> wordSources) {
+//		this.wordSources = wordSources;
+//		return this;
+//	}
+//
+//	ImportSchema setUsers(List<ImportUser> users) {
+//		this.users = users;
+//		return this;
+//	}
 
-	ImportSchema setSources(List<ExSource> sources) {
-		this.sources = sources;
-		return this;
-	}
-
-	ImportSchema setTranslateProviders(List<ExTranslateProvider> translateProviders) {
-		this.translateProviders = translateProviders;
-		return this;
-	}
-
-	ImportSchema setWords(List<ExWord> words) {
-		this.words = words;
-		return this;
-	}
-
-	ImportSchema setTranslates(List<ExTranslate> translates) {
-		this.translates = translates;
-		return this;
-	}
-
-	ImportSchema setWordSources(List<ExWordSource> wordSources) {
-		this.wordSources = wordSources;
-		return this;
-	}
-
-	ImportSchema setUsers(List<ExUser> users) {
-		this.users = users;
-		return this;
-	}
-
-	List<ExSource> getSources() {
+	List<ImportSource> getSources() {
 		return sources;
 	}
 
-	List<ExTranslateProvider> getTranslateProviders() {
+	List<ImportTranslateProvider> getTranslateProviders() {
 		return translateProviders;
 	}
 
-	List<ExWord> getWords() {
+	List<ImportWord> getWords() {
 		return words;
 	}
 
-	List<ExTranslate> getTranslates() {
+	List<ImportTranslate> getTranslates() {
 		return translates;
 	}
 
@@ -81,11 +84,11 @@ class ImportSchema {
 		return wordSources;
 	}
 
-	List<ExUser> getUsers() {
+	List<ImportUser> getUsers() {
 		return users;
 	}
 
-	static class ExUser {
+	static class ImportUser {
 		@XmlAttribute
 		private String email;
 		@XmlList
@@ -95,7 +98,7 @@ class ImportSchema {
 			return email;
 		}
 
-		ExUser setEmail(String email) {
+		ImportUser setEmail(String email) {
 			this.email = email;
 			return this;
 		}
@@ -104,19 +107,21 @@ class ImportSchema {
 			return rememberedWords;
 		}
 
-		ExUser setRememberedWords(List<Integer> rememberedWords) {
+		ImportUser setRememberedWords(List<Integer> rememberedWords) {
 			this.rememberedWords = rememberedWords;
 			return this;
 		}
 	}
 
-	static class ExSource {
+	static class ImportSource {
 		@XmlAttribute(name = "ref")
 		private int id;
 		@XmlAttribute
 		private String rawName;
+
 		@XmlAttribute
 		private String contentHash;
+
 		@XmlAttribute
 		private String type;
 		@XmlAttribute
@@ -126,39 +131,50 @@ class ImportSchema {
 			return id;
 		}
 
-		String getRawName() {
-			return rawName;
-		}
-
 		public String getContentHash() {
 			return contentHash;
 		}
 
-		public String getType() {
-			return type;
-		}
-
-		public int getWordsCount() {
-			return wordsCount;
+		public Source toDomain() {
+			return new Source()
+				.setRawName(rawName)
+				.setContentHash(contentHash)
+				.setType(SourceType.valueOf(type))
+				.setWordsCount(wordsCount);
 		}
 	}
 
-	static  class ExTranslateProvider {
-		@XmlAttribute(name = "ref")
-		private int id;
-		private String name;
-
-	}
-
-	static class ExWord {
+	static class ImportTranslateProvider {
 		@XmlAttribute(name = "ref")
 		private int id;
 		@XmlAttribute
 		private String name;
 
+		public int getId() {
+			return id;
+		}
+
+		public String getName() {
+			return name;
+		}
 	}
 
-	static class ExTranslate {
+	static class ImportWord {
+		@XmlAttribute(name = "ref")
+		private int id;
+		@XmlAttribute
+		private String name;
+
+		public int getId() {
+			return id;
+		}
+
+		public String getName() {
+			return name;
+		}
+	}
+
+	static class ImportTranslate {
 		@XmlAttribute(name = "wid")
 		private int wordId;
 		@XmlAttribute(name = "pid")
@@ -186,6 +202,18 @@ class ImportSchema {
 		private int sourceId;
 		@XmlAttribute
 		private int count;
+
+		public int getSourceId() {
+			return sourceId;
+		}
+
+		public int getWordId() {
+			return wordId;
+		}
+
+		public int getCount() {
+			return count;
+		}
 	}
 }
 
