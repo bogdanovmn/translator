@@ -11,15 +11,10 @@ import java.util.stream.Collectors;
 @XmlRootElement(name = "translatorExport")
 class ExportSchema {
 	private List<Source> sources;
-
 	private List<TranslateProvider> translateProviders;
-
 	private List<Word> words;
-
 	private List<Translate> translates;
-
 	private List<WordSource> wordSources;
-
 	private List<ExportSchema.ExportUser> users = new ArrayList<>();
 
 	@XmlElementWrapper
@@ -46,6 +41,7 @@ class ExportSchema {
 	@XmlElementWrapper
 	@XmlElement(name = "translate")
 	ExportSchema setTranslates(List<Translate> translates) {
+		translates.forEach(x -> x.setId(null));
 		this.translates = translates;
 		return this;
 	}
@@ -53,12 +49,11 @@ class ExportSchema {
 	@XmlElementWrapper
 	@XmlElement(name = "link")
 	ExportSchema setWordSources(List<WordSource> wordSources) {
+		wordSources.forEach(x -> x.setId(null));
 		this.wordSources = wordSources;
 		return this;
 	}
 
-	@XmlElementWrapper
-	@XmlElement(name = "user")
 	ExportSchema setUsers(List<User> users) {
 		for (User user : users) {
 			Set<UserRememberedWord> rememberedWords = user.getRememberedWords();
@@ -97,6 +92,8 @@ class ExportSchema {
 		return wordSources;
 	}
 
+	@XmlElementWrapper
+	@XmlElement(name = "user")
 	List<ExportUser> getUsers() {
 		return users;
 	}

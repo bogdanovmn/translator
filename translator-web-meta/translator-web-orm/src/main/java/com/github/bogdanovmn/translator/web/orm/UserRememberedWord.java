@@ -20,9 +20,8 @@ public class UserRememberedWord extends BaseEntity {
 	@JoinColumn(name = "word_id")
 	private Word word;
 
-	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
-	private Date updated;
+	private Date updated = new Date();
 
 	public UserRememberedWord() {
 	}
@@ -67,8 +66,8 @@ public class UserRememberedWord extends BaseEntity {
 
 	@Override
 	public int hashCode() {
-		int result = user.hashCode();
-		result = 31 * result + word.hashCode();
+		int result = user.getId().hashCode();
+		result = 31 * result + word.getId().hashCode();
 		return result;
 	}
 }

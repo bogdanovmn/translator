@@ -69,6 +69,7 @@ public class ExportService {
 	{
 		List<Source> resultSources = new ArrayList<>();
 		List<User> resultUsers = new ArrayList<>();
+
 		// Load XML
 
 		ImportSchema importSchema = (ImportSchema) JAXBContext.newInstance(ImportSchema.class)
@@ -143,14 +144,12 @@ public class ExportService {
 		for (ImportSchema.ImportUser importUser : importSchema.getUsers()) {
 			User user = this.userRepository.findFirstByEmail(importUser.getEmail());
 			if (user != null) {
-				Date date = new Date();
 				user.getRememberedWords().addAll(
 					importUser.getRememberedWords().stream()
 						.map(x ->
 							new UserRememberedWord()
 								.setWord(wordsByExportId.get(x))
 								.setUser(user)
-//								.setUpdated(date)
 						)
 						.collect(Collectors.toSet())
 				);

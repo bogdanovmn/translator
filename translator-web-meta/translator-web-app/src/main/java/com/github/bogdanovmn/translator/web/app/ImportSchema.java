@@ -28,7 +28,7 @@ class ImportSchema {
 
 	@XmlElementWrapper
 	@XmlElement(name = "link")
-	private List<ExWordSource> wordSources;
+	private List<ImportWordSource> wordSources;
 
 	@XmlElementWrapper
 	@XmlElement(name = "user")
@@ -50,7 +50,7 @@ class ImportSchema {
 		return translates;
 	}
 
-	List<ExWordSource> getWordSources() {
+	List<ImportWordSource> getWordSources() {
 		return wordSources;
 	}
 
@@ -88,26 +88,30 @@ class ImportSchema {
 		private int id;
 		@XmlAttribute
 		private String rawName;
-
+		@XmlAttribute
+		private String author;
+		@XmlAttribute
+		private String title;
 		@XmlAttribute
 		private String contentHash;
-
 		@XmlAttribute
 		private String type;
 		@XmlAttribute
 		private int wordsCount;
 
-		public int getId() {
+		int getId() {
 			return id;
 		}
 
-		public String getContentHash() {
+		String getContentHash() {
 			return contentHash;
 		}
 
-		public Source toDomain() {
+		Source toDomain() {
 			return new Source()
 				.setRawName(rawName)
+				.setAuthor(author)
+				.setTitle(title)
 				.setContentHash(contentHash)
 				.setType(SourceType.valueOf(type))
 				.setWordsCount(wordsCount);
@@ -120,7 +124,7 @@ class ImportSchema {
 		@XmlAttribute
 		private String name;
 
-		public int getId() {
+		int getId() {
 			return id;
 		}
 
@@ -135,7 +139,7 @@ class ImportSchema {
 		@XmlAttribute
 		private String name;
 
-		public int getId() {
+		int getId() {
 			return id;
 		}
 
@@ -152,7 +156,7 @@ class ImportSchema {
 		@XmlAttribute
 		private String value;
 
-		public int getWordId() {
+		int getWordId() {
 			return wordId;
 		}
 
@@ -165,7 +169,7 @@ class ImportSchema {
 		}
 	}
 
-	static class ExWordSource {
+	static class ImportWordSource {
 		@XmlAttribute(name = "wid")
 		private int wordId;
 		@XmlAttribute(name = "sid")
@@ -173,15 +177,15 @@ class ImportSchema {
 		@XmlAttribute
 		private int count;
 
-		public int getSourceId() {
+		int getSourceId() {
 			return sourceId;
 		}
 
-		public int getWordId() {
+		int getWordId() {
 			return wordId;
 		}
 
-		public int getCount() {
+		int getCount() {
 			return count;
 		}
 	}

@@ -40,7 +40,7 @@ public class User extends BaseEntityWithUniqueName {
 	@OneToMany(mappedBy = "user")
 	private Set<UserHoldOverWord> holdOverWords;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
 	private Set<UserRememberedWord> rememberedWords;
 
 	public User() {}
