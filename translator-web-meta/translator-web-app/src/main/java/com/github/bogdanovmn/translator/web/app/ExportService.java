@@ -1,6 +1,9 @@
 package com.github.bogdanovmn.translator.web.app;
 
+import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +18,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class ExportService {
+//	private static final Logger LOG = LogManager.getLogger(ExportService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ExportService.class);
+
 	@Autowired
 	private UserRememberedWordRepository userRememberedWordRepository;
 	@Autowired
@@ -67,6 +73,8 @@ public class ExportService {
 	public Map<String, Object> importFromFile(InputStream inputStream)
 		throws JAXBException
 	{
+		LOG.info("Start import from file");
+
 		List<Source> resultSources = new ArrayList<>();
 		List<User> resultUsers = new ArrayList<>();
 
@@ -75,10 +83,14 @@ public class ExportService {
 		ImportSchema importSchema = (ImportSchema) JAXBContext.newInstance(ImportSchema.class)
 			.createUnmarshaller().unmarshal(inputStream);
 
+		LOG.info("Unmarhalling done");
+
 		ExportWordCache exportWordCache = new ExportWordCache(
 			importSchema.getWords(),
 			this.entityFactory
 		);
+
+		LOG.info("Import words cache init done");
 
 		// Sources with words
 
@@ -88,8 +100,10 @@ public class ExportService {
 			if (source == null) {
 				source = this.sourceRepository.save(importSource.toDomain());
 				resultSources.add(source);
+				LOG.info("New source '{}' import done", source.getRawName());
 			}
 			else {
+				LOG.info("Source '{}' already exists, skip it");
 				continue;
 			}
 			final Source persistSource = source;
@@ -109,6 +123,7 @@ public class ExportService {
 				)
 				.collect(Collectors.toList());
 			this.wordSourceRepository.save(wordSources);
+			LOG.info("Source '{}' word links import done", source.getRawName());
 		}
 
 		// Translates
@@ -135,6 +150,7 @@ public class ExportService {
 				this.translateRepository.save(translate);
 			}
 		}
+		LOG.info("Translates import done");
 
 		// User words lists
 
@@ -152,6 +168,7 @@ public class ExportService {
 				);
 				this.userRepository.save(user);
 				resultUsers.add(user);
+				LOG.info("User '{}' import done", user.getEmail());
 			}
 		}
 

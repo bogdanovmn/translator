@@ -49,3 +49,7 @@ div.in-action div.button { border: 1px dotted gray; color: gray; }
 
 table.upload-source-info td { padding: 5px 10px; }
 table.upload-source-info td:first-child { font-weight: bold; }
+
+table.import-info { margin: 10px; }
+table.import-info td { padding: 5px 10px; }
+table.import-info td:first-child { font-weight: bold; }
