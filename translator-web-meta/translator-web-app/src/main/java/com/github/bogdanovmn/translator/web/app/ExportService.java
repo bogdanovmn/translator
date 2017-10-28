@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.*;
@@ -68,104 +67,98 @@ public class ExportService {
 	public Map<String, Object> importFromFile(InputStream inputStream)
 		throws JAXBException
 	{
+		List<Source> resultSources = new ArrayList<>();
+		List<User> resultUsers = new ArrayList<>();
+
 		// Load XML
 
-		Unmarshaller marshaller = JAXBContext.newInstance(ExportSchema.class)
-			.createUnmarshaller();
+		ImportSchema importSchema = (ImportSchema) JAXBContext.newInstance(ImportSchema.class)
+			.createUnmarshaller().unmarshal(inputStream);
 
-		ExportSchema exportSchema = (ExportSchema) marshaller.unmarshal(inputStream);
-
-		Map<Integer, Word> wordsByExportId = exportSchema.getWords().stream()
-			.collect(Collectors.toMap(
-				BaseEntity::getId, x -> x
-			));
-		wordsByExportId.forEach((id, word) -> word.setId(null));
+		ExportWordCache exportWordCache = new ExportWordCache(
+			importSchema.getWords(),
+			this.entityFactory
+		);
 
 		// Sources with words
 
-		List<Source> sources = exportSchema.getSources();
-		for (Source source : sources) {
-			Integer sourceExportId = source.getId();
-			Source persistSource = this.sourceRepository.findFirstByContentHash(source.getContentHash());
-			if (persistSource == null) {
-				persistSource = this.sourceRepository.save(source);
+		for (ImportSchema.ImportSource importSource : importSchema.getSources()) {
+			Integer sourceExportId = importSource.getId();
+			Source source = this.sourceRepository.findFirstByContentHash(importSource.getContentHash());
+			if (source == null) {
+				source = this.sourceRepository.save(importSource.toDomain());
+				resultSources.add(source);
 			}
 			else {
 				continue;
 			}
+			final Source persistSource = source;
 
-			List<WordSource> wordSources = exportSchema.getWordSources().stream()
-				.filter(x -> Objects.equals(x.getSource().getId(), sourceExportId))
-				.collect(Collectors.toList());
+			List<WordSource> wordSources = importSchema.getWordSources().stream()
+				.filter(x -> x.getSourceId() == sourceExportId)
+				.map(x -> {
+					Word word = exportWordCache.getByExportId(x.getWordId());
+					word.incFrequence(x.getCount());
+					word.incSourcesCount();
 
-			for (WordSource wordSource : wordSources) {
-				Integer exportWordId = wordSource.getWord().getId();
-
-				Word word = (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(
-					wordsByExportId.get(exportWordId)
-				);
-
-				wordsByExportId.put(exportWordId, word);
-
-				this.wordSourceRepository.save(
-					wordSource
+					return new WordSource()
 						.setWord(word)
 						.setSource(persistSource)
-				);
-			}
+						.setCount(x.getCount());
+					}
+				)
+				.collect(Collectors.toList());
+			this.wordSourceRepository.save(wordSources);
 		}
 
 		// Translates
 
-		Map<Integer, TranslateProvider> translateProviderByExportId = exportSchema.getTranslateProviders().stream()
+		Map<Integer, TranslateProvider> translateProviderByExportId = importSchema.getTranslateProviders().stream()
 			.collect(Collectors.toMap(
-				BaseEntity::getId, x -> (TranslateProvider) this.entityFactory.getPersistBaseEntityWithUniqueName(x)
+				ImportSchema.ImportTranslateProvider::getId,
+				x -> (TranslateProvider) this.entityFactory.getPersistBaseEntityWithUniqueName(
+					new TranslateProvider(x.getName())
+				)
 			));
-		translateProviderByExportId.forEach((id, translateProvider) -> translateProvider.setId(null));
 
-		for (Translate translate : exportSchema.getTranslates()) {
-			Word word = wordsByExportId.get(translate.getWord().getId());
-			if (word.getId() == null) {
-				word = (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(word);
-			}
-
-			TranslateProvider translateProvider = (TranslateProvider) this.entityFactory.getPersistBaseEntityWithUniqueName(
-				translateProviderByExportId.get(translate.getProvider().getId())
-			);
+		for (ImportSchema.ImportTranslate importTranslate : importSchema.getTranslates()) {
+			Word word = exportWordCache.getByExportId(importTranslate.getWordId());
+			Translate translate = new Translate()
+				.setValue(importTranslate.getValue())
+				.setWord(word)
+				.setProvider(
+					translateProviderByExportId.get(importTranslate.getProviderId())
+				);
 
 			Set<Translate> wordTranslates = word.getTranslates();
 			if (!wordTranslates.contains(translate)) {
-				this.translateRepository.save(
-					translate
-						.setProvider(translateProvider)
-						.setWord(word));
+				this.translateRepository.save(translate);
 			}
 		}
 
 		// User words lists
 
-		for (ExportSchema.ExportUser exportUser : exportSchema.getUsers()) {
-			User user = this.userRepository.findFirstByEmail(exportUser.getEmail());
+		for (ImportSchema.ImportUser importUser : importSchema.getUsers()) {
+			User user = this.userRepository.findFirstByEmail(importUser.getEmail());
 			if (user != null) {
-				user.setRememberedWords(
-					exportUser.getRememberedWords().stream()
-						.map(x -> {
-							Word word = wordsByExportId.get(x);
-							if (word.getId() == null) {
-								word = (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(word);
-							}
-							return new UserRememberedWord()
-								.setWord(word);
-						})
+				user.getRememberedWords().addAll(
+					importUser.getRememberedWords().stream()
+						.map(x ->
+							new UserRememberedWord()
+								.setWord(exportWordCache.getByExportId(x))
+								.setUser(user)
+						)
 						.collect(Collectors.toSet())
 				);
+				this.userRepository.save(user);
+				resultUsers.add(user);
 			}
 		}
 
 
 		return new HashMap<String, Object>() {{
-			put("sources", sources);
-			put("sources", exportSchema.getUsers());
+			put("sources", resultSources);
+			put("users", resultUsers);
 		}};
 	}
 }

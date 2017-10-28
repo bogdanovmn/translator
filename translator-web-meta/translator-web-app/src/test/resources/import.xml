@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<translatorExport>
+    <sources>
+        <source contentHash="b7005982877b9647e50799457b8da927" rawName="ReferenceCardForMac.pdf" type="BOOK"
+                wordsCount="245" ref="1"/>
+        <source contentHash="f583fe80353cc1a0f6b7d3abf893fb01" rawName="ReferenceCard.pdf" type="BOOK" wordsCount="245"
+                ref="2"/>
+    </sources>
+    <translateProviders>
+        <translateProvider name="Google" ref="1"/>
+    </translateProviders>
+    <words>
+        <word name="file" ref="159"/>
+        <word name="template" ref="150"/>
+    </words>
+    <translates>
+        <translate pid="1" value="файл" wid="159" ref="1"/>
+        <translate pid="1" value="шаблон" wid="150" ref="2"/>
+    </translates>
+    <wordSources>
+        <link count="1" sid="1" wid="150" ref="1"/>
+        <link count="10" sid="1" wid="159" ref="1"/>
+        <link count="2" sid="2" wid="159" ref="1"/>
+    </wordSources>
+    <users>
+        <user email="somebody@gmail.com">
+            <rememberedWords>159 150</rememberedWords>
+        </user>
+    </users>
+</translatorExport>

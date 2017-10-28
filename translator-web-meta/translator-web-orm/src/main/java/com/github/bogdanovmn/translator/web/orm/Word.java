@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class Word extends BaseEntityWithUniqueName {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
-	private Set<Translate> translates;
+	private Set<Translate> translates = new HashSet<>();
 
 	@OneToMany(mappedBy = "word")
 	private Set<WordSource> wordSources;
@@ -46,42 +47,42 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
-	@XmlTransient
 	public Set<Translate> getTranslates() {
 		return translates;
 	}
 
+	@XmlTransient
 	public Word setTranslates(Set<Translate> translates) {
 		this.translates = translates;
 		return this;
 	}
 
-	@XmlAttribute
-	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	public Boolean isBlackList() {
 		return blackList;
 	}
 
+	@XmlAttribute
+	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	public Word setBlackList(Boolean blackList) {
 		this.blackList = blackList;
 		return this;
 	}
 
-	@XmlTransient
 	public Integer getFrequence() {
 		return frequence;
 	}
 
+	@XmlTransient
 	public Word setFrequence(Integer frequence) {
 		this.frequence = frequence;
 		return this;
 	}
 
-	@XmlTransient
 	public Integer getSourcesCount() {
 		return sourcesCount;
 	}
 
+	@XmlTransient
 	public Word setSourcesCount(Integer sourcesCount) {
 		this.sourcesCount = sourcesCount;
 		return this;

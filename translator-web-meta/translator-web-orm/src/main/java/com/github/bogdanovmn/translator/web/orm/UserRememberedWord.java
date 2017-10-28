@@ -21,7 +21,7 @@ public class UserRememberedWord extends BaseEntity {
 	private Word word;
 
 	@Column(nullable = false)
-	private Date updated;
+	private Date updated = new Date();
 
 	public UserRememberedWord() {
 	}
@@ -51,5 +51,23 @@ public class UserRememberedWord extends BaseEntity {
 	public UserRememberedWord setUpdated(Date updated) {
 		this.updated = updated;
 		return this;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		UserRememberedWord that = (UserRememberedWord) o;
+
+		if (!user.getId().equals(that.user.getId())) return false;
+		return word.getId().equals(that.word.getId());
+	}
+
+	@Override
+	public int hashCode() {
+		int result = user.getId().hashCode();
+		result = 31 * result + word.getId().hashCode();
+		return result;
 	}
 }

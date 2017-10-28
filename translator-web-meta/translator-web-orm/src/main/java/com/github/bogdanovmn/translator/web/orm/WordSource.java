@@ -20,33 +20,33 @@ public class WordSource extends BaseEntity {
 	public WordSource() {
 	}
 
-	@XmlAttribute
 	public Integer getCount() {
 		return count;
 	}
 
+	@XmlAttribute
 	public WordSource setCount(Integer count) {
 		this.count = count;
 		return this;
 	}
 
-	@XmlIDREF
-	@XmlAttribute(name = "wid")
 	public Word getWord() {
 		return word;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "wid")
 	public WordSource setWord(Word word) {
 		this.word = word;
 		return this;
 	}
 
-	@XmlIDREF
-	@XmlAttribute(name = "sid")
 	public Source getSource() {
 		return source;
 	}
 
+	@XmlIDREF
+	@XmlAttribute(name = "sid")
 	public WordSource setSource(Source source) {
 		this.source = source;
 		return this;
