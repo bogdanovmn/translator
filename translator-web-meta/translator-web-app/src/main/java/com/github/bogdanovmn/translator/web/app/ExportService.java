@@ -75,13 +75,10 @@ public class ExportService {
 		ImportSchema importSchema = (ImportSchema) JAXBContext.newInstance(ImportSchema.class)
 			.createUnmarshaller().unmarshal(inputStream);
 
-		Map<Integer, Word> wordsByExportId = importSchema.getWords().stream()
-			.collect(Collectors.toMap(
-				ImportSchema.ImportWord::getId,
-				x -> (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(
-					new Word(x.getName())
-				)
-			));
+		ExportWordCache exportWordCache = new ExportWordCache(
+			importSchema.getWords(),
+			this.entityFactory
+		);
 
 		// Sources with words
 
@@ -100,7 +97,7 @@ public class ExportService {
 			List<WordSource> wordSources = importSchema.getWordSources().stream()
 				.filter(x -> x.getSourceId() == sourceExportId)
 				.map(x -> {
-					Word word = wordsByExportId.get(x.getWordId());
+					Word word = exportWordCache.getByExportId(x.getWordId());
 					word.incFrequence(x.getCount());
 					word.incSourcesCount();
 
@@ -125,7 +122,7 @@ public class ExportService {
 			));
 
 		for (ImportSchema.ImportTranslate importTranslate : importSchema.getTranslates()) {
-			Word word = wordsByExportId.get(importTranslate.getWordId());
+			Word word = exportWordCache.getByExportId(importTranslate.getWordId());
 			Translate translate = new Translate()
 				.setValue(importTranslate.getValue())
 				.setWord(word)
@@ -148,7 +145,7 @@ public class ExportService {
 					importUser.getRememberedWords().stream()
 						.map(x ->
 							new UserRememberedWord()
-								.setWord(wordsByExportId.get(x))
+								.setWord(exportWordCache.getByExportId(x))
 								.setUser(user)
 						)
 						.collect(Collectors.toSet())
