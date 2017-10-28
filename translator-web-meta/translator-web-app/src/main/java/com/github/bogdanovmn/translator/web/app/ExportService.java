@@ -144,16 +144,17 @@ public class ExportService {
 			User user = this.userRepository.findFirstByEmail(importUser.getEmail());
 			if (user != null) {
 				Date date = new Date();
-				this.userRememberedWordRepository.save(
+				user.getRememberedWords().addAll(
 					importUser.getRememberedWords().stream()
 						.map(x ->
 							new UserRememberedWord()
 								.setWord(wordsByExportId.get(x))
 								.setUser(user)
-								.setUpdated(date)
+//								.setUpdated(date)
 						)
 						.collect(Collectors.toSet())
 				);
+				this.userRepository.save(user);
 				resultUsers.add(user);
 			}
 		}
