@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 @Controller
 @RequestMapping("/to-remember")
-public class ToRememberController extends BaseController {
+public class ToRememberController extends AbstractVisualController {
 	private final ToRememberService toRememberService;
 
 	@Autowired

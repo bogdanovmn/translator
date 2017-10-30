@@ -1,33 +1,33 @@
 {{>inc/header_main}}
 
 {{#source}}
-<h1>Книга загуржена</h1>
+	<h1>Книга загуржена</h1>
 
-<table class="upload-source-info">
-	<tr><td>Имя файла</td>  <td>{{rawName}}</td></tr>
-	<tr><td>Автор</td>      <td>{{author}}</td></tr>
-	<tr><td>Заголовок</td>  <td>{{title}}</td></tr>
-	<tr><td>Кол-во слов</td><td>{{wordsCount}}</td></tr>
-</table>
-<a href="">Загрузить еще</a>
+	<table class="import-info">
+		<tr><td>Имя файла</td>  <td>{{rawName}}</td></tr>
+		<tr><td>Автор</td>      <td>{{author}}</td></tr>
+		<tr><td>Заголовок</td>  <td>{{title}}</td></tr>
+		<tr><td>Кол-во слов</td><td>{{wordsCount}}</td></tr>
+	</table>
+	<a href="">Загрузить еще</a>
 {{/source}}
 
 {{^source}}
-<h1>Загрузка файла (PDF)</h1>
+	<h1>Загрузка файла (PDF)</h1>
 
-{{>inc/error_msg}}
+	{{>inc/error_msg}}
 
-<div class=form>
-	<form method=post enctype="multipart/form-data">
-		<table>
-		<tr>
-			<td><input type=file name=file value='{{UploadBookForm.file}'>
-            <td>{{formError.file}}
-		<tr>
-			<td colspan=2><input type=submit value='  Загрузить  '>
-		</table>
-	</form>
-</div>
+	<div class=form>
+		<form method=post enctype="multipart/form-data">
+			<table>
+			<tr>
+				<td><input type=file name=file value='{{UploadBookForm.file}'>
+				<td>{{formError.file}}
+			<tr>
+				<td colspan=2><input type=submit value='  Загрузить  '>
+			</table>
+		</form>
+	</div>
 {{/source}}
 
 {{>inc/footer_main}}

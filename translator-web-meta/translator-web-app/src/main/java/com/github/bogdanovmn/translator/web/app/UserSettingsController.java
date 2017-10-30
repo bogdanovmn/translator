@@ -1,7 +1,6 @@
 package com.github.bogdanovmn.translator.web.app;
 
 import com.github.bogdanovmn.translator.web.app.config.security.Md5PasswordEncoder;
-import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.User;
 import com.github.bogdanovmn.translator.web.orm.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +16,10 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user/settings")
-public class UserSettingsController extends BaseController {
+public class UserSettingsController extends AbstractVisualController {
 
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private TranslateSecurityService securityService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -35,7 +31,7 @@ public class UserSettingsController extends BaseController {
 		Model model,
 		@RequestHeader(name = "referer", required = false) String referer
 	) {
-		User user = this.securityService.getLoggedInUser();
+		User user = this.getUser();
 
 		model.addAttribute("referer", referer);
 		model.addAttribute("userEmail", user.getEmail());
@@ -56,7 +52,7 @@ public class UserSettingsController extends BaseController {
 	) {
 		FormErrors formErrors = new FormErrors(bindingResult);
 
-		User user = this.securityService.getLoggedInUser();
+		User user = this.getUser();
 
 		if (form.getNewPassword() != null) {
 			String currentPassword = form.getCurrentPassword();

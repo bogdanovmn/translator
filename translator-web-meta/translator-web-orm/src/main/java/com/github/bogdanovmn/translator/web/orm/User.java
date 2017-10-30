@@ -16,7 +16,7 @@ import java.util.Set;
 		+ " where urw.word_id is NULL "
 		+ " and   uhow.word_id is NULL "
 		+ " and   w.black_list = 0 "
-		+ " order by w.sources_count desc, w.frequence desc "
+		+ " order by w.sources_count desc, w.frequence asc "
 		+ " limit 5"
 )
 public class User extends BaseEntityWithUniqueName {

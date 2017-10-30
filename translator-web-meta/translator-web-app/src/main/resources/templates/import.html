@@ -2,9 +2,9 @@
 
 {{#exportResult}}
 	<h1>Импорт завершен</h1>
-	{{#sources}}
+	{{#sources.0}}
 		<h2>Новые источники</h2>
-	{{/sources}}
+	{{/sources.0}}
 	{{#sources}}
 		<table class="import-info">
 			<tr><td>Имя файла</td>  <td>{{rawName}}</td></tr>
@@ -13,9 +13,9 @@
 			<tr><td>Кол-во слов</td><td>{{wordsCount}}</td></tr>
 		</table>
 	{{/sources}}
-	{{#users}}
+	{{#users.0}}
 		<h2>Пользователи</h2>
-	{{/users}}
+	{{/users.0}}
 	{{#users}}
 		<table class="import-info">
 			<tr><td>E-mail</td><td>{{email}}</td></tr>

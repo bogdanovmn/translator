@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/ajax/word/{id}")
-public class AjaxWordController extends BaseController {
+public class AjaxWordController extends AbstractController {
 	private final ToRememberService toRememberService;
 
 	@Autowired

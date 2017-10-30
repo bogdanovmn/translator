@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 @Controller
 @RequestMapping("/upload-book")
-public class UploadBookController extends BaseController {
+public class UploadBookController extends AbstractVisualController {
 	private final UploadBookService uploadBookService;
 
 	@Autowired

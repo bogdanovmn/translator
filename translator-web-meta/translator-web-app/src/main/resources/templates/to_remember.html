@@ -1,8 +1,8 @@
-{{> inc/header_main}}
+{{#layout}}
 
-{{#words}}
+{{#words.0}}
 	<h1>Слова из всех источников</h1>
-{{/words}}
+{{/words.0}}
 {{#words}}
 	<div>
 		<div id="word-{{id}}" class=word-to-remember-block>
@@ -24,8 +24,14 @@
 	</div>
 {{/words}}
 
+{{#words.0}}
+	<div class="to-remember-note-block">
+		Осталось изучить <b>{{toRememberCount}}</b> слов. Уже изучено: <b>{{rememberedCount}}</b>
+	</div>
+{{/words.0}}
+
 {{^words}}
-	<h2>Пусто</h2>
+	<h2>Все уже изучено</h2>
 {{/words}}
 
 <script>
@@ -102,4 +108,4 @@
 	}
 </script>
 
-{{>inc/footer_main}}
+{{/layout}}

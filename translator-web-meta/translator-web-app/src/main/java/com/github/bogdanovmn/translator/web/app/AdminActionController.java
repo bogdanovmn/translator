@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminActionController extends BaseController {
+public class AdminActionController extends AbstractController {
 	@Autowired
 	private ExportService exportService;
 
