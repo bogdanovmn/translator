@@ -79,13 +79,12 @@ public class ToRememberService {
 			.setWord(word);
 
 		try {
-			this.translateRepository.save(
-				translate.setValue(
-					translateService.translate(
-						word.getName()
+			translateService.translate(word.getName())
+				.forEach(x ->
+					this.translateRepository.save(
+						translate.setValue(x)
 					)
-				)
-			);
+				);
 		}
 		catch (TranslateServiceUnknownWordException e) {
 			this.translateRepository.save(
