@@ -8,16 +8,7 @@ import java.util.Set;
 @NamedNativeQuery(
 	name = "User.getWordsToRemember",
 	resultClass = Word.class,
-	query =
-		"select w.*"
-		+ " from  word w"
-		+ " left join user_hold_over_word uhow on w.id = uhow.word_id and uhow.user_id = ?1 "
-		+ " left join user_remembered_word urw on w.id = urw.word_id and urw.user_id = ?1 "
-		+ " where urw.word_id is NULL "
-		+ " and   uhow.word_id is NULL "
-		+ " and   w.black_list = 0 "
-		+ " order by w.sources_count desc, w.frequence asc "
-		+ " limit 5"
+	query = UserNativeQuery.TO_REMEMBER_WORDS
 )
 public class User extends BaseEntityWithUniqueName {
 	@Column(unique = true, nullable = false)
