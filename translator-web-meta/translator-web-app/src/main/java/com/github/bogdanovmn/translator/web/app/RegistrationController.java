@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-public class RegistrationController {
+public class RegistrationController extends AbstractMinVisualController {
 	private final RegistrationService registrationService;
 	private final TranslateSecurityService securityService;
 
