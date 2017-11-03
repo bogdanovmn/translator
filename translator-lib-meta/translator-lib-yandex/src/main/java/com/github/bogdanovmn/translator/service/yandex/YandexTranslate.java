@@ -9,7 +9,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class YandexTranslate extends HttpTranslateService {
@@ -46,7 +45,7 @@ public class YandexTranslate extends HttpTranslateService {
 					{
 						add(
 							json.get("text").getAsJsonArray()
-								.get(0).getAsString()
+								.get(0).getAsString().toLowerCase()
 						);
 				}};
 			}

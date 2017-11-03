@@ -31,7 +31,7 @@ public class ToRememberController extends AbstractVisualController {
 		return new ModelAndView(
 			"to_remember",
 			new HashMap<String, Object>() {{
-				put("words"   , toRememberService.getAll());
+				put("words", toRememberService.getAll());
 			}}
 		);
 	}

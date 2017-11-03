@@ -9,7 +9,7 @@ div.main { width: 1000px; margin: 0 auto; text-align: center; }
 
 #mid_area { width: 100%; }
 	#left_menu { float: left; width: 20%; }
-	#data_area { width: 80%; margin-left: 20%;  border-left: 1px solid gray; padding: 0 10px; }
+	#data_area { width: 90%; margin: auto; padding: 0 10px; }
 
 #top_menu a { text-decoration: none; }
 
@@ -35,7 +35,8 @@ div.word-to-remember-block {
 }
 div.word-to-remember-block div.word  { margin: 5px; }
 div.word-to-remember-block div.stats { font-size: 50%; color: #d4d4d4; text-align: right; }
-div.word-to-remember-block span.translate { color: cornflowerblue; font-weight: bold; }
+div.word-to-remember-block span.translate { color: cornflowerblue; font-weight: bold; font-size: 60%; }
+div.word-to-remember-block span.translate i { color: #a2c0f7; font-weight: normal; }
 div.word-to-remember-block div.button {
 	border-radius: 25px; border: 1px solid; text-align: center; padding: 3px 10px; font-size: 70%; display: inline; margin: 3px 5px; cursor: pointer; }
 div.word-to-remember-block div.button:hover { border: 1px dotted; }

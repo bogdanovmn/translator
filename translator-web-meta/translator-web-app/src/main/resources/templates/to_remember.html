@@ -9,7 +9,12 @@
 			<div class=stats>{{frequence}} упоминаний / {{sourcesCount}} источников</div>
 			<div class="word">
 				{{name}}
-				<span class="translate">{{#translates}}{{value}} {{/translates}}</span>
+				<br>
+				<span class="translate">
+					{{#translates}}
+						{{value}}{{^-last}}<i>,</i>{{/-last}}
+					{{/translates}}
+				</span>
 			</div>
 
 			{{^translates}}

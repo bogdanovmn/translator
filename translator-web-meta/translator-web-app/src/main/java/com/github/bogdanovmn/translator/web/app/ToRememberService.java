@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ToRememberService {
@@ -70,30 +72,33 @@ public class ToRememberService {
 			);
 		}
 
-		Translate translate = new Translate()
-			.setProvider(
-				(TranslateProvider) this.entityFactory.getPersistBaseEntityWithUniqueName(
-					new TranslateProvider("Google")
-				)
-			)
-			.setWord(word);
+		TranslateProvider provider = (TranslateProvider) this.entityFactory.getPersistBaseEntityWithUniqueName(
+			new TranslateProvider("Google")
+		);
 
+		Set<String> translates;
 		try {
-			translateService.translate(word.getName())
-				.forEach(x ->
-					this.translateRepository.save(
-						translate.setValue(x)
-					)
-				);
+			translates = translateService.translate(word.getName());
+			translates.forEach(x ->
+				this.translateRepository.save(
+					new Translate()
+						.setProvider(provider)
+						.setWord(word)
+						.setValue(x)
+				)
+			);
 		}
 		catch (TranslateServiceUnknownWordException e) {
 			this.translateRepository.save(
-				translate.setValue(null)
+				new Translate()
+					.setProvider(provider)
+					.setWord(word)
+					.setValue(null)
 			);
 			throw new TranslateServiceUnknownWordException(e.getMessage());
 		}
 
-		return translate.getValue();
+		return translates.stream().collect(Collectors.joining(", "));
 	}
 
 	public void blackListWord(Integer wordId) {

@@ -46,7 +46,7 @@ public class GoogleTranslate extends HttpTranslateService {
 						if (translate != null) {
 							if (currentGroupCount < groupLimit) {
 								System.out.println("\t" + translate.text());
-								result.add(translate.text());
+								result.add(translate.text().toLowerCase());
 								currentGroupCount++;
 							}
 						}
