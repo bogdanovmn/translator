@@ -11,11 +11,6 @@ class HeadMenu {
 		EXPORT,
 		IMPORT
 	}
-//	private static final String HMI_REMEMBERED  = "remembered";
-//	private static final String HMI_TO_REMEMBER = "to_remember";
-//	private static final String HMI_UPLOAD_BOOK = "upload-book";
-//	private static final String HMI_EXPORT = "export";
-//	private static final String HMI_IMPORT = "import";
 
 	private final String current;
 	private List<HeadMenuItem> items;

@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class ExportService {
-//	private static final Logger LOG = LogManager.getLogger(ExportService.class);
 	private static final Logger LOG = LoggerFactory.getLogger(ExportService.class);
 
 	@Autowired

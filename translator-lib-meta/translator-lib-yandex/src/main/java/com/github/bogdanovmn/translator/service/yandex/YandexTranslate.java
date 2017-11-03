@@ -8,6 +8,10 @@ import com.github.bogdanovmn.translator.core.TranslateServiceUnavailableExceptio
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class YandexTranslate extends HttpTranslateService {
 	public YandexTranslate() {
 		super(
@@ -27,10 +31,10 @@ public class YandexTranslate extends HttpTranslateService {
 	 }
  	 */
 	@Override
-	protected String parseServiceRawAnswer(String jsonText)
+	protected Set<String> parseServiceRawAnswer(String jsonText)
 		throws TranslateServiceException
 	{
-		String result;
+		Set<String> result = null;
 
 		try {
 			JsonObject json = new JsonParser()
@@ -38,8 +42,13 @@ public class YandexTranslate extends HttpTranslateService {
 
 			int code = json.get("code").getAsInt();
 			if (code == 200) {
-				result = json.get("text").getAsJsonArray()
-					.get(0).getAsString();
+				result = new HashSet<String>() {
+					{
+						add(
+							json.get("text").getAsJsonArray()
+								.get(0).getAsString()
+						);
+				}};
 			}
 			else {
 				throw new TranslateServiceUnavailableException(
