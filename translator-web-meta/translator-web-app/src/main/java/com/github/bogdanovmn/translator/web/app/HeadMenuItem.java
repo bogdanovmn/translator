@@ -4,12 +4,14 @@ public class HeadMenuItem {
 	private final String id;
 	private final String url;
 	private final String title;
+	private final boolean admin;
 	private boolean selected = false;
 	
 	public HeadMenuItem(String id, String url, String title) {
 		this.id    = id;
 		this.url   = url;
 		this.title = title;
+		this.admin = url.startsWith("/admin/");
 	}
 
 	public void select() {
@@ -30,6 +32,10 @@ public class HeadMenuItem {
 
 	public boolean isSelected() {
 		return selected;
+	}
+
+	public boolean isAdmin() {
+		return admin;
 	}
 }
 

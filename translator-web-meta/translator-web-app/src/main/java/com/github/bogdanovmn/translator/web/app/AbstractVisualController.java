@@ -22,7 +22,10 @@ public abstract class AbstractVisualController extends AbstractController {
 
 	@ModelAttribute
 	public void addCommonAttributes(Model model) {
+		model.addAttribute("menu", new HeadMenu(this.currentMenuItem(), this.isAdmin()).getItems());
 		model.addAttribute("userName", this.getUser().getName());
 		model.addAllAttributes(this.statisticService.getUserWordRememberedStatistic());
 	}
+
+	protected abstract HeadMenu.ITEM currentMenuItem();
 }

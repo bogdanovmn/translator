@@ -74,7 +74,7 @@
 
 	function translate(wordBlock, url) {
 		console.log("[translate] " + url);
-		$.ajax(url)
+		$.ajax({ url: url, method: 'PUT'})
 			.done(function(resp) {
 				wordBlock.find('.translate').text(resp);
 				wordBlock.find("[data-id=translate]").hide();
@@ -92,7 +92,7 @@
 
 	function actionAndHide(wordBlock, url) {
 		console.log("[action and hide] " + wordBlock + " " + url)
-		$.ajax(url)
+		$.ajax({ url: url, method: 'PUT'})
 			.done(function(resp) {
 				console.log('[OK] ' + url);
 				wordBlock.remove();

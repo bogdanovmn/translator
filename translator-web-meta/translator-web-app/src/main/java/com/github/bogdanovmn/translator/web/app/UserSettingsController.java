@@ -21,6 +21,11 @@ public class UserSettingsController extends AbstractVisualController {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Override
+	protected HeadMenu.ITEM currentMenuItem() {
+		return HeadMenu.ITEM.SETTINGS;
+	}
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));

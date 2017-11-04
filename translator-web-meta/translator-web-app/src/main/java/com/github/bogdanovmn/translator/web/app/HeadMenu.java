@@ -9,16 +9,23 @@ class HeadMenu {
 		TO_REMEMBER,
 		UPLOAD_BOOK,
 		EXPORT,
-		IMPORT
+		IMPORT,
+		SETTINGS
 	}
 
 	private final String current;
 	private List<HeadMenuItem> items;
 	private boolean isPrepared = false;
-	
+	private final boolean isAdmin;
+
 	HeadMenu(ITEM current) {
 		this.current = current.name();
-		
+		this.isAdmin = false;
+	}
+
+	HeadMenu(ITEM current, boolean isAdmin) {
+		this.current = current.name();
+		this.isAdmin = isAdmin;
 	}
 
 	List<HeadMenuItem> getItems() {
@@ -38,9 +45,11 @@ class HeadMenu {
 			this.items = new ArrayList<>(5);
 			this.items.add(new HeadMenuItem(ITEM.REMEMBERED.name(),  "/remembered"     , "Уже изучено"));
 			this.items.add(new HeadMenuItem(ITEM.TO_REMEMBER.name(), "/to-remember/all", "Изучить"));
-			this.items.add(new HeadMenuItem(ITEM.UPLOAD_BOOK.name(), "/upload-book"    , "Загрузить книгу"));
-			this.items.add(new HeadMenuItem(ITEM.EXPORT.name(),      "/admin/export"   , "Экспорт"));
-			this.items.add(new HeadMenuItem(ITEM.IMPORT.name(),      "/admin/import"   , "Импорт"));
+			if (this.isAdmin) {
+				this.items.add(new HeadMenuItem(ITEM.UPLOAD_BOOK.name(), "/admin/upload-book", "Загрузить книгу"));
+				this.items.add(new HeadMenuItem(ITEM.EXPORT.name(), "/admin/export", "Экспорт"));
+				this.items.add(new HeadMenuItem(ITEM.IMPORT.name(), "/admin/import", "Импорт"));
+			}
 		}
 		this.isPrepared = true;
 	}

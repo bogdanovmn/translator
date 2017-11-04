@@ -4,7 +4,6 @@ import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateExce
 import com.github.bogdanovmn.translator.web.orm.Source;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,7 +14,7 @@ import java.util.HashMap;
 
 
 @Controller
-@RequestMapping("/upload-book")
+@RequestMapping("/admin/upload-book")
 public class UploadBookController extends AbstractVisualController {
 	private final UploadBookService uploadBookService;
 
@@ -24,9 +23,9 @@ public class UploadBookController extends AbstractVisualController {
 		this.uploadBookService = uploadBookService;
 	}
 
-	@ModelAttribute
-	public void addControllerCommonAttributes(Model model) {
-		model.addAttribute("menu", new HeadMenu(HeadMenu.ITEM.UPLOAD_BOOK).getItems());
+	@Override
+	protected HeadMenu.ITEM currentMenuItem() {
+		return HeadMenu.ITEM.UPLOAD_BOOK;
 	}
 
 	@PostMapping
@@ -47,7 +46,7 @@ public class UploadBookController extends AbstractVisualController {
 			redirectAttributes.addFlashAttribute("customError", e.getMessage());
 		}
 
-		return "redirect:/upload-book";
+		return "redirect:/admin/upload-book";
 	}
 
 	@GetMapping
@@ -58,16 +57,6 @@ public class UploadBookController extends AbstractVisualController {
 			"upload_book",
 			new HashMap<String, Object>() {{
 				put("referer" , referer);
-			}}
-		);
-	}
-
-	@GetMapping("/history")
-	public ModelAndView history() {
-		return new ModelAndView(
-			"upload_book_history",
-			new HashMap<String, Object>() {{
-				put("history" , uploadBookService.getHistory());
 			}}
 		);
 	}

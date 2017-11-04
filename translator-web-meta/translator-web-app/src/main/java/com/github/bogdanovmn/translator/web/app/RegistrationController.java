@@ -8,11 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/registration")
 public class RegistrationController extends AbstractMinVisualController {
 	private final RegistrationService registrationService;
 	private final TranslateSecurityService securityService;
@@ -23,14 +25,14 @@ public class RegistrationController extends AbstractMinVisualController {
 		this.securityService = securityService;
 	}
 
-	@GetMapping("/registration")
+	@GetMapping
 	public ModelAndView registration(Model model) {
 		model.addAttribute("userForm", new UserRegistrationForm());
 
 		return new ModelAndView("registration");
 	}
 
-	@PostMapping("/registration")
+	@PostMapping
 	public ModelAndView registration(
 		@Valid UserRegistrationForm userForm,
 		BindingResult bindingResult,
