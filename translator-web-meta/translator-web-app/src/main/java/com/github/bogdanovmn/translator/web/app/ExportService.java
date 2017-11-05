@@ -101,7 +101,7 @@ public class ExportService {
 				LOG.info("New source '{}' import done", source.getRawName());
 			}
 			else {
-				LOG.info("Source '{}' already exists, skip it");
+				LOG.info("Source '{}' already exists, skip it", source.getRawName());
 				continue;
 			}
 			final Source persistSource = source;
