@@ -17,7 +17,7 @@ public class WordAdminController extends AbstractController {
 		this.toRememberService = toRememberService;
 	}
 
-	@PutMapping("/admin/black-list")
+	@PutMapping("/black-list")
 	public ResponseEntity blackList(@PathVariable Integer id) {
 		this.toRememberService.blackListWord(id);
 		return ResponseEntity.ok().build();

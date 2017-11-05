@@ -24,7 +24,9 @@
 			<div data-id="hold-over" data-href="/ajax/word/{{id}}/hold-over" class="button button-hold-over {{^translates}}hidden{{/translates}}">OK</div>
 
 			<div data-id="remembered" data-href="/ajax/word/{{id}}/remembered" class="button button-remembered">Запомнил!</div>
-			<div data-id="black-list" data-href="/ajax/word/{{id}}/black-list" class="button button-black-list">Удалить</div>
+			{{#isAdmin}}
+				<div data-id="black-list" data-href="/admin/ajax/word/{{id}}/black-list" class="button button-black-list">Удалить</div>
+			{{/isAdmin}}
 		</div>
 	</div>
 {{/words}}
