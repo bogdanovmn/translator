@@ -12,19 +12,26 @@
     <words>
         <word name="file" ref="159"/>
         <word name="template" ref="150"/>
+        <word name="java" ref="151" blackList="true"/>
+        <word name="unit" ref="152"/>
+        <word name="simple" ref="153"/>
     </words>
     <translates>
         <translate pid="1" value="файл" wid="159" ref="1"/>
         <translate pid="1" value="шаблон" wid="150" ref="2"/>
     </translates>
     <wordSources>
-        <link count="1" sid="1" wid="150" ref="1"/>
-        <link count="10" sid="1" wid="159" ref="1"/>
-        <link count="2" sid="2" wid="159" ref="1"/>
+        <link count="1" sid="1" wid="150"/>
+        <link count="10" sid="1" wid="159"/>
+        <link count="2" sid="2" wid="159"/>
+        <link count="2" sid="2" wid="151"/>
+        <link count="2" sid="2" wid="152"/>
+        <link count="2" sid="2" wid="153"/>
     </wordSources>
     <users>
         <user email="somebody@gmail.com">
             <rememberedWords>159 150</rememberedWords>
+            <holdOverWords>152 153</holdOverWords>
         </user>
     </users>
 </translatorExport>
