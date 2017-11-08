@@ -7,4 +7,7 @@ public interface UserRememberedWordRepository extends JpaRepository<UserRemember
 	UserRememberedWord findFirstByUserAndWordId(User user, Integer wordId);
 
 	Integer countByUser(User user);
+
+	Long removeAllByUser(User user);
+
 }

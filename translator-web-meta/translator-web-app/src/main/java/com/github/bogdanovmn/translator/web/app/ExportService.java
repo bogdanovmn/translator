@@ -22,6 +22,8 @@ public class ExportService {
 	@Autowired
 	private UserRememberedWordRepository userRememberedWordRepository;
 	@Autowired
+	private UserHoldOverWordRepository userHoldOverWordRepository;
+	@Autowired
 	private WordRepository wordRepository;
 	@Autowired
 	private EntityFactory entityFactory;
@@ -106,6 +108,7 @@ public class ExportService {
 			}
 			final Source persistSource = source;
 
+			LOG.info("Prepare source word links");
 			List<WordSource> wordSources = importSchema.getWordSources().stream()
 				.filter(x -> x.getSourceId() == sourceExportId)
 				.map(x -> {
@@ -120,12 +123,14 @@ public class ExportService {
 					}
 				)
 				.collect(Collectors.toList());
+			LOG.info("Save source word links");
 			this.wordSourceRepository.save(wordSources);
 			LOG.info("Source '{}' word links import done", source.getRawName());
 		}
 
 		// Translates
 
+		LOG.info("Prepare and save translate providers");
 		Map<Integer, TranslateProvider> translateProviderByExportId = importSchema.getTranslateProviders().stream()
 			.collect(Collectors.toMap(
 				ImportSchema.ImportTranslateProvider::getId,
@@ -134,6 +139,7 @@ public class ExportService {
 				)
 			));
 
+		LOG.info("Translates import start");
 		for (ImportSchema.ImportTranslate importTranslate : importSchema.getTranslates()) {
 			Word word = exportWordCache.getByExportId(importTranslate.getWordId());
 			Translate translate = new Translate()
@@ -155,15 +161,31 @@ public class ExportService {
 		for (ImportSchema.ImportUser importUser : importSchema.getUsers()) {
 			User user = this.userRepository.findFirstByEmail(importUser.getEmail());
 			if (user != null) {
-				user.getRememberedWords().addAll(
-					importUser.getRememberedWords().stream()
-						.map(x ->
-							new UserRememberedWord()
-								.setWord(exportWordCache.getByExportId(x))
-								.setUser(user)
-						)
-						.collect(Collectors.toSet())
-				);
+				LOG.info("User {} lists import", user.getEmail());
+//				this.userRememberedWordRepository.removeAllByUser(user);
+//				this.userRememberedWordRepository.save(
+//					importUser.getRememberedWords().stream()
+//						.map(x ->
+//							new UserRememberedWord()
+//								.setWord(exportWordCache.getByExportId(x))
+//								.setUser(user)
+//						)
+//						.collect(Collectors.toSet())
+//				);
+//				LOG.info("Remembered words import: {}", importUser.getRememberedWords().size());
+
+//				this.userHoldOverWordRepository.removeAllByUser(user);
+//				this.userHoldOverWordRepository.save(
+//					importUser.getHoldOverWords().stream()
+//						.map(x ->
+//							new UserHoldOverWord()
+//								.setWord(exportWordCache.getByExportId(x))
+//								.setUser(user)
+//						)
+//						.collect(Collectors.toSet())
+//				);
+//				LOG.info("HoldOver words import: {}", importUser.getHoldOverWords().size());
+
 				this.userRepository.save(user);
 				resultUsers.add(user);
 				LOG.info("User '{}' import done", user.getEmail());

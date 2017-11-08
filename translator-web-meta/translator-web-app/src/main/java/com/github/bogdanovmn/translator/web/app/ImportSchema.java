@@ -63,23 +63,19 @@ class ImportSchema {
 		private String email;
 		@XmlList
 		private List<Integer> rememberedWords;
+		@XmlList
+		private List<Integer> holdOverWords;
 
 		String getEmail() {
 			return email;
-		}
-
-		ImportUser setEmail(String email) {
-			this.email = email;
-			return this;
 		}
 
 		List<Integer> getRememberedWords() {
 			return rememberedWords;
 		}
 
-		ImportUser setRememberedWords(List<Integer> rememberedWords) {
-			this.rememberedWords = rememberedWords;
-			return this;
+		List<Integer> getHoldOverWords() {
+			return holdOverWords;
 		}
 	}
 

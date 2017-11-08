@@ -46,4 +46,9 @@ public class ImportTest {
 		assertEquals("Translate #2 provider", 1, data.getTranslates().get(1).getProviderId());
 	}
 
+	@Test
+	public void userWordsLists() throws Exception {
+		assertEquals("HoldOverWords count" , 2, data.getUsers().get(0).getHoldOverWords().size());
+		assertEquals("RememberedWords count" , 2, data.getUsers().get(0).getRememberedWords().size());
+	}
 }

@@ -8,4 +8,6 @@ public interface UserHoldOverWordRepository extends CrudRepository<UserHoldOverW
 	List<UserHoldOverWord> findAllByUser(User user);
 
 	UserHoldOverWord findFirstByUserAndWordId(User user, Integer wordId);
+
+	Long removeAllByUser(User user);
 }
