@@ -56,16 +56,26 @@ class ExportSchema {
 
 	ExportSchema setUsers(List<User> users) {
 		for (User user : users) {
+			ExportUser exportUser = new ExportUser();
 			Set<UserRememberedWord> rememberedWords = user.getRememberedWords();
+			Set<UserHoldOverWord> holdOverWords = user.getHoldOverWords();
 			if (!rememberedWords.isEmpty()) {
+				exportUser.setRememberedWords(
+					rememberedWords.stream()
+						.map(x -> x.getWord().getId())
+						.collect(Collectors.toList())
+				);
+			}
+			if (!holdOverWords.isEmpty()) {
+				exportUser.setHoldOverWords(
+					holdOverWords.stream()
+						.map(x -> x.getWord().getId())
+						.collect(Collectors.toList())
+				);
+			}
+			if (!holdOverWords.isEmpty() || !rememberedWords.isEmpty()) {
 				this.users.add(
-					new ExportUser()
-						.setEmail(user.getEmail())
-						.setRememberedWords(
-							rememberedWords.stream()
-								.map(x -> x.getWord().getId())
-								.collect(Collectors.toList())
-						)
+					exportUser.setEmail(user.getEmail())
 				);
 			}
 		}
@@ -102,6 +112,7 @@ class ExportSchema {
 		private String email;
 
 		private List<Integer> rememberedWords;
+		private List<Integer> holdOverWords;
 
 		String getEmail() {
 			return email;
@@ -120,6 +131,16 @@ class ExportSchema {
 		@XmlList
 		ExportUser setRememberedWords(List<Integer> rememberedWords) {
 			this.rememberedWords = rememberedWords;
+			return this;
+		}
+
+		public List<Integer> getHoldOverWords() {
+			return holdOverWords;
+		}
+
+		@XmlList
+		public ExportUser setHoldOverWords(List<Integer> holdOverWords) {
+			this.holdOverWords = holdOverWords;
 			return this;
 		}
 	}
