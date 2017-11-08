@@ -138,6 +138,8 @@ class ImportSchema {
 		private int id;
 		@XmlAttribute
 		private String name;
+		@XmlAttribute
+		private boolean blackList;
 
 		int getId() {
 			return id;
@@ -145,6 +147,10 @@ class ImportSchema {
 
 		public String getName() {
 			return name;
+		}
+
+		public boolean isBlackList() {
+			return blackList;
 		}
 	}
 

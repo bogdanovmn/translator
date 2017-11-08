@@ -170,6 +170,20 @@ public class ExportService {
 			}
 		}
 
+		// Word in black list
+		LOG.info("Black list import start");
+		int blackListSetCount = 0;
+		for (ImportSchema.ImportWord importWord : importSchema.getWords()) {
+			if (importWord.isBlackList()) {
+				Word persistWord = exportWordCache.getByExportId(importWord.getId());
+				if (!persistWord.isBlackList()) {
+					persistWord.setBlackList(true);
+					this.wordRepository.save(persistWord);
+					blackListSetCount++;
+				}
+			}
+		}
+		LOG.info("Black list import done ({} affected)", blackListSetCount);
 
 		return new HashMap<String, Object>() {{
 			put("sources", resultSources);
