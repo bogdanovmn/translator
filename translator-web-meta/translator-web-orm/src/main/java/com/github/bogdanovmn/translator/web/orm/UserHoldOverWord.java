@@ -27,7 +27,7 @@ public class UserHoldOverWord extends BaseEntity {
 	private Word word;
 
 	@Column(nullable = false)
-	private Date updated;
+	private Date updated = new Date();
 
 	public UserHoldOverWord() {
 	}

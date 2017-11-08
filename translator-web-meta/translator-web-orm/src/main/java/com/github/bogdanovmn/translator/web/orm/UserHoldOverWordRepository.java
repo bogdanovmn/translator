@@ -1,11 +1,10 @@
 package com.github.bogdanovmn.translator.web.orm;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserHoldOverWordRepository extends CrudRepository<UserHoldOverWord, Integer> {
-	List<UserHoldOverWord> findAllByUser(User user);
+public interface UserHoldOverWordRepository extends JpaRepository<UserHoldOverWord, Integer> {
 
 	UserHoldOverWord findFirstByUserAndWordId(User user, Integer wordId);
 
