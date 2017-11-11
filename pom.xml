@@ -15,6 +15,7 @@
 		<module>translator-lib-meta</module>
 		<module>translator-parser-meta</module>
 		<module>translator-web-meta</module>
+		<module>translator-etl-meta</module>
 	</modules>
 
 	<properties>
@@ -75,6 +76,11 @@
 				<artifactId>http-client-impl-phantomjs</artifactId>
 				<version>1.1</version>
 			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn.dwlc</groupId>
+				<artifactId>download-with-local-cache</artifactId>
+				<version>1.4</version>
+			</dependency>
 
 			<!-- Libs -->
 
@@ -88,7 +94,6 @@
 				<artifactId>slf4j-api</artifactId>
 				<version>1.7.25</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 
