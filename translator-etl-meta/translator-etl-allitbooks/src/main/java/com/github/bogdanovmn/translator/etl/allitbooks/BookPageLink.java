@@ -47,7 +47,8 @@ class BookPageLink extends HtmlPage {
 			.setYear(Integer.valueOf(details.get("Year")))
 			.setPdfUrl(
 				pdfUrlElement.attr("href")
-			);
+			)
+			.setOriginalUrl(this.url);
 
 		return book;
 	}

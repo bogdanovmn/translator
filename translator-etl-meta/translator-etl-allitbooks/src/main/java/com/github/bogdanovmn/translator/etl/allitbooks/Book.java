@@ -1,16 +1,48 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
-class Book {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "allitebook")
+public class Book {
+	@Id
+	@GeneratedValue
+	private int id;
+
+	@Column(unique = true, nullable = false)
 	private String originalUrl;
 	private String coverUrl;
 	private String title;
 	private String author;
+
+	@Transient
 	private String language;
+
 	private String category;
+
+	@Column(unique = true, nullable = false)
 	private String pdfUrl;
 	private int pages;
 	private float fileSizeMb;
 	private int year;
+
+	public int getId() {
+		return id;
+	}
+
+	public Book setId(int id) {
+		this.id = id;
+		return this;
+	}
+
+	public String getOriginalUrl() {
+		return originalUrl;
+	}
+
+	public Book setOriginalUrl(String originalUrl) {
+		this.originalUrl = originalUrl;
+		return this;
+	}
 
 	public String getCoverUrl() {
 		return coverUrl;

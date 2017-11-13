@@ -23,6 +23,12 @@ public class Site {
 		return result;
 	}
 
+	BookIterator getBookIterator() throws IOException {
+		return new BookIterator(
+			this.getPagesCount()
+		);
+	}
+
 	public int getPagesCount() throws IOException {
 		BooksListPage page = new BooksListPage(1);
 		return page.getPagesTotal();
