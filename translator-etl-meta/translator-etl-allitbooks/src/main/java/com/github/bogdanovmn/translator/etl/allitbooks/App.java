@@ -2,22 +2,31 @@ package com.github.bogdanovmn.translator.etl.allitbooks;
 
 
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.dao.DataIntegrityViolationException;
 
 @SpringBootApplication
-public class App {
+public class App implements CommandLineRunner {
+	@Autowired
+	private BookRepository bookRepository;
+
 	public static void main(String[] args) throws Exception {
+		SpringApplication app = new SpringApplication(App.class);
+		app.setBannerMode(Banner.Mode.OFF);
+		app.run(args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
 		new CmdLineAppBuilder(args)
 			.withJarName("allitebooks-etl")
 			.withDescription("allitebooks import CLI")
 			.withEntryPoint(
 				cmdLine -> {
-					ConfigurableApplicationContext ctx = SpringApplication.run(App.class, args);
-					BookRepository bookRepository = ctx.getBean(BookRepository.class);
-
 					Site site = new Site();
 					BookIterator bookIterator = site.getBookIterator();
 					while (bookIterator.hasNext()) {

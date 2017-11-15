@@ -7,6 +7,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
+@Ignore
 public class BooksListPageTest {
 	@Test
 	public void getPagesTotal() throws Exception {
@@ -25,11 +26,5 @@ public class BooksListPageTest {
 		BooksListPage page = new BooksListPage(1);
 		Set<BookPageLink> booksLinks = page.getBookLinks();
 		assertEquals(10, booksLinks.size());
-	}
-
-	@Test
-	@Ignore
-	public void test() throws Exception {
-		new Site().getAllBooksPages();
 	}
 }
