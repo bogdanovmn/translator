@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-class BookIterator implements Iterator<Book> {
+class BookMetaIterator implements Iterator<BookMeta> {
 	private final int totalPages;
 	private int currentPage = 1;
 	private final List<BookPageLink> currentPageBooksLinks = new ArrayList<>();
 
-	BookIterator(int totalPages) {
+	BookMetaIterator(int totalPages) {
 		this.totalPages = totalPages;
 	}
 
@@ -20,7 +20,7 @@ class BookIterator implements Iterator<Book> {
 	}
 
 	@Override
-	public Book next() {
+	public BookMeta next() {
 		if (this.currentPageBooksLinks.isEmpty()) {
 			try {
 				this.currentPageBooksLinks.addAll(

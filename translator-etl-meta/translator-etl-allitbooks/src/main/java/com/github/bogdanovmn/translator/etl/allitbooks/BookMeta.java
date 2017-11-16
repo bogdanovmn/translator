@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "allitebook")
-public class Book {
+public class BookMeta {
 	@Id
 	@GeneratedValue
 	private int id;
@@ -26,11 +26,22 @@ public class Book {
 	private float fileSizeMb;
 	private int year;
 
+	private boolean obsolate = false;
+
+	public boolean isObsolate() {
+		return obsolate;
+	}
+
+	public BookMeta setObsolate(boolean obsolate) {
+		this.obsolate = obsolate;
+		return this;
+	}
+
 	public int getId() {
 		return id;
 	}
 
-	public Book setId(int id) {
+	public BookMeta setId(int id) {
 		this.id = id;
 		return this;
 	}
@@ -39,7 +50,7 @@ public class Book {
 		return originalUrl;
 	}
 
-	public Book setOriginalUrl(String originalUrl) {
+	public BookMeta setOriginalUrl(String originalUrl) {
 		this.originalUrl = originalUrl;
 		return this;
 	}
@@ -48,7 +59,7 @@ public class Book {
 		return coverUrl;
 	}
 
-	public Book setCoverUrl(String coverUrl) {
+	public BookMeta setCoverUrl(String coverUrl) {
 		this.coverUrl = coverUrl;
 		return this;
 	}
@@ -57,7 +68,7 @@ public class Book {
 		return title;
 	}
 
-	public Book setTitle(String title) {
+	public BookMeta setTitle(String title) {
 		this.title = title;
 		return this;
 	}
@@ -66,7 +77,7 @@ public class Book {
 		return author;
 	}
 
-	public Book setAuthor(String author) {
+	public BookMeta setAuthor(String author) {
 		this.author = author;
 		return this;
 	}
@@ -75,7 +86,7 @@ public class Book {
 		return language;
 	}
 
-	public Book setLanguage(String language) {
+	public BookMeta setLanguage(String language) {
 		this.language = language;
 		return this;
 	}
@@ -84,7 +95,7 @@ public class Book {
 		return category;
 	}
 
-	public Book setCategory(String category) {
+	public BookMeta setCategory(String category) {
 		this.category = category;
 		return this;
 	}
@@ -93,7 +104,7 @@ public class Book {
 		return pdfUrl;
 	}
 
-	public Book setPdfUrl(String pdfUrl) {
+	public BookMeta setPdfUrl(String pdfUrl) {
 		this.pdfUrl = pdfUrl;
 		return this;
 	}
@@ -102,7 +113,7 @@ public class Book {
 		return pages;
 	}
 
-	public Book setPages(int pages) {
+	public BookMeta setPages(int pages) {
 		this.pages = pages;
 		return this;
 	}
@@ -111,7 +122,7 @@ public class Book {
 		return fileSizeMb;
 	}
 
-	public Book setFileSizeMb(float fileSizeMb) {
+	public BookMeta setFileSizeMb(float fileSizeMb) {
 		this.fileSizeMb = fileSizeMb;
 		return this;
 	}
@@ -120,7 +131,7 @@ public class Book {
 		return year;
 	}
 
-	public Book setYear(int year) {
+	public BookMeta setYear(int year) {
 		this.year = year;
 		return this;
 	}

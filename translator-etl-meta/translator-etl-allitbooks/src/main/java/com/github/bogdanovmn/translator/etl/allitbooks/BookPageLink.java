@@ -20,7 +20,7 @@ class BookPageLink extends HtmlPage {
 		this.title = title;
 	}
 
-	Book getBook() throws IOException, PureBookMetaException {
+	BookMeta getBook() throws IOException, PureBookMetaException {
 		Element article = this.getHtmlDocument().select("article").first();
 		Element detailsElement = article.select("div[class=book-detail] dl").first();
 		Element pdfUrlElement = article.select("span[class=download-links] a").first();
@@ -30,7 +30,7 @@ class BookPageLink extends HtmlPage {
 		}
 
 		Map<String, String> details = this.parseDetails(detailsElement);
-		Book book = new Book()
+		BookMeta book = new BookMeta()
 			.setTitle(this.title)
 			.setCoverUrl(
 				article.select("img[class=attachment-post-thumbnail wp-post-image]").first().attr("src")

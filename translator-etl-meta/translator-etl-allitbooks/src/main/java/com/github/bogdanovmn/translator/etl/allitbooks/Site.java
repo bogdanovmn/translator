@@ -23,8 +23,8 @@ public class Site {
 		return result;
 	}
 
-	BookIterator getBookIterator() throws IOException {
-		return new BookIterator(
+	BookMetaIterator getBookIterator() throws IOException {
+		return new BookMetaIterator(
 			this.getPagesCount()
 		);
 	}
@@ -42,24 +42,6 @@ public class Site {
 			result.addAll(
 				new BooksListPage(i).getBookLinks()
 			);
-		}
-		return result;
-	}
-
-	public Set<Book> getAllBooksPages() throws IOException {
-		Set<Book> result = new HashSet<>();
-		int processed = 0;
-		for (BookPageLink pageLink : this.getAllBookPageLinks()) {
-			try {
-				result.add(
-					pageLink.getBook()
-				);
-			}
-			catch (PureBookMetaException e) {
-				LOG.warn("Pure book meta: {}", pageLink.pageUrl());
-			}
-			processed++;
-			LOG.info("Processed: {}", processed);
 		}
 		return result;
 	}
