@@ -12,8 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class App implements CommandLineRunner {
-	private static final Logger LOG = LoggerFactory.getLogger(App.class);
-
 	@Autowired
 	private BookMetaImport bookMetaImport;
 
