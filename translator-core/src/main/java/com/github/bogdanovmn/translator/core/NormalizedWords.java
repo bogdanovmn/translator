@@ -4,8 +4,6 @@ import java.util.*;
 
 public class NormalizedWords {
 	private final Collection<String> words;
-	private final static List<String> POSTFIXES = Arrays.asList("s", "ing", "ed");
-	private final static List<String> PREFIXES = Arrays.asList("re", "sub");
 	private final Map<String, Set<String>> map = new HashMap<>();
 	private boolean isPrepared = false;
 
@@ -19,41 +17,63 @@ public class NormalizedWords {
 	}
 
 	private void prepare() {
-
 		if (!this.isPrepared) {
-			Set<String> forms = new HashSet<>();
-
-			for (String word : this.words) {
-				for (String postfix : POSTFIXES) {
-					if (!word.endsWith(postfix)) {
-						String wordForm = word + postfix;
-						if (words.contains(wordForm)) {
-							this.map.computeIfAbsent(word, x -> new HashSet<>())
-								.add(wordForm);
-
-							forms.add(wordForm);
-						}
-					}
-				}
-
-				for (String prefix : PREFIXES) {
-					if (!word.startsWith(prefix)) {
-						String wordForm = prefix + word;
-						if (words.contains(wordForm)) {
-							this.map.computeIfAbsent(word, x -> new HashSet<>())
-								.add(wordForm);
-
-							forms.add(wordForm);
-						}
-					}
-				}
-
-				if (!forms.contains(word)) {
-					this.map.putIfAbsent(word, null);
-				}
-
-			}
 			this.isPrepared = true;
+
+			Set<EnglishWord> normalWords = new HashSet<>();
+			Set<EnglishWord> formWords = new HashSet<>();
+
+			for (String wordString : this.words) {
+				EnglishWord word = new EnglishWord(wordString);
+				if (word.withPrefix() || word.withPostfix()) {
+					formWords.add(word);
+				}
+				else {
+					normalWords.add(word);
+				}
+			}
+
+			for (EnglishWord word : normalWords) {
+				this.map.put(word.toString(), new HashSet<>());
+				for (EnglishWord wordForm : word.posibleForms()) {
+					if (formWords.contains(wordForm)) {
+						this.map.get(word.toString())
+							.add(wordForm.toString());
+						formWords.remove(wordForm);
+					}
+				}
+			}
+
+			Map<String, Set<String>> forms = new HashMap<>();
+			for (EnglishWord wordForm : formWords) {
+				// Если словоформа осталась в этом списке, значит базового слова для нее не нашлось
+				// но могут найтись другие словоформы
+				// Мапить по базе их нельзя, т.к. она может быть "обрезанной"
+				EnglishWord wordBase = wordForm.base();
+
+				if (!wordBase.toString().endsWith("e")) {
+					EnglishWord alternativeWordBase = new EnglishWord(wordBase.toString() + "e");
+					if (normalWords.contains(alternativeWordBase)) {
+						wordBase = alternativeWordBase;
+					}
+				}
+
+				forms.computeIfAbsent(
+					wordBase.toString(),
+					x -> new HashSet<>()
+				).add(wordForm.toString());
+			}
+			for (Set<String> f : forms.values()) {
+				String shortest = f.stream()
+					.sorted(
+						Comparator.comparing(String::length)
+					)
+					.findFirst()
+					.get();
+
+				f.remove(shortest);
+				this.map.put(shortest, f);
+			}
 		}
 	}
 
@@ -70,11 +90,13 @@ public class NormalizedWords {
 		this.map.keySet().stream()
 			.filter(x -> map.get(x) != null)
 			.sorted(
-				Comparator.comparing(String::length)
+//				Comparator.comparing(String::length)
 			)
 			.forEach(x ->
 				System.out.println(
-					String.format("%s --> %s", x, map.get(x))
+					map.get(x).isEmpty()
+						? x
+						: String.format("%s --> %s", x, map.get(x))
 				)
 			);
 	}

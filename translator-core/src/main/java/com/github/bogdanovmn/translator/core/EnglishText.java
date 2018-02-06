@@ -87,8 +87,8 @@ public class EnglishText {
 		System.out.println("---- Word forms ----");
 		this.normalizedWords.printWordsWithForms();
 
-		System.out.println("---- Ignore statistic ----");
-		this.printTokens(this.ignoreTokens);
+//		System.out.println("---- Ignore statistic ----");
+//		this.printTokens(this.ignoreTokens);
 
 		System.out.println(
 			String.format(

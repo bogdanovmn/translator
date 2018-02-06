@@ -29,7 +29,7 @@
 					<finalName>parser</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>com.github.bogdanovmn.translator.parser.cli.App</mainClass>
+                            <mainClass>com.github.bogdanovmn.translator.cli.parser.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

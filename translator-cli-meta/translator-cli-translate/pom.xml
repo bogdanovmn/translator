@@ -33,7 +33,7 @@
 					<finalName>translator</finalName>
 					<archive>
 						<manifest>
-							<mainClass>com.github.bogdanovmn.translator.translate.cli.App</mainClass>
+							<mainClass>com.github.bogdanovmn.translator.cli.translate.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

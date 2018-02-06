@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.parser.cli;
+package com.github.bogdanovmn.translator.cli.parser;
 
 
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
