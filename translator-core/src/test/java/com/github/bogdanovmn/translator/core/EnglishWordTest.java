@@ -63,4 +63,11 @@ public class EnglishWordTest {
 			new EnglishWord("xxx").base().toString()
 		);
 	}
+
+	@Test
+	public void posibleForms() {
+		assertTrue(
+			new EnglishWord("xxxe").posibleForms().contains(new EnglishWord("xxxing"))
+		);
+	}
 }

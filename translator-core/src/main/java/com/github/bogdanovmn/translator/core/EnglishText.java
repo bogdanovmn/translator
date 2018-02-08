@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class EnglishText {
-	private final static String VOWELS = "qwrtpsdfghkljzxcvbnm";
+	private final static String CONSONANT_LETTERS = "qwrtpsdfghkljzxcvbnm";
 	private final String text;
 	private final Map<String, Integer> words = new HashMap<>();
 	private final Map<String, Integer> ignoreTokens = new HashMap<>();
@@ -24,9 +24,9 @@ public class EnglishText {
 					if (
 						(normalizedToken.length() < 3)
 							||
-							(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + VOWELS + "]{3}.*"))
+							(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{3}.*"))
 							||
-							(normalizedToken.matches(".*[" + VOWELS + "]{5}.*"))
+							(normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{5}.*"))
 							||
 							normalizedToken.matches(".*(.)\\1{2,}.*")
 						) {

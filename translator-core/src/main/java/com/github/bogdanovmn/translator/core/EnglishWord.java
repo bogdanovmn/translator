@@ -65,6 +65,9 @@ class EnglishWord {
 	}
 
 	List<EnglishWord> posibleForms() {
+		boolean endsWithE = this.value.endsWith("e");
+		String valueWithoutE = this.value.substring(0, this.value.length() - 1);
+
 		List<EnglishWord> result = new ArrayList<>();
 		for (String prefix : PREFIXES) {
 			result.add(
@@ -72,13 +75,20 @@ class EnglishWord {
 			);
 			for (String postfix : POSTFIXES) {
 				result.add(
-					new EnglishWord(prefix + this.value + postfix)
+					new EnglishWord(
+						prefix
+							+ (endsWithE && postfix.matches("^[euioa].*") ? valueWithoutE : this.value)
+							+ postfix
+					)
 				);
 			}
 		}
 		for (String postfix : POSTFIXES) {
 			result.add(
-				new EnglishWord(this.value + postfix)
+				new EnglishWord(
+					(endsWithE && postfix.matches("^[euioa].*") ? valueWithoutE : this.value)
+						+ postfix
+				)
 			);
 		}
 
