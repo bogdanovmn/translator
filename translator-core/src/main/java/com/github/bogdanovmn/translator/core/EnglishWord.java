@@ -8,22 +8,33 @@ import java.util.stream.Stream;
 
 class EnglishWord {
 	private final static List<String> POSTFIXES = Stream.of(
-		"s", "es", "ing",
+		"s", "es", "ies", "ing",
 		"ed", "d",
-		"er", "or",
-		"ess", "less", "ful",
-		"ment", "ness", "ian", "sion", "tion",
-		"dom", "ship",
+		"er", "or", "ar",
+		"ess",
+		"ment", "age", "ure", "dom", "sion", "tion",
+		"hood", "ship",
+		"ness", "less",
 		"th",
+		"ful",
+		"ish",
 		"able", "ible",
-		"il", "al", "ly"
+		"il", "al", "ly",
+		"y",
+		"fy", "ify",
+		"ise", "ize",
+		"ist", "ian"
 	).sorted(
 		Comparator.comparing(String::length)
 			.reversed()
 	).collect(Collectors.toList());
 
 	private final static List<String> PREFIXES = Stream.of(
-		"re", "sub", "un", "super", "mega", "pre"
+		"re", "super", "mega",
+		"mis", "dis", "in", "non", "il", "im", "ir",
+		"sub", "over", "under",
+		"en", "ex",
+		"pre", "post"
 	).sorted(
 		Comparator.comparing(String::length)
 			.reversed()
