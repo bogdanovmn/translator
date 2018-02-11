@@ -1,5 +1,8 @@
 package com.github.bogdanovmn.translator.core;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -7,23 +10,27 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class EnglishWord {
+	private static final Logger LOG = LoggerFactory.getLogger(EnglishWord.class);
+
+	private final static int MIN_BASE_LENGTH = 4;
 	private final static List<String> POSTFIXES = Stream.of(
 		"s", "es", "ies", "ing",
 		"ed", "d",
 		"er", "or", "ar",
 		"ess",
-		"ment", "age", "ure", "dom", "sion", "tion",
+		"ment", "age", "ure", "dom", "sion", "tion", "ization",
 		"hood", "ship",
 		"ness", "less",
 		"th",
 		"ful",
 		"ish",
 		"able", "ible",
-		"il", "al", "ly",
+		"il", "al", "ly", "ally",
 		"y",
 		"fy", "ify",
 		"ise", "ize",
-		"ist", "ian"
+		"ist", "ian",
+		"est"
 	).sorted(
 		Comparator.comparing(String::length)
 			.reversed()
@@ -46,29 +53,39 @@ class EnglishWord {
 		this.value = value;
 	}
 
-	boolean withPostfix() {
+	boolean withAnyPostfix() {
 		for (String postfix : POSTFIXES) {
-			if (this.value.endsWith(postfix)) {
+			if (this.withPostfix(postfix)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	boolean withPrefix() {
+	boolean withAnyPrefix() {
 		for (String prefix : PREFIXES) {
-			if (this.value.startsWith(prefix)) {
+			if (this.withPrefix(prefix)) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	private boolean withPostfix(String postfix) {
+		return (this.value.length() - postfix.length() >= MIN_BASE_LENGTH)
+			&& this.value.endsWith(postfix);
+	}
+
+	private boolean withPrefix(String prefix) {
+		return (this.value.length() - prefix.length() >= MIN_BASE_LENGTH)
+			&& this.value.startsWith(prefix);
 	}
 
 	List<EnglishWord> posibleForms() {
 		boolean endsWithE = this.value.endsWith("e");
 		String valueWithoutE = this.value.substring(0, this.value.length() - 1);
 
-		List<EnglishWord> result = new ArrayList<>();
+		List<EnglishWord> result = new ArrayList<>(PREFIXES.size() + PREFIXES.size() * POSTFIXES.size() + POSTFIXES.size());
 		for (String prefix : PREFIXES) {
 			result.add(
 				new EnglishWord(prefix + this.value)
@@ -102,15 +119,15 @@ class EnglishWord {
 		boolean changed;
 		do {
 			changed = false;
-			for (int i = prefixes.size() - 1; i >= 0; i--) {
-				if (result.length() < 5) {
-					break;
-				}
-				String prefix = prefixes.get(i);
-				if (result.startsWith(prefix)) {
+			for (String prefix : prefixes) {
+				if (new EnglishWord(result).withPrefix(prefix)) {
+					LOG.debug("form: '{}', cut '{}'", result, prefix);
+
 					result = result.substring(prefix.length());
 					changed = true;
-					prefixes.remove(i);
+					prefixes.remove(prefix);
+					// Начинаем проходить префиксы с самого начала
+					break;
 				}
 			}
 		} while (changed && !prefixes.isEmpty());
@@ -118,15 +135,14 @@ class EnglishWord {
 		List<String> postfixes = new ArrayList<>(POSTFIXES);
 		do {
 			changed = false;
-			for (int i = postfixes.size() - 1; i >= 0; i--) {
-				if (result.length() < 5) {
-					break;
-				}
-				String postfix = postfixes.get(i);
-				if (result.endsWith(postfix)) {
+			for (String postfix : postfixes) {
+				if (new EnglishWord(result).withPostfix(postfix)) {
+					LOG.debug("form: '{}', cut '{}'", result, postfix);
+
 					result = result.substring(0, result.length() - postfix.length());
 					changed = true;
-					postfixes.remove(i);
+					postfixes.remove(postfix);
+					break;
 				}
 			}
 		} while (changed && !postfixes.isEmpty());

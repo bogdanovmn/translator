@@ -81,8 +81,8 @@ public class EnglishText {
 	public void printStatistic() {
 		this.parse();
 
-		System.out.println("---- Statistic ----");
-		this.printTokens(this.words);
+//		System.out.println("---- Statistic ----");
+//		this.printTokens(this.words);
 
 		System.out.println("---- Word forms ----");
 		this.normalizedWords.printWordsWithForms();

@@ -1,8 +1,13 @@
 package com.github.bogdanovmn.translator.core;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.*;
 
 public class NormalizedWords {
+	private static final Logger LOG = LoggerFactory.getLogger(NormalizedWords.class);
+
 	private final Collection<String> words;
 	private final Map<String, Set<String>> map = new HashMap<>();
 	private boolean isPrepared = false;
@@ -25,7 +30,7 @@ public class NormalizedWords {
 
 			for (String wordString : this.words) {
 				EnglishWord word = new EnglishWord(wordString);
-				if (word.withPrefix() || word.withPostfix()) {
+				if (word.withAnyPrefix() || word.withAnyPostfix()) {
 					formWords.add(word);
 				}
 				else {
@@ -50,6 +55,8 @@ public class NormalizedWords {
 				// но могут найтись другие словоформы
 				// Мапить по базе их нельзя, т.к. она может быть "обрезанной"
 				EnglishWord wordBase = wordForm.base();
+
+				LOG.debug("form: '{}' --> base: '{}'", wordForm, wordBase);
 
 				if (!wordBase.toString().endsWith("e")) {
 					EnglishWord alternativeWordBase = new EnglishWord(wordBase.toString() + "e");

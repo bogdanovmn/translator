@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.core;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -60,4 +61,38 @@ public class EnglishTextTest {
 		assertEquals(4, text.words().size());
 	}
 
+	@Test
+	public void iesPostfix() throws Exception {
+		EnglishText text = new EnglishText("binary binaries");
+
+		text.printStatistic();
+
+		assertEquals("binary forms freq", 2, text.getWordFormsFrequance("binary"));
+
+		assertEquals(2, text.words().size());
+	}
+
+	@Test
+	public void versionWordForms() {
+		EnglishText text = new EnglishText(
+			"verified verifies " +
+			"verify --> [ subversion, versions, version ]"
+		);
+
+		text.printStatistic();
+
+		assertEquals("version forms freq", 3, text.getWordFormsFrequance("version"));
+	}
+
+	@Test @Ignore
+	public void serializeWordForms() {
+		EnglishText text = new EnglishText(
+			"serialize  --> [serialization] " +
+			"serialized --> [serializable, serializing]"
+		);
+
+		text.printStatistic();
+
+		assertEquals("serialize forms freq", 3, text.getWordFormsFrequance("version"));
+	}
 }

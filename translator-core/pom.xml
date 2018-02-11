@@ -18,5 +18,9 @@
             <groupId>com.github.bogdanovmn.httpclient</groupId>
             <artifactId>http-client-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
     </dependencies>
 </project>

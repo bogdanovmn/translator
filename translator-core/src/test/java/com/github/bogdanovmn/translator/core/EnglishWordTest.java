@@ -9,12 +9,12 @@ public class EnglishWordTest {
 	public void withPostfix() throws Exception {
 		assertTrue(
 			"Positive postfix",
-			new EnglishWord("xxxing").withPostfix()
+			new EnglishWord("xxxxxxing").withAnyPostfix()
 		);
 
 		assertFalse(
 			"Negative postfix",
-			new EnglishWord("xxx").withPostfix()
+			new EnglishWord("xxxxxx").withAnyPostfix()
 		);
 	}
 
@@ -22,12 +22,12 @@ public class EnglishWordTest {
 	public void withPrefix() throws Exception {
 		assertTrue(
 			"Positive prefix",
-			new EnglishWord("superxxx").withPrefix()
+			new EnglishWord("superxxxxxx").withAnyPrefix()
 		);
 
 		assertFalse(
 			"Negative prefix",
-			new EnglishWord("xxx").withPrefix()
+			new EnglishWord("xxxxxx").withAnyPrefix()
 		);
 	}
 
@@ -35,32 +35,32 @@ public class EnglishWordTest {
 	public void base() {
 		assertEquals(
 			"Prefix cut",
-				"xxx",
-				new EnglishWord("superxxx").base().toString()
+				"xxxxxx",
+				new EnglishWord("superxxxxxx").base().toString()
 		);
 
 		assertEquals(
 			"Postfix cut",
-			"xxx",
-			new EnglishWord("xxxing").base().toString()
+			"xxxxxx",
+			new EnglishWord("xxxxxxies").base().toString()
 		);
 
 		assertEquals(
 			"Prefix & postfix cut",
-			"xxx",
-			new EnglishWord("superxxxing").base().toString()
+			"xxxxxx",
+			new EnglishWord("superxxxxxxing").base().toString()
 		);
 
 		assertEquals(
 			"Prefix & postfix cut (several items)",
-			"xxx",
-			new EnglishWord("megasuperxxxlessing").base().toString()
+			"xxxxxx",
+			new EnglishWord("megasuperxxxxxxlessing").base().toString()
 		);
 
 		assertEquals(
 			"No cut",
-			"xxx",
-			new EnglishWord("xxx").base().toString()
+			"xxxxxx",
+			new EnglishWord("xxxxxx").base().toString()
 		);
 	}
 
