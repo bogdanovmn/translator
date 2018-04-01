@@ -1,0 +1,16 @@
+{{#layout}}
+
+{{#sources.0}}
+	<h1>Все источники</h1>
+{{/sources.0}}
+{{#sources}}
+	<div class="source">
+		{{name}} --- {{wordsCount}}
+	</div>
+{{/sources}}
+
+{{^sources}}
+	<h2>Нет источников</h2>
+{{/sources}}
+
+{{/layout}}

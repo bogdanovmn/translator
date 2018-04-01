@@ -1,5 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm;
 
+import org.springframework.util.StringUtils;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
@@ -23,13 +25,17 @@ public class Source extends BaseEntity {
 	public Source() {
 	}
 
+	public String getName() {
+		return this.toString();
+	}
+
 	@Override
 	public String toString() {
-		if (this.author != null && this.title != null) {
-			return String.format("%s - %s", this.author, this.title);
+		if (StringUtils.isEmpty(this.author) || StringUtils.isEmpty(this.title)) {
+			return this.rawName;
 		}
 		else {
-			return this.rawName;
+			return String.format("'%s' - '%s'", this.author, this.title);
 		}
 	}
 	public SourceType getType() {

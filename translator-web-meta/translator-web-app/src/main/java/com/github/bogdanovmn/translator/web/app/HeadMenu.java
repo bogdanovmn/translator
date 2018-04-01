@@ -7,6 +7,7 @@ class HeadMenu {
 	public enum ITEM {
 		REMEMBERED,
 		TO_REMEMBER,
+		SOURCES,
 		UPLOAD_BOOK,
 		EXPORT,
 		IMPORT,
@@ -43,8 +44,9 @@ class HeadMenu {
 	private void prepare() {
 		if (!this.isPrepared) {
 			this.items = new ArrayList<>(5);
-			this.items.add(new HeadMenuItem(ITEM.REMEMBERED.name(),  "/remembered"     , "Уже изучено"));
+			this.items.add(new HeadMenuItem(ITEM.REMEMBERED.name() , "/remembered"     , "Уже изучено"));
 			this.items.add(new HeadMenuItem(ITEM.TO_REMEMBER.name(), "/to-remember/all", "Изучить"));
+			this.items.add(new HeadMenuItem(ITEM.SOURCES.name()    , "/sources/all"    , "Источники"));
 			if (this.isAdmin) {
 				this.items.add(new HeadMenuItem(ITEM.UPLOAD_BOOK.name(), "/admin/upload-book", "Загрузить книгу"));
 				this.items.add(new HeadMenuItem(ITEM.EXPORT.name(), "/admin/export", "Экспорт"));

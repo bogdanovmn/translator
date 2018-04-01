@@ -35,7 +35,7 @@ public class UploadBookService {
 			throw new TranslateServiceUploadDuplicateException(
 				String.format(
 					"Такая книга уже загружена: %s (md5: %s)",
-						source.toString(),
+						source.getName(),
 						source.getContentHash()
 				)
 			);
