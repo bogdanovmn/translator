@@ -12,6 +12,13 @@ import java.util.Set;
 	name = "wordsWithTranslate",
 	attributeNodes = @NamedAttributeNode("translates")
 )
+@NamedNativeQueries({
+	@NamedNativeQuery(
+		name = "Word.toRemember",
+		resultClass = Word.class,
+		query = WordNativeQuery.TO_REMEMBER_WORDS
+	)
+})
 public class Word extends BaseEntityWithUniqueName {
 	private int frequence;
 	private int sourcesCount;

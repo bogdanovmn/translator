@@ -2,8 +2,8 @@ package com.github.bogdanovmn.translator.web.app.config.security;
 
 
 import com.github.bogdanovmn.translator.web.orm.User;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TranslateSecurityService {
-	private static final Logger LOG = LogManager.getLogger(TranslateSecurityService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(TranslateSecurityService.class);
 
 	private final AuthenticationManager authenticationManager;
 	private final UserDetailsService userDetailsService;

@@ -9,7 +9,14 @@
 {{#words}}
 	<div>
 		<div id="word-{{id}}" class=word-to-remember-block>
-			<div class=stats>{{frequence}} упоминаний / {{sourcesCount}} источников</div>
+			<div class=stats>
+				{{#source}}
+					{{count}} упоминаний
+				{{/source}}
+				{{^source}}
+					{{frequence}} упоминаний / {{sourcesCount}} источников
+				{{/source}}
+			</div>
 			<div class="word">
 				{{name}}
 				<br>

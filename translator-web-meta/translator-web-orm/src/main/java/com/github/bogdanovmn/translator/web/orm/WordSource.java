@@ -6,6 +6,13 @@ import javax.xml.bind.annotation.XmlIDREF;
 
 @Entity
 @Table(name = "word2source")
+@NamedNativeQueries({
+	@NamedNativeQuery(
+		name = "WordSource.toRemember",
+		resultClass = WordSource.class,
+		query = WordSourceNativeQuery.TO_REMEMBER_WORDS_BY_SOURCE
+	)
+})
 public class WordSource extends BaseEntity {
 	private Integer count;
 

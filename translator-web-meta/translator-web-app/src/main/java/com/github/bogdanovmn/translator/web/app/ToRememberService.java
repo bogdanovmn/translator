@@ -31,27 +31,26 @@ public class ToRememberService {
 	@Autowired
 	private TranslateRepository translateRepository;
 	@Autowired
-	private UserRepository userRepository;
-	@Autowired
 	private SourceRepository sourceRepository;
+	@Autowired
+	private WordSourceRepository wordSourceRepository;
 
 	private User getUser() {
 		return securityService.getLoggedInUser();
 	}
 
 	List<Word> getAll() {
-		return this.userRememberedWordRepository.getAll(this.getUser().getId());
+		return this.wordRepository.toRemember(this.getUser().getId());
 	}
 
-	WordsToRemeberBySource getAllBySource(Integer sourceId) {
-		List<Word> words = this.userRememberedWordRepository.getAllBySource(
-			this.getUser().getId(),
-			sourceId
-		);
+	WordsToRememberBySource getAllBySource(Integer sourceId) {
 		Source source = this.sourceRepository.getOne(sourceId);
+		List<WordSource> wordSources = this.wordSourceRepository.toRemember(
+			this.getUser().getId(), source.getId()
+		);
 
-		return new WordsToRemeberBySource(
-			words, source
+		return new WordsToRememberBySource(
+			wordSources, source
 		);
 	}
 

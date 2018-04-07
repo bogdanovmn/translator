@@ -11,18 +11,6 @@ import java.util.Date;
 		)
 	}
 )
-@NamedNativeQueries({
-	@NamedNativeQuery(
-		name = "UserRememberedWord.getAll",
-		resultClass = Word.class,
-		query = UserRememberedWordsNativeQuery.TO_REMEMBER_WORDS
-	),
-	@NamedNativeQuery(
-		name = "UserRememberedWord.getAllBySource",
-		resultClass = Word.class,
-		query = UserRememberedWordsNativeQuery.TO_REMEMBER_WORDS_BY_SOURCE
-	)
-})
 public class UserRememberedWord extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
