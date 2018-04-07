@@ -10,4 +10,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	User findFirstByEmail(String email);
 
 	List<Word> getWordsToRemember(Integer userId);
+	List<Word> getWordsToRememberBySource(Integer userId, Integer sourceId);
 }

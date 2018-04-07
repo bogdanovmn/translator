@@ -35,7 +35,7 @@ public class Source extends BaseEntity {
 			return this.rawName;
 		}
 		else {
-			return String.format("'%s' - '%s'", this.author, this.title);
+			return String.format("%s - %s", this.author, this.title);
 		}
 	}
 	public SourceType getType() {

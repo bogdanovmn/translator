@@ -32,16 +32,30 @@ public class ToRememberService {
 	private TranslateRepository translateRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private SourceRepository sourceRepository;
 
 	private User getUser() {
 		return securityService.getLoggedInUser();
 	}
 
-	public List<Word> getAll() {
+	List<Word> getAll() {
 		return this.userRepository.getWordsToRemember(this.getUser().getId());
 	}
 
-	public void rememberWord(Integer wordId) {
+	WordsToRemeberBySource getAllBySource(Integer sourceId) {
+		List<Word> words = this.userRepository.getWordsToRememberBySource(
+			this.getUser().getId(),
+			sourceId
+		);
+		Source source = this.sourceRepository.getOne(sourceId);
+
+		return new WordsToRemeberBySource(
+			words, source
+		);
+	}
+
+	void rememberWord(Integer wordId) {
 		if (null == this.userRememberedWordRepository.findFirstByUserAndWordId(this.getUser(), wordId)) {
 			this.userRememberedWordRepository.save(
 				new UserRememberedWord()
@@ -52,7 +66,7 @@ public class ToRememberService {
 		}
 	}
 
-	public void holdOverWord(Integer wordId) {
+	void holdOverWord(Integer wordId) {
 		if (null == this.userHoldOverWordRepository.findFirstByUserAndWordId(this.getUser(), wordId)) {
 			this.userHoldOverWordRepository.save(
 				new UserHoldOverWord()
@@ -63,7 +77,7 @@ public class ToRememberService {
 		}
 	}
 
-	public String translateWord(Integer wordId) throws TranslateServiceException, IOException {
+	String translateWord(Integer wordId) throws TranslateServiceException, IOException {
 		Word word = this.wordRepository.findOne(wordId);
 
 		if (word == null) {
@@ -101,7 +115,7 @@ public class ToRememberService {
 		return translates.stream().collect(Collectors.joining(", "));
 	}
 
-	public void blackListWord(Integer wordId) {
+	void blackListWord(Integer wordId) {
 		Word word = this.wordRepository.findOne(wordId);
 		if (word != null) {
 			this.wordRepository.save(

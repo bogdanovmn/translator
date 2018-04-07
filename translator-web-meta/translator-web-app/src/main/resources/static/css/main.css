@@ -25,6 +25,7 @@ form table    { margin: 0 auto; }
 form table td { padding: 10px; }
 
 a.logout { text-decoration: none; font-weight: bold; color: #a11e0d; }
+a.button { text-decoration: none }
 
 div.error { border-radius: 10px; border: 1px solid #d47d7d; background: #f5cccc; text-align: center; color: #4c260b; padding: 10px 30px; }
 

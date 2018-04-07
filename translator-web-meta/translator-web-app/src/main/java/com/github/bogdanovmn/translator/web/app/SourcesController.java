@@ -20,7 +20,7 @@ public class SourcesController extends AbstractVisualController {
 
 	@Override
 	protected HeadMenu.ITEM currentMenuItem() {
-		return HeadMenu.ITEM.TO_REMEMBER;
+		return HeadMenu.ITEM.SOURCES;
 	}
 
 	@GetMapping("/all")
