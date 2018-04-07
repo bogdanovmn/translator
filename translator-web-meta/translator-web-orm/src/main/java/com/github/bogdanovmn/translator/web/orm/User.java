@@ -5,18 +5,6 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@NamedNativeQueries({
-	@NamedNativeQuery(
-		name = "User.getWordsToRemember",
-		resultClass = Word.class,
-		query = UserNativeQuery.TO_REMEMBER_WORDS
-	),
-	@NamedNativeQuery(
-		name = "User.getWordsToRememberBySource",
-		resultClass = Word.class,
-		query = UserNativeQuery.TO_REMEMBER_WORDS_BY_SOURCE
-	)
-})
 public class User extends BaseEntityWithUniqueName {
 	@Column(unique = true, nullable = false)
 	private String email;

@@ -40,11 +40,11 @@ public class ToRememberService {
 	}
 
 	List<Word> getAll() {
-		return this.userRepository.getWordsToRemember(this.getUser().getId());
+		return this.userRememberedWordRepository.getAll(this.getUser().getId());
 	}
 
 	WordsToRemeberBySource getAllBySource(Integer sourceId) {
-		List<Word> words = this.userRepository.getWordsToRememberBySource(
+		List<Word> words = this.userRememberedWordRepository.getAllBySource(
 			this.getUser().getId(),
 			sourceId
 		);

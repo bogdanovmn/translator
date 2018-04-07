@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.orm;
 
-class UserNativeQuery {
+class UserRememberedWordsNativeQuery {
 	private static final String TO_REMEMBER_WORDS_RARE =
 		"select w.*"
 			+ " from  word w"
