@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-
 @Controller
 @RequestMapping("/sources")
 public class SourcesController extends AbstractVisualController {
@@ -27,9 +25,10 @@ public class SourcesController extends AbstractVisualController {
 	public ModelAndView listAll() {
 		return new ModelAndView(
 			"sources",
-			new HashMap<String, Object>() {{
-				put("sources", sourcesService.getAll());
-			}}
+			"sources",
+			sourcesService.getAll(
+				this.getUser()
+			)
 		);
 	}
 }

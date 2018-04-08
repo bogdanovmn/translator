@@ -5,12 +5,12 @@
 {{/sources.0}}
 {{#sources}}
 	<div class=word-to-remember-block>
-		<div class=stats>{{rememberedCount}} из {{wordsCount}} слов изучено</div>
+		<div class=stats>{{rememberedCount}} из {{source.wordsCount}} слов изучено</div>
 		<div class="word">
-			{{name}}
+			{{source.name}}
 		</div>
 
-		<a class=button href="/to-remember/source/{{id}}">
+		<a class=button href="/to-remember/source/{{source.id}}">
 			<div class="button">Изучать</div>
 		</a>
 	</div>

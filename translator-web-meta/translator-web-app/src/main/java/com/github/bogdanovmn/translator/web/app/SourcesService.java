@@ -1,7 +1,8 @@
 package com.github.bogdanovmn.translator.web.app;
 
-import com.github.bogdanovmn.translator.web.orm.Source;
 import com.github.bogdanovmn.translator.web.orm.SourceRepository;
+import com.github.bogdanovmn.translator.web.orm.SourceWithUserStatistic;
+import com.github.bogdanovmn.translator.web.orm.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,8 @@ class SourcesService {
 		this.sourceRepository = sourceRepository;
 	}
 
-	List<Source> getAll() {
-		return this.sourceRepository.findAll();
+	List<SourceWithUserStatistic> getAll(User user) {
+		return this.sourceRepository.getAllWithUserStatistic(user.getId());
 	}
+
 }
