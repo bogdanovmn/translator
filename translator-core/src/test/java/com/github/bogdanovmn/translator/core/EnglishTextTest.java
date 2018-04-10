@@ -8,6 +8,18 @@ import static org.junit.Assert.assertEquals;
 
 public class EnglishTextTest {
 	@Test
+	public void wordWrap() {
+		EnglishText text = new EnglishText(
+			"bla bla bla execu-\n tion "
+		);
+
+		text.printStatistic();
+
+		assertEquals("execu forms freq"    , 0, text.getWordFormsFrequance("execu"));
+		assertEquals("tion forms freq"     , 0, text.getWordFormsFrequance("tion"));
+		assertEquals("execution forms freq", 1, text.getWordFormsFrequance("execution"));
+	}
+	@Test
 	public void getWordFormsFrequance() throws Exception {
 		EnglishText text = new EnglishText(
 			"question questioning questions " +

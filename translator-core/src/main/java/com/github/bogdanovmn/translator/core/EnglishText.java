@@ -19,7 +19,8 @@ public class EnglishText {
 
 	private void parse() {
 		if (!this.isAlreadyParsed) {
-			for (String token : this.text.split("(\\W|\\d)+")) {
+			String[] tokens = this.joinWraps(this.text.split("[^a-zA-Z-]+"));
+			for (String token : tokens) {
 				for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("_")) {
 					if (
 						(normalizedToken.length() < 3)
@@ -42,10 +43,20 @@ public class EnglishText {
 						this.words.getOrDefault(normalizedToken, 0) + 1
 					);
 				}
-				this.normalizedWords = new NormalizedWords(this.words.keySet());
 			}
+			this.normalizedWords = new NormalizedWords(this.words.keySet());
 			this.isAlreadyParsed = true;
 		}
+	}
+
+	private String[] joinWraps(String[] tokens) {
+		for (int i = 0; i < tokens.length; i++) {
+			if (tokens[i].endsWith("-") && i < (tokens.length - 1)) {
+				tokens[i] = tokens[i].replaceFirst("-*$", "") + tokens[i + 1];
+				tokens[i + 1] = "";
+			}
+		}
+		return tokens;
 	}
 
 	public Set<String> words() {
@@ -81,14 +92,14 @@ public class EnglishText {
 	public void printStatistic() {
 		this.parse();
 
-//		System.out.println("---- Statistic ----");
-//		this.printTokens(this.words);
+		System.out.println("---- Statistic ----");
+		this.printTokens(this.words);
 
 		System.out.println("---- Word forms ----");
 		this.normalizedWords.printWordsWithForms();
 
-//		System.out.println("---- Ignore statistic ----");
-//		this.printTokens(this.ignoreTokens);
+		System.out.println("---- Ignore statistic ----");
+		this.printTokens(this.ignoreTokens);
 
 		System.out.println(
 			String.format(
