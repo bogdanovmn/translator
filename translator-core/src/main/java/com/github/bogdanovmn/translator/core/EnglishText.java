@@ -21,7 +21,7 @@ public class EnglishText {
 		if (!this.isAlreadyParsed) {
 			String[] tokens = this.joinWraps(this.text.split("[^a-zA-Z-]+"));
 			for (String token : tokens) {
-				for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("_")) {
+				for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("_|-")) {
 					if (
 						(normalizedToken.length() < 3)
 							||
