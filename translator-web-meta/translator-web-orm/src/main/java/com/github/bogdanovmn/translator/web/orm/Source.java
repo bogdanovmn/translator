@@ -8,6 +8,32 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.util.Set;
 
 @Entity
+@NamedNativeQuery(
+	name = "Source.getAllWithUserStatistic",
+	resultSetMapping = "SourceMapping.withUserStatistic",
+	query =
+		"SELECT s.id, s.raw_name, s.author, s.title, s.words_count, COUNT(urw.word_id) user_words_remembered_count " +
+			"FROM source s " +
+			"JOIN word2source ws ON ws.source_id = s.id " +
+			"LEFT JOIN user_remembered_word urw ON ws.word_id = urw.word_id AND urw.user_id = ?1 " +
+			"GROUP BY s.id"
+)
+@SqlResultSetMapping(
+	name = "SourceMapping.withUserStatistic",
+	classes = {
+		@ConstructorResult(
+			targetClass = SourceWithUserStatistic.class,
+			columns = {
+				@ColumnResult(name = "id", type = Integer.class),
+				@ColumnResult(name = "raw_name"),
+				@ColumnResult(name = "author"),
+				@ColumnResult(name = "title"),
+				@ColumnResult(name = "words_count", type = Integer.class),
+				@ColumnResult(name = "user_words_remembered_count", type = Integer.class)
+			}
+		)
+	}
+)
 public class Source extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private SourceType type;
@@ -23,6 +49,10 @@ public class Source extends BaseEntity {
 	private Set<WordSource> wordSources;
 
 	public Source() {
+	}
+
+	public Source(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
