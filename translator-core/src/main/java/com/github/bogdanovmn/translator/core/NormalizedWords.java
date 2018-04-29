@@ -8,11 +8,11 @@ import java.util.*;
 public class NormalizedWords {
 	private static final Logger LOG = LoggerFactory.getLogger(NormalizedWords.class);
 
-	private final Collection<String> words;
+	private final Set<String> words;
 	private final Map<String, Set<String>> map = new HashMap<>();
 	private boolean isPrepared = false;
 
-	public NormalizedWords(Collection<String> words) {
+	public NormalizedWords(Set<String> words) {
 		this.words = words;
 	}
 
@@ -25,23 +25,31 @@ public class NormalizedWords {
 		if (!this.isPrepared) {
 			this.isPrepared = true;
 
-			Set<EnglishWord> normalWords = new HashSet<>();
-			Set<EnglishWord> formWords = new HashSet<>();
+			final List<EnglishWord> normalWords = new ArrayList<>();
+			final Set<EnglishWord> formWords = new HashSet<>();
 
-			for (String wordString : this.words) {
-				EnglishWord word = new EnglishWord(wordString);
-				if (word.withAnyPrefix() || word.withAnyPostfix()) {
-					formWords.add(word);
+			words.stream()
+				.sorted(Comparator.comparing(String::length))
+				.map(EnglishWord::new)
+				.forEach(word -> {
+					if (word.withAnyPrefix() || word.withAnyPostfix()) {
+						LOG.debug("word '{}' is form", word);
+						formWords.add(word);
+					}
+					else {
+						LOG.debug("word '{}' is normal", word);
+						normalWords.add(word);
+					}
 				}
-				else {
-					normalWords.add(word);
-				}
-			}
+			);
 
 			for (EnglishWord word : normalWords) {
 				this.map.put(word.toString(), new HashSet<>());
-				for (EnglishWord wordForm : word.posibleForms()) {
+
+				for (EnglishWord wordForm : word.possibleForms()) {
 					if (formWords.contains(wordForm)) {
+						LOG.debug("possible form '{}' match", wordForm);
+
 						this.map.get(word.toString())
 							.add(wordForm.toString());
 						formWords.remove(wordForm);
@@ -61,6 +69,7 @@ public class NormalizedWords {
 				if (!wordBase.toString().endsWith("e")) {
 					EnglishWord alternativeWordBase = new EnglishWord(wordBase.toString() + "e");
 					if (normalWords.contains(alternativeWordBase)) {
+						LOG.debug("alternative form base '{}' match with normal word;");
 						wordBase = alternativeWordBase;
 					}
 				}
@@ -70,17 +79,22 @@ public class NormalizedWords {
 					x -> new HashSet<>()
 				).add(wordForm.toString());
 			}
-			for (Set<String> f : forms.values()) {
-				String shortest = f.stream()
-					.sorted(
-						Comparator.comparing(String::length)
-					)
-					.findFirst()
-					.get();
 
-				f.remove(shortest);
-				this.map.put(shortest, f);
-			}
+			forms.forEach(
+				(baseWord, childs) -> {
+					if (this.map.containsKey(baseWord)) {
+						map.get(baseWord).addAll(childs);
+					}
+					else {
+						String shortest = childs.stream()
+							.min(
+								Comparator.comparing(String::length)
+							)
+							.get();
+						childs.remove(shortest);
+						map.put(shortest, childs);
+					}
+			});
 		}
 	}
 

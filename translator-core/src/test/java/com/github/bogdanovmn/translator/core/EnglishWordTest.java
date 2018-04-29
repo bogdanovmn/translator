@@ -67,7 +67,7 @@ public class EnglishWordTest {
 	@Test
 	public void posibleForms() {
 		assertTrue(
-			new EnglishWord("xxxe").posibleForms().contains(new EnglishWord("xxxing"))
+			new EnglishWord("xxxe").possibleForms().contains(new EnglishWord("xxxing"))
 		);
 	}
 }

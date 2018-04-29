@@ -16,6 +16,11 @@
         <word name="unit" ref="152"/>
         <word name="simple" ref="153"/>
     </words>
+    <wordForms>
+		<form name="files" wid="159"/>
+		<form name="simplify" wid="153"/>
+		<form name="simpled" wid="153"/>
+	</wordForms>
     <translates>
         <translate pid="1" value="файл" wid="159" ref="1"/>
         <translate pid="1" value="шаблон" wid="150" ref="2"/>

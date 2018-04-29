@@ -19,7 +19,7 @@ class WordsNormalizeService {
 		NormalizedWords normalizedWords = new NormalizedWords(
 			words.stream()
 				.map(Word::getName)
-				.collect(Collectors.toList())
+				.collect(Collectors.toSet())
 		);
 
 		normalizedWords.printWordsWithForms();
