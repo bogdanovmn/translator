@@ -21,7 +21,7 @@ public class NormalizedWords {
 		return this.map.keySet();
 	}
 
-	private void prepare() {
+	private synchronized void prepare() {
 		if (!this.isPrepared) {
 			this.isPrepared = true;
 

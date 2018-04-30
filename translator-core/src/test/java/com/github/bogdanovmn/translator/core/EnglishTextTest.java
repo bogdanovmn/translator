@@ -131,6 +131,6 @@ public class EnglishTextTest {
 
 		text.printStatistic();
 
-		assertEquals("var forms freq", 1, text.getWordFormsFrequance("var"));
+		assertEquals("var forms freq", 0, text.getWordFormsFrequance("var"));
 	}
 }

@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 class EnglishWord {
 	private static final Logger LOG = LoggerFactory.getLogger(EnglishWord.class);
 
-	private final static int MIN_BASE_LENGTH = 4;
+	public final static int MIN_BASE_LENGTH = 4;
 	private final static List<String> POSTFIXES = Stream.of(
 		"s", "es", "ies", "ing",
 		"ed", "d",

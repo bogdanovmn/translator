@@ -14,8 +14,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.github.bogdanovmn.translator.web.orm")
 @EntityScan(basePackages = "com.github.bogdanovmn.translator.web.orm")
 public class App implements CommandLineRunner {
+	private final WordsNormalizeService wordsNormalizeService;
+
 	@Autowired
-	private WordsNormalizeService wordsNormalizeService;
+	public App(WordsNormalizeService wordsNormalizeService) {
+		this.wordsNormalizeService = wordsNormalizeService;
+	}
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication app = new SpringApplication(App.class);
@@ -28,8 +32,8 @@ public class App implements CommandLineRunner {
 		throws Exception
 	{
 		new CmdLineAppBuilder(args)
-			.withJarName("words-normilize")
-			.withDescription("Words normilize CLI")
+			.withJarName("words-normalize")
+			.withDescription("Words normalize CLI")
 			.withEntryPoint(
 				cmdLine -> {
 					wordsNormalizeService.normalize();
