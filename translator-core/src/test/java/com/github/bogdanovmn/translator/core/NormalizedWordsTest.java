@@ -13,18 +13,20 @@ public class NormalizedWordsTest {
 	@Ignore
 	public void get() throws Exception {
 		NormalizedWords normalizedWords = new NormalizedWords(
-			Arrays.asList(
-//				"question", "questioning", "questions",
-//				"talk", "talks", "talking", "talked",
-//
-//				"connect", "reconnect",
-//				"system", "subsystem",
-//
-//				"someWord",
-//
-//				"abced", "abcing",
+			new HashSet<>(
+				Arrays.asList(
+	//				"question", "questioning", "questions",
+	//				"talk", "talks", "talking", "talked",
+	//
+	//				"connect", "reconnect",
+	//				"system", "subsystem",
+	//
+	//				"someWord",
+	//
+	//				"abced", "abcing",
 
-				"allocated", "unallocated", "allocate", "allocates", "allocation", "allocations"
+					"allocated", "unallocated", "allocate", "allocates", "allocation", "allocations"
+				)
 			)
 		);
 

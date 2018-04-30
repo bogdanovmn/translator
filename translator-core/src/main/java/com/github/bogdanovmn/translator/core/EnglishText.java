@@ -23,7 +23,7 @@ public class EnglishText {
 			for (String token : tokens) {
 				for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("_|-")) {
 					if (
-						(normalizedToken.length() < 3)
+						(normalizedToken.length() < EnglishWord.MIN_BASE_LENGTH)
 							||
 							(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{3}.*"))
 							||

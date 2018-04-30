@@ -108,6 +108,29 @@ public class EnglishTextTest {
 
 		text.printStatistic();
 
-		assertEquals("serialize forms freq", 3, text.getWordFormsFrequance("version"));
+		assertEquals("serialize forms freq", 3, text.getWordFormsFrequance("serialize"));
+	}
+
+	@Test
+	public void transformWordForms() {
+		EnglishText text = new EnglishText(
+			"transform --> [transforming] " +
+				"transformation --> [transformations]"
+		);
+
+		text.printStatistic();
+
+		assertEquals("transform forms freq", 4, text.getWordFormsFrequance("transform"));
+	}
+
+	@Test
+	public void smallBaseWordForms() {
+		EnglishText text = new EnglishText(
+			"var  --> [varies] "
+		);
+
+		text.printStatistic();
+
+		assertEquals("var forms freq", 0, text.getWordFormsFrequance("var"));
 	}
 }

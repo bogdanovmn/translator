@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,13 +13,13 @@ import java.util.stream.Stream;
 class EnglishWord {
 	private static final Logger LOG = LoggerFactory.getLogger(EnglishWord.class);
 
-	private final static int MIN_BASE_LENGTH = 4;
+	public final static int MIN_BASE_LENGTH = 4;
 	private final static List<String> POSTFIXES = Stream.of(
 		"s", "es", "ies", "ing",
 		"ed", "d",
 		"er", "or", "ar",
 		"ess",
-		"ment", "age", "ure", "dom", "sion", "tion", "ization",
+		"ment", "age", "ure", "dom", "sion", "tion", "ation", "ization",
 		"hood", "ship",
 		"ness", "less",
 		"th",
@@ -81,7 +82,11 @@ class EnglishWord {
 			&& this.value.startsWith(prefix);
 	}
 
-	List<EnglishWord> posibleForms() {
+	List<EnglishWord> possibleForms() {
+		if (this.value.length() < MIN_BASE_LENGTH) {
+			return Collections.emptyList();
+		}
+
 		boolean endsWithE = this.value.endsWith("e");
 		String valueWithoutE = this.value.substring(0, this.value.length() - 1);
 
