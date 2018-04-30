@@ -58,4 +58,9 @@ public class WordSource extends BaseEntity {
 		this.source = source;
 		return this;
 	}
+
+	public WordSource incCount(Integer incValue) {
+		count += incValue;
+		return this;
+	}
 }

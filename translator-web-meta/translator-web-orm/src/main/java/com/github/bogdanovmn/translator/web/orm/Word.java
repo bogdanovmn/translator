@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -103,5 +104,10 @@ public class Word extends BaseEntityWithUniqueName {
 	public Word incFrequence(int incValue) {
 		this.frequence += incValue;
 		return this;
+	}
+
+	public void addWordSources(Collection<WordSource> sources) {
+		wordSources.addAll(sources);
+		sourcesCount += sources.size();
 	}
 }

@@ -32,7 +32,7 @@ public class App implements CommandLineRunner {
 			.withDescription("Words normilize CLI")
 			.withEntryPoint(
 				cmdLine -> {
-					wordsNormalizeService.dry();
+					wordsNormalizeService.normalize();
 				}
 			).build().run();
 	}
