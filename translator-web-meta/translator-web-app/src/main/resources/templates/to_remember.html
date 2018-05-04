@@ -43,7 +43,13 @@
 
 {{#words.0}}
 	<div class="to-remember-note-block">
-		Осталось изучить <b>{{toRememberCount}}</b> слов. Уже изучено: <b>{{rememberedCount}}</b>
+		Осталось изучить
+		{{#source}}
+			<b>{{source.wordsCount}}</b> слов. Уже изучено: {{userCount}}<b></b>
+		{{/source}}
+		{{^source}}
+			<b>{{toRememberCount}}</b> слов. Уже изучено: <b>{{rememberedCount}}</b>
+		{{/source}}
 	</div>
 {{/words.0}}
 

@@ -11,10 +11,12 @@ import java.util.stream.Collectors;
 class WordsToRememberBySource {
 	private final List<WordSource> wordSources;
 	private final Source source;
+	private final Long userCount;
 
-	WordsToRememberBySource(List<WordSource> wordSources, Source source) {
+	WordsToRememberBySource(List<WordSource> wordSources, Source source, Long userCount) {
 		this.wordSources = wordSources;
 		this.source = source;
+		this.userCount = userCount;
 	}
 
 	Map<String, Object> toView() {
@@ -32,6 +34,7 @@ class WordsToRememberBySource {
 					.collect(Collectors.toList())
 			);
 			put("source", source);
+			put("userCount", userCount);
 		}};
 	}
 

@@ -50,7 +50,9 @@ public class ToRememberService {
 		);
 
 		return new WordsToRememberBySource(
-			wordSources, source
+			wordSources,
+			source,
+			this.userRememberedWordRepository.getCountBySource(this.getUser().getId(), sourceId)
 		);
 	}
 
