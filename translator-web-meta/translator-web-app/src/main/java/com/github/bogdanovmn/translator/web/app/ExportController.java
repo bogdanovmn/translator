@@ -13,8 +13,12 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/admin/export")
 public class ExportController extends AbstractController {
+	private final ExportService exportService;
+
 	@Autowired
-	private ExportService exportService;
+	public ExportController(ExportService exportService) {
+		this.exportService = exportService;
+	}
 
 	@GetMapping
 	public void export(HttpServletResponse response)

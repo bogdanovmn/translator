@@ -1,13 +1,13 @@
 package com.github.bogdanovmn.translator.web.app;
 
-public class HeadMenuItem {
+public class MenuItem {
 	private final String id;
 	private final String url;
 	private final String title;
 	private final boolean admin;
 	private boolean selected = false;
 	
-	public HeadMenuItem(String id, String url, String title) {
+	public MenuItem(String id, String url, String title) {
 		this.id    = id;
 		this.url   = url;
 		this.title = title;

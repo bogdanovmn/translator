@@ -4,7 +4,10 @@ import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateExce
 import com.github.bogdanovmn.translator.web.orm.Source;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -14,8 +17,7 @@ import java.util.HashMap;
 
 
 @Controller
-@RequestMapping("/admin/upload-book")
-public class UploadBookController extends AbstractVisualController {
+public class UploadBookController extends AbstractVisualAdminController {
 	private final UploadBookService uploadBookService;
 
 	@Autowired
@@ -24,11 +26,11 @@ public class UploadBookController extends AbstractVisualController {
 	}
 
 	@Override
-	protected HeadMenu.ITEM currentMenuItem() {
-		return HeadMenu.ITEM.UPLOAD_BOOK;
+	protected AdminMenu.ITEM currentAdminMenuItem() {
+		return AdminMenu.ITEM.UPLOAD_BOOK;
 	}
 
-	@PostMapping
+	@PostMapping("/upload-book")
 	public String upload(
 		@RequestParam("file") MultipartFile file,
    		RedirectAttributes redirectAttributes
@@ -49,7 +51,7 @@ public class UploadBookController extends AbstractVisualController {
 		return "redirect:/admin/upload-book";
 	}
 
-	@GetMapping
+	@GetMapping("/upload-book")
 	public ModelAndView form(
 		@RequestHeader(name = "referer", required = false) String referer)
 	{

@@ -4,7 +4,7 @@ table{width:auto;table-layout:fixed;border-collapse:collapse;text-align:left}
 div.main { width: 1000px; margin: 0 auto; text-align: center; }
 
 #top_menu { position: static; font-size: 100%; }
-	#links     { float: left;  width: 70%; background: #ddd; padding: 5px; text-align: left;}
+	.links     { float: left;  width: 70%; background: #ddd; padding: 5px; text-align: left;}
 	#user_info { padding: 5px; width: 30%; background: #ddd; margin-left: 70%; text-align: right;}
 
 #mid_area { width: 100%; }
@@ -12,6 +12,8 @@ div.main { width: 1000px; margin: 0 auto; text-align: center; }
 	#data_area { width: 90%; margin: auto; padding: 0 10px; }
 
 #top_menu a { text-decoration: none; }
+
+#admin_menu a { text-decoration: none; font-size: 85% }
 
 div.filter               { font-size: 13px; }
 div.filter b             { color: gray; }

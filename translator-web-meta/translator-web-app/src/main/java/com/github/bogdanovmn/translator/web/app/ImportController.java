@@ -2,7 +2,10 @@ package com.github.bogdanovmn.translator.web.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -13,17 +16,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/admin/import")
-public class ImportController extends AbstractVisualController {
-	@Autowired
-	private ExportService exportService;
+public class ImportController extends AbstractVisualAdminController {
+	private final ExportService exportService;
 
-	@Override
-	protected HeadMenu.ITEM currentMenuItem() {
-		return HeadMenu.ITEM.IMPORT;
+	@Autowired
+	public ImportController(ExportService exportService) {
+		this.exportService = exportService;
 	}
 
-	@PostMapping
+	@Override
+	protected AdminMenu.ITEM currentAdminMenuItem() {
+		return AdminMenu.ITEM.IMPORT;
+	}
+
+	@PostMapping("/import")
 	public String importFromFile(
 		@RequestParam("file") MultipartFile file,
 		RedirectAttributes redirectAttributes
@@ -42,7 +48,7 @@ public class ImportController extends AbstractVisualController {
 	}
 
 
-	@GetMapping
+	@GetMapping("/import")
 	public ModelAndView form(
 		@RequestHeader(name = "referer", required = false) String referer
 	) {
