@@ -10,7 +10,8 @@ public class EnglishTextTest {
 	@Test
 	public void wordWrap() {
 		EnglishText text = new EnglishText(
-			"bla groovy-lang bla bla execu-\n tion "
+			"bla groovy-lang bla bla execu-\ntion " +
+				"proce‐ dure"
 		);
 
 		text.printStatistic();
@@ -21,6 +22,8 @@ public class EnglishTextTest {
 		assertEquals("groovy-lang forms freq", 0, text.getWordFormsFrequance("groovy-lang"));
 		assertEquals("groovy forms freq"     , 1, text.getWordFormsFrequance("groovy"));
 		assertEquals("lang forms freq"       , 1, text.getWordFormsFrequance("lang"));
+		assertEquals("proce forms freq"      , 0, text.getWordFormsFrequance("proce"));
+		assertEquals("procedure forms freq"  , 1, text.getWordFormsFrequance("procedure"));
 	}
 	@Test
 	public void getWordFormsFrequance() throws Exception {

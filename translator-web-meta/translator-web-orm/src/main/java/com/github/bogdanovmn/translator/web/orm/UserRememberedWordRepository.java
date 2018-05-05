@@ -11,6 +11,8 @@ public interface UserRememberedWordRepository extends JpaRepository<UserRemember
 
 	Long removeAllByUser(User user);
 
+	void removeAllByWord(Word word);
+
 	@Query(
 		nativeQuery = true,
 		value =

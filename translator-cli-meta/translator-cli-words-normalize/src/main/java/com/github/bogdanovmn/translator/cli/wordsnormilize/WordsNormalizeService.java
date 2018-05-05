@@ -1,10 +1,7 @@
 package com.github.bogdanovmn.translator.cli.wordsnormilize;
 
 import com.github.bogdanovmn.translator.core.NormalizedWords;
-import com.github.bogdanovmn.translator.web.orm.Word;
-import com.github.bogdanovmn.translator.web.orm.WordRepository;
-import com.github.bogdanovmn.translator.web.orm.WordSource;
-import com.github.bogdanovmn.translator.web.orm.WordSourceRepository;
+import com.github.bogdanovmn.translator.web.orm.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +19,20 @@ class WordsNormalizeService {
 
 	private final WordRepository wordRepository;
 	private final WordSourceRepository wordSourceRepository;
+	private final UserRememberedWordRepository userRememberedWordRepository;
+	private final UserHoldOverWordRepository userHoldOverWordRepository;
 
 	@Autowired
-	WordsNormalizeService(WordRepository wordRepository, WordSourceRepository wordSourceRepository) {
+	WordsNormalizeService(
+		WordRepository wordRepository,
+		WordSourceRepository wordSourceRepository,
+		UserRememberedWordRepository userRememberedWordRepository,
+		UserHoldOverWordRepository userHoldOverWordRepository)
+	{
 		this.wordRepository = wordRepository;
 		this.wordSourceRepository = wordSourceRepository;
+		this.userRememberedWordRepository = userRememberedWordRepository;
+		this.userHoldOverWordRepository = userHoldOverWordRepository;
 	}
 
 	void dry() {
@@ -40,8 +46,8 @@ class WordsNormalizeService {
 		normalizedWords.printWordsWithForms();
 	}
 
-	@Transactional
-	synchronized void normalize() {
+	@Transactional(rollbackFor = Exception.class)
+	public synchronized void normalize() {
 		LOG.info("Start normalize process");
 
 		Map<String, Word> wordsMap = this.wordRepository.getAllByBlackListFalse().stream()
@@ -70,6 +76,7 @@ class WordsNormalizeService {
 
 					normalWord.incFrequence(formWord.getFrequence());
 					mergeSources(normalWord, formSources);
+					userRememberedWordRepository.removeAllByWord(formWord);
 					wordRepository.delete(formWord);
 				}
 				wordRepository.save(normalWord);

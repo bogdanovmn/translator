@@ -69,7 +69,7 @@ public class NormalizedWords {
 				if (!wordBase.toString().endsWith("e")) {
 					EnglishWord alternativeWordBase = new EnglishWord(wordBase.toString() + "e");
 					if (normalWords.contains(alternativeWordBase)) {
-						LOG.debug("alternative form base '{}' match with normal word;");
+						LOG.debug("alternative form base '{}' match with normal word", alternativeWordBase);
 						wordBase = alternativeWordBase;
 					}
 				}
