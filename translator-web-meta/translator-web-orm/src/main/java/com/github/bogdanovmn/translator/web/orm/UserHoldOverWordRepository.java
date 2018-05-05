@@ -7,4 +7,7 @@ public interface UserHoldOverWordRepository extends JpaRepository<UserHoldOverWo
 	UserHoldOverWord findFirstByUserAndWordId(User user, Integer wordId);
 
 	Long removeAllByUser(User user);
+
+	void removeAllByWord(Word word);
+
 }

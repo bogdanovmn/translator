@@ -77,6 +77,7 @@ class WordsNormalizeService {
 					normalWord.incFrequence(formWord.getFrequence());
 					mergeSources(normalWord, formSources);
 					userRememberedWordRepository.removeAllByWord(formWord);
+					userHoldOverWordRepository.removeAllByWord(formWord);
 					wordRepository.delete(formWord);
 				}
 				wordRepository.save(normalWord);
