@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.user;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

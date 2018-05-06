@@ -28,14 +28,14 @@
 			</div>
 
 			{{^translates}}
-				<div data-id="translate" data-href="/ajax/word/{{id}}/translate" class="button button-translate">Перевод</div>
+				<div data-id="translate" data-href="/word/{{id}}/translate" class="button button-translate">Перевод</div>
 			{{/translates}}
 
-			<div data-id="hold-over" data-href="/ajax/word/{{id}}/hold-over" class="button button-hold-over {{^translates}}hidden{{/translates}}">OK</div>
+			<div data-id="hold-over" data-href="/word/{{id}}/hold-over" class="button button-hold-over {{^translates}}hidden{{/translates}}">OK</div>
 
-			<div data-id="remembered" data-href="/ajax/word/{{id}}/remembered" class="button button-remembered">Запомнил!</div>
+			<div data-id="remembered" data-href="/word/{{id}}/remembered" class="button button-remembered">Запомнил!</div>
 			{{#isAdmin}}
-				<div data-id="black-list" data-href="/admin/ajax/word/{{id}}/black-list" class="button button-black-list">Удалить</div>
+				<div data-id="black-list" data-href="/admin/word/{{id}}/black-list" class="button button-black-list">Удалить</div>
 			{{/isAdmin}}
 		</div>
 	</div>

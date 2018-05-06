@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.web.app;
 import java.util.ArrayList;
 import java.util.List;
 
-class HeadMenu {
+public class HeadMenu {
 	public enum ITEM {
 		REMEMBERED,
 		TO_REMEMBER,

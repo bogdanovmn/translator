@@ -1,5 +1,8 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.user;
 
+import com.github.bogdanovmn.translator.web.app.AbstractVisualController;
+import com.github.bogdanovmn.translator.web.app.FormErrors;
+import com.github.bogdanovmn.translator.web.app.HeadMenu;
 import com.github.bogdanovmn.translator.web.app.config.security.Md5PasswordEncoder;
 import com.github.bogdanovmn.translator.web.orm.User;
 import com.github.bogdanovmn.translator.web.orm.UserRepository;
@@ -17,9 +20,12 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/user/settings")
 public class UserSettingsController extends AbstractVisualController {
+	private final UserRepository userRepository;
 
 	@Autowired
-	private UserRepository userRepository;
+	public UserSettingsController(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	@Override
 	protected HeadMenu.ITEM currentMenuItem() {

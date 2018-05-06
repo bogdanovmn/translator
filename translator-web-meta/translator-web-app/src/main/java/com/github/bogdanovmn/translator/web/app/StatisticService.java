@@ -11,12 +11,16 @@ import java.util.Map;
 
 @Service
 public class StatisticService {
+	private final TranslateSecurityService securityService;
+	private final UserRememberedWordRepository userRememberedWordRepository;
+	private final WordRepository wordRepository;
+
 	@Autowired
-	private TranslateSecurityService securityService;
-	@Autowired
-	private UserRememberedWordRepository userRememberedWordRepository;
-	@Autowired
-	private WordRepository wordRepository;
+	public StatisticService(TranslateSecurityService securityService, UserRememberedWordRepository userRememberedWordRepository, WordRepository wordRepository) {
+		this.securityService = securityService;
+		this.userRememberedWordRepository = userRememberedWordRepository;
+		this.wordRepository = wordRepository;
+	}
 
 	public Map<String, Integer> getUserWordRememberedStatistic() {
 		Map<String, Integer> result = new HashMap<>();

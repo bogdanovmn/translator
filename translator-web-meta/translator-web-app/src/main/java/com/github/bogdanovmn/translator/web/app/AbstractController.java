@@ -9,12 +9,12 @@ public abstract class AbstractController {
 	@Autowired
 	private TranslateSecurityService securityService;
 
-	User getUser() {
+	public User getUser() {
 		return securityService.getLoggedInUser();
 	}
 
 	@ModelAttribute("isAdmin")
-	boolean isAdmin() {
+	public boolean isAdmin() {
 		User user = getUser();
 		return user != null && user.getRoles().stream().anyMatch(x -> x.getName().equals("Admin"));
 	}

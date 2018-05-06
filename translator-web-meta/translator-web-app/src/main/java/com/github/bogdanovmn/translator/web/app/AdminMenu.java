@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.web.app;
 import java.util.ArrayList;
 import java.util.List;
 
-class AdminMenu {
+public class AdminMenu {
 	public enum ITEM {
 		UPLOAD_BOOK,
 		EXPORT,
