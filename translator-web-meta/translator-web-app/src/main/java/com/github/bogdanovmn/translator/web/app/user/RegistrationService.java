@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.user;
 
 import com.github.bogdanovmn.translator.web.orm.EntityFactory;
 import com.github.bogdanovmn.translator.web.orm.User;
@@ -13,10 +13,14 @@ import java.util.HashSet;
 
 @Service
 public class RegistrationService {
+	private final UserRepository userRepository;
+	private final EntityFactory entityFactory;
+
 	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private EntityFactory entityFactory;
+	public RegistrationService(UserRepository userRepository, EntityFactory entityFactory) {
+		this.userRepository = userRepository;
+		this.entityFactory = entityFactory;
+	}
 
 	public User addUser(UserRegistrationForm userForm) {
 		return this.userRepository.save(

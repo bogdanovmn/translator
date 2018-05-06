@@ -1,5 +1,6 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.user;
 
+import com.github.bogdanovmn.translator.web.app.AbstractMinVisualController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

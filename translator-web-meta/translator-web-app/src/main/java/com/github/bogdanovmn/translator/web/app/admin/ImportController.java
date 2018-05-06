@@ -1,5 +1,6 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.admin;
 
+import com.github.bogdanovmn.translator.web.app.AdminMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

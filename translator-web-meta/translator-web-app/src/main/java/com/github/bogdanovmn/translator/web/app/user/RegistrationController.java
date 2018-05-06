@@ -1,5 +1,7 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.user;
 
+import com.github.bogdanovmn.translator.web.app.AbstractMinVisualController;
+import com.github.bogdanovmn.translator.web.app.FormErrors;
 import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.User;
 import org.springframework.beans.factory.annotation.Autowired;

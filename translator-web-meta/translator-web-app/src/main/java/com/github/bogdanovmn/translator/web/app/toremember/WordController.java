@@ -1,7 +1,8 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.toremember;
 
 import com.github.bogdanovmn.translator.core.TranslateServiceException;
 import com.github.bogdanovmn.translator.core.TranslateServiceUnknownWordException;
+import com.github.bogdanovmn.translator.web.app.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/ajax/word/{id}")
+@RequestMapping("/word/{id}")
 public class WordController extends AbstractController {
 	private final ToRememberService toRememberService;
 

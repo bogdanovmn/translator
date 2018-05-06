@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app;
+package com.github.bogdanovmn.translator.web.app.toremember;
 
 import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.core.TranslateServiceException;
