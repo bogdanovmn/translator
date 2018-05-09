@@ -18,11 +18,11 @@ import java.util.Map;
 
 @Controller
 public class ImportController extends AbstractVisualAdminController {
-	private final ExportService exportService;
+	private final ImportService importService;
 
 	@Autowired
-	public ImportController(ExportService exportService) {
-		this.exportService = exportService;
+	public ImportController(ImportService importService) {
+		this.importService = importService;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class ImportController extends AbstractVisualAdminController {
 		RedirectAttributes redirectAttributes
 	) {
 		try {
-			Map<String, Object> exportResult = this.exportService.importFromFile(file.getInputStream());
+			Map<String, Object> exportResult = this.importService.fromFile(file.getInputStream());
 			redirectAttributes.addFlashAttribute("msg", "OK!");
 			redirectAttributes.addFlashAttribute("exportResult", exportResult);
 		}
