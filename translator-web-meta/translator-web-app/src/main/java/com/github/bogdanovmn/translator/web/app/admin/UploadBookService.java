@@ -25,13 +25,13 @@ public class UploadBookService {
 	private SourceRepository sourceRepository;
 	@Autowired
 	private WordSourceRepository wordSourceRepository;
-	@Autowired
-	private EntityFactory entityFactory;
 
 	@Transactional(rollbackFor = Exception.class)
 	public synchronized Source upload(MultipartFile file)
 		throws IOException, TranslateServiceUploadDuplicateException
 	{
+		LOG.info("Import data from file");
+
 		String fileMd5 = DigestUtils.md5DigestAsHex(file.getBytes());
 		Source source = this.sourceRepository.findFirstByContentHash(fileMd5);
 		if (source != null) {
@@ -66,25 +66,32 @@ public class UploadBookService {
 				.setWordsCount(words.size())
 		);
 
+		LOG.info("Import words: {}", words.size());
+
+		int newWordsCount = 0;
 		for (String wordStr : words) {
-			Word word = (Word) this.entityFactory.getPersistBaseEntityWithUniqueName(
-				new Word(wordStr)
-			);
-
-			int wordFrequanceInSource = text.getWordFormsFrequance(wordStr);
-
-			this.wordRepository.save(
-				word.incFrequence(wordFrequanceInSource)
-					.incSourcesCount()
-			);
+			Word word = this.wordRepository.findFirstByName(wordStr);
+			if (null == word) {
+				word = new Word(wordStr);
+				this.wordRepository.save(word);
+				LOG.info("New word: {}", wordStr);
+				newWordsCount++;
+			}
 
 			this.wordSourceRepository.save(
 				new WordSource()
 					.setSource(source)
 					.setWord(word)
-					.setCount(wordFrequanceInSource)
+					.setCount(
+						text.getWordFormsFrequance(wordStr)
+					)
 			);
 		}
+
+		LOG.info("Import words done. New words: {}", newWordsCount);
+
+		wordRepository.updateStatistic();
+		LOG.info("Update words statistic done");
 
 		return source;
 	}
