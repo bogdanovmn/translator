@@ -55,9 +55,6 @@ class ImportService {
 				.filter(x -> x.getSourceId() == sourceExportId)
 				.map(x -> {
 						Word word = exportWordCache.getByExportId(x.getWordId());
-						word.incFrequence(x.getCount());
-						word.incSourcesCount();
-
 						return new WordSource()
 							.setWord(word)
 							.setSource(persistSource)
@@ -190,6 +187,9 @@ class ImportService {
 		int count = importBlackList(importSchema, exportWordCache);
 
 		LOG.info("Black list import done ({} affected)", count);
+
+		wordRepository.updateStatistic();
+		LOG.info("Update words statistic done");
 
 		return new HashMap<String, Object>() {{
 			put("sources", resultSources);
