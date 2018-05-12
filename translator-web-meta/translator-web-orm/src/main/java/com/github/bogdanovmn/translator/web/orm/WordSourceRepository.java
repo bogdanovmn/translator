@@ -10,4 +10,6 @@ public interface WordSourceRepository extends JpaRepository<WordSource, Integer>
 	Set<WordSource> findAllByWord(Word word);
 
 	Set<WordSource> findAllBySource(Source source);
+
+	void deleteAllBySource(Source source);
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 class SourcesService {
@@ -16,11 +15,13 @@ class SourcesService {
 
 	private final SourceRepository sourceRepository;
 	private final WordSourceRepository wordSourceRepository;
+	private final WordRepository wordRepository;
 
 	@Autowired
-	public SourcesService(SourceRepository sourceRepository, WordSourceRepository wordSourceRepository) {
+	SourcesService(SourceRepository sourceRepository, WordSourceRepository wordSourceRepository, WordRepository wordRepository) {
 		this.sourceRepository = sourceRepository;
 		this.wordSourceRepository = wordSourceRepository;
+		this.wordRepository = wordRepository;
 	}
 
 	List<SourceWithUserStatistic> getAll(User user) {
@@ -28,7 +29,7 @@ class SourcesService {
 	}
 
 	@Transactional(rollbackFor = Exception.class)
-	void delete(int sourceId) {
+	public synchronized void delete(int sourceId) {
 		LOG.info("Delete source with id = {}", sourceId);
 
 		Source source = sourceRepository.getOne(sourceId);
@@ -36,26 +37,13 @@ class SourcesService {
 			throw new IllegalStateException("Source not exists");
 		}
 
-		Set<WordSource> wordSources = wordSourceRepository.findAllBySource(source);
-		LOG.info("Prepare delete word links: {}", wordSources.size());
-		for (WordSource ws : wordSources) {
-			Word word = ws.getWord();
-			int wordFreqBefore = word.getFrequence();
-			int wordSourcesCountBefore = word.getSourcesCount();
-
-			word.decFrequence(ws.getCount());
-			word.decSourcesCount();
-
-			LOG.debug(
-				"Change word '{}' statistic: freq {} -> {}, sources {} -> {}",
-					word.getName(), wordFreqBefore, word.getFrequence(), wordSourcesCountBefore, word.getSourcesCount()
-			);
-
-			wordSourceRepository.delete(ws);
-		}
-		LOG.info("Word links delete done");
+		LOG.info("Delete word links");
+		wordSourceRepository.deleteAllBySource(source);
 
 		sourceRepository.delete(source);
+
+		LOG.info("Update Word statistic");
+		wordRepository.updateStatistic();
 
 		LOG.info("Delete is done");
 	}
