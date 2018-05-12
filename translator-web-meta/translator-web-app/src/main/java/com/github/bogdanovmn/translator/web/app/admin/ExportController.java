@@ -10,21 +10,21 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
 @Controller
-public class ExportController extends AbstractAdminController {
+class ExportController extends AbstractAdminController {
 	private final ExportService exportService;
 
 	@Autowired
-	public ExportController(ExportService exportService) {
+	ExportController(ExportService exportService) {
 		this.exportService = exportService;
 	}
 
 	@GetMapping("/export")
-	public void export(HttpServletResponse response)
+	void export(HttpServletResponse response)
 		throws IOException, JAXBException
 	{
 		response.setHeader("Content-Disposition", "attachment; filename=translator_export.xml");
 		response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
 
-		this.exportService.export(response.getOutputStream());
+		exportService.export(response.getOutputStream());
 	}
 }

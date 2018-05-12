@@ -13,11 +13,11 @@ import java.util.HashMap;
 
 @Controller
 @RequestMapping("/to-remember")
-public class ToRememberController extends AbstractVisualController {
+class ToRememberController extends AbstractVisualController {
 	private final ToRememberService toRememberService;
 
 	@Autowired
-	public ToRememberController(ToRememberService toRememberService) {
+	ToRememberController(ToRememberService toRememberService) {
 		this.toRememberService = toRememberService;
 	}
 
@@ -27,7 +27,7 @@ public class ToRememberController extends AbstractVisualController {
 	}
 
 	@GetMapping("/all")
-	public ModelAndView listAll() {
+	ModelAndView listAll() {
 		return new ModelAndView(
 			"to_remember",
 			new HashMap<String, Object>() {{
@@ -37,7 +37,7 @@ public class ToRememberController extends AbstractVisualController {
 	}
 
 	@GetMapping("/source/{id}")
-	public ModelAndView source(@PathVariable Integer id) {
+	ModelAndView source(@PathVariable Integer id) {
 		return new ModelAndView(
 			"to_remember",
 			toRememberService.getAllBySource(id).toView()

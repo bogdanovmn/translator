@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.HashSet;
 
 @Service
-public class RegistrationService {
+class RegistrationService {
 	private final UserRepository userRepository;
 	private final EntityFactory entityFactory;
 
@@ -22,8 +22,8 @@ public class RegistrationService {
 		this.entityFactory = entityFactory;
 	}
 
-	public User addUser(UserRegistrationForm userForm) {
-		return this.userRepository.save(
+	User addUser(UserRegistrationForm userForm) {
+		return userRepository.save(
 			new User(userForm.getName())
 				.setEmail(
 					userForm.getEmail()
@@ -46,11 +46,11 @@ public class RegistrationService {
 		);
 	}
 
-	public boolean isUserExists(String email) {
+	boolean isUserExists(String email) {
 		return userRepository.findFirstByEmail(email) != null;
 	}
 
-	public boolean isUserNameExists(String name) {
+	boolean isUserNameExists(String name) {
 		return userRepository.findFirstByName(name) != null;
 	}
 }

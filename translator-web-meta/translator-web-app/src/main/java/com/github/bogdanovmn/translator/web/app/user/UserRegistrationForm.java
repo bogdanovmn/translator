@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.web.app.user;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class UserRegistrationForm {
+class UserRegistrationForm {
 	@NotNull
 	@Size(min=3, max=20)
 	private String name;
@@ -20,38 +20,38 @@ public class UserRegistrationForm {
 	private String email;
 
 
-	public String getName() {
+	String getName() {
 		return name;
 	}
 
-	public UserRegistrationForm setName(String name) {
+	UserRegistrationForm setName(String name) {
 		this.name = name;
 		return this;
 	}
 
-	public String getPassword() {
+	String getPassword() {
 		return password;
 	}
 
-	public UserRegistrationForm setPassword(String password) {
+	UserRegistrationForm setPassword(String password) {
 		this.password = password;
 		return this;
 	}
 
-	public String getPasswordConfirm() {
+	String getPasswordConfirm() {
 		return passwordConfirm;
 	}
 
-	public UserRegistrationForm setPasswordConfirm(String passwordConfirm) {
+	UserRegistrationForm setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
 		return this;
 	}
 
-	public String getEmail() {
+	String getEmail() {
 		return email;
 	}
 
-	public UserRegistrationForm setEmail(String email) {
+	UserRegistrationForm setEmail(String email) {
 		this.email = email;
 		return this;
 	}

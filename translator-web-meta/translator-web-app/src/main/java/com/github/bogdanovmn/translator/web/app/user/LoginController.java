@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LoginController extends AbstractMinVisualController {
+class LoginController extends AbstractMinVisualController {
 	@GetMapping("/login")
-	public ModelAndView form(Model model, String error) {
-		if (this.getUser() != null) {
+	ModelAndView form(Model model, String error) {
+		if (getUser() != null) {
 			return new ModelAndView("redirect:/to-remember/all");
 		}
 

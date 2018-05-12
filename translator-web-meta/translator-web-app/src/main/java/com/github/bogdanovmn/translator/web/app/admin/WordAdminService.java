@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WordAdminService {
+class WordAdminService {
 	private final WordRepository wordRepository;
 
 	@Autowired
-	public WordAdminService(WordRepository wordRepository) {
+	WordAdminService(WordRepository wordRepository) {
 		this.wordRepository = wordRepository;
 	}
 
 	void blackListWord(Integer wordId) {
-		Word word = this.wordRepository.findOne(wordId);
+		Word word = wordRepository.findOne(wordId);
 		if (word != null) {
-			this.wordRepository.save(
+			wordRepository.save(
 				word.setBlackList(true)
 			);
 		}

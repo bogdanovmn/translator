@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class ToRememberService {
+class ToRememberService {
 	@Autowired
 	private TranslateSecurityService securityService;
 	@Autowired
@@ -40,27 +40,27 @@ public class ToRememberService {
 	}
 
 	List<Word> getAll() {
-		return this.wordRepository.toRemember(this.getUser().getId());
+		return wordRepository.toRemember(getUser().getId());
 	}
 
 	WordsToRememberBySource getAllBySource(Integer sourceId) {
-		Source source = this.sourceRepository.getOne(sourceId);
-		List<WordSource> wordSources = this.wordSourceRepository.toRemember(
-			this.getUser().getId(), source.getId()
+		Source source = sourceRepository.getOne(sourceId);
+		List<WordSource> wordSources = wordSourceRepository.toRemember(
+			getUser().getId(), source.getId()
 		);
 
 		return new WordsToRememberBySource(
 			wordSources,
 			source,
-			this.userRememberedWordRepository.getCountBySource(this.getUser().getId(), sourceId)
+			userRememberedWordRepository.getCountBySource(getUser().getId(), sourceId)
 		);
 	}
 
 	void rememberWord(Integer wordId) {
-		if (null == this.userRememberedWordRepository.findFirstByUserAndWordId(this.getUser(), wordId)) {
-			this.userRememberedWordRepository.save(
+		if (null == userRememberedWordRepository.findFirstByUserAndWordId(getUser(), wordId)) {
+			userRememberedWordRepository.save(
 				new UserRememberedWord()
-					.setUser(this.getUser())
+					.setUser(getUser())
 					.setWord(new Word(wordId))
 					.setUpdated(new Date())
 			);
@@ -68,10 +68,10 @@ public class ToRememberService {
 	}
 
 	void holdOverWord(Integer wordId) {
-		if (null == this.userHoldOverWordRepository.findFirstByUserAndWordId(this.getUser(), wordId)) {
-			this.userHoldOverWordRepository.save(
+		if (null == userHoldOverWordRepository.findFirstByUserAndWordId(getUser(), wordId)) {
+			userHoldOverWordRepository.save(
 				new UserHoldOverWord()
-					.setUser(this.getUser())
+					.setUser(getUser())
 					.setWord(new Word(wordId))
 					.setUpdated(new Date())
 			);
@@ -79,7 +79,7 @@ public class ToRememberService {
 	}
 
 	String translateWord(Integer wordId) throws TranslateServiceException, IOException {
-		Word word = this.wordRepository.findOne(wordId);
+		Word word = wordRepository.findOne(wordId);
 
 		if (word == null) {
 			throw new RuntimeException(
@@ -87,7 +87,7 @@ public class ToRememberService {
 			);
 		}
 
-		TranslateProvider provider = (TranslateProvider) this.entityFactory.getPersistBaseEntityWithUniqueName(
+		TranslateProvider provider = (TranslateProvider) entityFactory.getPersistBaseEntityWithUniqueName(
 			new TranslateProvider("Google")
 		);
 
@@ -95,7 +95,7 @@ public class ToRememberService {
 		try {
 			translates = translateService.translate(word.getName());
 			translates.forEach(x ->
-				this.translateRepository.save(
+				translateRepository.save(
 					new Translate()
 						.setProvider(provider)
 						.setWord(word)
@@ -104,7 +104,7 @@ public class ToRememberService {
 			);
 		}
 		catch (TranslateServiceUnknownWordException e) {
-			this.translateRepository.save(
+			translateRepository.save(
 				new Translate()
 					.setProvider(provider)
 					.setWord(word)
@@ -117,9 +117,9 @@ public class ToRememberService {
 	}
 
 	void blackListWord(Integer wordId) {
-		Word word = this.wordRepository.findOne(wordId);
+		Word word = wordRepository.findOne(wordId);
 		if (word != null) {
-			this.wordRepository.save(
+			wordRepository.save(
 				word.setBlackList(true)
 			);
 		}

@@ -19,11 +19,11 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user/settings")
-public class UserSettingsController extends AbstractVisualController {
+class UserSettingsController extends AbstractVisualController {
 	private final UserRepository userRepository;
 
 	@Autowired
-	public UserSettingsController(UserRepository userRepository) {
+	UserSettingsController(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 
@@ -33,16 +33,16 @@ public class UserSettingsController extends AbstractVisualController {
 	}
 
 	@InitBinder
-	public void initBinder(WebDataBinder binder) {
+	void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 	}
 
 	@GetMapping
-	public ModelAndView form(
+	ModelAndView form(
 		Model model,
 		@RequestHeader(name = "referer", required = false) String referer
 	) {
-		User user = this.getUser();
+		User user = getUser();
 
 		model.addAttribute("referer", referer);
 		model.addAttribute("userEmail", user.getEmail());
@@ -55,7 +55,7 @@ public class UserSettingsController extends AbstractVisualController {
 	}
 
 	@PostMapping
-	public ModelAndView update(
+	ModelAndView update(
 		@Valid UserSettingsForm form,
 		BindingResult bindingResult,
 		Model model,
@@ -63,7 +63,7 @@ public class UserSettingsController extends AbstractVisualController {
 	) {
 		FormErrors formErrors = new FormErrors(bindingResult);
 
-		User user = this.getUser();
+		User user = getUser();
 
 		if (form.getNewPassword() != null) {
 			String currentPassword = form.getCurrentPassword();
@@ -97,7 +97,7 @@ public class UserSettingsController extends AbstractVisualController {
 			return new ModelAndView("user_settings");
 		}
 
-		this.userRepository.save(user);
+		userRepository.save(user);
 
 		return new ModelAndView("redirect:/");
 	}
