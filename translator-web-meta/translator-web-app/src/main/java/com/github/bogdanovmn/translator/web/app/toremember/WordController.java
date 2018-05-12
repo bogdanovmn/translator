@@ -15,25 +15,25 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/word/{id}")
-public class WordController extends AbstractController {
+class WordController extends AbstractController {
 	private final ToRememberService toRememberService;
 
 	@Autowired
-	public WordController(ToRememberService toRememberService) {
+	WordController(ToRememberService toRememberService) {
 		this.toRememberService = toRememberService;
 	}
 
 	@PutMapping("/remembered")
-	public ResponseEntity remembered(@PathVariable Integer id) {
-		this.toRememberService.rememberWord(id);
+	ResponseEntity remembered(@PathVariable Integer id) {
+		toRememberService.rememberWord(id);
 		return ResponseEntity.ok().build();
 	}
 
 	@PutMapping("/translate")
-	public ResponseEntity<String> translate(@PathVariable Integer id) {
+	ResponseEntity<String> translate(@PathVariable Integer id) {
 		String result = null;
 		try {
-			result = this.toRememberService.translateWord(id);
+			result = toRememberService.translateWord(id);
 		}
 		catch (TranslateServiceUnknownWordException e) {
 			return ResponseEntity.notFound().build();
@@ -52,8 +52,8 @@ public class WordController extends AbstractController {
 	}
 
 	@PutMapping("/hold-over")
-	public Object holdOver(@PathVariable Integer id) {
-		this.toRememberService.holdOverWord(id);
-		return null;
+	ResponseEntity holdOver(@PathVariable Integer id) {
+		toRememberService.holdOverWord(id);
+		return ResponseEntity.ok().build();
 	}
 }

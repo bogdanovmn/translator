@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class WordAdminController extends AbstractAdminController {
+class WordAdminController extends AbstractAdminController {
 	private final WordAdminService wordAdminService;
 
 	@Autowired
-	public WordAdminController(WordAdminService wordAdminService) {
+	WordAdminController(WordAdminService wordAdminService) {
 		this.wordAdminService = wordAdminService;
 	}
 
 	@PutMapping("/word/{id}/black-list")
-	public ResponseEntity blackList(@PathVariable Integer id) {
-		this.wordAdminService.blackListWord(id);
+	ResponseEntity blackList(@PathVariable Integer id) {
+		wordAdminService.blackListWord(id);
 		return ResponseEntity.ok().build();
 	}
 

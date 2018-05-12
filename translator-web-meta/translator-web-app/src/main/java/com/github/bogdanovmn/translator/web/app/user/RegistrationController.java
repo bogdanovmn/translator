@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/registration")
-public class RegistrationController extends AbstractMinVisualController {
+class RegistrationController extends AbstractMinVisualController {
 	private final RegistrationService registrationService;
 	private final TranslateSecurityService securityService;
 
@@ -28,14 +28,14 @@ public class RegistrationController extends AbstractMinVisualController {
 	}
 
 	@GetMapping
-	public ModelAndView registration(Model model) {
+	ModelAndView registration(Model model) {
 		model.addAttribute("userForm", new UserRegistrationForm());
 
 		return new ModelAndView("registration");
 	}
 
 	@PostMapping
-	public ModelAndView registration(
+	ModelAndView registration(
 		@Valid UserRegistrationForm userForm,
 		BindingResult bindingResult,
 		Model model
@@ -45,10 +45,10 @@ public class RegistrationController extends AbstractMinVisualController {
 		if (!userForm.getPassword().equals(userForm.getPasswordConfirm())) {
 			formErrors.add("passwordConfirm", "Пароль не совпадает");
 		}
-		else if (this.registrationService.isUserExists(userForm.getEmail())) {
+		else if (registrationService.isUserExists(userForm.getEmail())) {
 			formErrors.addCustom("Пользователь с таким email уже существует");
 		}
-		else if (this.registrationService.isUserNameExists(userForm.getName())) {
+		else if (registrationService.isUserNameExists(userForm.getName())) {
 			formErrors.addCustom("Пользователь с таким именем уже существует");
 		}
 
@@ -57,9 +57,9 @@ public class RegistrationController extends AbstractMinVisualController {
 			return new ModelAndView("registration", model.asMap());
 		}
 
-		User user = this.registrationService.addUser(userForm);
+		User user = registrationService.addUser(userForm);
 
-		this.securityService.login(
+		securityService.login(
 			user.getName(),
 			user.getPasswordHash()
 		);

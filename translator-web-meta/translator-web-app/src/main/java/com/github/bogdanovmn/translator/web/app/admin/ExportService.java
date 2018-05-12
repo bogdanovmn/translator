@@ -10,7 +10,7 @@ import javax.xml.bind.Marshaller;
 import java.io.OutputStream;
 
 @Service
-public class ExportService {
+class ExportService {
 	@Autowired
 	private WordRepository wordRepository;
 	@Autowired
@@ -24,7 +24,7 @@ public class ExportService {
 	@Autowired
 	private WordSourceRepository wordSourceRepository;
 
-	public void export(OutputStream outputStream)
+	void export(OutputStream outputStream)
 		throws JAXBException
 	{
 		Marshaller marshaller = JAXBContext.newInstance(ExportSchema.class)
@@ -34,22 +34,22 @@ public class ExportService {
 		marshaller.marshal(
 			new ExportSchema()
 				.setSources(
-					this.sourceRepository.findAll()
+					sourceRepository.findAll()
 				)
 				.setTranslateProviders(
-					this.translateProviderRepository.findAll()
+					translateProviderRepository.findAll()
 				)
 				.setWords(
-					this.wordRepository.findAll()
+					wordRepository.findAll()
 				)
 				.setTranslates(
-					this.translateRepository.findAll()
+					translateRepository.findAll()
 				)
 				.setWordSources(
-					this.wordSourceRepository.findAll()
+					wordSourceRepository.findAll()
 				)
 				.setUsers(
-					this.userRepository.findAll()
+					userRepository.findAll()
 				),
 			outputStream
 		);

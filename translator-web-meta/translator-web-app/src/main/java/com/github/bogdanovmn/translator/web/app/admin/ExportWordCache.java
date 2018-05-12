@@ -15,7 +15,7 @@ class ExportWordCache {
 	private final Map<Integer, Word> wordByExportId = new HashMap<>();
 
 	ExportWordCache(List<ImportSchema.ImportWord> words, EntityFactory entityFactory) {
-		this.wordNameByExportId = words.stream()
+		wordNameByExportId = words.stream()
 			.collect(Collectors.toMap(
 				ImportSchema.ImportWord::getId,
 				ImportSchema.ImportWord::getName
@@ -25,15 +25,15 @@ class ExportWordCache {
 	}
 
 	Word getByExportId(int id) {
-		Word word = this.wordByExportId.get(id);
+		Word word = wordByExportId.get(id);
 		if (word == null) {
-			this.wordByExportId.put(
+			wordByExportId.put(
 				id,
-				(Word) this.entityFactory.getPersistBaseEntityWithUniqueName(
-					new Word(this.wordNameByExportId.get(id))
+				(Word) entityFactory.getPersistBaseEntityWithUniqueName(
+					new Word(wordNameByExportId.get(id))
 				)
 			);
 		}
-		return this.wordByExportId.get(id);
+		return wordByExportId.get(id);
 	}
 }

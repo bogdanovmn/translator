@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class ImportService {
+class ImportService {
 	private static final Logger LOG = LoggerFactory.getLogger(ImportService.class);
 
 	@Autowired
@@ -38,9 +38,9 @@ public class ImportService {
 		List<Source> resultSources = new ArrayList<>();
 		for (ImportSchema.ImportSource importSource : importSchema.getSources()) {
 			Integer sourceExportId = importSource.getId();
-			Source source = this.sourceRepository.findFirstByContentHash(importSource.getContentHash());
+			Source source = sourceRepository.findFirstByContentHash(importSource.getContentHash());
 			if (source == null) {
-				source = this.sourceRepository.save(importSource.toDomain());
+				source = sourceRepository.save(importSource.toDomain());
 				resultSources.add(source);
 				LOG.info("New source '{}' import done", source.getRawName());
 			}
@@ -66,7 +66,7 @@ public class ImportService {
 				)
 				.collect(Collectors.toList());
 			LOG.info("Save source word links");
-			this.wordSourceRepository.save(wordSources);
+			wordSourceRepository.save(wordSources);
 			LOG.info("Source '{}' word links import done", source.getRawName());
 		}
 		return resultSources;
@@ -76,7 +76,7 @@ public class ImportService {
 		Map<Integer, TranslateProvider> translateProviderByExportId = importSchema.getTranslateProviders().stream()
 			.collect(Collectors.toMap(
 				ImportSchema.ImportTranslateProvider::getId,
-				x -> (TranslateProvider) this.entityFactory.getPersistBaseEntityWithUniqueName(
+				x -> (TranslateProvider) entityFactory.getPersistBaseEntityWithUniqueName(
 					new TranslateProvider(x.getName())
 				)
 			));
@@ -93,7 +93,7 @@ public class ImportService {
 
 			Set<Translate> wordTranslates = word.getTranslates();
 			if (!wordTranslates.contains(translate)) {
-				this.translateRepository.save(translate);
+				translateRepository.save(translate);
 			}
 		}
 	}
@@ -101,12 +101,12 @@ public class ImportService {
 	private List<User> importUsers(ImportSchema importSchema, ExportWordCache exportWordCache) {
 		List<User> resultUsers = new ArrayList<>();
 		for (ImportSchema.ImportUser importUser : importSchema.getUsers()) {
-			User user = this.userRepository.findFirstByEmail(importUser.getEmail());
+			User user = userRepository.findFirstByEmail(importUser.getEmail());
 			if (user != null) {
 				LOG.info("User {} lists import", user.getEmail());
-				this.userRememberedWordRepository.removeAllByUser(user);
-				this.userRememberedWordRepository.flush();
-				this.userRememberedWordRepository.save(
+				userRememberedWordRepository.removeAllByUser(user);
+				userRememberedWordRepository.flush();
+				userRememberedWordRepository.save(
 					importUser.getRememberedWords().stream()
 						.map(x ->
 							new UserRememberedWord()
@@ -117,9 +117,9 @@ public class ImportService {
 				);
 				LOG.info("Remembered words import: {}", importUser.getRememberedWords().size());
 
-				this.userHoldOverWordRepository.removeAllByUser(user);
-				this.userHoldOverWordRepository.flush();
-				this.userHoldOverWordRepository.save(
+				userHoldOverWordRepository.removeAllByUser(user);
+				userHoldOverWordRepository.flush();
+				userHoldOverWordRepository.save(
 					importUser.getHoldOverWords().stream()
 						.map(x ->
 							new UserHoldOverWord()
@@ -130,7 +130,7 @@ public class ImportService {
 				);
 				LOG.info("HoldOver words import: {}", importUser.getHoldOverWords().size());
 
-				this.userRepository.save(user);
+				userRepository.save(user);
 				resultUsers.add(user);
 				LOG.info("User '{}' import done", user.getEmail());
 			}
@@ -145,13 +145,14 @@ public class ImportService {
 				Word persistWord = exportWordCache.getByExportId(importWord.getId());
 				if (!persistWord.isBlackList()) {
 					persistWord.setBlackList(true);
-					this.wordRepository.save(persistWord);
+					wordRepository.save(persistWord);
 					blackListSetCount++;
 				}
 			}
 		}
 		return blackListSetCount;
 	}
+	
 	@Transactional(rollbackFor = Exception.class)
 	public synchronized Map<String, Object> fromFile(InputStream inputStream) throws JAXBException {
 		LOG.info("Start import from file");
@@ -165,7 +166,7 @@ public class ImportService {
 
 		ExportWordCache exportWordCache = new ExportWordCache(
 			importSchema.getWords(),
-			this.entityFactory
+			entityFactory
 		);
 
 		LOG.info("Import words cache init done");

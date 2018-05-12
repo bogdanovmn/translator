@@ -17,11 +17,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class ImportController extends AbstractVisualAdminController {
+class ImportController extends AbstractVisualAdminController {
 	private final ImportService importService;
 
 	@Autowired
-	public ImportController(ImportService importService) {
+	ImportController(ImportService importService) {
 		this.importService = importService;
 	}
 
@@ -31,12 +31,12 @@ public class ImportController extends AbstractVisualAdminController {
 	}
 
 	@PostMapping("/import")
-	public String importFromFile(
+	String importFromFile(
 		@RequestParam("file") MultipartFile file,
 		RedirectAttributes redirectAttributes
 	) {
 		try {
-			Map<String, Object> exportResult = this.importService.fromFile(file.getInputStream());
+			Map<String, Object> exportResult = importService.fromFile(file.getInputStream());
 			redirectAttributes.addFlashAttribute("msg", "OK!");
 			redirectAttributes.addFlashAttribute("exportResult", exportResult);
 		}
@@ -50,7 +50,7 @@ public class ImportController extends AbstractVisualAdminController {
 
 
 	@GetMapping("/import")
-	public ModelAndView form(
+	ModelAndView form(
 		@RequestHeader(name = "referer", required = false) String referer
 	) {
 		return new ModelAndView(

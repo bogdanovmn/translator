@@ -18,11 +18,11 @@ import java.util.HashMap;
 
 
 @Controller
-public class UploadBookController extends AbstractVisualAdminController {
+class UploadBookController extends AbstractVisualAdminController {
 	private final UploadBookService uploadBookService;
 
 	@Autowired
-	public UploadBookController(UploadBookService uploadBookService) {
+	UploadBookController(UploadBookService uploadBookService) {
 		this.uploadBookService = uploadBookService;
 	}
 
@@ -32,12 +32,12 @@ public class UploadBookController extends AbstractVisualAdminController {
 	}
 
 	@PostMapping("/upload-book")
-	public String upload(
+	String upload(
 		@RequestParam("file") MultipartFile file,
    		RedirectAttributes redirectAttributes
 	) {
 		try {
-			Source source = this.uploadBookService.upload(file);
+			Source source = uploadBookService.upload(file);
 			redirectAttributes.addFlashAttribute("msg", "OK!");
 			redirectAttributes.addFlashAttribute("source", source);
 		}
@@ -53,7 +53,7 @@ public class UploadBookController extends AbstractVisualAdminController {
 	}
 
 	@GetMapping("/upload-book")
-	public ModelAndView form(
+	ModelAndView form(
 		@RequestHeader(name = "referer", required = false) String referer)
 	{
 		return new ModelAndView(
