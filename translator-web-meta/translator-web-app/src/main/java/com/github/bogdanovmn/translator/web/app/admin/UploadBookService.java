@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 
 @Service
 public class UploadBookService {
@@ -82,9 +81,5 @@ public class UploadBookService {
 		}
 
 		return source;
-	}
-
-	public List<Object> getHistory() {
-		return null;
 	}
 }
