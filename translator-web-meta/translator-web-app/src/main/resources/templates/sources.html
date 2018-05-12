@@ -5,15 +5,16 @@
 {{/sources.0}}
 {{#sources}}
 	<div>
-	<div class=word-to-remember-block>
+	<div id="source-{{source.id}}" class=source-block>
 		<div class=stats>{{userWordsRememberedCount}} из {{source.wordsCount}} слов изучено</div>
-		<div class="word">
+		<div class="name">
 			{{source.name}}
 		</div>
 
 		<a class=button href="/to-remember/source/{{source.id}}">
 			<div class="button">Изучать</div>
 		</a>
+		<div data-id="delete" class="button button-delete" data-href="/sources/{{source.id}}">Удалить</div>
 	</div>
 	</div>
 {{/sources}}
@@ -22,4 +23,44 @@
 	<h2>Нет источников</h2>
 {{/sources}}
 
+
+<script>
+	var sourceBlockInAction = {};
+
+	$('div.source-block div.button').click(
+		function() {
+			var button = $(this);
+			var actionUrl = button.attr("data-href")
+			var sourceBlock = button.parent();
+			var sourceBlockId = sourceBlock.attr('id');
+
+			if (sourceBlockInAction[sourceBlockId]) {
+				return
+			}
+
+			sourceBlockInAction[sourceBlockId] = true;
+			sourceBlock.toggleClass("in-action");
+
+			switch (button.attr("data-id")) {
+				case "delete":
+					actionAndHide(sourceBlock, actionUrl, "DELETE");
+					break;
+			}
+		}
+	);
+
+	function actionAndHide(sourceBlock, url, method) {
+		console.log("[action and hide] " + sourceBlock + " " + url);
+		$.ajax({ url: url, method: method})
+			.done(function(resp) {
+				console.log('[OK] ' + url);
+				sourceBlock.remove();
+			})
+			.fail(function (jqXHR, excpetion) {
+				console.log("[ERROR]" + url + "\n" + excpetion)
+			})
+			.always(function () {
+			});
+	}
+</script>
 {{/layout}}

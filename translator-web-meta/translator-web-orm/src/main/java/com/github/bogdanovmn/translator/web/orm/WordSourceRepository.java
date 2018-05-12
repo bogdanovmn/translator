@@ -8,4 +8,6 @@ import java.util.Set;
 public interface WordSourceRepository extends JpaRepository<WordSource, Integer> {
 	List<WordSource> toRemember(Integer userId, Integer sourceId);
 	Set<WordSource> findAllByWord(Word word);
+
+	Set<WordSource> findAllBySource(Source source);
 }
