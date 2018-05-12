@@ -14,17 +14,23 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class UploadBookService {
 	private static final Logger LOG = LoggerFactory.getLogger(UploadBookService.class);
 
+	private final WordRepository wordRepository;
+	private final SourceRepository sourceRepository;
+	private final WordSourceRepository wordSourceRepository;
+
 	@Autowired
-	private WordRepository wordRepository;
-	@Autowired
-	private SourceRepository sourceRepository;
-	@Autowired
-	private WordSourceRepository wordSourceRepository;
+	public UploadBookService(WordRepository wordRepository, SourceRepository sourceRepository, WordSourceRepository wordSourceRepository) {
+		this.wordRepository = wordRepository;
+		this.sourceRepository = sourceRepository;
+		this.wordSourceRepository = wordSourceRepository;
+	}
 
 	@Transactional(rollbackFor = Exception.class)
 	public synchronized Source upload(MultipartFile file)
@@ -66,11 +72,17 @@ public class UploadBookService {
 				.setWordsCount(words.size())
 		);
 
+		LOG.info("Load exists words");
+		Map<String, Word> wordsMap = this.wordRepository.findAll().stream()
+			.collect(Collectors.toMap(
+				Word::getName, x -> x
+			));
+
 		LOG.info("Import words: {}", words.size());
 
 		int newWordsCount = 0;
 		for (String wordStr : words) {
-			Word word = this.wordRepository.findFirstByName(wordStr);
+			Word word = wordsMap.get(wordStr);
 			if (null == word) {
 				word = new Word(wordStr);
 				this.wordRepository.save(word);
