@@ -18,9 +18,9 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 		value =
 			"update word " +
 			"join ( " +
-			"    select w.id, sum(1) sources, sum(ws.count) freq " +
+			"    select w.id, sum(if(ws.id, 1, 0)) sources, sum(ifnull(ws.count, 0)) freq " +
 			"    from word w " +
-			"    join word2source ws on w.id = ws.word_id " +
+			"    left join word2source ws on w.id = ws.word_id " +
 			"    group by w.id " +
 			") stat on stat.id = word.id " +
 			"set word.frequence = stat.freq, word.sources_count = stat.sources"

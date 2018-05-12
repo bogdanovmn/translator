@@ -39,10 +39,10 @@ class SourcesService {
 
 		LOG.info("Delete word links");
 		wordSourceRepository.deleteAllBySource(source);
-
 		sourceRepository.delete(source);
 
 		LOG.info("Update Word statistic");
+		wordSourceRepository.flush();
 		wordRepository.updateStatistic();
 
 		LOG.info("Delete is done");
