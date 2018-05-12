@@ -14,14 +14,14 @@ public class EnglishText {
 	private NormalizedWords normalizedWords;
 
 	public EnglishText(String text) {
-		this.text = text;
+		this.text = text.replaceAll("\\p{Pd}", "-");
 	}
 
 	private void parse() {
 		if (!this.isAlreadyParsed) {
-			String[] tokens = this.joinWraps(text.split("[^a-zA-Z‐-]+"));
+			String[] tokens = this.joinWraps(text.split("[^a-zA-Z-]+"));
 			for (String token : tokens) {
-				for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("_|-")) {
+				for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("[_-]")) {
 					if (
 						(normalizedToken.length() < EnglishWord.MIN_BASE_LENGTH)
 							||
@@ -51,8 +51,8 @@ public class EnglishText {
 
 	private String[] joinWraps(String[] tokens) {
 		for (int i = 0; i < tokens.length; i++) {
-			if ((tokens[i].endsWith("‐") || tokens[i].endsWith("-")) && i < (tokens.length - 1)) {
-				tokens[i] = tokens[i].replaceFirst("[‐-]*$", "") + tokens[i + 1];
+			if (tokens[i].endsWith("-") && i < (tokens.length - 1)) {
+				tokens[i] = tokens[i].replaceFirst("-*$", "") + tokens[i + 1];
 				tokens[i + 1] = "";
 			}
 		}
