@@ -14,7 +14,9 @@
 		<a class=button href="/to-remember/source/{{source.id}}">
 			<div class="button">Изучать</div>
 		</a>
-		<div data-id="delete" class="button button-delete" data-href="/sources/{{source.id}}">Удалить</div>
+		{{#isAdmin}}
+			<div data-id="delete" class="button button-delete" data-href="/admin/sources/{{source.id}}">Удалить</div>
+		{{/isAdmin}}
 	</div>
 	</div>
 {{/sources}}
