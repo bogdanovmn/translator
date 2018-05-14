@@ -16,7 +16,7 @@ public class GoogleTranslateTest {
 		String html = new String(
 			Files.readAllBytes(
 				Paths.get(
-					getClass().getResource("/translate.html").toURI()
+					getClass().getResource("/translate-html").toURI()
 				)
 			),
 			"UTF8"
