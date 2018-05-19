@@ -5,21 +5,21 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-public class Site {
+class Site {
 	private static final Logger LOG = LoggerFactory.getLogger(Site.class);
 
 	static String PREFIX = "http://www.allitebooks.com";
 
-	public Site() {
+	Site() {
 	}
 
 	BookMetaIterator getBookIterator() throws IOException {
 		return new BookMetaIterator(
-			this.getPagesCount()
+			getPagesCount()
 		);
 	}
 
-	public int getPagesCount() throws IOException {
+	private int getPagesCount() throws IOException {
 		BooksListPage page = new BooksListPage(1);
 		return page.getPagesTotal();
 	}

@@ -18,18 +18,22 @@ class BookMetaImport {
 
 	private final Pattern EDITION_PATTERN = Pattern.compile("^(.*),\\s+(\\w+)\\s+edition", Pattern.CASE_INSENSITIVE);
 
-	@Autowired
-	private BookMetaRepository bookMetaRepository;
+	private final BookMetaRepository bookMetaRepository;
 
-	@Transactional
-	void run() throws IOException {
-		LOG.info("Update all meta");
-		this.updateAllMeta();
-		LOG.info("Find obsolate books editions");
-		this.findObsolateEditions();
+	@Autowired
+	public BookMetaImport(BookMetaRepository bookMetaRepository) {
+		this.bookMetaRepository = bookMetaRepository;
 	}
 
-	private void findObsolateEditions() {
+	@Transactional(rollbackOn = Exception.class)
+	public synchronized void run() throws IOException {
+		LOG.info("Update all meta");
+		this.updateAllMeta();
+		LOG.info("Find obsolete books editions");
+		this.findObsoleteEditions();
+	}
+
+	private void findObsoleteEditions() {
 		List<BookMeta> books = this.bookMetaRepository.findAllByOrderByTitle();
 
 		String prevBaseTitle = "";
@@ -64,8 +68,8 @@ class BookMetaImport {
 			if (prevBaseTitle.equals(baseTitle)) {
 				if (currentVersion > maxVersion) {
 					maxVersion = currentVersion;
-					prevBook.setObsolate(true);
-					LOG.info("[Obsolate] {}", prevBook.getTitle());
+					prevBook.setObsolete(true);
+					LOG.info("[Obsolete] {}", prevBook.getTitle());
 				}
 			}
 			else {
@@ -82,21 +86,19 @@ class BookMetaImport {
 	private void updateAllMeta() throws IOException {
 		Site site = new Site();
 		BookMetaIterator bookMetaIterator = site.getBookIterator();
-		BookMeta book = bookMetaIterator.next();
 		while (bookMetaIterator.hasNext()) {
+			BookMeta book = bookMetaIterator.next();
 			if (book != null) {
-				LOG.info(book.getOriginalUrl());
-				BookMeta persistenBook = bookMetaRepository.findBookByOriginalUrl(book.getOriginalUrl());
-				if (persistenBook != null) {
-					book.setId(persistenBook.getId());
+				LOG.info("Parsed successfully");
+				BookMeta persistentBook = bookMetaRepository.findBookByOriginalUrl(book.getOriginalUrl());
+				if (persistentBook != null) {
+					LOG.info("Book already exists, update it");
+					book.setId(persistentBook.getId());
 				}
-				try {
-					bookMetaRepository.save(book);
-					LOG.info(book.getTitle());
-				}
-				catch (DataIntegrityViolationException e) {
-					LOG.error("Dublicate url");
-				}
+				bookMetaRepository.save(book);
+			}
+			else {
+				LOG.error("Parse error");
 			}
 		}
 		long totalBooks = bookMetaRepository.count();

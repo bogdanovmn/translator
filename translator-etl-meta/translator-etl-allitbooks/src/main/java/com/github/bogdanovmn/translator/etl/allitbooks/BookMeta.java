@@ -26,14 +26,14 @@ public class BookMeta {
 	private float fileSizeMb;
 	private int year;
 
-	private boolean obsolate = false;
+	private boolean obsolete = false;
 
-	public boolean isObsolate() {
-		return obsolate;
+	public boolean isObsolete() {
+		return obsolete;
 	}
 
-	public BookMeta setObsolate(boolean obsolate) {
-		this.obsolate = obsolate;
+	public BookMeta setObsolete(boolean obsolete) {
+		this.obsolete = obsolete;
 		return this;
 	}
 

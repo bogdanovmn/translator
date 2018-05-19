@@ -1,13 +1,19 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 class BookMetaIterator implements Iterator<BookMeta> {
+	private static final Logger LOG = LoggerFactory.getLogger(BookMetaIterator.class);
+
 	private final int totalPages;
-	private int currentPage = 1;
+	private int currentPage = 0;
 	private final List<BookPageLink> currentPageBooksLinks = new ArrayList<>();
 
 	BookMetaIterator(int totalPages) {
@@ -21,6 +27,10 @@ class BookMetaIterator implements Iterator<BookMeta> {
 
 	@Override
 	public BookMeta next() {
+		if (!hasNext()) {
+			throw new NoSuchElementException("Next element not found");
+		}
+
 		if (this.currentPageBooksLinks.isEmpty()) {
 			try {
 				this.currentPageBooksLinks.addAll(
@@ -38,6 +48,7 @@ class BookMetaIterator implements Iterator<BookMeta> {
 			throw new RuntimeException(e);
 		}
 		catch (PureBookMetaException e) {
+			LOG.error(e.getMessage());
 			return null;
 		}
 	}

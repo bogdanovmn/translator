@@ -2,6 +2,8 @@ package com.github.bogdanovmn.translator.etl.allitbooks;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,6 +14,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 class BookPageLink extends HtmlPage {
+	private static final Logger LOG = LoggerFactory.getLogger(BookPageLink.class);
+
 	private final String url;
 	private final String title;
 
@@ -21,7 +25,12 @@ class BookPageLink extends HtmlPage {
 	}
 
 	BookMeta getBook() throws IOException, PureBookMetaException {
+		LOG.info("Try to get '{}' [{}]", title, url);
+
 		Element article = this.getHtmlDocument().select("article").first();
+		if (article == null) {
+			throw new PureBookMetaException("Empty HTML");
+		}
 		Element detailsElement = article.select("div[class=book-detail] dl").first();
 		Element pdfUrlElement = article.select("span[class=download-links] a").first();
 
