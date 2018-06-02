@@ -11,7 +11,7 @@
 			{{source.name}}
 		</div>
 
-		<a class=button href="/to-remember/source/{{source.id}}">
+		<a class=button href="{{layout.contextPath}}/to-remember/source/{{source.id}}">
 			<div class="button">Изучать</div>
 		</a>
 		{{#isAdmin}}
@@ -32,7 +32,7 @@
 	$('div.source-block div.button').click(
 		function() {
 			var button = $(this);
-			var actionUrl = button.attr("data-href")
+			var actionUrl = "{{layout.contextPath}}" + button.attr("data-href")
 			var sourceBlock = button.parent();
 			var sourceBlockId = sourceBlock.attr('id');
 

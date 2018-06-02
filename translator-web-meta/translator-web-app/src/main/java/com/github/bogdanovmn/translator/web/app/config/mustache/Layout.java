@@ -10,15 +10,16 @@ public class Layout implements Mustache.Lambda {
 	private String body;
 	private final Mustache.Compiler compiler;
 	private final String name;
+	private final String contextPath;
 
-	public Layout(Mustache.Compiler compiler, String name) {
+	public Layout(Mustache.Compiler compiler, String name, final String contextPath) {
 		this.compiler = compiler;
 		this.name = name;
+		this.contextPath = contextPath;
 	}
 
-	public Layout(Mustache.Compiler compiler) {
-		this.compiler = compiler;
-		this.name = "min";
+	public Layout(Mustache.Compiler compiler, final String contextPath) {
+		this(compiler, "min", contextPath);
 	}
 
 	@Override

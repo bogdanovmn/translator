@@ -42,7 +42,7 @@
 {{/words}}
 
 {{#words.0}}
-	<a href=""><img src="/img/refresh.png"/></a>
+	<a href=""><img src="{{layout.contextPath}}/img/refresh.png"/></a>
 	<div class="to-remember-note-block">
 		Осталось изучить
 		{{#source}}
@@ -64,7 +64,7 @@
 	$('div.word-to-remember-block div.button').click(
 		function() {
 			var button = $(this);
-			var actionUrl = button.attr("data-href")
+			var actionUrl = "{{layout.contextPath}}" + button.attr("data-href");
 			var wordBlock = button.parent();
 			var wordBlockId = wordBlock.attr('id');
 
