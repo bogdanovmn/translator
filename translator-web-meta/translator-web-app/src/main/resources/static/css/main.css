@@ -69,3 +69,5 @@ div.source-block div.button {
 	border-radius: 25px; border: 1px solid; text-align: center; padding: 3px 10px; font-size: 70%; display: inline; margin: 3px 5px; cursor: pointer; }
 div.source-block div.button:hover { border: 1px dotted; }
 div.source-block div.button-delete { border-color: darkred; color: darkred; }
+
+div.cloud { text-align: justify; }

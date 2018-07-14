@@ -9,7 +9,8 @@ public class HeadMenu {
 		TO_REMEMBER,
 		SOURCES,
 		SETTINGS,
-		ADMIN
+		ADMIN,
+		CLOUD
 	}
 
 	private final String current;
@@ -45,6 +46,7 @@ public class HeadMenu {
 			items.add(new MenuItem(ITEM.REMEMBERED.name(), "/remembered", "Уже изучено"));
 			items.add(new MenuItem(ITEM.TO_REMEMBER.name(), "/to-remember/all", "Изучить"));
 			items.add(new MenuItem(ITEM.SOURCES.name(), "/sources/all", "Источники"));
+			items.add(new MenuItem(ITEM.CLOUD.name(), "/cloud", "Облако слов"));
 			if (this.isAdmin) {
 				items.add(new MenuItem(ITEM.ADMIN.name(), "/admin/upload-book", "Админка"));
 			}

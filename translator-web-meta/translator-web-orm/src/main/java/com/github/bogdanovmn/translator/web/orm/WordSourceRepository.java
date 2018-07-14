@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.web.orm;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -9,7 +10,8 @@ public interface WordSourceRepository extends JpaRepository<WordSource, Integer>
 	List<WordSource> toRemember(Integer userId, Integer sourceId);
 	Set<WordSource> findAllByWord(Word word);
 
-	Set<WordSource> findAllBySource(Source source);
+	@EntityGraph(attributePaths = {"word"})
+	Set<WordSource> findAllBySourceId(Integer sourceId);
 
 	void deleteAllBySource(Source source);
 }
