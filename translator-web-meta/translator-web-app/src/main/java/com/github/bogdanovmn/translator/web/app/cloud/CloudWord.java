@@ -12,10 +12,10 @@ class CloudWord {
 	}
 
 	String color() {
-		if (relativeSizePercent < 65) {
+		if (relativeSizePercent < 55) {
 			return "darkgray";
 		}
-		else if (relativeSizePercent < 75) {
+		else if (relativeSizePercent < 65) {
 			return "dimgray";
 		}
 		return "black";

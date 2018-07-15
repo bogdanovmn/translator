@@ -1,5 +1,11 @@
 {{#layout}}
-
+<div class="sub-menu">
+	{{#filter.menu}}
+		<span class="{{selected}}">
+			<a href='{{layout.contextPath}}{{filter.resourcePath}}?{{filterParams}}'>{{title}}</a>
+		</span>
+	{{/filter.menu}}
+</div>
 <div class="cloud">
 	{{#words}}
 			<span style="font-size: {{relativeSizePercent}}%; color: {{color}};">

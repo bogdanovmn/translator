@@ -14,5 +14,33 @@ class WordNativeQuery {
 	private static final String TO_REMEMBER_WORDS_FREQUENT = TO_REMEMBER_WORDS_RARE + "desc";
 
 	static final String TO_REMEMBER_WORDS =
-		"(" + TO_REMEMBER_WORDS_FREQUENT + " limit 7) UNION (" + TO_REMEMBER_WORDS_RARE + " limit 3)";
+		"(" + TO_REMEMBER_WORDS_FREQUENT + " limit 9) UNION (" + TO_REMEMBER_WORDS_RARE + " limit 1)";
+
+	static final String KNOWN_WORDS =
+		"SELECT w.* " +
+			"FROM word w " +
+			"JOIN user_remembered_word urw on w.id = urw.word_id AND urw.user_id = ?1 " +
+			"WHERE w.black_list = 0";
+
+	static final String KNOWN_WORDS_BY_SOURCE =
+		"SELECT w.* " +
+			"FROM word w " +
+			"JOIN user_remembered_word urw on w.id = urw.word_id AND urw.user_id = ?1 " +
+			"JOIN word2source ws ON ws.word_id = w.id AND ws.source_id = ?2 " +
+			"WHERE w.black_list = 0";
+
+	static final String UNKNOWN_WORDS =
+		"SELECT w.* " +
+			"FROM word w " +
+			"LEFT JOIN user_remembered_word urw on w.id = urw.word_id AND urw.user_id = ?1 " +
+			"WHERE urw.word_id IS NULL " +
+			"AND w.black_list = 0";
+
+	static final String UNKNOWN_WORDS_BY_SOURCE =
+		"SELECT w.* " +
+			"FROM word w " +
+			"LEFT JOIN user_remembered_word urw on w.id = urw.word_id AND urw.user_id = ?1 " +
+			"JOIN word2source ws ON ws.word_id = w.id AND ws.source_id = ?2 " +
+			"WHERE urw.word_id IS NULL " +
+			"AND w.black_list = 0";
 }

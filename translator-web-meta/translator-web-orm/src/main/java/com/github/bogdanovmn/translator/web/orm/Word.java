@@ -18,6 +18,26 @@ import java.util.Set;
 		name = "Word.toRemember",
 		resultClass = Word.class,
 		query = WordNativeQuery.TO_REMEMBER_WORDS
+	),
+	@NamedNativeQuery(
+		name = "Word.allKnownWordsByUserForCloud",
+		resultClass = Word.class,
+		query = WordNativeQuery.KNOWN_WORDS
+	),
+	@NamedNativeQuery(
+		name = "Word.allUnknownWordsByUserForCloud",
+		resultClass = Word.class,
+		query = WordNativeQuery.UNKNOWN_WORDS
+	),
+	@NamedNativeQuery(
+		name = "Word.allKnownWordsByUserAndSourceForCloud",
+		resultClass = Word.class,
+		query = WordNativeQuery.KNOWN_WORDS_BY_SOURCE
+	),
+	@NamedNativeQuery(
+		name = "Word.allUnknownWordsByUserAndSourceForCloud",
+		resultClass = Word.class,
+		query = WordNativeQuery.UNKNOWN_WORDS_BY_SOURCE
 	)
 })
 public class Word extends BaseEntityWithUniqueName {

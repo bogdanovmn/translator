@@ -71,3 +71,9 @@ div.source-block div.button:hover { border: 1px dotted; }
 div.source-block div.button-delete { border-color: darkred; color: darkred; }
 
 div.cloud { text-align: justify; }
+
+div.sub-menu { margin: 10px auto; }
+div.sub-menu span { margin-left: 10px; padding: 5px 15px; border: 1px dotted #1299b4; border-radius: 25px; }
+div.sub-menu a { text-decoration: none; }
+div.sub-menu span.false { background: #f4fbfb;}
+div.sub-menu span.true { background: #a4e6ecc4; font-weight: bold; }
