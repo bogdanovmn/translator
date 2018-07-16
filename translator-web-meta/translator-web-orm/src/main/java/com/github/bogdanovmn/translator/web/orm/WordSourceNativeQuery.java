@@ -17,6 +17,6 @@ class WordSourceNativeQuery {
 	private static final String TO_REMEMBER_WORDS_BY_SOURCE_FREQUENT = TO_REMEMBER_WORDS_BY_SOURCE_RARE + "desc";
 
 	static final String TO_REMEMBER_WORDS_BY_SOURCE =
-		"(" + TO_REMEMBER_WORDS_BY_SOURCE_FREQUENT + " limit 7) UNION (" + TO_REMEMBER_WORDS_BY_SOURCE_RARE + " limit 3)";
+		"(" + TO_REMEMBER_WORDS_BY_SOURCE_FREQUENT + " limit 9) UNION (" + TO_REMEMBER_WORDS_BY_SOURCE_RARE + " limit 1)";
 
 }

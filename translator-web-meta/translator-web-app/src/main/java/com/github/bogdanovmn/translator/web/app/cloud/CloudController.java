@@ -29,14 +29,14 @@ class CloudController extends AbstractVisualController {
 	ModelAndView all(
 		@RequestParam(required = false, defaultValue = "false", name = "all") Boolean showAll,
 		@RequestParam(required = false, defaultValue = "true",  name = "unknown") Boolean showUnknown,
-		@RequestParam(required = false, defaultValue = "false", name = "known") Boolean showKnown
+		@RequestParam(required = false, defaultValue = "false", name = "remembered") Boolean showRemembered
 	) {
 		CloudContentFilter filter = new CloudContentFilter(
 			"/cloud",
 			new HashMap<CloudContentFilterToggle, Boolean>() {{
 				put(CloudContentFilterToggle.ALL, showAll);
 				put(CloudContentFilterToggle.UNKNOWN, showUnknown);
-				put(CloudContentFilterToggle.KNOWN, showKnown);
+				put(CloudContentFilterToggle.REMEMBERED, showRemembered);
 			}}
 		);
 		return new ModelAndView(
@@ -53,14 +53,14 @@ class CloudController extends AbstractVisualController {
 		@PathVariable Integer id,
 		@RequestParam(required = false, defaultValue = "false", name = "all") Boolean showAll,
 		@RequestParam(required = false, defaultValue = "true",  name = "unknown") Boolean showUnknown,
-		@RequestParam(required = false, defaultValue = "false", name = "known") Boolean showKnown
+		@RequestParam(required = false, defaultValue = "false", name = "remembered") Boolean showRemembered
 	) {
 		CloudContentFilter filter = new CloudContentFilter(
 			"/cloud/source/" + id,
 			new HashMap<CloudContentFilterToggle, Boolean>() {{
 				put(CloudContentFilterToggle.ALL, showAll);
 				put(CloudContentFilterToggle.UNKNOWN, showUnknown);
-				put(CloudContentFilterToggle.KNOWN, showKnown);
+				put(CloudContentFilterToggle.REMEMBERED, showRemembered);
 			}}
 		);
 		return new ModelAndView(

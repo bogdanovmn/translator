@@ -15,10 +15,11 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 
 	List<Word> toRemember(Integer userId);
 
-	List<Word> allKnownWordsByUserForCloud(Integer userId);
-	List<Word> allUnknownWordsByUserForCloud(Integer userId);
-	List<Word> allUnknownWordsByUserAndSourceForCloud(Integer userId, Integer sourceId);
-	List<Word> allKnownWordsByUserAndSourceForCloud(Integer userId, Integer sourceId);
+	List<Word> allRememberedForCloud(Integer userId);
+	List<Word> allUnknownForCloud(Integer userId);
+	List<Word> allUnknownBySourceForCloud(Integer userId, Integer sourceId);
+	List<Word> allRememberedBySourceForCloud(Integer userId, Integer sourceId);
+	List<Word> allBySourceForCloud(Integer sourceId);
 
 	@Modifying
 	@Query(

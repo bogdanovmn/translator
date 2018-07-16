@@ -27,4 +27,8 @@ class CloudContentFilter {
 			.findFirst()
 			.orElse(CloudContentFilterToggle.ALL);
 	}
+
+	CloudWordsRepository cloudWordsRepository() {
+		return activeToggle().repository();
+	}
 }
