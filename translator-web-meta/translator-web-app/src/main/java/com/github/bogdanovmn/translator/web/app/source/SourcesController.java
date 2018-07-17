@@ -28,7 +28,7 @@ class SourcesController extends AbstractVisualController {
 		return new ModelAndView(
 			"sources",
 			"sources",
-			sourcesService.getAll(
+			sourcesService.getAllWithUserStatistic(
 				this.getUser()
 			)
 		);

@@ -28,6 +28,14 @@ form table td { padding: 10px; }
 
 a.logout { text-decoration: none; font-weight: bold; color: #a11e0d; }
 a.button { text-decoration: none }
+div.button {
+	border-radius: 25px; border: 1px dotted;
+	text-align: center; font-size: 50%;
+	padding: 3px 10px; margin: 3px 5px; display: inline;
+	cursor: pointer;
+}
+div.button:hover { border: 1px solid; }
+div.danger-action { text-align: right; display: inline; }
 
 div.error { border-radius: 10px; border: 1px solid #d47d7d; background: #f5cccc; text-align: center; color: #4c260b; padding: 10px 30px; }
 
@@ -36,13 +44,11 @@ div.word-to-remember-block {
 	text-align: left; font-size: 160%;
 	background: #fafcfd; border-radius: 10px; border: 1px dotted #bed5e0;
 }
+
 div.word-to-remember-block div.word  { margin: 5px; }
-div.word-to-remember-block div.stats { font-size: 50%; color: #d4d4d4; text-align: right; }
+div.word-to-remember-block div.stats { font-size: 40%; color: #d4d4d4; text-align: right; }
 div.word-to-remember-block span.translate { color: cornflowerblue; font-weight: bold; font-size: 60%; }
 div.word-to-remember-block span.translate i { color: #a2c0f7; font-weight: normal; }
-div.word-to-remember-block div.button {
-	border-radius: 25px; border: 1px solid; text-align: center; padding: 3px 10px; font-size: 70%; display: inline; margin: 3px 5px; cursor: pointer; }
-div.word-to-remember-block div.button:hover { border: 1px dotted; }
 div.word-to-remember-block div.button-remembered { border-color: seagreen; color: seagreen; }
 div.word-to-remember-block div.button-translate  { border-color: cornflowerblue; color: cornflowerblue; }
 div.word-to-remember-block div.button-hold-over  { border-color: cornflowerblue; color: cornflowerblue; }
@@ -64,11 +70,9 @@ div.source-block {
 	background: #fafcfd; border-radius: 10px; border: 1px dotted #bed5e0;
 }
 div.source-block div.name  { margin: 5px; }
-div.source-block div.stats { font-size: 70%; color: #d4d4d4; text-align: right; }
-div.source-block div.button {
-	border-radius: 25px; border: 1px solid; text-align: center; padding: 3px 10px; font-size: 70%; display: inline; margin: 3px 5px; cursor: pointer; }
-div.source-block div.button:hover { border: 1px dotted; }
-div.source-block div.button-delete { border-color: darkred; color: darkred; }
+div.source-block div.stats { font-size: 60%; color: #d4d4d4; text-align: right; }
+div.source-block div.button { font-size: 60%; }
+div.source-block div.button-delete { border-color: darkred; color: darkred; margin-left: 90%; }
 
 div.cloud { text-align: justify; }
 
@@ -77,3 +81,10 @@ div.sub-menu span { margin-left: 10px; padding: 5px 15px; border: 1px dotted #12
 div.sub-menu a { text-decoration: none; }
 div.sub-menu span.false { background: #f4fbfb;}
 div.sub-menu span.true { background: #a4e6ecc4; font-weight: bold; }
+
+@media handheld and (max-width: 500px) {
+	div.word-to-remember-block {
+		font-size: 360%;
+	}
+	div.button { padding: 6px 20px; }
+}

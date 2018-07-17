@@ -12,12 +12,11 @@ import java.util.List;
 class SourcesService {
 	private final SourceRepository sourceRepository;
 
-	@Autowired
 	SourcesService(SourceRepository sourceRepository) {
 		this.sourceRepository = sourceRepository;
 	}
 
-	List<SourceWithUserStatistic> getAll(User user) {
+	List<SourceWithUserStatistic> getAllWithUserStatistic(User user) {
 		return this.sourceRepository.getAllWithUserStatistic(user.getId());
 	}
 }
