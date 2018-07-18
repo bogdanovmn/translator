@@ -82,7 +82,7 @@ div.sub-menu a { text-decoration: none; }
 div.sub-menu span.false { background: #f4fbfb;}
 div.sub-menu span.true { background: #a4e6ecc4; font-weight: bold; }
 
-@media handheld and (max-width: 500px) {
+@media (max-width: 500px) {
 	div.word-to-remember-block {
 		font-size: 360%;
 	}
