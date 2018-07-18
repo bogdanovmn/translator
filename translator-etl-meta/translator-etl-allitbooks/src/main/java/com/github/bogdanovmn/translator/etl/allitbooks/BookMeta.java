@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.etl.allitbooks;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "allitebook")
+@Table(name = "allitebook_meta")
 public class BookMeta {
 	@Id
 	@GeneratedValue
@@ -27,6 +27,10 @@ public class BookMeta {
 	private int year;
 
 	private boolean obsolete = false;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "download_process_id")
+	private BookDownloadProcess downloadProcess;
 
 	public boolean isObsolete() {
 		return obsolete;
@@ -149,5 +153,12 @@ public class BookMeta {
 			", fileSizeMb=" + fileSizeMb +
 			", year=" + year +
 			'}';
+	}
+
+	BookDownloadProcess createDownloadProcess() {
+		downloadProcess = new BookDownloadProcess()
+			.setStatus(DownloadStatus.WAIT);
+
+		return downloadProcess;
 	}
 }

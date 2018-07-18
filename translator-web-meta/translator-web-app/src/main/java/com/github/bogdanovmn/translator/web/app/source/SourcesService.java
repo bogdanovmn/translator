@@ -3,7 +3,6 @@ package com.github.bogdanovmn.translator.web.app.source;
 import com.github.bogdanovmn.translator.web.orm.SourceRepository;
 import com.github.bogdanovmn.translator.web.orm.SourceWithUserStatistic;
 import com.github.bogdanovmn.translator.web.orm.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

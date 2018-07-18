@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.web.app.admin;
 
 import com.github.bogdanovmn.translator.core.EnglishText;
 import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateException;
-import com.github.bogdanovmn.translator.parser.pdf.PdfInputStreamContent;
+import com.github.bogdanovmn.translator.parser.pdf.PdfContent;
 import com.github.bogdanovmn.translator.web.orm.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +51,7 @@ public class UploadBookService {
 		}
 
 		LOG.info("Parse PDF file");
-		PdfInputStreamContent content = new PdfInputStreamContent(
+		PdfContent content = new PdfContent(
 			file.getInputStream()
 		);
 

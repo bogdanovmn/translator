@@ -12,10 +12,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 public class App implements CommandLineRunner {
-	@Autowired
-	private BookMetaImport bookMetaImport;
+	private final BookMetaImport bookMetaImport;
 
-	public static void main(String[] args) throws Exception {
+	@Autowired
+	public App(BookMetaImport bookMetaImport) {
+		this.bookMetaImport = bookMetaImport;
+	}
+
+	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(App.class);
 		app.setBannerMode(Banner.Mode.OFF);
 		app.run(args);

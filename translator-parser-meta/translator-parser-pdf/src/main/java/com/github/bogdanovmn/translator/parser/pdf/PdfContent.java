@@ -6,51 +6,55 @@ import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class PdfContent implements TextContentParser {
-	private final File source;
-	private boolean isPrepared = false;
 	private PDDocument document;
 
-	public PdfContent(File source) {
-		this.source = source;
+	public PdfContent(PDDocument document) {
+		this.document = document;
 	}
 
-	private void prepare() throws IOException {
-		if (!this.isPrepared) {
-			try {
-				this.document = PDDocument.load(this.source);
-			}
-			finally {
-				this.isPrepared = true;
-			}
-		}
+	public PdfContent(File source) throws IOException {
+		this(
+			PDDocument.load(source)
+		);
 	}
+
+	public PdfContent(InputStream sourceStream) throws IOException {
+		this(
+			PDDocument.load(sourceStream)
+		);
+	}
+
+	public PdfContent(byte[] sourceBytes) throws IOException {
+		this(
+			PDDocument.load(sourceBytes)
+		);
+	}
+
 	@Override
 	public String getText() throws IOException {
-		this.prepare();
-		return new PDFTextStripper().getText(this.document);
+		return new PDFTextStripper().getText(document);
 	}
 
 	@Override
 	public String getAuthor() throws IOException {
-		this.prepare();
-		return this.document.getDocumentInformation().getAuthor();
+		return document.getDocumentInformation().getAuthor();
 	}
 
 	@Override
 	public String getTitle() throws IOException {
-		this.prepare();
-		return this.document.getDocumentInformation().getTitle();
+		return document.getDocumentInformation().getTitle();
 	}
 
 	public void printMeta() {
-		this.document.getDocumentInformation().getMetadataKeys().forEach(
+		document.getDocumentInformation().getMetadataKeys().forEach(
 			key -> System.out.println(
 				String.format(
 					"%s = %s",
 						key,
-						this.document.getDocumentInformation().getCustomMetadataValue(key)
+						document.getDocumentInformation().getCustomMetadataValue(key)
 				)
 			)
 		);

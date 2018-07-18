@@ -14,11 +14,23 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+		<!-- Modules -->
+
         <dependency>
             <groupId>com.github.bogdanovmn.translator</groupId>
             <artifactId>translator-web-orm</artifactId>
         </dependency>
+		<dependency>
+			<groupId>com.github.bogdanovmn.translator</groupId>
+			<artifactId>translator-parser-pdf</artifactId>
+		</dependency>
 
+		<!-- My Libs -->
+
+		<dependency>
+			<groupId>com.github.bogdanovmn.httpclient</groupId>
+			<artifactId>http-client-impl-simple</artifactId>
+		</dependency>
         <dependency>
             <groupId>com.github.bogdanovmn.dwlc</groupId>
             <artifactId>download-with-local-cache</artifactId>
@@ -28,11 +40,16 @@
             <artifactId>cmdline-app</artifactId>
         </dependency>
 
+		<!-- Other -->
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
         </dependency>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>

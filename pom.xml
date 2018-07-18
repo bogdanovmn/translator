@@ -70,7 +70,7 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
 				<artifactId>http-client-impl-simple</artifactId>
-				<version>1.0</version>
+				<version>1.6</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
@@ -85,6 +85,11 @@
 
 			<!-- Libs -->
 
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>25.1-jre</version>
+			</dependency>
 			<dependency>
 				<groupId>org.jsoup</groupId>
 				<artifactId>jsoup</artifactId>
