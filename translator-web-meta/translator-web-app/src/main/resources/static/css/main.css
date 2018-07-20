@@ -1,7 +1,7 @@
 a,body,table,tr,td,li,p,input,textarea,pre {font-family: verdana, arial, serif;color:#101610;padding:0;margin:0}
 table{width:auto;table-layout:fixed;border-collapse:collapse;text-align:left}
 
-div.main { width: 1000px; margin: 0 auto; text-align: center; }
+div.main { max-width: 1280px; margin: 0 auto; text-align: center; }
 
 #top_menu { position: static; font-size: 100%; }
 	.links     { float: left;  width: 70%; background: #ddd; padding: 5px; text-align: left;}
@@ -82,7 +82,7 @@ div.sub-menu a { text-decoration: none; }
 div.sub-menu span.false { background: #f4fbfb;}
 div.sub-menu span.true { background: #a4e6ecc4; font-weight: bold; }
 
-@media (max-width: 500px) {
+@media (max-width: 540px) {
 	div.word-to-remember-block {
 		font-size: 360%;
 	}
