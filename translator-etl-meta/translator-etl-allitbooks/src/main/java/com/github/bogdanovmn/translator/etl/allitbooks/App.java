@@ -13,10 +13,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class App implements CommandLineRunner {
 	private final BookMetaImport bookMetaImport;
+	private final DownloadService downloadService;
 
 	@Autowired
-	public App(BookMetaImport bookMetaImport) {
+	public App(BookMetaImport bookMetaImport, DownloadService downloadService) {
 		this.bookMetaImport = bookMetaImport;
+		this.downloadService = downloadService;
 	}
 
 	public static void main(String[] args) {
@@ -32,7 +34,8 @@ public class App implements CommandLineRunner {
 			.withDescription("allitebooks import CLI")
 			.withEntryPoint(
 				cmdLine -> {
-					bookMetaImport.run();
+					downloadService.download();
+//					bookMetaImport.run();
 				}
 			).build().run();
 	}

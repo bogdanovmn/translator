@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.etl.allitbooks;
 
 enum DownloadStatus {
 	WAIT,
-	DONLOADING,
+	DOWNLOADING,
 	DONE,
 	ERROR
 }

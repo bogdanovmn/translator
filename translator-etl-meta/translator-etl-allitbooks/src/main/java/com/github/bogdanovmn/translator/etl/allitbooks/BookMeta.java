@@ -28,7 +28,7 @@ public class BookMeta {
 
 	private boolean obsolete = false;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "download_process_id")
 	private BookDownloadProcess downloadProcess;
 
@@ -157,6 +157,7 @@ public class BookMeta {
 
 	BookDownloadProcess createDownloadProcess() {
 		downloadProcess = new BookDownloadProcess()
+			.setMeta(this)
 			.setStatus(DownloadStatus.WAIT);
 
 		return downloadProcess;

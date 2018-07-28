@@ -17,11 +17,11 @@ public class BookDownloadProcess extends BaseEntity {
 	private Date started;
 	private Date updated;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "meta_id")
 	private BookMeta meta;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "book_id")
 	private Book book;
 
@@ -84,7 +84,7 @@ public class BookDownloadProcess extends BaseEntity {
 		Date now = new Date();
 		started = now;
 		updated = now;
-		status = DownloadStatus.DONLOADING;
+		status = DownloadStatus.DOWNLOADING;
 	}
 
 	public Book createBook(byte[] fileBytes) throws IOException {
@@ -96,7 +96,7 @@ public class BookDownloadProcess extends BaseEntity {
 			.setFileHash(
 				DigestUtils.md5DigestAsHex(fileBytes)
 			)
-			.setText(text);
+			.setText(text.getBytes());
 
 		return book;
 	}

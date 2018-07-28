@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "allitebook")
+@Table(name = "allitebook_data")
 public class Book extends BaseEntity {
-	private String text;
+	private byte[] data;
 	private String fileHash;
 	private Integer textSize;
 	private Date created;
@@ -17,12 +17,12 @@ public class Book extends BaseEntity {
 	@JoinColumn(name = "meta_id")
 	private BookMeta meta;
 
-	public String getText() {
-		return text;
+	public byte[] getData() {
+		return data;
 	}
 
-	public Book setText(String text) {
-		this.text = text;
+	public Book setText(byte[] data) {
+		this.data = data;
 		return this;
 	}
 
