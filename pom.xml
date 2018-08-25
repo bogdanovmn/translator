@@ -65,7 +65,7 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
 				<artifactId>http-client-core</artifactId>
-				<version>1.0</version>
+				<version>1.6</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
@@ -75,7 +75,7 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
 				<artifactId>http-client-impl-phantomjs</artifactId>
-				<version>1.1</version>
+				<version>1.6</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.dwlc</groupId>
@@ -88,7 +88,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>25.1-jre</version>
+				<version>22.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jsoup</groupId>
