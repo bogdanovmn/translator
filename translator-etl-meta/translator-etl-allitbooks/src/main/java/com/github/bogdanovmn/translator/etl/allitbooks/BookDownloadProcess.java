@@ -5,7 +5,6 @@ import com.github.bogdanovmn.translator.web.orm.BaseEntity;
 import org.springframework.util.DigestUtils;
 
 import javax.persistence.*;
-import java.io.IOException;
 import java.util.Date;
 
 @Entity
@@ -87,8 +86,13 @@ public class BookDownloadProcess extends BaseEntity {
 		status = DownloadStatus.DOWNLOADING;
 	}
 
-	public Book createBook(byte[] fileBytes) throws IOException {
-		String text = new PdfContent(fileBytes).getText();
+	public Book createBook(byte[] fileBytes) throws Exception {
+		String text;
+		try (PdfContent pdf = new PdfContent(fileBytes)) {
+			text = pdf.getText();
+		}
+
+		CompressedText compressedText = CompressedText.from(text);
 		book = new Book()
 			.setMeta(meta)
 			.setCreated(new Date())
@@ -96,7 +100,7 @@ public class BookDownloadProcess extends BaseEntity {
 			.setFileHash(
 				DigestUtils.md5DigestAsHex(fileBytes)
 			)
-			.setText(text.getBytes());
+			.setData(compressedText.bytes());
 
 		return book;
 	}

@@ -8,6 +8,8 @@ import java.util.Date;
 @Entity
 @Table(name = "allitebook_data")
 public class Book extends BaseEntity {
+	@Lob
+	@Column(columnDefinition = "LONGBLOB")
 	private byte[] data;
 	private String fileHash;
 	private Integer textSize;
@@ -21,7 +23,7 @@ public class Book extends BaseEntity {
 		return data;
 	}
 
-	public Book setText(byte[] data) {
+	public Book setData(byte[] data) {
 		this.data = data;
 		return this;
 	}
@@ -60,5 +62,13 @@ public class Book extends BaseEntity {
 	public Book setMeta(BookMeta meta) {
 		this.meta = meta;
 		return this;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+			"Book{data_size=%s, fileHash='%s', textSize=%d, created=%s}",
+				data.length, fileHash, textSize, created
+		);
 	}
 }

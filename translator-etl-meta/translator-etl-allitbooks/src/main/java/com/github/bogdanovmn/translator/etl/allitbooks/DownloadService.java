@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class DownloadService {
 	private static final Logger LOG = LoggerFactory.getLogger(DownloadService.class);
 
-	private final static int ERRORS_LIMIT = 20;
+	private final static int ERRORS_LIMIT = 10;
 
 	private final BookMetaRepository bookMetaRepository;
 	private final BookDownloadProcessRepository bookDownloadProcessRepository;
@@ -23,7 +23,7 @@ public class DownloadService {
 	}
 
 	public void download() throws InterruptedException {
-		ExecutorService workers = Executors.newFixedThreadPool(1);
+		ExecutorService workers = Executors.newFixedThreadPool(2);
 		CompletionService<BookDownloadProcess> completionService = new ExecutorCompletionService<>(workers);
 
 		List<BookDownloadProcess> waitingBooks = nextBatch();
@@ -31,7 +31,12 @@ public class DownloadService {
 
 		while (waitingBooks != null) {
 			waitingBooks.stream()
-				.peek(processItem -> LOG.info("Prepare download: {}", processItem.getMeta().getPdfUrl()))
+				.peek(processItem ->
+					LOG.info("Prepare download {}Mb: {}",
+						processItem.getMeta().getFileSizeMb(),
+						processItem.getMeta().getPdfUrl()
+					)
+				)
 				.map(DownloadTask::new)
 				.forEach(completionService::submit);
 
@@ -50,9 +55,9 @@ public class DownloadService {
 			}
 			else {
 				LOG.warn("Errors limit is reached");
+				break;
 			}
 		}
-
 	}
 
 	private List<BookDownloadProcess> nextBatch() {

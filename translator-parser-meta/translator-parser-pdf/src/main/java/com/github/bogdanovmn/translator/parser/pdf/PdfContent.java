@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class PdfContent implements TextContentParser {
+public class PdfContent implements TextContentParser, AutoCloseable {
 	private PDDocument document;
 
 	public PdfContent(PDDocument document) {
@@ -58,5 +58,10 @@ public class PdfContent implements TextContentParser {
 				)
 			)
 		);
+	}
+
+	@Override
+	public void close() throws Exception {
+		document.close();
 	}
 }

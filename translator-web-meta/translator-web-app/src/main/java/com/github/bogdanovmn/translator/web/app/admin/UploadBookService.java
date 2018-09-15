@@ -71,6 +71,12 @@ public class UploadBookService {
 				.setAuthor(content.getAuthor())
 				.setWordsCount(words.size())
 		);
+		try {
+			content.close();
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Close PDF error", e);
+		}
 
 		LOG.info("Load exists words");
 		Map<String, Word> wordsMap = this.wordRepository.findAll().stream()
