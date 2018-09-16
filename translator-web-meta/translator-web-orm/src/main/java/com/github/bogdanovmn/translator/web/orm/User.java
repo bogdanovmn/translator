@@ -1,5 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm;
 
+import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueName;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;

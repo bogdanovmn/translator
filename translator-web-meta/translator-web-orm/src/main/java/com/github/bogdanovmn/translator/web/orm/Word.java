@@ -1,5 +1,8 @@
 package com.github.bogdanovmn.translator.web.orm;
 
+import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueName;
+import com.github.bogdanovmn.translator.orm.core.ExportToXmlBooleanAdapter;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;

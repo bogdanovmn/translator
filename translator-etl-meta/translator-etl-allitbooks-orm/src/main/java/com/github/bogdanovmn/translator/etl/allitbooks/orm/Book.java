@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
-import com.github.bogdanovmn.translator.web.orm.BaseEntity;
+
+import com.github.bogdanovmn.translator.orm.core.BaseEntity;
 
 import javax.persistence.*;
 import java.util.Date;

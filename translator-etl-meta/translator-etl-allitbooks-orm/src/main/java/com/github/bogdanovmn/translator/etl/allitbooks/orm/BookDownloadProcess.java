@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
-import com.github.bogdanovmn.translator.etl.allitbooks.CompressedText;
+import com.github.bogdanovmn.translator.core.CompressedText;
+import com.github.bogdanovmn.translator.orm.core.BaseEntity;
 import com.github.bogdanovmn.translator.parser.pdf.PdfContent;
-import com.github.bogdanovmn.translator.web.orm.BaseEntity;
 import org.springframework.util.DigestUtils;
 
 import javax.persistence.*;

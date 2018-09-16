@@ -16,6 +16,7 @@
 		<module>translator-parser-meta</module>
 		<module>translator-web-meta</module>
 		<module>translator-etl-meta</module>
+		<module>translator-orm-core</module>
 	</modules>
 
 	<properties>
@@ -52,6 +53,16 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.translator</groupId>
 				<artifactId>translator-web-orm</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn.translator</groupId>
+				<artifactId>translator-orm-core</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn.translator</groupId>
+				<artifactId>translator-etl-allitbooks-orm</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
 
@@ -109,6 +120,20 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-core</artifactId>
 				<version>1.2.3</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.11</version>
+			</dependency>
+
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

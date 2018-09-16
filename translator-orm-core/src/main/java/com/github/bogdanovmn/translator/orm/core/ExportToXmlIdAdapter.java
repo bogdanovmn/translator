@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.orm;
+package com.github.bogdanovmn.translator.orm.core;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

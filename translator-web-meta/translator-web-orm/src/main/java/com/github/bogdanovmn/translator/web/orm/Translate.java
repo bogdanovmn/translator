@@ -1,5 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm;
 
+import com.github.bogdanovmn.translator.orm.core.BaseEntity;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlIDREF;

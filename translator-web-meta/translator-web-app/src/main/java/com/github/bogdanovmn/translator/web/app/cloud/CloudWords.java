@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.cloud;
 
-import com.github.bogdanovmn.translator.web.orm.BaseEntityWithUniqueName;
+import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueName;
 import com.github.bogdanovmn.translator.web.orm.Word;
 
 import java.util.Comparator;

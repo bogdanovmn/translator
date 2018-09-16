@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.etl.allitbooks;
+package com.github.bogdanovmn.translator.core;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

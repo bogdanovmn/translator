@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.web.orm;
 
+import com.github.bogdanovmn.translator.orm.core.BaseEntity;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;

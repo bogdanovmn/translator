@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.orm;
+package com.github.bogdanovmn.translator.orm.core;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
