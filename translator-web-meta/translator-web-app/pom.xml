@@ -25,6 +25,11 @@
 
         <dependency>
             <groupId>com.github.bogdanovmn.translator</groupId>
+            <artifactId>translator-etl-allitbooks-orm</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.bogdanovmn.translator</groupId>
             <artifactId>translator-core</artifactId>
         </dependency>
 

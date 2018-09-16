@@ -1,6 +1,7 @@
-package com.github.bogdanovmn.translator.web.app.admin;
+package com.github.bogdanovmn.translator.web.app.admin.upload;
 
 import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateException;
+import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
 import com.github.bogdanovmn.translator.web.orm.Source;
 import org.springframework.beans.factory.annotation.Autowired;

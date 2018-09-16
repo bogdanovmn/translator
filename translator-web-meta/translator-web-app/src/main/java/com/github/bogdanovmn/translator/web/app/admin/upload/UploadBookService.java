@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.admin;
+package com.github.bogdanovmn.translator.web.app.admin.upload;
 
 import com.github.bogdanovmn.translator.core.EnglishText;
 import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateException;

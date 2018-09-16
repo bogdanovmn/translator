@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin;
 
+import com.github.bogdanovmn.translator.web.app.admin.export.ImportSchema;
 import org.junit.Before;
 import org.junit.Test;
 

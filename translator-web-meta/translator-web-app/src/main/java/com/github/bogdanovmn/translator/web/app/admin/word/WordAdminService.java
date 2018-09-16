@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.admin;
+package com.github.bogdanovmn.translator.web.app.admin.word;
 
 import com.github.bogdanovmn.translator.web.orm.Word;
 import com.github.bogdanovmn.translator.web.orm.WordRepository;

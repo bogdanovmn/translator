@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.admin;
+package com.github.bogdanovmn.translator.web.app.admin.export;
 
 import com.github.bogdanovmn.translator.web.orm.*;
 

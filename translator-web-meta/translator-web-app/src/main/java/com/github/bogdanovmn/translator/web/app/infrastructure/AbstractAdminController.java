@@ -1,6 +1,5 @@
-package com.github.bogdanovmn.translator.web.app.admin;
+package com.github.bogdanovmn.translator.web.app.infrastructure;
 
-import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

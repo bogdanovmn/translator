@@ -1,5 +1,6 @@
-package com.github.bogdanovmn.translator.web.app.admin;
+package com.github.bogdanovmn.translator.web.app.admin.export;
 
+import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractAdminController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
