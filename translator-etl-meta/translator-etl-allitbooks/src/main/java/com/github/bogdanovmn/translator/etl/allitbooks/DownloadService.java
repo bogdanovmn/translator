@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
+import com.github.bogdanovmn.translator.etl.allitbooks.orm.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 @Service
-public class DownloadService {
+class DownloadService {
 	private static final Logger LOG = LoggerFactory.getLogger(DownloadService.class);
 
 	private final static int ERRORS_LIMIT = 10;
@@ -17,13 +18,15 @@ public class DownloadService {
 	private final BookMetaRepository bookMetaRepository;
 	private final BookDownloadProcessRepository bookDownloadProcessRepository;
 
-	public DownloadService(BookMetaRepository bookMetaRepository, BookDownloadProcessRepository bookDownloadProcessRepository) {
+	DownloadService(BookMetaRepository bookMetaRepository, BookDownloadProcessRepository bookDownloadProcessRepository) {
 		this.bookMetaRepository = bookMetaRepository;
 		this.bookDownloadProcessRepository = bookDownloadProcessRepository;
 	}
 
-	public void download() throws InterruptedException {
-		ExecutorService workers = Executors.newFixedThreadPool(2);
+	void download(int threads) throws InterruptedException {
+		LOG.info("Start download with {} threads", threads);
+
+		ExecutorService workers = Executors.newFixedThreadPool(threads);
 		CompletionService<BookDownloadProcess> completionService = new ExecutorCompletionService<>(workers);
 
 		List<BookDownloadProcess> waitingBooks = nextBatch();
@@ -61,7 +64,7 @@ public class DownloadService {
 	}
 
 	private List<BookDownloadProcess> nextBatch() {
-		List<BookDownloadProcess> batch = bookDownloadProcessRepository.findTop2ByStatus(DownloadStatus.WAIT);
+		List<BookDownloadProcess> batch = bookDownloadProcessRepository.findTop10ByStatus(DownloadStatus.WAIT);
 		if (batch.isEmpty()) {
 			List<BookMeta> meta = bookMetaRepository.findTop10ByDownloadProcessNullAndObsoleteFalse();
 			if (!meta.isEmpty()) {

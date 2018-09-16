@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin;
 
 import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateException;
-import com.github.bogdanovmn.translator.web.app.AdminMenu;
+import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
 import com.github.bogdanovmn.translator.web.orm.Source;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

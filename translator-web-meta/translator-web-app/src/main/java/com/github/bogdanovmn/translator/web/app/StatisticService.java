@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app;
 
-import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
+import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.UserRememberedWordRepository;
 import com.github.bogdanovmn.translator.web.orm.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;

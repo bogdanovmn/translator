@@ -32,10 +32,18 @@ public class App implements CommandLineRunner {
 		new CmdLineAppBuilder(args)
 			.withJarName("allitebooks-import")
 			.withDescription("allitebooks import CLI")
+			.withFlag("data", "download books data")
+			.withFlag("meta", "download books meta")
+			.withArg("threads", "count threads to download")
 			.withEntryPoint(
 				cmdLine -> {
-					downloadService.download();
-//					bookMetaImport.run();
+					if (cmdLine.hasOption("data")) {
+						int threads = Integer.parseInt(cmdLine.getOptionValue("threads"));
+						downloadService.download(threads);
+					}
+					else if (cmdLine.hasOption("meta")) {
+						bookMetaImport.run();
+					}
 				}
 			).build().run();
 	}

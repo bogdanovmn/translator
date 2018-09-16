@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.source;
 
-import com.github.bogdanovmn.translator.web.app.AbstractVisualController;
-import com.github.bogdanovmn.translator.web.app.HeadMenu;
+import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
+import com.github.bogdanovmn.translator.web.app.infrastructure.HeadMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

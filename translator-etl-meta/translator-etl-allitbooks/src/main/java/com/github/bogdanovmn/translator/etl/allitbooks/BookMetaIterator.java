@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
+import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookMeta;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

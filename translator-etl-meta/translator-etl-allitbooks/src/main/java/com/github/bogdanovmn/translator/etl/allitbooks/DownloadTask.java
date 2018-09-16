@@ -1,6 +1,8 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
 import com.github.bogdanovmn.httpclient.simple.SimpleHttpClient;
+import com.github.bogdanovmn.translator.etl.allitbooks.orm.Book;
+import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookDownloadProcess;
 import com.google.common.io.ByteStreams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

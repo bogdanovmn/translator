@@ -3,7 +3,7 @@ package com.github.bogdanovmn.translator.web.app.toremember;
 import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.core.TranslateServiceException;
 import com.github.bogdanovmn.translator.core.TranslateServiceUnknownWordException;
-import com.github.bogdanovmn.translator.web.app.config.security.TranslateSecurityService;
+import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
