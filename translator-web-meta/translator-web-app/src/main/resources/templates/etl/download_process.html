@@ -1,0 +1,20 @@
+{{#layout}}
+
+<h1>История импорта с allitebooks.com</h1>
+{{#downloadProcess}}
+<div>
+	<div id="{{id}}">
+		{{started}} -- {{meta.title}} -- {{updated}} -- {{status}}
+		{{#errorMsg}}
+			<div class="error">{{errorMsg}}</div>
+		{{/errorMsg}}
+	</div>
+</div>
+{{/downloadProcess}}
+
+{{^downloadProcess}}
+<h2>Очередь пуста</h2>
+{{/downloadProcess}}
+
+
+{{/layout}}

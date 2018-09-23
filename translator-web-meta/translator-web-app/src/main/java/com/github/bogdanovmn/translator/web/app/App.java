@@ -13,8 +13,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.github.bogdanovmn.translator.web.orm")
-@EntityScan(basePackages = "com.github.bogdanovmn.translator.web.orm")
+@EnableJpaRepositories(
+	basePackages = {
+		"com.github.bogdanovmn.translator.web.orm",
+		"com.github.bogdanovmn.translator.etl.allitbooks.orm"
+	}
+)
+@EntityScan(
+	basePackages = {
+		"com.github.bogdanovmn.translator.web.orm",
+		"com.github.bogdanovmn.translator.etl.allitbooks.orm"
+	})
 @EnableTransactionManagement
 public class App {
 	public static void main(String[] args) {
