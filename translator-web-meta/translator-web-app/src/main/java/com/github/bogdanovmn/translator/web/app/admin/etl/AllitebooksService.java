@@ -4,11 +4,13 @@ import com.github.bogdanovmn.translator.core.CompressedText;
 import com.github.bogdanovmn.translator.core.EnglishText;
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookDownloadProcess;
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookDownloadProcessRepository;
+import com.github.bogdanovmn.translator.etl.allitbooks.orm.DownloadStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 class AllitebooksService {
@@ -19,8 +21,11 @@ class AllitebooksService {
 		this.downloadProcessRepository = downloadProcessRepository;
 	}
 
-	List<BookDownloadProcess> downloadProcessBrief() {
-		return downloadProcessRepository.findAll();
+	Map<String, Object> downloadProcessBrief() {
+		return new HashMap<String, Object>() {{
+			put("statistic", downloadProcessRepository.statusStatistic());
+			put("active", downloadProcessRepository.findAllByStatusIsNot(DownloadStatus.DONE));
+		}};
 	}
 
 	String downloadProcessData(Integer id) throws IOException {

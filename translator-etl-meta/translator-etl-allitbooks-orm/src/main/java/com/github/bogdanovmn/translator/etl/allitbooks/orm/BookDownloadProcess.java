@@ -9,6 +9,26 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@NamedNativeQuery(
+	name = "BookDownloadProcess.statusStatistic",
+	resultSetMapping = "BookDownloadProcessMapping.statusStatistic",
+	query =
+		"SELECT p.status, COUNT(p.id) count " +
+			"FROM allitebook_download_process p " +
+			"GROUP BY p.status"
+)
+@SqlResultSetMapping(
+	name = "BookDownloadProcessMapping.statusStatistic",
+	classes = {
+		@ConstructorResult(
+			targetClass = DownloadStatusStatistic.class,
+			columns = {
+				@ColumnResult(name = "status", type = String.class),
+				@ColumnResult(name = "count", type = Integer.class),
+			}
+		)
+	}
+)
 @Table(name = "allitebook_download_process")
 public class BookDownloadProcess extends BaseEntity {
 	@Enumerated(EnumType.STRING)

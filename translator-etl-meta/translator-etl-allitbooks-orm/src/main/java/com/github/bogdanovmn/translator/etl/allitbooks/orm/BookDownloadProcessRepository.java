@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface BookDownloadProcessRepository extends JpaRepository<BookDownloadProcess, Integer> {
 	List<BookDownloadProcess> findTop10ByStatus(DownloadStatus status);
+
+	List<BookDownloadProcess> findAllByStatusIsNot(DownloadStatus status);
+
+	List<DownloadStatusStatistic> statusStatistic();
 }

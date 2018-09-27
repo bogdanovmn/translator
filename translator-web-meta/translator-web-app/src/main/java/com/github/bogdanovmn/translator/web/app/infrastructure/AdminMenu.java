@@ -8,6 +8,7 @@ public class AdminMenu {
 		UPLOAD_BOOK,
 		EXPORT,
 		IMPORT,
+		ETL,
 		NONE
 	}
 
@@ -37,6 +38,7 @@ public class AdminMenu {
 			items.add(new MenuItem(ITEM.UPLOAD_BOOK.name(), "/admin/upload-book", "Загрузить книгу"));
 			items.add(new MenuItem(ITEM.EXPORT.name(), "/admin/export", "Экспорт"));
 			items.add(new MenuItem(ITEM.IMPORT.name(), "/admin/import", "Импорт"));
+			items.add(new MenuItem(ITEM.ETL.name(), "/admin/etl/download-process", "allitebooks"));
 		}
 		isPrepared = true;
 	}

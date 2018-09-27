@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.etl;
 
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
+import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +20,17 @@ class AllitebooksController extends AbstractVisualAdminController {
 		this.allitebooksService = allitebooksService;
 	}
 
+	@Override
+	protected AdminMenu.ITEM currentAdminMenuItem() {
+		return AdminMenu.ITEM.ETL;
+	}
+
 	@GetMapping("/etl/download-process")
 	ModelAndView downloadProcess() {
 		return new ModelAndView(
 			"etl/download_process",
-			new HashMap<String, Object>() {{
-				put("downloadProcess", allitebooksService.downloadProcessBrief());
-			}}
+			"brief",
+			allitebooksService.downloadProcessBrief()
 		);
 	}
 

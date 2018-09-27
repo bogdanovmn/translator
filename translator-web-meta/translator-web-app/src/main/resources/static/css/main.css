@@ -45,6 +45,13 @@ div.word-to-remember-block {
 	background: #fafcfd; border-radius: 10px; border: 1px dotted #bed5e0;
 }
 
+div.download-process-item { margin: 10px; padding: 5px 10px; border: 1px dotted gray; text-align: left;}
+div.download-process-item div.ERROR { border-color: #b43f39 }
+div.download-process-item div.DOWNLOADING { border-color: #1299b4 }
+div.download-process-item div.WAIT { border-color: #a2bca3 }
+div.download-process-item div.DONE { border-color: #09b24d; }
+div.download-process-item span.error { color: #b43f39; }
+
 div.word-to-remember-block div.word  { margin: 5px; }
 div.word-to-remember-block div.stats { font-size: 40%; color: #d4d4d4; text-align: right; }
 div.word-to-remember-block span.translate { color: cornflowerblue; font-weight: bold; font-size: 60%; }

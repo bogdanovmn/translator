@@ -1,20 +1,33 @@
 {{#layout}}
 
 <h1>История импорта с allitebooks.com</h1>
-{{#downloadProcess}}
+
+<div class="download-statistic">
+	{{#brief.statistic}}
+		<i class="name">{{status}}</i>: <b>{{count}}</b>
+	{{/brief.statistic}}
+</div>
+
+{{#brief.active}}
 <div>
-	<div id="{{id}}">
-		{{started}} -- {{meta.title}} -- {{updated}} -- {{status}}
+	<div id="{{id}}" class="download-process-item">
+		<b>Started:</b> {{started}}
+		<br>
+		<b>Book:</b> <a href="{{meta.originalUrl}}" target="_blank">{{meta.title}}</a> [{{meta.fileSizeMb}} Mb]
+		<br>
+		<b>Status:</b> {{status}} (<b>Updated:</b> {{updated}})
 		{{#errorMsg}}
-			<div class="error">{{errorMsg}}</div>
+		<br>
+		<b>Error:</b>
+			<span class="error">{{errorMsg}}</span>
 		{{/errorMsg}}
 	</div>
 </div>
-{{/downloadProcess}}
+{{/brief.active}}
 
-{{^downloadProcess}}
+{{^brief.active}}
 <h2>Очередь пуста</h2>
-{{/downloadProcess}}
+{{/brief.active}}
 
 
 {{/layout}}
