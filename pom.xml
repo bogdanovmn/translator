@@ -23,6 +23,7 @@
 		<encoding>UTF-8</encoding>
 		<java.version>1.8</java.version>
 		<spring-boot.version>1.5.14.RELEASE</spring-boot.version>
+		<http-client.version>2.0.2</http-client.version>
 	</properties>
 
 	<dependencyManagement>
@@ -52,6 +53,11 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.translator</groupId>
+				<artifactId>translator-lib-oxforddictionaries</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn.translator</groupId>
 				<artifactId>translator-web-orm</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
@@ -76,17 +82,17 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
 				<artifactId>http-client-core</artifactId>
-				<version>1.6.3</version>
+				<version>${http-client.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
 				<artifactId>http-client-impl-simple</artifactId>
-				<version>1.6.3</version>
+				<version>${http-client.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
 				<artifactId>http-client-impl-phantomjs</artifactId>
-				<version>1.6.3</version>
+				<version>${http-client.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.dwlc</groupId>
@@ -100,6 +106,11 @@
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>22.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.collections</groupId>
+				<artifactId>google-collections</artifactId>
+				<version>1.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jsoup</groupId>

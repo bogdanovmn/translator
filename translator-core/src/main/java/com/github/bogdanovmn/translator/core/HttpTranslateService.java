@@ -6,31 +6,33 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class HttpTranslateService implements TranslateService {
-	private final HttpClient httpClient;
+public abstract class HttpTranslateService extends HttpService<Set<String>> implements TranslateService {
 
-	public HttpTranslateService(HttpClient httpClient) {
-		this.httpClient = httpClient;
+	public HttpTranslateService(HttpClient httpClient, String urlPrefix) {
+		super(httpClient, urlPrefix);
 	}
-
-	protected abstract Set<String> parseServiceRawAnswer(String htmlText) throws TranslateServiceException;
 
 	@Override
 	public final Set<String> translate(String phrase) throws TranslateServiceException {
 		String htmlText;
 		try {
-			htmlText = httpClient.get(phrase);
+			htmlText = httpClient.get(urlPrefix + phrase);
 		}
 		catch (IOException e) {
-			throw new TranslateServiceUnavailableException(e);
+			throw new TranslateServiceException(e);
 		}
 
-		Set<String> translatedValue = this.parseServiceRawAnswer(
-			Objects.toString(htmlText, "")
-		);
+		Set<String> translatedValue;
+		try {
+			translatedValue = parsedServiceResponse(
+				Objects.toString(htmlText, "")
+			);
+		} catch (ParseResponseException e) {
+			throw new TranslateServiceException(e);
+		}
 
 		if (translatedValue == null || translatedValue.isEmpty()) {
-			throw new TranslateServiceUnavailableException("Empty result. Something wrong...");
+			throw new TranslateServiceException("Empty result. Something wrong...");
 		}
 		if (translatedValue.size() == 1 && translatedValue.contains(phrase)) {
 			throw new TranslateServiceUnknownWordException(
@@ -41,10 +43,5 @@ public abstract class HttpTranslateService implements TranslateService {
 		}
 
 		return translatedValue;
-	}
-
-	@Override
-	public void close() throws IOException {
-		this.httpClient.close();
 	}
 }

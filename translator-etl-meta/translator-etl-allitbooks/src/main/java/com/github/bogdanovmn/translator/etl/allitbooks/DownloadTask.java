@@ -13,7 +13,7 @@ import java.util.concurrent.Callable;
 class DownloadTask implements Callable<BookDownloadProcess> {
 	private static final Logger LOG = LoggerFactory.getLogger(DownloadTask.class);
 
-	private final SimpleHttpClient httpClient = new SimpleHttpClient("");
+	private final SimpleHttpClient httpClient = new SimpleHttpClient();
 	private final BookDownloadProcess downloadProcess;
 
 	DownloadTask(BookDownloadProcess downloadProcess) {

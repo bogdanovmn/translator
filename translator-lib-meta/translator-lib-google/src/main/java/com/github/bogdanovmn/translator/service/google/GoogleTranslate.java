@@ -14,15 +14,16 @@ public class GoogleTranslate extends HttpTranslateService {
 
 	public GoogleTranslate() {
 		super(
-			new SeleniumPhantomJsHttpClient("https://translate.google.ru/?ie=UTF-8#en/ru/")
+			new SeleniumPhantomJsHttpClient(),
+			"https://translate.google.ru/?ie=UTF-8#en/ru/"
 		);
 	}
 
 	@Override
-	protected Set<String> parseServiceRawAnswer(String htmlText) {
+	protected Set<String> parsedServiceResponse(String htmlText) {
 		Document doc = Jsoup.parse(htmlText);
 		Element resultBox = doc
-			.select("span[id=result_box]")
+			.select("span[class=tlid-translation translation]")
 			.first();
 
 		Set<String> result = null;
@@ -42,7 +43,8 @@ public class GoogleTranslate extends HttpTranslateService {
 						System.out.println(head.text());
 					}
 					else {
-						Element translate = row.select("span[class=gt-baf-word-clickable]").first();
+//						Element translate = row.select("span[class=gt-baf-word-clickable]").first();
+						Element translate = row.select("span[class=gt-baf-cell gt-baf-word-clickable]").first();
 						if (translate != null) {
 							if (currentGroupCount < groupLimit) {
 								System.out.println("\t" + translate.text());

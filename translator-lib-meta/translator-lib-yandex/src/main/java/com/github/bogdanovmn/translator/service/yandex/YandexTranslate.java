@@ -2,9 +2,7 @@ package com.github.bogdanovmn.translator.service.yandex;
 
 import com.github.bogdanovmn.httpclient.simple.SimpleHttpClient;
 import com.github.bogdanovmn.translator.core.HttpTranslateService;
-import com.github.bogdanovmn.translator.core.TranslateServiceException;
-import com.github.bogdanovmn.translator.core.TranslateServiceParserException;
-import com.github.bogdanovmn.translator.core.TranslateServiceUnavailableException;
+import com.github.bogdanovmn.translator.core.ParseResponseException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -14,9 +12,8 @@ import java.util.Set;
 public class YandexTranslate extends HttpTranslateService {
 	public YandexTranslate() {
 		super(
-			new SimpleHttpClient(
-				"https://translate.yandex.net/api/v1/tr.json/translate?id=0ba9ce9a.59c6161b.f4e73d1c-0-0&srv=tr-text&lang=en-ru&reason=paste&exp=1&text="
-			)
+			new SimpleHttpClient(),
+			"https://translate.yandex.net/api/v1/tr.json/translate?id=0ba9ce9a.59c6161b.f4e73d1c-0-0&srv=tr-text&lang=en-ru&reason=paste&exp=1&text="
 		);
 	}
 
@@ -30,10 +27,8 @@ public class YandexTranslate extends HttpTranslateService {
 	 }
  	 */
 	@Override
-	protected Set<String> parseServiceRawAnswer(String jsonText)
-		throws TranslateServiceException
-	{
-		Set<String> result = null;
+	protected Set<String> parsedServiceResponse(String jsonText) throws ParseResponseException {
+		Set<String> result;
 
 		try {
 			JsonObject json = new JsonParser()
@@ -50,7 +45,7 @@ public class YandexTranslate extends HttpTranslateService {
 				}};
 			}
 			else {
-				throw new TranslateServiceUnavailableException(
+				throw new ParseResponseException(
 					String.format(
 						"bad response code: %d", code
 					)
@@ -58,7 +53,7 @@ public class YandexTranslate extends HttpTranslateService {
 			}
 		}
 		catch (RuntimeException e) {
-			throw new TranslateServiceParserException(
+			throw new ParseResponseException(
 				String.format(
 					"Parse json error: %s\nJSON: %s",
 						e.getMessage(), jsonText

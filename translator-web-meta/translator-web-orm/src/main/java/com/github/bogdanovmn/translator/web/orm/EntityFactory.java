@@ -3,11 +3,13 @@ package com.github.bogdanovmn.translator.web.orm;
 import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueName;
 import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class EntityFactory {
 	private final Map<Class<?>, Map<String, BaseEntityWithUniqueName>> singleEntityCache = new ConcurrentHashMap<>();
 	private final Map<Class<?>, Iterable> setEntityCache = new ConcurrentHashMap<>();

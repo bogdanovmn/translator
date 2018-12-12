@@ -16,13 +16,13 @@ public class GoogleTranslateTest {
 		String html = new String(
 			Files.readAllBytes(
 				Paths.get(
-					getClass().getResource("/translate-html").toURI()
+					getClass().getResource("/translate--bar--html").toURI()
 				)
 			),
 			"UTF8"
 		);
 
-		Set<String> translates = new GoogleTranslate().parseServiceRawAnswer(html);
+		Set<String> translates = new GoogleTranslate().parsedServiceResponse(html);
 
 		assertEquals(
 			"Translates count", 5, translates.size()
@@ -35,5 +35,4 @@ public class GoogleTranslateTest {
 			)
 		);
 	}
-
 }
