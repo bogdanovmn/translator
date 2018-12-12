@@ -34,6 +34,9 @@
 			<div data-id="hold-over" data-href="/word/{{id}}/hold-over" class="button button-hold-over {{^translates}}hidden{{/translates}}">OK</div>
 
 			<div data-id="remembered" data-href="/word/{{id}}/remembered" class="button button-remembered">Запомнил!</div>
+			<div class="button">
+				<a href="https://en.oxforddictionaries.com/definition/{{name}}" target="_blank">Определение</a>
+			</div>
 			{{#isAdmin}}
 				<div data-id="black-list" data-href="/admin/word/{{id}}/black-list" class="button button-delete">Удалить</div>
 			{{/isAdmin}}
@@ -87,6 +90,9 @@
 				case "black-list":
 					actionAndHide(wordBlock, actionUrl);
 					break;
+				default:
+					wordBlockInAction[wordBlockId] = false;
+					wordBlock.toggleClass("in-action");
 			}
 		}
 	);

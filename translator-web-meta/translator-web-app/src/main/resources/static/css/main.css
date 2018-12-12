@@ -35,6 +35,7 @@ div.button {
 	cursor: pointer;
 }
 div.button:hover { border: 1px solid; }
+div.button a { text-decoration: none}
 div.danger-action { text-align: right; display: inline; }
 
 div.error { border-radius: 10px; border: 1px solid #d47d7d; background: #f5cccc; text-align: center; color: #4c260b; padding: 10px 30px; }
