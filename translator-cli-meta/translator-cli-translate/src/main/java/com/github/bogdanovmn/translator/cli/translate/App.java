@@ -2,6 +2,7 @@ package com.github.bogdanovmn.translator.cli.translate;
 
 
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
+import com.github.bogdanovmn.translator.core.HttpTranslateService;
 import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 
@@ -13,7 +14,7 @@ public class App {
 			.withArg("text", "Word or short phrase to translate")
 			.withEntryPoint(
 				cmdLine -> {
-					try (TranslateService translateService = new GoogleTranslate())
+					try (HttpTranslateService translateService = new GoogleTranslate())
 					{
 						System.out.println(
 							String.format(
