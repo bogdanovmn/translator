@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
 	<modules>
-		<module>translator-parser-pdf</module>
+		<module>translator-parser-common</module>
 	</modules>
 
 	<dependencies>

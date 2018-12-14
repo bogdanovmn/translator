@@ -4,7 +4,7 @@ package com.github.bogdanovmn.translator.cli.parser;
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
 import com.github.bogdanovmn.translator.core.EnglishText;
 import com.github.bogdanovmn.translator.core.NormalizedWords;
-import com.github.bogdanovmn.translator.parser.pdf.PdfContent;
+import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 
 import java.io.File;
 
@@ -16,14 +16,14 @@ public class App {
 			.withArg("source", "Source file name (PDF)")
 			.withEntryPoint(
 				cmdLine -> {
-					PdfContent content = new PdfContent(
+					DocumentContent content = DocumentContent.fromFile(
 						new File(
 							cmdLine.getOptionValue("s")
 						)
 					);
 
 					EnglishText text = new EnglishText(
-						content.getText()
+						content.text()
 					);
 					text.printStatistic();
 

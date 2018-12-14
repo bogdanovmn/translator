@@ -3,7 +3,6 @@ package com.github.bogdanovmn.translator.cli.translate;
 
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
 import com.github.bogdanovmn.translator.core.HttpTranslateService;
-import com.github.bogdanovmn.translator.core.TranslateService;
 import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 
 public class App {

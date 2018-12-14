@@ -4,10 +4,10 @@ import java.io.IOException;
 
 public interface TextContentParser {
 
-	String getText() throws IOException;
+	String text() throws IOException;
 
-	String getAuthor() throws IOException;
+	String author() throws IOException;
 
-	String getTitle() throws IOException;
+	String title() throws IOException;
 
 }

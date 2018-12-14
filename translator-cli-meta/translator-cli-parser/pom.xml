@@ -16,7 +16,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.bogdanovmn.translator</groupId>
-			<artifactId>translator-parser-pdf</artifactId>
+			<artifactId>translator-parser-common</artifactId>
 		</dependency>
 	</dependencies>
 

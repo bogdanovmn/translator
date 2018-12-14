@@ -32,8 +32,8 @@
         </dependency>
         <dependency>
             <groupId>com.github.bogdanovmn.translator</groupId>
-            <artifactId>translator-parser-pdf</artifactId>
-        </dependency>
+            <artifactId>translator-parser-common</artifactId>
+		</dependency>
         <dependency>
             <groupId>com.github.bogdanovmn.translator</groupId>
             <artifactId>translator-lib-google</artifactId>
@@ -72,8 +72,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-
-
     </dependencies>
 
     <build>

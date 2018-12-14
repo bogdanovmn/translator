@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
 import com.github.bogdanovmn.translator.core.CompressedText;
 import com.github.bogdanovmn.translator.orm.core.BaseEntity;
-import com.github.bogdanovmn.translator.parser.pdf.PdfContent;
+import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import org.springframework.util.DigestUtils;
 
 import javax.persistence.*;
@@ -108,10 +108,7 @@ public class BookDownloadProcess extends BaseEntity {
 	}
 
 	public Book createBook(byte[] fileBytes) throws Exception {
-		String text;
-		try (PdfContent pdf = new PdfContent(fileBytes)) {
-			text = pdf.getText();
-		}
+		String text = DocumentContent.fromByteArray(fileBytes).text();
 
 		CompressedText compressedText = CompressedText.from(text);
 		book = new Book()

@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.web.app.admin.upload;
 
 import com.github.bogdanovmn.translator.core.EnglishText;
 import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateException;
-import com.github.bogdanovmn.translator.parser.pdf.PdfContent;
+import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import com.github.bogdanovmn.translator.web.orm.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,8 @@ public class UploadBookService {
 	{
 		LOG.info("Import data from file");
 
-		String fileMd5 = DigestUtils.md5DigestAsHex(file.getBytes());
+		byte[] fileBytes = file.getBytes();
+		String fileMd5 = DigestUtils.md5DigestAsHex(fileBytes);
 		Source source = this.sourceRepository.findFirstByContentHash(fileMd5);
 		if (source != null) {
 			throw new TranslateServiceUploadDuplicateException(
@@ -50,33 +51,24 @@ public class UploadBookService {
 			);
 		}
 
-		LOG.info("Parse PDF file");
-		PdfContent content = new PdfContent(
-			file.getInputStream()
-		);
+		LOG.info("Parse file");
+		DocumentContent fileContent = DocumentContent.fromByteArray(fileBytes);
+		LOG.info("File type: {}", fileContent.contentType());
 
-		EnglishText text = new EnglishText(
-			content.getText()
-		);
+		EnglishText englishText = new EnglishText(fileContent.text());
 		LOG.info("Prepare words");
 
-		Collection<String> words = text.normalizedWords();
+		Collection<String> words = englishText.normalizedWords();
 
 		source = this.sourceRepository.save(
 			new Source()
 				.setRawName(file.getOriginalFilename())
 				.setContentHash(fileMd5)
 				.setType(SourceType.BOOK)
-				.setTitle(content.getTitle())
-				.setAuthor(content.getAuthor())
+				.setTitle(fileContent.title())
+				.setAuthor(fileContent.author())
 				.setWordsCount(words.size())
 		);
-		try {
-			content.close();
-		}
-		catch (Exception e) {
-			throw new RuntimeException("Close PDF error", e);
-		}
 
 		LOG.info("Load exists words");
 		Map<String, Word> wordsMap = this.wordRepository.findAll().stream()
@@ -101,7 +93,7 @@ public class UploadBookService {
 					.setSource(source)
 					.setWord(word)
 					.setCount(
-						text.getWordFormsFrequance(wordStr)
+						englishText.getWordFormsFrequance(wordStr)
 					)
 			);
 		}
