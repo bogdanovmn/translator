@@ -27,5 +27,4 @@
             <artifactId>tika-core</artifactId>
         </dependency>
     </dependencies>
-    
 </project>

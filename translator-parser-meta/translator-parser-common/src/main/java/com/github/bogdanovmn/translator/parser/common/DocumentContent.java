@@ -27,13 +27,11 @@ public class DocumentContent implements TextContentParser {
 		AutoDetectParser parser;
 		try {
 			TikaConfig config = new TikaConfig(
-					Paths.get(
-						DocumentContent.class.getClassLoader().getResource("tika-config.xml").toURI()
-					)
+//				Paths.get(
+//					DocumentContent.class.getClassLoader().getResource("tika-config.xml").toURI()
+//				)
 			);
-			parser = new AutoDetectParser(
-				config
-			);
+			parser = new AutoDetectParser(config);
 		}
 		catch (Exception e) {
 			throw new IOException("Tika config error", e);
