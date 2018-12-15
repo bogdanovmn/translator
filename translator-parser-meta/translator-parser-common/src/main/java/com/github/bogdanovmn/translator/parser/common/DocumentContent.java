@@ -27,9 +27,9 @@ public class DocumentContent implements TextContentParser {
 		AutoDetectParser parser;
 		try {
 			TikaConfig config = new TikaConfig(
-//				Paths.get(
-//					DocumentContent.class.getClassLoader().getResource("tika-config.xml").toURI()
-//				)
+				new ByteArrayInputStream(
+					"<?xml version=\"1.0\" encoding=\"UTF-8\"?><properties><service-loader initializableProblemHandler=\"ignore\"/></properties>".getBytes()
+				)
 			);
 			parser = new AutoDetectParser(config);
 		}
