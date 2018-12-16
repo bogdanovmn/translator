@@ -7,40 +7,36 @@
 	</h1>
 {{/words.0}}
 {{#words}}
-	<div>
-		<div id="word-{{id}}" class=word-to-remember-block>
-			<div class=stats>
-				{{#source}}
-				<b>{{count}}</b> упоминаний
-				{{/source}}
-				{{^source}}
-				<b>{{frequence}}</b> упоминаний / <b>{{sourcesCount}}</b> источников
-				{{/source}}
-			</div>
-			<div class="word">
-				{{name}}
-				<br>
-				<span class="translate">
-					{{#translates}}
-						{{value}}{{^-last}}<i>,</i>{{/-last}}
-					{{/translates}}
-				</span>
-			</div>
-
-			{{^translates}}
-				<div data-id="translate" data-href="/word/{{id}}/translate" class="button button-translate">Перевод</div>
-			{{/translates}}
-
-			<div data-id="hold-over" data-href="/word/{{id}}/hold-over" class="button button-hold-over {{^translates}}hidden{{/translates}}">OK</div>
-
-			<div data-id="remembered" data-href="/word/{{id}}/remembered" class="button button-remembered">Запомнил!</div>
-			<div class="button">
-				<a href="https://en.oxforddictionaries.com/definition/{{name}}" target="_blank">Определение</a>
-			</div>
-			{{#isAdmin}}
-				<div data-id="black-list" data-href="/admin/word/{{id}}/black-list" class="button button-delete">Удалить</div>
-			{{/isAdmin}}
+	<div id="word-{{id}}" class="container word-to-remember-block m-2">
+		<div class=stats>
+			{{#source}}
+			<b>{{count}}</b> упоминаний
+			{{/source}}
+			{{^source}}
+			<b>{{frequence}}</b> упоминаний / <b>{{sourcesCount}}</b> источников
+			{{/source}}
 		</div>
+		<div class="word">
+			{{name}}
+			<br>
+			<span class="translate">
+				{{#translates}}
+					{{value}}{{^-last}}<i>,</i>{{/-last}}
+				{{/translates}}
+			</span>
+		</div>
+
+		{{^translates}}
+			<button type="button" class="btn btn-outline-primary btn-sm" data-id="translate" data-href="/word/{{id}}/translate">Перевод</button>
+		{{/translates}}
+
+		<button type="button" class="btn btn-outline-primary btn-sm {{^translates}}hidden{{/translates}}" data-id="hold-over" data-href="/word/{{id}}/hold-over">OK</button>
+
+		<button type="button" class="btn btn-outline-success btn-sm" data-id="remembered" data-href="/word/{{id}}/remembered">Запомнил!</button>
+		<a role="button" class="btn btn-outline-secondary btn-sm" href="https://en.oxforddictionaries.com/definition/{{name}}" target="_blank">Определение</a>
+		{{#isAdmin}}
+			<button type="button" class="btn btn-outline-danger btn-sm" data-id="black-list" data-href="/admin/word/{{id}}/black-list">Удалить</button>
+		{{/isAdmin}}
 	</div>
 {{/words}}
 
@@ -64,7 +60,7 @@
 <script>
 	var wordBlockInAction = {};
 
-	$('div.word-to-remember-block div.button').click(
+	$('div.word-to-remember-block button').click(
 		function() {
 			var button = $(this);
 			var actionUrl = "{{layout.contextPath}}" + button.attr("data-href");

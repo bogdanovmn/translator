@@ -26,7 +26,7 @@ public class Layout implements Mustache.Lambda {
 	public void execute(Template.Fragment frag, Writer out) throws IOException {
 		body = frag.execute();
 		compiler.compile(
-			String.format("{{>layout_%s}}", this.name)
+			String.format("{{>layout/%s}}", this.name)
 		).execute(frag.context(), out);
 	}
 

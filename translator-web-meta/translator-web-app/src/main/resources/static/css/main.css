@@ -1,30 +1,10 @@
-a,body,table,tr,td,li,p,input,textarea,pre {font-family: verdana, arial, serif;color:#101610;padding:0;margin:0}
-table{width:auto;table-layout:fixed;border-collapse:collapse;text-align:left}
-
-div.main { max-width: 1280px; margin: 0 auto; text-align: center; }
-
-#top_menu { position: static; font-size: 100%; }
-	.links     { float: left;  width: 70%; background: #ddd; padding: 5px; text-align: left;}
-	#user_info { padding: 5px; width: 30%; background: #ddd; margin-left: 70%; text-align: right;}
-
-#mid_area { width: 100%; }
-	#left_menu { float: left; width: 20%; }
-	#data_area { width: 90%; margin: auto; padding: 0 10px; }
-
-#top_menu a { text-decoration: none; }
-
-#admin_menu a { text-decoration: none; font-size: 85% }
-
 div.filter               { font-size: 13px; }
 div.filter b             { color: gray; }
 div.filter div.values    { padding-left: 20px; margin: 5px 0; }
 div.filter div.values td { padding: 4px 3px; }
 div.filter div.values p  { margin: 4px 3px; }
 
-span.progress { text-align: right; color: forestgreen; }
-
-form table    { margin: 0 auto; }
-form table td { padding: 10px; }
+span.progress { color: forestgreen; display: inline; }
 
 a.logout { text-decoration: none; font-weight: bold; color: #a11e0d; }
 a.button { text-decoration: none }
@@ -34,14 +14,12 @@ div.button {
 	padding: 3px 10px; margin: 3px 5px; display: inline;
 	cursor: pointer;
 }
-div.button:hover { border: 1px solid; }
-div.button a { text-decoration: none}
-div.danger-action { text-align: right; display: inline; }
 
 div.error { border-radius: 10px; border: 1px solid #d47d7d; background: #f5cccc; text-align: center; color: #4c260b; padding: 10px 30px; }
 
 div.word-to-remember-block {
-	display: inline-block; margin: 10px; padding: 5px 5px 12px 5px;
+	/*display: inline-block; margin: 10px; */
+	padding: 5px 5px 12px 5px;
 	text-align: left; font-size: 160%;
 	background: #fafcfd; border-radius: 10px; border: 1px dotted #bed5e0;
 }
@@ -62,7 +40,7 @@ div.word-to-remember-block div.button-translate  { border-color: cornflowerblue;
 div.word-to-remember-block div.button-hold-over  { border-color: cornflowerblue; color: cornflowerblue; }
 div.word-to-remember-block div.button-delete { border-color: darkred; color: darkred; }
 
-div.word-to-remember-block div.hidden { display: none; }
+button.hidden { display: none; }
 div.in-action div.button { border: 1px dotted gray; color: gray; }
 
 table.import-info { margin: 10px; }
@@ -83,16 +61,3 @@ div.source-block div.button { font-size: 60%; }
 div.source-block div.button-delete { border-color: darkred; color: darkred; margin-left: 90%; }
 
 div.cloud { text-align: justify; }
-
-div.sub-menu { margin: 10px auto; }
-div.sub-menu span { margin-left: 10px; padding: 5px 15px; border: 1px dotted #1299b4; border-radius: 25px; }
-div.sub-menu a { text-decoration: none; }
-div.sub-menu span.false { background: #f4fbfb;}
-div.sub-menu span.true { background: #a4e6ecc4; font-weight: bold; }
-
-@media (max-width: 540px) {
-	div.word-to-remember-block {
-		font-size: 360%;
-	}
-	div.button { padding: 6px 20px; }
-}

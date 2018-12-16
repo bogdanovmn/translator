@@ -43,7 +43,7 @@ public class HeadMenu {
 	private void prepare() {
 		if (!this.isPrepared) {
 			items = new ArrayList<>();
-			items.add(new MenuItem(ITEM.REMEMBERED.name(), "/remembered", "Уже изучено"));
+//			items.add(new MenuItem(ITEM.REMEMBERED.name(), "/remembered", "Уже изучено"));
 			items.add(new MenuItem(ITEM.TO_REMEMBER.name(), "/to-remember/all", "Изучить"));
 			items.add(new MenuItem(ITEM.SOURCES.name(), "/sources/all", "Источники"));
 			items.add(new MenuItem(ITEM.CLOUD.name(), "/cloud", "Облако слов"));
