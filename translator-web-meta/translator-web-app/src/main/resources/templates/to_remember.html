@@ -7,41 +7,70 @@
 	</h1>
 {{/words.0}}
 {{#words}}
-	<div id="word-{{id}}" class="container word-to-remember-block m-2">
-		<div class=stats>
-			{{#source}}
-			<b>{{count}}</b> упоминаний
-			{{/source}}
-			{{^source}}
-			<b>{{frequence}}</b> упоминаний / <b>{{sourcesCount}}</b> источников
-			{{/source}}
-		</div>
-		<div class="word">
-			{{name}}
-			<br>
-			<span class="translate">
-				{{#translates}}
-					{{value}}{{^-last}}<i>,</i>{{/-last}}
-				{{/translates}}
+	<div id="word-{{id}}" class="card my-4" data-word-id="{{id}}">
+		<div class="card-header">
+			<b>{{name}}</b>
+			<span class="badge badge-secondary float-right font-weight-light">
+				{{#source}}
+					<b>{{count}}</b> упоминаний
+				{{/source}}
+				{{^source}}
+					<b>{{frequence}}</b> упоминаний / <b>{{sourcesCount}}</b> источников
+				{{/source}}
 			</span>
 		</div>
 
-		{{^translates}}
-			<button type="button" class="btn btn-outline-primary btn-sm" data-id="translate" data-href="/word/{{id}}/translate">Перевод</button>
-		{{/translates}}
+		<div id="word-content-{{id}}" class="{{#translates.0}}card-body text-muted{{/translates.0}}">
+			{{#translates}}
+				{{value}}{{^-last}}<i>,</i>{{/-last}}
+			{{/translates}}
+		</div>
 
-		<button type="button" class="btn btn-outline-primary btn-sm {{^translates}}hidden{{/translates}}" data-id="hold-over" data-href="/word/{{id}}/hold-over">OK</button>
+		<div class="card-footer">
+			<div class="btn-group">
+				<button type="button"
+						class="btn btn-outline-success btn-sm"
+						data-id="remembered"
+						data-word-id="{{id}}"
+						data-href="/word/{{id}}/remembered">Запомнил!
+				</button>
 
-		<button type="button" class="btn btn-outline-success btn-sm" data-id="remembered" data-href="/word/{{id}}/remembered">Запомнил!</button>
-		<a role="button" class="btn btn-outline-secondary btn-sm" href="https://en.oxforddictionaries.com/definition/{{name}}" target="_blank">Определение</a>
-		{{#isAdmin}}
-			<button type="button" class="btn btn-outline-danger btn-sm" data-id="black-list" data-href="/admin/word/{{id}}/black-list">Удалить</button>
-		{{/isAdmin}}
+				{{^translates}}
+					<button type="button"
+							class="btn btn-outline-secondary btn-sm"
+							data-id="translate"
+							data-word-id="{{id}}"
+							data-href="/word/{{id}}/translate">Перевод
+					</button>
+				{{/translates}}
+
+				<button type="button"
+						class="btn btn-outline-primary btn-sm {{^translates}}hidden{{/translates}}"
+						data-word-id="{{id}}"
+						data-id="hold-over" data-href="/word/{{id}}/hold-over">OK
+				</button>
+
+				<a role="button"
+				   class="btn btn-outline-secondary btn-sm"
+				   href="https://en.oxforddictionaries.com/definition/{{name}}"
+				   target="_blank">Определение
+				</a>
+
+				{{#isAdmin}}
+					<button type="button"
+							class="btn btn-outline-danger btn-sm"
+							data-id="black-list"
+							data-word-id="{{id}}"
+							data-href="/admin/word/{{id}}/black-list">Удалить
+					</button>
+				{{/isAdmin}}
+			</div>
+		</div>
 	</div>
 {{/words}}
 
 {{#words.0}}
-	<a href=""><img src="{{layout.contextPath}}/img/refresh.png"/></a>
+	<a href=""><img src="{{layout.contextPath}}/img/refresh.png" alt="refresh"/></a>
 	<div class="to-remember-note-block">
 		Осталось изучить
 		{{#source}}
@@ -60,18 +89,18 @@
 <script>
 	var wordBlockInAction = {};
 
-	$('div.word-to-remember-block button').click(
+	$('div.card button').click(
 		function() {
 			var button = $(this);
 			var actionUrl = "{{layout.contextPath}}" + button.attr("data-href");
-			var wordBlock = button.parent();
-			var wordBlockId = wordBlock.attr('id');
+			var wordId = button.attr('data-word-id');
+			var wordBlockId = 'word-' + wordId;
+			var wordBlock = $('#' + wordBlockId);
 
 			if (wordBlockInAction[wordBlockId]) {
 				return
 			}
 			wordBlockInAction[wordBlockId] = true;
-			wordBlock.toggleClass("in-action");
 
 			switch (button.attr("data-id")) {
 				case "translate":
@@ -88,7 +117,6 @@
 					break;
 				default:
 					wordBlockInAction[wordBlockId] = false;
-					wordBlock.toggleClass("in-action");
 			}
 		}
 	);
@@ -97,7 +125,10 @@
 		console.log("[translate] " + url);
 		$.ajax({ url: url, method: 'PUT'})
 			.done(function(resp) {
-				wordBlock.find('.translate').text(resp);
+				var wordId = wordBlock.attr("data-word-id");
+				var contentBlock = $('#word-content-' + wordId);
+				contentBlock.text(resp);
+				contentBlock.addClass("card-body text-muted");
 				wordBlock.find("[data-id=translate]").hide();
 				wordBlock.find("[data-id=hold-over]").toggleClass("hidden");
 				console.log('[OK] ' + url);
@@ -107,12 +138,11 @@
 			})
 			.always(function () {
 				wordBlockInAction[wordBlock.attr('id')] = false;
-				wordBlock.toggleClass("in-action");
 			});
 	}
 
 	function actionAndHide(wordBlock, url) {
-		console.log("[action and hide] " + wordBlock + " " + url)
+		console.log("[action and hide] " + url);
 		$.ajax({ url: url, method: 'PUT'})
 			.done(function(resp) {
 				console.log('[OK] ' + url);
@@ -127,7 +157,7 @@
 	}
 
 	function loadNewPortion() {
-		var words = $('.word-to-remember-block');
+		var words = $('div.card');
 		if (words.length === 0) {
 			location.reload()
 		}

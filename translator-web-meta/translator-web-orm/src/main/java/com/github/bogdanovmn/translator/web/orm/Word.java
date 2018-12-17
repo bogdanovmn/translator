@@ -7,9 +7,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @NamedEntityGraph(
@@ -57,7 +55,7 @@ public class Word extends BaseEntityWithUniqueName {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
-	private Set<Translate> translates = new HashSet<>();
+	private List<Translate> translates = new ArrayList<>();
 
 	@OneToMany(mappedBy = "word")
 	private Set<WordSource> wordSources;
@@ -83,12 +81,12 @@ public class Word extends BaseEntityWithUniqueName {
 		return this;
 	}
 
-	public Set<Translate> getTranslates() {
+	public List<Translate> getTranslates() {
 		return translates;
 	}
 
 	@XmlTransient
-	public Word setTranslates(Set<Translate> translates) {
+	public Word setTranslates(List<Translate> translates) {
 		this.translates = translates;
 		return this;
 	}
@@ -133,4 +131,6 @@ public class Word extends BaseEntityWithUniqueName {
 		wordSources.addAll(sources);
 		sourcesCount += sources.size();
 	}
+
+
 }

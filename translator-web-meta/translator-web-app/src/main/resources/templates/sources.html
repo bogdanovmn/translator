@@ -4,19 +4,27 @@
 	<h1>Все источники</h1>
 {{/sources.0}}
 {{#sources}}
-	<div>
-	<div id="source-{{source.id}}" class=source-block>
-		<div class=stats>{{userWordsRememberedCount}} из {{source.wordsCount}} слов изучено</div>
-		<div class="name">
+	<div id="source-{{source.id}}" class="card my-4">
+		<div class="card-header">
+			<span class="badge badge-secondary">{{userWordsRememberedCount}} из {{source.wordsCount}} слов изучено</span>
+		</div>
+		<div class="card-body">
 			{{source.name}}
 		</div>
 
-		<a class="btn btn-sm btn-outline-secondary" href="{{layout.contextPath}}/to-remember/source/{{source.id}}">Изучать</a>
-		<a class="btn btn-sm btn-outline-secondary" href="{{layout.contextPath}}/cloud/source/{{source.id}}">Облако слов</a>
-		{{#isAdmin}}
-			<button type="button" class="btn btn-sm btn-outline-danger" data-id="delete" data-href="/admin/sources/{{source.id}}">Удалить</button>
-		{{/isAdmin}}
-	</div>
+		<div class="card-footer">
+			<div class="btn-group">
+				<a class="btn btn-sm btn-outline-secondary" href="{{layout.contextPath}}/to-remember/source/{{source.id}}">Изучать</a>
+				<a class="btn btn-sm btn-outline-secondary" href="{{layout.contextPath}}/cloud/source/{{source.id}}">Облако слов</a>
+				{{#isAdmin}}
+					<button type="button"
+							class="btn btn-sm btn-outline-danger"
+							data-id="delete"
+							data-href="/admin/sources/{{source.id}}">Удалить
+					</button>
+				{{/isAdmin}}
+			</div>
+		</div>
 	</div>
 {{/sources}}
 
@@ -51,7 +59,7 @@
 	);
 
 	function actionAndHide(sourceBlock, url, method) {
-		console.log("[action and hide] " + sourceBlock + " " + url);
+		console.log("[action and hide] " + url);
 		$.ajax({ url: url, method: method})
 			.done(function(resp) {
 				console.log('[OK] ' + url);

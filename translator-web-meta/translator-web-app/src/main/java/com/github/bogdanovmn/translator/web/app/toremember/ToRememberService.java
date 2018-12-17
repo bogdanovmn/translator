@@ -113,7 +113,7 @@ class ToRememberService {
 			throw new TranslateServiceUnknownWordException(e.getMessage());
 		}
 
-		return translates.stream().collect(Collectors.joining(", "));
+		return String.join(", ", translates);
 	}
 
 	void blackListWord(Integer wordId) {

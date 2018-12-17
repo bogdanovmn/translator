@@ -88,7 +88,7 @@ class ImportService {
 					translateProviderByExportId.get(importTranslate.getProviderId())
 				);
 
-			Set<Translate> wordTranslates = word.getTranslates();
+			List<Translate> wordTranslates = word.getTranslates();
 			if (!wordTranslates.contains(translate)) {
 				translateRepository.save(translate);
 			}
