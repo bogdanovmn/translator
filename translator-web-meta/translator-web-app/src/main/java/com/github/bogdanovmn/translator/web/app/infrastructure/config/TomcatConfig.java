@@ -6,12 +6,16 @@ import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletCon
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 @Component
 public class TomcatConfig {
 	@Bean
 	public TomcatEmbeddedServletContainerFactory tomcatEmbedded() {
 
 		TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
+
+		tomcat.setSessionTimeout(48, TimeUnit.HOURS);
 
 		tomcat.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> {
 
