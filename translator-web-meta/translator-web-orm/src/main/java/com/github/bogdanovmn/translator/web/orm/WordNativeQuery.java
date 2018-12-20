@@ -14,5 +14,5 @@ class WordNativeQuery {
 	private static final String TO_REMEMBER_WORDS_FREQUENT = TO_REMEMBER_WORDS_RARE + "desc";
 
 	static final String TO_REMEMBER =
-		"(" + TO_REMEMBER_WORDS_FREQUENT + " limit 9) UNION (" + TO_REMEMBER_WORDS_RARE + " limit 1)";
+		"(" + TO_REMEMBER_WORDS_FREQUENT + " limit ?2) UNION (" + TO_REMEMBER_WORDS_RARE + " limit ?3)";
 }

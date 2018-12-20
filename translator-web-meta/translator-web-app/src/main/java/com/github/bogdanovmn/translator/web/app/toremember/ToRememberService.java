@@ -40,13 +40,13 @@ class ToRememberService {
 	}
 
 	List<Word> getAll() {
-		return wordRepository.toRemember(getUser().getId());
+		return wordRepository.toRemember(getUser().getId(), 20, 3);
 	}
 
 	WordsToRememberBySource getAllBySource(Integer sourceId) {
 		Source source = sourceRepository.getOne(sourceId);
 		List<WordSource> wordSources = wordSourceRepository.toRemember(
-			getUser().getId(), source.getId()
+			getUser().getId(), source.getId(), 20, 3
 		);
 
 		return new WordsToRememberBySource(

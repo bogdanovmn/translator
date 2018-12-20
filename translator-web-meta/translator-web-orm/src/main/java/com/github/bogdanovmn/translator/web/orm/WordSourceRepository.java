@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface WordSourceRepository extends JpaRepository<WordSource, Integer> {
-	List<WordSource> toRemember(Integer userId, Integer sourceId);
+	List<WordSource> toRemember(Integer userId, Integer sourceId, Integer popularCount, Integer rareCount);
 	Set<WordSource> findAllByWord(Word word);
 
 	@EntityGraph(attributePaths = {"word"})

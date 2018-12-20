@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueNameRepository;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,7 +15,7 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 
 	List<Word> findAllByBlackListFalseAndFrequenceGreaterThanOrderByName(Integer minimalFrequency);
 
-	List<Word> toRemember(Integer userId);
+	List<Word> toRemember(Integer userId, Integer popularCount, Integer rareCount);
 
 	List<Word> allRememberedForCloud(Integer userId);
 	List<Word> allUnknownForCloud(Integer userId);
