@@ -4,8 +4,7 @@ import com.github.bogdanovmn.translator.core.EnglishText;
 import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateException;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import com.github.bogdanovmn.translator.web.orm.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,9 +17,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class UploadBookService {
-	private static final Logger LOG = LoggerFactory.getLogger(UploadBookService.class);
-
 	private final WordRepository wordRepository;
 	private final SourceRepository sourceRepository;
 	private final WordSourceRepository wordSourceRepository;

@@ -4,16 +4,14 @@ import com.github.bogdanovmn.translator.web.orm.Source;
 import com.github.bogdanovmn.translator.web.orm.SourceRepository;
 import com.github.bogdanovmn.translator.web.orm.WordRepository;
 import com.github.bogdanovmn.translator.web.orm.WordSourceRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Slf4j
 class SourcesAdminService {
-	private static final Logger LOG = LoggerFactory.getLogger(SourcesAdminService.class);
-
 	private final SourceRepository sourceRepository;
 	private final WordSourceRepository wordSourceRepository;
 	private final WordRepository wordRepository;

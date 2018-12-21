@@ -1,9 +1,18 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import com.github.bogdanovmn.translator.orm.core.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
+
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(
@@ -29,35 +38,5 @@ public class UserHoldOverWord extends BaseEntity {
 	private Word word;
 
 	@Column(nullable = false)
-	private Date updated = new Date();
-
-	public UserHoldOverWord() {
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public UserHoldOverWord setUser(User user) {
-		this.user = user;
-		return this;
-	}
-
-	public Word getWord() {
-		return word;
-	}
-
-	public UserHoldOverWord setWord(Word word) {
-		this.word = word;
-		return this;
-	}
-
-	public Date getUpdated() {
-		return updated;
-	}
-
-	public UserHoldOverWord setUpdated(Date updated) {
-		this.updated = updated;
-		return this;
-	}
+	private final LocalDateTime updated = LocalDateTime.now();
 }

@@ -1,8 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
 import com.github.bogdanovmn.translator.web.orm.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,13 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 class ImportService {
-	private static final Logger LOG = LoggerFactory.getLogger(ImportService.class);
-
 	@Autowired
 	private UserRememberedWordRepository userRememberedWordRepository;
 	@Autowired
@@ -119,9 +120,10 @@ class ImportService {
 				userHoldOverWordRepository.save(
 					importUser.getHoldOverWords().stream()
 						.map(x ->
-							new UserHoldOverWord()
-								.setWord(exportWordCache.getByExportId(x))
-								.setUser(user)
+							UserHoldOverWord.builder()
+								.word(exportWordCache.getByExportId(x))
+								.user(user)
+							.build()
 						)
 						.collect(Collectors.toSet())
 				);

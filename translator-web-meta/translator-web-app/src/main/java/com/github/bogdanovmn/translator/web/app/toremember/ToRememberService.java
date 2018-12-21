@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 class ToRememberService {
@@ -70,10 +69,10 @@ class ToRememberService {
 	void holdOverWord(Integer wordId) {
 		if (null == userHoldOverWordRepository.findFirstByUserAndWordId(getUser(), wordId)) {
 			userHoldOverWordRepository.save(
-				new UserHoldOverWord()
-					.setUser(getUser())
-					.setWord(new Word(wordId))
-					.setUpdated(new Date())
+				UserHoldOverWord.builder()
+					.user(getUser())
+					.word(new Word(wordId))
+				.build()
 			);
 		}
 	}
