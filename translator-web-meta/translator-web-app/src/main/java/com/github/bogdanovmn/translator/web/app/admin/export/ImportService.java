@@ -120,10 +120,9 @@ class ImportService {
 				userHoldOverWordRepository.save(
 					importUser.getHoldOverWords().stream()
 						.map(x ->
-							UserHoldOverWord.builder()
-								.word(exportWordCache.getByExportId(x))
-								.user(user)
-							.build()
+							new UserHoldOverWord()
+								.setWord(exportWordCache.getByExportId(x))
+								.setUser(user)
 						)
 						.collect(Collectors.toSet())
 				);

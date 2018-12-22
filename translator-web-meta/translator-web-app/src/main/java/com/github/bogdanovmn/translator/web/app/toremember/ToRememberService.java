@@ -7,6 +7,7 @@ import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.T
 import com.github.bogdanovmn.translator.web.orm.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.Date;
@@ -21,6 +22,8 @@ class ToRememberService {
 	private UserRememberedWordRepository userRememberedWordRepository;
 	@Autowired
 	private UserHoldOverWordRepository userHoldOverWordRepository;
+	@Autowired
+	private UserWordProgressRepository userWordProgressRepository;
 	@Autowired
 	private WordRepository wordRepository;
 	@Autowired
@@ -66,14 +69,23 @@ class ToRememberService {
 		}
 	}
 
-	void holdOverWord(Integer wordId) {
+	@Transactional(rollbackFor = Exception.class)
+	public void holdOverWord(Integer wordId) {
 		if (null == userHoldOverWordRepository.findFirstByUserAndWordId(getUser(), wordId)) {
+			Word word = new Word(wordId);
 			userHoldOverWordRepository.save(
-				UserHoldOverWord.builder()
-					.user(getUser())
-					.word(new Word(wordId))
-				.build()
+				new UserHoldOverWord()
+					.setUser(getUser())
+					.setWord(word)
 			);
+			UserWordProgress progress = userWordProgressRepository.findByUserAndWord(getUser(), word);
+			if (null == progress) {
+				progress = new UserWordProgress()
+					.setUser(getUser())
+					.setWord(word);
+			}
+			progress.incHoldOverCount();
+			userWordProgressRepository.save(progress);
 		}
 	}
 

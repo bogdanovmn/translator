@@ -1,9 +1,13 @@
 package com.github.bogdanovmn.translator.orm.core;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+@NoArgsConstructor
 
 @MappedSuperclass
 public abstract class BaseEntity {
@@ -15,8 +19,6 @@ public abstract class BaseEntity {
 	public BaseEntity(Integer id) {
 		this.id = id;
 	}
-
-	public BaseEntity() {}
 
 	@XmlID
 	@XmlJavaTypeAdapter(ExportToXmlIdAdapter.class)

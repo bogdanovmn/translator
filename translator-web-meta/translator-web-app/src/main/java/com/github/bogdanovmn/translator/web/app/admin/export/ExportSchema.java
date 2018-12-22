@@ -5,7 +5,6 @@ import com.github.bogdanovmn.translator.web.orm.*;
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @XmlRootElement(name = "translatorExport")
@@ -57,8 +56,8 @@ class ExportSchema {
 	ExportSchema setUsers(List<User> users) {
 		for (User user : users) {
 			ExportUser exportUser = new ExportUser();
-			Set<UserRememberedWord> rememberedWords = user.getRememberedWords();
-			Set<UserHoldOverWord> holdOverWords = user.getHoldOverWords();
+			List<UserRememberedWord> rememberedWords = user.getRememberedWords();
+			List<UserHoldOverWord> holdOverWords = user.getHoldOverWords();
 			if (!rememberedWords.isEmpty()) {
 				exportUser.setRememberedWords(
 					rememberedWords.stream()

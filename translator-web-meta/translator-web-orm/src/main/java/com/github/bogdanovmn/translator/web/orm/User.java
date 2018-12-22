@@ -1,10 +1,18 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueName;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
+
+@Getter
+@Setter
+@NoArgsConstructor
 
 @Entity
 public class User extends BaseEntityWithUniqueName {
@@ -26,68 +34,12 @@ public class User extends BaseEntityWithUniqueName {
 	private Set<UserRole> roles;
 
 	@OneToMany(mappedBy = "user")
-	private Set<UserHoldOverWord> holdOverWords;
+	private List<UserHoldOverWord> holdOverWords;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
-	private Set<UserRememberedWord> rememberedWords;
-
-	public User() {}
+	private List<UserRememberedWord> rememberedWords;
 
 	public User(String name) {
 		super(name);
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public User setEmail(String email) {
-		this.email = email;
-		return this;
-	}
-
-	public String getPasswordHash() {
-		return passwordHash;
-	}
-
-	public User setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
-		return this;
-	}
-
-	public Date getRegisterDate() {
-		return registerDate;
-	}
-
-	public User setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
-		return this;
-	}
-
-	public Set<UserRole> getRoles() {
-		return roles;
-	}
-
-	public User setRoles(Set<UserRole> roles) {
-		this.roles = roles;
-		return this;
-	}
-
-	public Set<UserHoldOverWord> getHoldOverWords() {
-		return holdOverWords;
-	}
-
-	public User setHoldOverWords(Set<UserHoldOverWord> holdOverWords) {
-		this.holdOverWords = holdOverWords;
-		return this;
-	}
-
-	public Set<UserRememberedWord> getRememberedWords() {
-		return rememberedWords;
-	}
-
-	public User setRememberedWords(Set<UserRememberedWord> rememberedWords) {
-		this.rememberedWords = rememberedWords;
-		return this;
 	}
 }
