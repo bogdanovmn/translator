@@ -32,26 +32,27 @@
 						class="btn btn-outline-success btn-sm"
 						data-id="remembered"
 						data-word-id="{{id}}"
-						data-href="/word/{{id}}/remembered">Запомнил!
+						data-href="/word/{{id}}/remembered">Знаю!
 				</button>
 
-				{{^translates}}
-					<button type="button"
-							class="btn btn-outline-secondary btn-sm"
-							data-id="translate"
-							data-word-id="{{id}}"
-							data-href="/word/{{id}}/translate">Перевод
-					</button>
-				{{/translates}}
+				<!--{{^translates}}-->
+					<!--<button type="button"-->
+							<!--class="btn btn-outline-secondary btn-sm"-->
+							<!--data-id="translate"-->
+							<!--data-word-id="{{id}}"-->
+							<!--data-href="/word/{{id}}/translate">Перевод-->
+					<!--</button>-->
+				<!--{{/translates}}-->
 
 				<button type="button"
-						class="btn btn-outline-primary btn-sm {{^translates}}hidden{{/translates}}"
+						class="btn btn-outline-secondary btn-sm {{^translates}}hidden{{/translates}}"
 						data-word-id="{{id}}"
-						data-id="hold-over" data-href="/word/{{id}}/hold-over">OK
+						data-id="hold-over"
+						data-href="/word/{{id}}/hold-over">Пропустить
 				</button>
 
 				<a role="button"
-				   class="btn btn-outline-secondary btn-sm"
+				   class="btn btn-outline-primary btn-sm"
 				   href="https://en.oxforddictionaries.com/definition/{{name}}"
 				   target="_blank">Определение
 				</a>
