@@ -24,12 +24,14 @@ class WordAdminService {
 	}
 
 	void blackListWord(Integer wordId) {
-		Word word = wordRepository.findOne(wordId);
-		if (word != null) {
-			wordRepository.save(
-				word.setBlackList(true)
-			);
-		}
+		Word word = wordRepository.findById(wordId)
+			.orElseThrow(() ->
+				new RuntimeException(
+					String.format("Unknown word (id = %d", wordId)
+				));
+		wordRepository.save(
+			word.setBlackList(true)
+		);
 	}
 
 	@Scheduled(fixedDelay = 12 * 3600 * 1000)

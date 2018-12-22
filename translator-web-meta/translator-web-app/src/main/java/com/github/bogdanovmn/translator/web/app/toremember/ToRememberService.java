@@ -90,13 +90,12 @@ class ToRememberService {
 	}
 
 	String translateWord(Integer wordId) throws TranslateServiceException, IOException {
-		Word word = wordRepository.findOne(wordId);
-
-		if (word == null) {
-			throw new RuntimeException(
-				String.format("Unknown word (id = %d", wordId)
+		Word word = wordRepository.findById(wordId)
+			.orElseThrow(() ->
+				new RuntimeException(
+					String.format("Unknown word (id = %d", wordId)
+				)
 			);
-		}
 
 		TranslateProvider provider = (TranslateProvider) entityFactory.getPersistBaseEntityWithUniqueName(
 			new TranslateProvider("Google")
@@ -128,11 +127,15 @@ class ToRememberService {
 	}
 
 	void blackListWord(Integer wordId) {
-		Word word = wordRepository.findOne(wordId);
-		if (word != null) {
-			wordRepository.save(
-				word.setBlackList(true)
+		Word word = wordRepository.findById(wordId)
+			.orElseThrow(() ->
+				new RuntimeException(
+					String.format("Unknown word (id = %d", wordId)
+				)
 			);
-		}
+
+		wordRepository.save(
+			word.setBlackList(true)
+		);
 	}
 }

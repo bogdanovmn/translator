@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 class AllitebooksService {
@@ -29,14 +30,15 @@ class AllitebooksService {
 	}
 
 	String downloadProcessData(Integer id) throws IOException {
-		BookDownloadProcess downloadProcess = downloadProcessRepository.findOne(id);
-		if (downloadProcess != null) {
-			return new EnglishText(
+		Optional<BookDownloadProcess> downloadProcess = downloadProcessRepository.findById(id);
+		String result = "";
+		if (downloadProcess.isPresent()) {
+			result = new EnglishText(
 				new CompressedText(
-					downloadProcess.getBook().getData()
+					downloadProcess.get().getBook().getData()
 				).decompress()
 			).words().toString();
 		}
-		return "";
+		return result;
 	}
 }

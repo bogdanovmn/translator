@@ -64,7 +64,7 @@ class ImportService {
 				)
 				.collect(Collectors.toList());
 			LOG.info("Save source word links");
-			wordSourceRepository.save(wordSources);
+			wordSourceRepository.saveAll(wordSources);
 			LOG.info("Source '{}' word links import done", source.getRawName());
 		}
 		return resultSources;
@@ -104,27 +104,27 @@ class ImportService {
 				LOG.info("User {} lists import", user.getEmail());
 				userRememberedWordRepository.removeAllByUser(user);
 				userRememberedWordRepository.flush();
-				userRememberedWordRepository.save(
+				userRememberedWordRepository.saveAll(
 					importUser.getRememberedWords().stream()
 						.map(x ->
 							new UserRememberedWord()
 								.setWord(exportWordCache.getByExportId(x))
 								.setUser(user)
 						)
-						.collect(Collectors.toSet())
+						.collect(Collectors.toList())
 				);
 				LOG.info("Remembered words import: {}", importUser.getRememberedWords().size());
 
 				userHoldOverWordRepository.removeAllByUser(user);
 				userHoldOverWordRepository.flush();
-				userHoldOverWordRepository.save(
+				userHoldOverWordRepository.saveAll(
 					importUser.getHoldOverWords().stream()
 						.map(x ->
 							new UserHoldOverWord()
 								.setWord(exportWordCache.getByExportId(x))
 								.setUser(user)
 						)
-						.collect(Collectors.toSet())
+						.collect(Collectors.toList())
 				);
 				LOG.info("HoldOver words import: {}", importUser.getHoldOverWords().size());
 

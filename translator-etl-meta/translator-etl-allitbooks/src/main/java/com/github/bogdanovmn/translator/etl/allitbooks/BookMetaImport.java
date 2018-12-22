@@ -81,7 +81,7 @@ class BookMetaImport {
 			prevBaseTitle = baseTitle;
 		}
 
-		this.bookMetaRepository.save(books);
+		this.bookMetaRepository.saveAll(books);
 	}
 
 	private void updateAllMeta() throws IOException {

@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class RequestProfilerConfig extends WebMvcConfigurerAdapter {
+public class RequestProfilerConfig implements WebMvcConfigurer {
 
 	@Autowired
 	RequestStatisticsInterceptor requestStatisticsInterceptor;
