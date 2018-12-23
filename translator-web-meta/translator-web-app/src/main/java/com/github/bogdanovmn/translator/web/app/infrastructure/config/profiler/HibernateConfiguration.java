@@ -18,7 +18,7 @@ public class HibernateConfiguration {
 	public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(HibernateStatisticsInterceptor interceptor) {
 		return hibernateProperties ->
 			hibernateProperties.put(
-				"hibernate.ejb.interceptor",
+				"hibernate.session_factory.interceptor",
 				interceptor
 			);
 	}

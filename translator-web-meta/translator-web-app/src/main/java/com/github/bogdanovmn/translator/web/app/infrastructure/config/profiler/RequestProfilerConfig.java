@@ -19,6 +19,11 @@ public class RequestProfilerConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(requestStatisticsInterceptor).addPathPatterns("/**");
+		registry.addInterceptor(requestStatisticsInterceptor)
+			.addPathPatterns("/**")
+			.excludePathPatterns("/webjars/**")
+			.excludePathPatterns("/js/**")
+			.excludePathPatterns("/img/**")
+			.excludePathPatterns("/css/**");
 	}
 }

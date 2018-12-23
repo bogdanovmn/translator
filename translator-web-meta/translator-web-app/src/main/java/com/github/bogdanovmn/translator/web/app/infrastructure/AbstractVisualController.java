@@ -17,7 +17,7 @@ public abstract class AbstractVisualController extends AbstractController {
 	@Autowired
 	private StatisticService statisticService;
 
-	@Value("${server.context-path:}")
+	@Value("${server.servlet.context-path:}")
 	private String contextPath;
 
 	@ModelAttribute("layout")

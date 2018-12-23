@@ -1,7 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.infrastructure.config.profiler;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,11 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Slf4j
 public class RequestStatisticsInterceptor implements AsyncHandlerInterceptor {
 
 	private ThreadLocal<Long> time = new ThreadLocal<>();
 
-	private static final Logger LOG = LoggerFactory.getLogger(RequestStatisticsInterceptor.class);
 
 	@Autowired
 	private HibernateStatisticsInterceptor statisticsInterceptor;
