@@ -1,13 +1,17 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
+import com.github.bogdanovmn.translator.orm.core.BaseEntity;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+
+@Setter
+@Getter
 
 @Entity
 @Table(name = "allitebook_meta")
-public class BookMeta {
-	@Id
-	@GeneratedValue
-	private int id;
+public class BookMeta extends BaseEntity {
 
 	@Column(unique = true, nullable = false)
 	private String originalUrl;
@@ -31,114 +35,6 @@ public class BookMeta {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "download_process_id")
 	private BookDownloadProcess downloadProcess;
-
-	public boolean isObsolete() {
-		return obsolete;
-	}
-
-	public BookMeta setObsolete(boolean obsolete) {
-		this.obsolete = obsolete;
-		return this;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public BookMeta setId(int id) {
-		this.id = id;
-		return this;
-	}
-
-	public String getOriginalUrl() {
-		return originalUrl;
-	}
-
-	public BookMeta setOriginalUrl(String originalUrl) {
-		this.originalUrl = originalUrl;
-		return this;
-	}
-
-	public String getCoverUrl() {
-		return coverUrl;
-	}
-
-	public BookMeta setCoverUrl(String coverUrl) {
-		this.coverUrl = coverUrl;
-		return this;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public BookMeta setTitle(String title) {
-		this.title = title;
-		return this;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public BookMeta setAuthor(String author) {
-		this.author = author;
-		return this;
-	}
-
-	public String getLanguage() {
-		return language;
-	}
-
-	public BookMeta setLanguage(String language) {
-		this.language = language;
-		return this;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public BookMeta setCategory(String category) {
-		this.category = category;
-		return this;
-	}
-
-	public String getPdfUrl() {
-		return pdfUrl;
-	}
-
-	public BookMeta setPdfUrl(String pdfUrl) {
-		this.pdfUrl = pdfUrl;
-		return this;
-	}
-
-	public int getPages() {
-		return pages;
-	}
-
-	public BookMeta setPages(int pages) {
-		this.pages = pages;
-		return this;
-	}
-
-	public float getFileSizeMb() {
-		return fileSizeMb;
-	}
-
-	public BookMeta setFileSizeMb(float fileSizeMb) {
-		this.fileSizeMb = fileSizeMb;
-		return this;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public BookMeta setYear(int year) {
-		this.year = year;
-		return this;
-	}
 
 	@Override
 	public String toString() {

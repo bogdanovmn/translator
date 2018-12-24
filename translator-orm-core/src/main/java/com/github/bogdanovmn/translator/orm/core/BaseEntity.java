@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.orm.core;
 
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -12,7 +13,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @MappedSuperclass
 public abstract class BaseEntity {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(
+		strategy= GenerationType.AUTO,
+		generator="native"
+	)
+	@GenericGenerator(
+		name = "native",
+		strategy = "native"
+	)
 	@Access(AccessType.PROPERTY)
 	protected Integer id;
 
