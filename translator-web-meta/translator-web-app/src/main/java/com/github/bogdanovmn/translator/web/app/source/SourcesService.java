@@ -1,7 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.source;
 
 import com.github.bogdanovmn.translator.web.orm.SourceRepository;
-import com.github.bogdanovmn.translator.web.orm.SourceWithUserStatistic;
 import com.github.bogdanovmn.translator.web.orm.User;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,7 @@ class SourcesService {
 		this.sourceRepository = sourceRepository;
 	}
 
-	List<SourceWithUserStatistic> getAllWithUserStatistic(User user) {
+	List<SourceRepository.WithUserStatistic> getAllWithUserStatistic(User user) {
 		return this.sourceRepository.getAllWithUserStatistic(user.getId());
 	}
 }

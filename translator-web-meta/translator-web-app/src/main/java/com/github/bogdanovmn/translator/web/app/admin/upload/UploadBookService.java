@@ -81,12 +81,12 @@ public class UploadBookService {
 			Word word = wordsMap.get(wordStr);
 			if (null == word) {
 				word = new Word(wordStr);
-				this.wordRepository.save(word);
+				wordRepository.save(word);
 				LOG.info("New word: {}", wordStr);
 				newWordsCount++;
 			}
 
-			this.wordSourceRepository.save(
+			wordSourceRepository.save(
 				new WordSource()
 					.setSource(source)
 					.setWord(word)

@@ -53,7 +53,7 @@ class DownloadService {
 				}
 			}
 			if (errors < ERRORS_LIMIT) {
-				bookDownloadProcessRepository.save(waitingBooks);
+				bookDownloadProcessRepository.saveAll(waitingBooks);
 				waitingBooks = nextBatch();
 			}
 			else {
@@ -72,7 +72,7 @@ class DownloadService {
 					.map(BookMeta::createDownloadProcess)
 					.collect(Collectors.toList());
 			}
-			bookMetaRepository.save(meta);
+			bookMetaRepository.saveAll(meta);
 		}
 		bookMetaRepository.flush();
 		return batch;

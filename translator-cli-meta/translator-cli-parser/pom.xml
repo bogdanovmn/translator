@@ -25,7 +25,7 @@
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-					<skipAssembly>false</skipAssembly>
+					<skipAssembly>true</skipAssembly>
 					<finalName>parser</finalName>
                     <archive>
                         <manifest>

@@ -3,32 +3,17 @@ package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 import com.github.bogdanovmn.translator.core.CompressedText;
 import com.github.bogdanovmn.translator.orm.core.BaseEntity;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.util.DigestUtils;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Setter
+@Getter
+
 @Entity
-@NamedNativeQuery(
-	name = "BookDownloadProcess.statusStatistic",
-	resultSetMapping = "BookDownloadProcessMapping.statusStatistic",
-	query =
-		"SELECT p.status, COUNT(p.id) count " +
-			"FROM allitebook_download_process p " +
-			"GROUP BY p.status"
-)
-@SqlResultSetMapping(
-	name = "BookDownloadProcessMapping.statusStatistic",
-	classes = {
-		@ConstructorResult(
-			targetClass = DownloadStatusStatistic.class,
-			columns = {
-				@ColumnResult(name = "status", type = String.class),
-				@ColumnResult(name = "count", type = Integer.class),
-			}
-		)
-	}
-)
 @Table(name = "allitebook_download_process")
 public class BookDownloadProcess extends BaseEntity {
 	@Enumerated(EnumType.STRING)
@@ -45,60 +30,6 @@ public class BookDownloadProcess extends BaseEntity {
 	@JoinColumn(name = "book_id")
 	private Book book;
 
-
-	public DownloadStatus getStatus() {
-		return status;
-	}
-
-	public BookDownloadProcess setStatus(DownloadStatus status) {
-		this.status = status;
-		return this;
-	}
-
-	public String getErrorMsg() {
-		return errorMsg;
-	}
-
-	public BookDownloadProcess setErrorMsg(String errorMsg) {
-		this.errorMsg = errorMsg;
-		return this;
-	}
-
-	public Date getStarted() {
-		return started;
-	}
-
-	public BookDownloadProcess setStarted(Date started) {
-		this.started = started;
-		return this;
-	}
-
-	public Date getUpdated() {
-		return updated;
-	}
-
-	public BookDownloadProcess setUpdated(Date updated) {
-		this.updated = updated;
-		return this;
-	}
-
-	public BookMeta getMeta() {
-		return meta;
-	}
-
-	public BookDownloadProcess setMeta(BookMeta meta) {
-		this.meta = meta;
-		return this;
-	}
-
-	public Book getBook() {
-		return book;
-	}
-
-	public BookDownloadProcess setBook(Book book) {
-		this.book = book;
-		return this;
-	}
 
 	public void start() {
 		Date now = new Date();
