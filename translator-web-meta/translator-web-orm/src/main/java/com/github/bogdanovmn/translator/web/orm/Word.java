@@ -2,15 +2,21 @@ package com.github.bogdanovmn.translator.web.orm;
 
 import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueName;
 import com.github.bogdanovmn.translator.orm.core.ExportToXmlBooleanAdapter;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+
+@Setter
+@Getter
+@NoArgsConstructor
 
 @Entity
 @NamedEntityGraph(
@@ -18,11 +24,6 @@ import java.util.Set;
 	attributeNodes = @NamedAttributeNode("translates")
 )
 @NamedNativeQueries({
-	@NamedNativeQuery(
-		name = "Word.toRemember",
-		resultClass = Word.class,
-		query = WordNativeQuery.TO_REMEMBER
-	),
 	@NamedNativeQuery(
 		name = "Word.allBySourceForCloud",
 		resultClass = Word.class,
@@ -50,16 +51,22 @@ import java.util.Set;
 	)
 })
 public class Word extends BaseEntityWithUniqueName {
+	@XmlTransient
 	private int frequence;
+	@XmlTransient
 	private int sourcesCount;
 
+	@XmlAttribute
+	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	@Column(nullable = false)
 	private Boolean blackList = false;
 
+	@XmlTransient
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_id")
 	private List<Translate> translates = new ArrayList<>();
 
+	@XmlTransient
 	@OneToMany(mappedBy = "word")
 	private Set<WordSource> wordSources;
 
@@ -71,69 +78,12 @@ public class Word extends BaseEntityWithUniqueName {
 		super(id);
 	}
 
-	public Word() {
-	}
-
-	public Set<WordSource> getWordSources() {
-		return wordSources;
-	}
-
-	@XmlTransient
-	public Word setWordSources(Set<WordSource> wordSources) {
-		this.wordSources = wordSources;
-		return this;
-	}
-
-	public List<Translate> getTranslates() {
-		return translates;
-	}
-
-	@XmlTransient
-	public Word setTranslates(List<Translate> translates) {
-		this.translates = translates;
-		return this;
-	}
-
 	public Boolean isBlackList() {
 		return blackList;
-	}
-
-	@XmlAttribute
-	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
-	public Word setBlackList(Boolean blackList) {
-		this.blackList = blackList;
-		return this;
-	}
-
-	public Integer getFrequence() {
-		return frequence;
-	}
-
-	@XmlTransient
-	public Word setFrequence(Integer frequence) {
-		this.frequence = frequence;
-		return this;
-	}
-
-	public Integer getSourcesCount() {
-		return sourcesCount;
-	}
-
-	@XmlTransient
-	public Word setSourcesCount(Integer sourcesCount) {
-		this.sourcesCount = sourcesCount;
-		return this;
 	}
 
 	public Word incFrequence(int incValue) {
 		this.frequence += incValue;
 		return this;
 	}
-
-	public void addWordSources(Collection<WordSource> sources) {
-		wordSources.addAll(sources);
-		sourcesCount += sources.size();
-	}
-
-
 }

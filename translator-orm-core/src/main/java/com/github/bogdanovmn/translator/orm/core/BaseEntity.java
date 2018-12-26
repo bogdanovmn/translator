@@ -1,17 +1,29 @@
 package com.github.bogdanovmn.translator.orm.core;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@Setter
+@Getter
 @NoArgsConstructor
+
+@XmlAccessorType(XmlAccessType.FIELD)
 
 @MappedSuperclass
 public abstract class BaseEntity {
+	@XmlID
+	@XmlJavaTypeAdapter(ExportToXmlIdAdapter.class)
+	@XmlAttribute(name = "ref")
+
 	@Id
 	@GeneratedValue(
 		strategy= GenerationType.AUTO,
@@ -28,15 +40,4 @@ public abstract class BaseEntity {
 		this.id = id;
 	}
 
-	@XmlID
-	@XmlJavaTypeAdapter(ExportToXmlIdAdapter.class)
-	@XmlAttribute(name = "ref")
-	public Integer getId() {
-		return id;
-	}
-
-	public BaseEntity setId(Integer id) {
-		this.id = id;
-		return this;
-	}
 }

@@ -1,10 +1,17 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 import com.github.bogdanovmn.translator.orm.core.BaseEntity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlIDREF;
+
+@Setter
+@Getter
+@NoArgsConstructor
 
 @Entity
 @Table(name = "word2source")
@@ -16,50 +23,20 @@ import javax.xml.bind.annotation.XmlIDREF;
 	)
 })
 public class WordSource extends BaseEntity {
+	@XmlAttribute
 	private Integer count;
 
+	@XmlIDREF
+	@XmlAttribute(name = "wid")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "word_id")
 	private Word word;
 
+	@XmlIDREF
+	@XmlAttribute(name = "sid")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "source_id")
 	private Source source;
-
-	public WordSource() {
-	}
-
-	public Integer getCount() {
-		return count;
-	}
-
-	@XmlAttribute
-	public WordSource setCount(Integer count) {
-		this.count = count;
-		return this;
-	}
-
-	public Word getWord() {
-		return word;
-	}
-
-	@XmlIDREF
-	@XmlAttribute(name = "wid")
-	public WordSource setWord(Word word) {
-		this.word = word;
-		return this;
-	}
-
-	public Source getSource() {
-		return source;
-	}
-
-	@XmlIDREF
-	@XmlAttribute(name = "sid")
-	public WordSource setSource(Source source) {
-		this.source = source;
-		return this;
-	}
 
 	public WordSource incCount(Integer incValue) {
 		count += incValue;

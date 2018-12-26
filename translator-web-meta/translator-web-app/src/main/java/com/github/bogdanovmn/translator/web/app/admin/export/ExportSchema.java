@@ -1,52 +1,51 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
 import com.github.bogdanovmn.translator.web.orm.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@XmlRootElement(name = "translatorExport")
-class ExportSchema {
-	private List<Source> sources;
-	private List<TranslateProvider> translateProviders;
-	private List<Word> words;
-	private List<Translate> translates;
-	private List<WordSource> wordSources;
-	private List<ExportSchema.ExportUser> users = new ArrayList<>();
+@Getter
+@Setter
 
+@XmlRootElement(name = "translatorExport")
+//@XmlAccessorType(XmlAccessType.FIELD)
+class ExportSchema {
 	@XmlElementWrapper
 	@XmlElement(name = "source")
-	ExportSchema setSources(List<Source> sources) {
-		this.sources = sources;
-		return this;
-	}
+	private List<Source> sources;
 
 	@XmlElementWrapper
 	@XmlElement(name = "translateProvider")
-	ExportSchema setTranslateProviders(List<TranslateProvider> translateProviders) {
-		this.translateProviders = translateProviders;
-		return this;
-	}
+	private List<TranslateProvider> translateProviders;
 
 	@XmlElementWrapper
 	@XmlElement(name = "word")
-	ExportSchema setWords(List<Word> words) {
-		this.words = words;
-		return this;
-	}
+	private List<Word> words;
 
 	@XmlElementWrapper
 	@XmlElement(name = "translate")
+	private List<Translate> translates;
+
+	@XmlElementWrapper
+	@XmlElement(name = "link")
+	private List<WordSource> wordSources;
+
+	@XmlElementWrapper
+	@XmlElement(name = "user")
+	private List<ExportSchema.ExportUser> users = new ArrayList<>();
+
+
 	ExportSchema setTranslates(List<Translate> translates) {
 		translates.forEach(x -> x.setId(null));
 		this.translates = translates;
 		return this;
 	}
 
-	@XmlElementWrapper
-	@XmlElement(name = "link")
 	ExportSchema setWordSources(List<WordSource> wordSources) {
 		wordSources.forEach(x -> x.setId(null));
 		this.wordSources = wordSources;
@@ -81,67 +80,16 @@ class ExportSchema {
 		return this;
 	}
 
-	List<Source> getSources() {
-		return sources;
-	}
-
-	List<TranslateProvider> getTranslateProviders() {
-		return translateProviders;
-	}
-
-	List<Word> getWords() {
-		return words;
-	}
-
-	List<Translate> getTranslates() {
-		return translates;
-	}
-
-	List<WordSource> getWordSources() {
-		return wordSources;
-	}
-
-	@XmlElementWrapper
-	@XmlElement(name = "user")
-	List<ExportUser> getUsers() {
-		return users;
-	}
-
+	@Getter
+	@Setter
+//	@XmlAccessorType(XmlAccessType.FIELD)
 	static class ExportUser {
-		private String email;
-
-		private List<Integer> rememberedWords;
-		private List<Integer> holdOverWords;
-
-		String getEmail() {
-			return email;
-		}
-
 		@XmlAttribute
-		ExportUser setEmail(String email) {
-			this.email = email;
-			return this;
-		}
-
-		List<Integer> getRememberedWords() {
-			return rememberedWords;
-		}
-
+		private String email;
 		@XmlList
-		ExportUser setRememberedWords(List<Integer> rememberedWords) {
-			this.rememberedWords = rememberedWords;
-			return this;
-		}
-
-		public List<Integer> getHoldOverWords() {
-			return holdOverWords;
-		}
-
+		private List<Integer> rememberedWords;
 		@XmlList
-		public ExportUser setHoldOverWords(List<Integer> holdOverWords) {
-			this.holdOverWords = holdOverWords;
-			return this;
-		}
+		private List<Integer> holdOverWords;
 	}
 }
 

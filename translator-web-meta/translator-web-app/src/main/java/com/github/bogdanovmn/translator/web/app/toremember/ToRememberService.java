@@ -6,6 +6,7 @@ import com.github.bogdanovmn.translator.core.TranslateServiceUnknownWordExceptio
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,20 +42,28 @@ class ToRememberService {
 		return securityService.getLoggedInUser();
 	}
 
-	List<Word> getAll() {
-		return wordRepository.toRemember(getUser().getId(), 20, 3);
+	List<WordRepository.WordWithUserProgress> getAll() {
+		return wordRepository.unknownByAllSources(
+			getUser().getId(),
+			PageRequest.of(0, 20)
+		);
 	}
 
 	WordsToRememberBySource getAllBySource(Integer sourceId) {
 		Source source = sourceRepository.getOne(sourceId);
-		List<WordSource> wordSources = wordSourceRepository.toRemember(
-			getUser().getId(), source.getId(), 20, 3
+		List<WordRepository.WordBySourceWithUserProgress> wordSources = wordRepository.unknownBySource(
+			getUser().getId(),
+			source.getId(),
+			PageRequest.of(0, 20)
 		);
 
 		return new WordsToRememberBySource(
 			wordSources,
 			source,
-			userRememberedWordRepository.getCountBySource(getUser().getId(), sourceId)
+			userRememberedWordRepository.getCountBySource(
+				getUser().getId(),
+				sourceId
+			)
 		);
 	}
 
@@ -124,18 +133,5 @@ class ToRememberService {
 		}
 
 		return String.join(", ", translates);
-	}
-
-	void blackListWord(Integer wordId) {
-		Word word = wordRepository.findById(wordId)
-			.orElseThrow(() ->
-				new RuntimeException(
-					String.format("Unknown word (id = %d", wordId)
-				)
-			);
-
-		wordRepository.save(
-			word.setBlackList(true)
-		);
 	}
 }

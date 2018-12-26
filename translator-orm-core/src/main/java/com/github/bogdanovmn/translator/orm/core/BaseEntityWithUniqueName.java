@@ -1,11 +1,18 @@
 package com.github.bogdanovmn.translator.orm.core;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.xml.bind.annotation.XmlAttribute;
 
+@Setter
+@Getter
+
 @MappedSuperclass
 public abstract class BaseEntityWithUniqueName extends BaseEntity {
+	@XmlAttribute
 	@Column(unique = true, nullable = false)
 	private String name;
 
@@ -20,16 +27,6 @@ public abstract class BaseEntityWithUniqueName extends BaseEntity {
 
 	public BaseEntityWithUniqueName(Integer id) {
 		super(id);
-	}
-
-	@XmlAttribute
-	public String getName() {
-		return name;
-	}
-
-	public BaseEntityWithUniqueName setName(String name) {
-		this.name = name;
-		return this;
 	}
 
 	@Override
