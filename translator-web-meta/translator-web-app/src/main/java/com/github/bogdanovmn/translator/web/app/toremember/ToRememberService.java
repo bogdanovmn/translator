@@ -49,21 +49,11 @@ class ToRememberService {
 		);
 	}
 
-	WordsToRememberBySource getAllBySource(Integer sourceId) {
-		Source source = sourceRepository.getOne(sourceId);
-		List<WordRepository.WordBySourceWithUserProgress> wordSources = wordRepository.unknownBySource(
+	List<WordRepository.WordBySourceWithUserProgress> getAllBySource(Integer sourceId) {
+		return wordRepository.unknownBySource(
 			getUser().getId(),
-			source.getId(),
+			sourceId,
 			PageRequest.of(0, 20)
-		);
-
-		return new WordsToRememberBySource(
-			wordSources,
-			source,
-			userRememberedWordRepository.getCountBySource(
-				getUser().getId(),
-				sourceId
-			)
 		);
 	}
 

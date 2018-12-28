@@ -12,7 +12,7 @@
 			<b>{{word.name}}</b>
 			<span class="badge badge-secondary float-right font-weight-light">
 				{{#source}}
-					<b>{{count}}</b> упоминаний
+					<b>{{frequency}}</b> упоминаний
 				{{/source}}
 				{{^source}}
 					<b>{{word.frequence}}</b> упоминаний / <b>{{word.sourcesCount}}</b> источников
@@ -137,10 +137,10 @@
 
 	function actionAndHide(wordBlock, url) {
 		console.log("[action and hide] " + url);
+		wordBlock.remove();
 		$.ajax({ url: url, method: 'PUT'})
 			.done(function(resp) {
 				console.log('[OK] ' + url);
-				wordBlock.remove();
 				loadNewPortion();
 			})
 			.fail(function (jqXHR, excpetion) {

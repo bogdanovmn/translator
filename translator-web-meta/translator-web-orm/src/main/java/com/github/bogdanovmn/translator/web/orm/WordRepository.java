@@ -64,6 +64,12 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 	interface WordBySourceWithUserProgress {
 		WordSource getWordSource();
 		UserWordProgress getUserProgress();
+		default Word getWord() {
+			return getWordSource().getWord();
+		}
+		default int getFrequency() {
+			return getWordSource().getCount();
+		}
 	}
 
 	@Modifying
