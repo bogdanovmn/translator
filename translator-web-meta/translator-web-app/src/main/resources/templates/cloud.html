@@ -1,11 +1,24 @@
 {{#layout}}
 
+{{#source}}
+	<h1>{{.}}</h1>
+{{/source}}
+{{^source}}
+	<h1>Все источники</h1>
+{{/source}}
+
 <div class="btn-group">
 	{{#filter.menu}}
 		<a class="btn btn-sm btn-outline-secondary {{#selected}}active{{/selected}}"
 		   href='{{layout.contextPath}}{{filter.resourcePath}}?{{filterParams}}'>{{title}}</a>
 	{{/filter.menu}}
 </div>
+{{#source}}
+	<a  role="button"
+		class="btn btn-outline-primary btn-sm float-right"
+		href="{{layout.contextPath}}/to-remember/source/{{id}}">Изучать!
+	</a>
+{{/source}}
 
 <div class="cloud">
 	{{#words}}

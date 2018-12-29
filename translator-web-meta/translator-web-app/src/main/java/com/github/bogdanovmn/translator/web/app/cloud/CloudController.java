@@ -2,6 +2,8 @@ package com.github.bogdanovmn.translator.web.app.cloud;
 
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.HeadMenu;
+import com.github.bogdanovmn.translator.web.app.infrastructure.ViewTemplate;
+import com.github.bogdanovmn.translator.web.app.source.SourcesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +17,11 @@ import java.util.HashMap;
 @RequestMapping("/cloud")
 class CloudController extends AbstractVisualController {
 	private final CloudService cloudService;
+	private final SourcesService sourcesService;
 
-	CloudController(final CloudService cloudService) {
+	CloudController(final CloudService cloudService, SourcesService sourcesService) {
 		this.cloudService = cloudService;
+		this.sourcesService = sourcesService;
 	}
 
 	@Override
@@ -39,13 +43,10 @@ class CloudController extends AbstractVisualController {
 				put(CloudContentFilterToggle.REMEMBERED, showRemembered);
 			}}
 		);
-		return new ModelAndView(
-			"cloud",
-			new HashMap<String, Object>() {{
-				put("words", cloudService.allWords(filter, getUser()));
-				put("filter", filter);
-			}}
-		);
+		return new ViewTemplate("cloud")
+			.with("words", cloudService.allWords(filter, getUser()))
+			.with("filter", filter)
+		.modelAndView();
 	}
 
 	@GetMapping("/source/{id}")
@@ -63,12 +64,10 @@ class CloudController extends AbstractVisualController {
 				put(CloudContentFilterToggle.REMEMBERED, showRemembered);
 			}}
 		);
-		return new ModelAndView(
-			"cloud",
-			new HashMap<String, Object>() {{
-				put("words", cloudService.sourceWords(id, filter, getUser()));
-				put("filter", filter);
-			}}
-		);
+		return new ViewTemplate("cloud")
+			.with("words", cloudService.sourceWords(id, filter, getUser()))
+			.with("filter", filter)
+			.with("source", sourcesService.get(id))
+		.modelAndView();
 	}
 }
