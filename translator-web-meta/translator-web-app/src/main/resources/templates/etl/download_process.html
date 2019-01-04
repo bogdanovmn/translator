@@ -11,11 +11,13 @@
 {{#brief.active}}
 <div>
 	<div id="{{id}}" class="download-process-item">
-		<b>Started:</b> {{started}}
-		<br>
+		{{#started}}
+			<b>Started:</b> {{started}}
+			<br>
+		{{/started}}
 		<b>Book:</b> <a href="{{meta.originalUrl}}" target="_blank">{{meta.title}}</a> [{{meta.fileSizeMb}} Mb]
 		<br>
-		<b>Status:</b> {{status}} (<b>Updated:</b> {{updated}})
+		<b>Status:</b> {{status}} {{#updated}}(<b>Updated:</b> {{updated}}){{/updated}}
 		{{#errorMsg}}
 		<br>
 		<b>Error:</b>

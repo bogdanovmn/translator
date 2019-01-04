@@ -10,8 +10,10 @@ public interface BookDownloadProcessRepository extends JpaRepository<BookDownloa
 	List<BookDownloadProcess> findTop10ByStatus(DownloadStatus status);
 
 	@EntityGraph(attributePaths = {"meta"})
-	List<BookDownloadProcess> findAllByStatusIsNot(DownloadStatus status);
+	List<BookDownloadProcess> findAllByStatusIsNotOrderByUpdatedDesc(DownloadStatus status);
 
+	@EntityGraph(attributePaths = {"meta"})
+	List<BookDownloadProcess> findAllByStatusIsNotIn(List<DownloadStatus> statuses);
 
 	@Query(
 		"SELECT p.status AS status, COUNT(p.id) AS count " +

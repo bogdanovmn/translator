@@ -2,6 +2,7 @@ package com.github.bogdanovmn.translator.parser.common;
 
 import com.github.bogdanovmn.translator.core.TextContentParser;
 import org.apache.tika.config.TikaConfig;
+import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.sax.BodyContentHandler;

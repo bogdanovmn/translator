@@ -23,8 +23,9 @@ class DownloadTask implements Callable<BookDownloadProcess> {
 	}
 
 	@Override
-	public BookDownloadProcess call() throws Exception {
+	public BookDownloadProcess call() {
 		downloadProcess.start();
+
 		try {
 			String url = downloadProcess.getMeta().getPdfUrl().replaceAll(" ", "%20");
 			LOG.info("Download url: {}", url);
@@ -34,13 +35,21 @@ class DownloadTask implements Callable<BookDownloadProcess> {
 				);
 				LOG.info("Created book: {}", book);
 			}
-		} catch (Exception e) {
-			downloadProcess.error(e.getMessage());
+		}
+		catch (Exception e) {
+			downloadProcess.error(
+				String.format("%s%n    <-- %s",
+					e.getMessage(),
+					e.getCause().getMessage()
+				)
+			);
 			LOG.error(e.getMessage());
 			throw new RuntimeException(e);
 		}
+
 		downloadProcess.done();
 		LOG.info("done");
+
 		return downloadProcess;
 	}
 }

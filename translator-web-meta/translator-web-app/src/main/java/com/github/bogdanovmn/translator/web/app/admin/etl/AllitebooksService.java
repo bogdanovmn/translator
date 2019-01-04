@@ -25,7 +25,7 @@ class AllitebooksService {
 	Map<String, Object> downloadProcessBrief() {
 		return new HashMap<String, Object>() {{
 			put("statistic", downloadProcessRepository.statusStatistic());
-			put("active", downloadProcessRepository.findAllByStatusIsNot(DownloadStatus.DONE));
+			put("active", downloadProcessRepository.findAllByStatusIsNotOrderByUpdatedDesc(DownloadStatus.DONE));
 		}};
 	}
 
