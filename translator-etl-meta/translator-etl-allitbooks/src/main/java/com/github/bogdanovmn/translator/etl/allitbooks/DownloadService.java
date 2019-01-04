@@ -40,7 +40,7 @@ class DownloadService {
 		List<BookDownloadProcess> waitingBooks = initialBatch();
 		int errors = 0;
 
-		while (waitingBooks != null) {
+		while (!waitingBooks.isEmpty()) {
 			waitingBooks.stream()
 				.peek(processItem ->
 					LOG.info("Prepare download {}Mb: {}",
@@ -96,12 +96,14 @@ class DownloadService {
 		List<BookDownloadProcess> batch;
 		List<BookMeta> meta = bookMetaRepository.findTop10ByDownloadProcessNullAndObsoleteFalse();
 		if (meta.isEmpty()) {
+			LOG.info("Queue is empty");
 			batch = Collections.emptyList();
 		}
 		else {
 			batch = meta.stream()
 				.map(BookMeta::createDownloadProcess)
 				.collect(Collectors.toList());
+			LOG.info("Making new batch: {} items", batch.size());
 		}
 		bookMetaRepository.saveAll(meta);
 		bookMetaRepository.flush();

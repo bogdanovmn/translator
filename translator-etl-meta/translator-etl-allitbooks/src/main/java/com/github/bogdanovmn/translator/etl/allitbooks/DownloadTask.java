@@ -36,7 +36,7 @@ class DownloadTask implements Callable<BookDownloadProcess> {
 				LOG.info("Created book: {}", book);
 			}
 		}
-		catch (Exception e) {
+		catch (Exception | OutOfMemoryError e) {
 			downloadProcess.error(
 				String.format("%s%n    <-- %s",
 					e.getMessage(),
