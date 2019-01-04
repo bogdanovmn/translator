@@ -1,8 +1,10 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.*;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,13 +12,16 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 class DownloadService {
-	private static final Logger LOG = LoggerFactory.getLogger(DownloadService.class);
 
 	private final static int ERRORS_LIMIT = 10;
 
 	private final BookMetaRepository bookMetaRepository;
 	private final BookDownloadProcessRepository bookDownloadProcessRepository;
+
+	@Value("${http-proxy}")
+	private String httpProxy;
 
 	DownloadService(BookMetaRepository bookMetaRepository, BookDownloadProcessRepository bookDownloadProcessRepository) {
 		this.bookMetaRepository = bookMetaRepository;
@@ -40,7 +45,7 @@ class DownloadService {
 						processItem.getMeta().getPdfUrl()
 					)
 				)
-				.map(DownloadTask::new)
+				.map(x -> new DownloadTask(x, httpProxy))
 				.forEach(completionService::submit);
 
 			for (int i = 0; i < waitingBooks.size(); i++) {
@@ -49,7 +54,7 @@ class DownloadService {
 				}
 				catch (ExecutionException e) {
 					errors++;
-					LOG.error(e.getMessage());
+					LOG.error(e.getMessage(), e);
 				}
 			}
 			if (errors < ERRORS_LIMIT) {

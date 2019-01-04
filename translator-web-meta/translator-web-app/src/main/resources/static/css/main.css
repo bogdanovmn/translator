@@ -61,3 +61,5 @@ div.source-block div.button { font-size: 60%; }
 div.source-block div.button-delete { border-color: darkred; color: darkred; margin-left: 90%; }
 
 div.cloud { text-align: justify; }
+
+div.progressbar { height: 100%; position: absolute; background-color: #1299b4}
