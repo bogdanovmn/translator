@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
@@ -50,7 +51,7 @@ public class UploadBookService {
 		}
 
 		LOG.info("Parse file");
-		DocumentContent fileContent = DocumentContent.fromByteArray(fileBytes);
+		DocumentContent fileContent = DocumentContent.fromInputStream(new ByteArrayInputStream(fileBytes));
 		LOG.info("File type: {}", fileContent.contentType());
 
 		EnglishText englishText = new EnglishText(fileContent.text());

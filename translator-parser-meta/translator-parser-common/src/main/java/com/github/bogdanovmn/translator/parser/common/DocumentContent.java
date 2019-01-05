@@ -2,7 +2,6 @@ package com.github.bogdanovmn.translator.parser.common;
 
 import com.github.bogdanovmn.translator.core.TextContentParser;
 import org.apache.tika.config.TikaConfig;
-import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.sax.BodyContentHandler;
@@ -24,7 +23,7 @@ public class DocumentContent implements TextContentParser {
 		this.bodyContentHandler = bodyContentHandler;
 	}
 
-	public static DocumentContent fromByteArray(byte[] fileData) throws IOException {
+	public static DocumentContent fromInputStream(InputStream dataStream) throws IOException {
 		AutoDetectParser parser;
 		try {
 			TikaConfig config = new TikaConfig(
@@ -40,8 +39,8 @@ public class DocumentContent implements TextContentParser {
 
 		BodyContentHandler handler = new BodyContentHandler(-1);
 		Metadata metadata = new Metadata();
-		try (InputStream stream = new ByteArrayInputStream(fileData)) {
-			parser.parse(stream, handler, metadata);
+		try {
+			parser.parse(dataStream, handler, metadata);
 		}
 		catch (Exception e) {
 			throw new IOException("Parse file error", e);
@@ -51,11 +50,13 @@ public class DocumentContent implements TextContentParser {
 	}
 
 	public static DocumentContent fromFile(File file) throws IOException {
-		return DocumentContent.fromByteArray(
-			Files.readAllBytes(
-				Paths.get(file.toURI())
-			)
-		);
+		DocumentContent result;
+		try (InputStream fileStream = Files.newInputStream(
+			Paths.get(file.toURI()))
+		) {
+			result = DocumentContent.fromInputStream(fileStream);
+		}
+		return result;
 	}
 
 	@Override

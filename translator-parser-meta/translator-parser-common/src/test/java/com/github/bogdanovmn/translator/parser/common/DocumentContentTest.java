@@ -11,8 +11,8 @@ public class DocumentContentTest {
 
 	@Test
 	public void shouldParsePdf() throws Exception {
-		DocumentContent doc = DocumentContent.fromByteArray(
-			Files.readAllBytes(
+		DocumentContent doc = DocumentContent.fromInputStream(
+			Files.newInputStream(
 				Paths.get(
 					getClass().getResource("/parser/sample.pdf").toURI()
 				)
@@ -32,8 +32,8 @@ public class DocumentContentTest {
 
 	@Test
 	public void shouldParsePlainText() throws Exception {
-		DocumentContent doc = DocumentContent.fromByteArray(
-			Files.readAllBytes(
+		DocumentContent doc = DocumentContent.fromInputStream(
+			Files.newInputStream(
 				Paths.get(
 					getClass().getResource("/parser/plain-text.txt").toURI()
 				)

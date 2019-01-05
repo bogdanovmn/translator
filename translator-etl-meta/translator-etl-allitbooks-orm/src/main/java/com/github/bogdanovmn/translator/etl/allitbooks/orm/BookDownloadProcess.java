@@ -1,11 +1,8 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
-import com.github.bogdanovmn.translator.core.CompressedText;
 import com.github.bogdanovmn.translator.orm.core.BaseEntity;
-import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.util.DigestUtils;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,22 +33,6 @@ public class BookDownloadProcess extends BaseEntity {
 		started = now;
 		updated = now;
 		status = DownloadStatus.DOWNLOADING;
-	}
-
-	public Book createBook(byte[] fileBytes) throws Exception {
-		String text = DocumentContent.fromByteArray(fileBytes).text();
-
-		CompressedText compressedText = CompressedText.from(text);
-		book = new Book()
-			.setMeta(meta)
-			.setCreated(new Date())
-			.setTextSize(text.length())
-			.setFileHash(
-				DigestUtils.md5DigestAsHex(fileBytes)
-			)
-			.setData(compressedText.bytes());
-
-		return book;
 	}
 
 	public void done() {

@@ -1,10 +1,21 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
 
+import com.github.bogdanovmn.translator.core.CompressedText;
 import com.github.bogdanovmn.translator.orm.core.BaseEntity;
+import com.github.bogdanovmn.translator.parser.common.DocumentContent;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.codec.binary.Hex;
 
 import javax.persistence.*;
+import java.io.InputStream;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
 import java.util.Date;
+
+@Getter
+@Setter
 
 @Entity
 @Table(name = "allitebook_data")
@@ -13,56 +24,28 @@ public class Book extends BaseEntity {
 	@Column(columnDefinition = "LONGBLOB")
 	private byte[] data;
 	private String fileHash;
-	private Integer textSize;
+	private int textSize;
 	private Date created;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "meta_id")
 	private BookMeta meta;
 
-	public byte[] getData() {
-		return data;
-	}
+	public static Book fromStream(InputStream dataStream) throws Exception {
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		DigestInputStream digestInputStream = new DigestInputStream(dataStream, md);
+		String text = DocumentContent.fromInputStream(digestInputStream).text();
 
-	public Book setData(byte[] data) {
-		this.data = data;
-		return this;
-	}
-
-	public String getFileHash() {
-		return fileHash;
-	}
-
-	public Book setFileHash(String fileHash) {
-		this.fileHash = fileHash;
-		return this;
-	}
-
-	public Integer getTextSize() {
-		return textSize;
-	}
-
-	public Book setTextSize(Integer textSize) {
-		this.textSize = textSize;
-		return this;
-	}
-
-	public Date getCreated() {
-		return created;
-	}
-
-	public Book setCreated(Date created) {
-		this.created = created;
-		return this;
-	}
-
-	public BookMeta getMeta() {
-		return meta;
-	}
-
-	public Book setMeta(BookMeta meta) {
-		this.meta = meta;
-		return this;
+		CompressedText compressedText = CompressedText.from(text);
+		return new Book()
+			.setCreated(new Date())
+			.setTextSize(text.length())
+			.setFileHash(
+				Hex.encodeHexString(
+					md.digest()
+				)
+			)
+			.setData(compressedText.bytes());
 	}
 
 	@Override

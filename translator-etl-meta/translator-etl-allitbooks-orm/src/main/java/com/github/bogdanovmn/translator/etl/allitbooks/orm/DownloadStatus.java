@@ -4,5 +4,6 @@ public enum DownloadStatus {
 	WAIT,
 	DOWNLOADING,
 	DONE,
-	ERROR
+	ERROR,
+	STUCK
 }

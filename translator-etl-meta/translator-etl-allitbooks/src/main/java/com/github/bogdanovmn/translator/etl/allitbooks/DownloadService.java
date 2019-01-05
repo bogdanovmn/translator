@@ -1,10 +1,7 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.*;
-import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +45,7 @@ class DownloadService {
 						processItem.getMeta().getPdfUrl()
 					)
 				)
-				.map(x -> new DownloadTask(x, httpProxy))
+				.map(x -> new DownloadTask(x, httpProxy, bookDownloadProcessRepository))
 				.forEach(completionService::submit);
 
 			for (int i = 0; i < waitingBooks.size(); i++) {
@@ -76,7 +73,7 @@ class DownloadService {
 		List<BookDownloadProcess> result;
 		List<BookDownloadProcess> prevProcesses = bookDownloadProcessRepository.findAllByStatusIsNotIn(
 			Arrays.asList(
-				DownloadStatus.DONE, DownloadStatus.ERROR
+				DownloadStatus.DONE, DownloadStatus.ERROR, DownloadStatus.STUCK
 			)
 		);
 		if (prevProcesses.isEmpty()) {
@@ -86,7 +83,14 @@ class DownloadService {
 		else {
 			LOG.info("{} previous processes found. Restarting them", prevProcesses.size());
 			result = prevProcesses.stream()
-				.map(process -> process.setStatus(DownloadStatus.WAIT))
+				.map(process ->
+					process.setStatus(
+						DownloadStatus.DOWNLOADING == process.getStatus()
+							? DownloadStatus.STUCK
+							: DownloadStatus.WAIT
+					)
+				)
+				.filter(process -> process.getStatus() != DownloadStatus.STUCK)
 				.collect(Collectors.toList());
 		}
 		return result;
