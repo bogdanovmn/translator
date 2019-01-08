@@ -32,15 +32,16 @@ class DownloadTask implements Callable<DownloadTaskResult> {
 		try {
 			String url = downloadProcess.getMeta().getPdfUrl().replaceAll(" ", "%20");
 			LOG.info("Download url: {}", url);
-			InputStream pdfStream = httpClient.downloadFile(url);
-			byte[] content = ByteStreams.toByteArray(pdfStream);
-			result = new DownloadTaskResult(downloadProcess, new ByteArrayInputStream(content));
-			downloadProcess.downloaded();
-			LOG.info("downloaded");
+			try (InputStream pdfStream = httpClient.downloadFile(url)) {
+				byte[] content = ByteStreams.toByteArray(pdfStream);
+				result = new DownloadTaskResult(downloadProcess, new ByteArrayInputStream(content));
+				downloadProcess.downloaded();
+				LOG.info("downloaded");
+			}
 		}
 		catch (Exception e) {
 			downloadProcess.error(
-				String.format("%s%n    <-- %s",
+				String.format("%s <-- %s",
 					e.getMessage(),
 					e.getCause().getMessage()
 				)
