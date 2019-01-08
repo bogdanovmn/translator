@@ -4,7 +4,10 @@ import com.github.bogdanovmn.translator.orm.core.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Setter
 @Getter
@@ -32,10 +35,6 @@ public class BookMeta extends BaseEntity {
 
 	private boolean obsolete = false;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "download_process_id")
-	private BookDownloadProcess downloadProcess;
-
 	@Override
 	public String toString() {
 		return "Book{" +
@@ -49,13 +48,5 @@ public class BookMeta extends BaseEntity {
 			", fileSizeMb=" + fileSizeMb +
 			", year=" + year +
 			'}';
-	}
-
-	public BookDownloadProcess createDownloadProcess() {
-		downloadProcess = new BookDownloadProcess()
-			.setMeta(this)
-			.setStatus(DownloadStatus.WAIT);
-
-		return downloadProcess;
 	}
 }

@@ -3,12 +3,15 @@
 <h1>История импорта с allitebooks.com</h1>
 
 <div class="download-statistic">
-	{{#brief.statistic}}
-		<i class="name">{{status}}</i>: <b>{{count}}</b>
-	{{/brief.statistic}}
+	{{#statistic}}
+		<a class="btn btn-outline-secondary btn-sm"
+		   href="{{layout.contextPath}}/admin/etl/download-process/{{status}}">{{status}}
+			<span class="badge">{{count}}</span>
+		</a>
+	{{/statistic}}
 </div>
 
-{{#brief.active}}
+{{#activeItems}}
 <div>
 	<div id="{{id}}" class="download-process-item">
 		{{#started}}
@@ -25,11 +28,11 @@
 		{{/errorMsg}}
 	</div>
 </div>
-{{/brief.active}}
+{{/activeItems}}
 
-{{^brief.active}}
+{{^activeItems}}
 <h2>Очередь пуста</h2>
-{{/brief.active}}
+{{/activeItems}}
 
 
 {{/layout}}

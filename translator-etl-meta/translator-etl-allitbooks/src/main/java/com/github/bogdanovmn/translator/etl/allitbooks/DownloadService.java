@@ -3,8 +3,10 @@ package com.github.bogdanovmn.translator.etl.allitbooks;
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -32,7 +34,7 @@ class DownloadService {
 		LOG.info("Start download with {} threads", threads);
 
 		ExecutorService workers = Executors.newFixedThreadPool(threads);
-		CompletionService<BookDownloadProcess> completionService = new ExecutorCompletionService<>(workers);
+		CompletionService<DownloadTaskResult> completionService = new ExecutorCompletionService<>(workers);
 
 		List<BookDownloadProcess> waitingBooks = initialBatch();
 		int errors = 0;
@@ -50,14 +52,36 @@ class DownloadService {
 
 			for (int i = 0; i < waitingBooks.size(); i++) {
 				try {
-					BookDownloadProcess process = completionService.take().get();
+					DownloadTaskResult downloading = completionService.take().get();
+					BookDownloadProcess downloadProcess = downloading.getDownloadProcess();
+
+					LOG.info("Parsing book '{}'", downloadProcess.getMeta().getTitle());
+
+					try (InputStream pdfStream = downloading.getPdfStream()) {
+						Book book = Book.fromStream(pdfStream)
+							.setMeta(downloadProcess.getMeta());
+						downloadProcess.setBook(book);
+						LOG.info("Created book: {}", book);
+						downloadProcess.done();
+					}
+					catch (Exception e) {
+						downloadProcess.error(
+							String.format("%s  <--  %s",
+								e.getMessage(),
+								e.getCause().getMessage()
+							)
+						);
+						throw new ExecutionException(e);
+					}
+					finally {
+						bookDownloadProcessRepository.save(downloadProcess);
+					}
 				}
 				catch (ExecutionException e) {
 					errors++;
-					LOG.error(e.getMessage(), e);
+					LOG.error(e.getMessage());
 				}
 			}
-			bookDownloadProcessRepository.saveAll(waitingBooks);
 			if (errors < ERRORS_LIMIT) {
 				waitingBooks = nextBatch();
 			}
@@ -71,7 +95,7 @@ class DownloadService {
 
 	private List<BookDownloadProcess> initialBatch() {
 		List<BookDownloadProcess> result;
-		List<BookDownloadProcess> prevProcesses = bookDownloadProcessRepository.findAllByStatusIsNotIn(
+		List<BookDownloadProcess> prevProcesses = bookDownloadProcessRepository.findAllByStatusIsNotInOrderByUpdatedDesc(
 			Arrays.asList(
 				DownloadStatus.DONE, DownloadStatus.ERROR, DownloadStatus.STUCK
 			)
@@ -85,32 +109,35 @@ class DownloadService {
 			result = prevProcesses.stream()
 				.map(process ->
 					process.setStatus(
-						DownloadStatus.DOWNLOADING == process.getStatus()
+						DownloadStatus.WAIT != process.getStatus()
 							? DownloadStatus.STUCK
 							: DownloadStatus.WAIT
 					)
 				)
+				.collect(Collectors.toList());
+			bookDownloadProcessRepository.saveAll(result);
+			result = result.stream()
 				.filter(process -> process.getStatus() != DownloadStatus.STUCK)
 				.collect(Collectors.toList());
+
 		}
 		return result;
 	}
 
 	private List<BookDownloadProcess> nextBatch() {
 		List<BookDownloadProcess> batch;
-		List<BookMeta> meta = bookMetaRepository.findTop10ByDownloadProcessNullAndObsoleteFalse();
+		List<BookMeta> meta = bookMetaRepository.notProcessed(PageRequest.of(0, 10));
 		if (meta.isEmpty()) {
 			LOG.info("Queue is empty");
 			batch = Collections.emptyList();
 		}
 		else {
 			batch = meta.stream()
-				.map(BookMeta::createDownloadProcess)
+				.map(m -> new BookDownloadProcess().setMeta(m).setStatus(DownloadStatus.WAIT))
 				.collect(Collectors.toList());
 			LOG.info("Making new batch: {} items", batch.size());
+			bookMetaRepository.saveAll(meta);
 		}
-		bookMetaRepository.saveAll(meta);
-		bookMetaRepository.flush();
 		return batch;
 	}
 }

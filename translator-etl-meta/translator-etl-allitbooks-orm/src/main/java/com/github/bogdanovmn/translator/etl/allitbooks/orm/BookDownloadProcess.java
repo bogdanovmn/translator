@@ -11,7 +11,12 @@ import java.util.Date;
 @Getter
 
 @Entity
-@Table(name = "allitebook_download_process")
+@Table(
+	name = "allitebook_download_process",
+	uniqueConstraints = {
+		@UniqueConstraint(columnNames = "meta_id"),
+		@UniqueConstraint(columnNames = "book_id")
+	})
 public class BookDownloadProcess extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private DownloadStatus status;
@@ -33,6 +38,11 @@ public class BookDownloadProcess extends BaseEntity {
 		started = now;
 		updated = now;
 		status = DownloadStatus.DOWNLOADING;
+	}
+
+	public void downloaded() {
+		status = DownloadStatus.DOWNLOADED;
+		updated = new Date();
 	}
 
 	public void done() {

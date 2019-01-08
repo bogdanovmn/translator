@@ -1,7 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.admin.etl;
 
+import com.github.bogdanovmn.translator.etl.allitbooks.orm.DownloadStatus;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
+import com.github.bogdanovmn.translator.web.app.infrastructure.ViewTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +29,19 @@ class AllitebooksController extends AbstractVisualAdminController {
 
 	@GetMapping("/etl/download-process")
 	ModelAndView downloadProcess() {
-		return new ModelAndView(
-			"etl/download_process",
-			"brief",
-			allitebooksService.downloadProcessBrief()
-		);
+		return new ViewTemplate("etl/download_process")
+			.with("statistic"  , allitebooksService.statistic())
+			.with("activeItems", allitebooksService.activeItems())
+		.modelAndView();
+	}
+
+	@GetMapping("/etl/download-process/{status}")
+	ModelAndView downloadProcessByStatus(@PathVariable("status") DownloadStatus status) {
+		return new ViewTemplate("etl/download_process_by_status")
+			.with("status", status)
+			.with("statistic", allitebooksService.statistic())
+			.with("items"    , allitebooksService.itemsByStatus(status))
+		.modelAndView();
 	}
 
 	@GetMapping("/etl/download-process/data/{id}")

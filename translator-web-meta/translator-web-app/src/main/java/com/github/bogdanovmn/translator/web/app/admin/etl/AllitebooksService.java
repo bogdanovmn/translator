@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,11 +22,18 @@ class AllitebooksService {
 		this.downloadProcessRepository = downloadProcessRepository;
 	}
 
-	Map<String, Object> downloadProcessBrief() {
-		return new HashMap<String, Object>() {{
-			put("statistic", downloadProcessRepository.statusStatistic());
-			put("active", downloadProcessRepository.findAllByStatusIsNotOrderByUpdatedDesc(DownloadStatus.DONE));
-		}};
+	List<BookDownloadProcessRepository.DownloadStatusStatistic> statistic() {
+		return downloadProcessRepository.statusStatistic();
+	}
+
+	List<BookDownloadProcess> activeItems() {
+		return downloadProcessRepository.findAllByStatusIsNotInOrderByUpdatedDesc(
+			Arrays.asList(
+				DownloadStatus.DONE,
+				DownloadStatus.STUCK,
+				DownloadStatus.ERROR
+			)
+		);
 	}
 
 	String downloadProcessData(Integer id) throws IOException {
@@ -40,5 +47,9 @@ class AllitebooksService {
 			).words().toString();
 		}
 		return result;
+	}
+
+	List<BookDownloadProcess> itemsByStatus(DownloadStatus status) {
+		return downloadProcessRepository.findAllByStatusOrderByUpdatedDesc(status);
 	}
 }

@@ -18,7 +18,12 @@ import java.util.Date;
 @Setter
 
 @Entity
-@Table(name = "allitebook_data")
+@Table(
+	name = "allitebook_data",
+	uniqueConstraints = {
+		@UniqueConstraint(columnNames = "meta_id")
+	}
+)
 public class Book extends BaseEntity {
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")
