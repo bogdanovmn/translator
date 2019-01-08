@@ -116,12 +116,13 @@ class DownloadService {
 				)
 				.collect(Collectors.toList());
 			bookDownloadProcessRepository.saveAll(result);
-			result = result.isEmpty()
-				? nextBatch()
-				: result.stream()
-					.filter(process -> process.getStatus() != DownloadStatus.STUCK)
-					.collect(Collectors.toList());
+			result = result.stream()
+				.filter(process -> process.getStatus() != DownloadStatus.STUCK)
+				.collect(Collectors.toList());
 
+			if (result.isEmpty()) {
+				result = nextBatch();
+			}
 		}
 		return result;
 	}

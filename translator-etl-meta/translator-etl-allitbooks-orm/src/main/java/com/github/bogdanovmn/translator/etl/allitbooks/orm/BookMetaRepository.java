@@ -16,7 +16,8 @@ public interface BookMetaRepository extends JpaRepository<BookMeta, Integer> {
 		"select meta from BookMeta meta " +
 			"left join BookDownloadProcess process on process.meta.id = meta.id " +
 			"where process is null " +
-			"and meta.obsolete = false"
+			"and meta.obsolete = false " +
+			"and (meta.fileSizeMb < 70 or meta.fileSizeMb = 0)"
 	)
 	List<BookMeta> notProcessed(Pageable pageable);
 }
