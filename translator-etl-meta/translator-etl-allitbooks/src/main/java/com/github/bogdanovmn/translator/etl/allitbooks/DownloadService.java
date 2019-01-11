@@ -2,10 +2,12 @@ package com.github.bogdanovmn.translator.etl.allitbooks;
 
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,17 +19,21 @@ import java.util.stream.Collectors;
 @Slf4j
 class DownloadService {
 
-	private final static int ERRORS_LIMIT = 10;
+	private final static int ERRORS_LIMIT = 20;
 
 	private final BookMetaRepository bookMetaRepository;
 	private final BookDownloadProcessRepository bookDownloadProcessRepository;
 
+	private final EntityManager entityManager;
+
 	@Value("${http-proxy}")
 	private String httpProxy;
 
-	DownloadService(BookMetaRepository bookMetaRepository, BookDownloadProcessRepository bookDownloadProcessRepository) {
+	@Autowired
+	DownloadService(BookMetaRepository bookMetaRepository, BookDownloadProcessRepository bookDownloadProcessRepository, EntityManager entityManager) {
 		this.bookMetaRepository = bookMetaRepository;
 		this.bookDownloadProcessRepository = bookDownloadProcessRepository;
+		this.entityManager = entityManager;
 	}
 
 	synchronized void download(int threads) throws InterruptedException {
@@ -83,6 +89,7 @@ class DownloadService {
 				}
 			}
 			if (errors < ERRORS_LIMIT) {
+				entityManager.clear();
 				waitingBooks = nextBatch();
 			}
 			else {

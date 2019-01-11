@@ -41,7 +41,7 @@ public class BookDownloadProcess extends BaseEntity {
 	}
 
 	public void downloaded() {
-		status = DownloadStatus.DOWNLOADED;
+		status = DownloadStatus.PROCESSING;
 		updated = new Date();
 	}
 

@@ -36,7 +36,10 @@ class DownloadTask implements Callable<DownloadTaskResult> {
 				byte[] content = ByteStreams.toByteArray(pdfStream);
 				result = new DownloadTaskResult(downloadProcess, new ByteArrayInputStream(content));
 				downloadProcess.downloaded();
-				LOG.info("downloaded");
+				LOG.info("Downloaded {} Mb '{}'",
+					content.length / (1024*1024),
+					downloadProcess.getMeta().getTitle()
+				);
 			}
 		}
 		catch (Exception e) {
