@@ -20,5 +20,8 @@ public interface SourceRepository extends JpaRepository<Source, Integer> {
 	interface WithUserStatistic {
 		Source getSource();
 		Integer getUserWordsRememberedCount();
+		default Integer getUserWordsRememberedPercent() {
+			return (int)(100.0 * getUserWordsRememberedCount()) / getSource().getWordsCount();
+		}
 	}
 }

@@ -19,7 +19,7 @@ public class SourcesService {
 	}
 
 	List<SourceRepository.WithUserStatistic> getAllWithUserStatistic(User user) {
-		return this.sourceRepository.getAllWithUserStatistic(user.getId());
+		return sourceRepository.getAllWithUserStatistic(user.getId());
 	}
 
 	public long userRememberedWordsCount(int userId, int sourceId) {

@@ -62,4 +62,17 @@ div.source-block div.button-delete { border-color: darkred; color: darkred; marg
 
 div.cloud { text-align: justify; }
 
-div.progressbar { height: 100%; position: absolute; background-color: #1299b4}
+
+.progressbar-wrapper {
+	position: relative;
+	z-index: 1;
+}
+
+.progressbar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #dcf3dd;
+	z-index: -1;
+}

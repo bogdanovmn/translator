@@ -8,8 +8,9 @@
 		<div class="card-header">
 			<span class="badge badge-secondary">{{userWordsRememberedCount}} из {{source.wordsCount}} слов изучено</span>
 		</div>
-		<div class="card-body">
+		<div class="card-body progressbar-wrapper">
 			{{source.name}}
+			<div class="progressbar" style="width: {{userWordsRememberedPercent}}%"></div>
 		</div>
 
 		<div class="card-footer">
