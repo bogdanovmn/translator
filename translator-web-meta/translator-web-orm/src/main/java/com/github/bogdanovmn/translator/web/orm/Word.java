@@ -59,7 +59,7 @@ public class Word extends BaseEntityWithUniqueName {
 	@XmlAttribute
 	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	@Column(nullable = false)
-	private Boolean blackList = false;
+	private boolean blackList = false;
 
 	@XmlTransient
 	@OneToMany(cascade = CascadeType.ALL)
@@ -76,10 +76,6 @@ public class Word extends BaseEntityWithUniqueName {
 
 	public Word(Integer id) {
 		super(id);
-	}
-
-	public Boolean isBlackList() {
-		return blackList;
 	}
 
 	public Word incFrequence(int incValue) {

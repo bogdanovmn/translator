@@ -9,7 +9,11 @@ import org.springframework.util.StringUtils;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Setter
 @Getter
@@ -17,6 +21,11 @@ import java.util.Set;
 
 @Entity
 public class Source extends BaseEntity {
+	private static final List<Pattern> RAW_NAME_PATTERNS = Arrays.asList(
+		Pattern.compile("^(.*)\\s+-\\s+((?:\\w+\\.)*\\w+)$"),
+		Pattern.compile("^(.*)\\.(\\w{1,4})$")
+	);
+
 	@XmlAttribute
 	@Enumerated(EnumType.STRING)
 	private SourceType type;
@@ -48,11 +57,25 @@ public class Source extends BaseEntity {
 	@Override
 	public String toString() {
 		if (StringUtils.isEmpty(this.author) || StringUtils.isEmpty(this.title)) {
-			return this.rawName;
+			return normalizedRawName();
 		}
 		else {
 			return String.format("%s - %s", this.author, this.title);
 		}
+	}
+
+	private String normalizedRawName() {
+		String normalizedName = rawName.replaceAll("_", " ");
+		for (Pattern pattern : RAW_NAME_PATTERNS) {
+			Matcher matcher = pattern.matcher(normalizedName);
+			if (matcher.matches()) {
+				normalizedName = String.format("%s [%s]",
+					matcher.group(1),
+					matcher.group(2)
+				);
+			}
+		}
+		return normalizedName;
 	}
 
 }

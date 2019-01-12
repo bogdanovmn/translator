@@ -6,12 +6,4 @@ public enum SourceType {
 	BLOG,
 	ARTICLE,
 	FORUM;
-
-//	public String value() {
-//		return name();
-//	}
-//
-//	public static SourceType fromValue(String v) {
-//		return valueOf(v);
-//	}
 }
