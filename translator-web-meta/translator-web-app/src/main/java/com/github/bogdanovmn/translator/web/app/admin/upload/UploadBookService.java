@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.upload;
 
-import com.github.bogdanovmn.translator.core.EnglishText;
-import com.github.bogdanovmn.translator.core.TranslateServiceUploadDuplicateException;
+import com.github.bogdanovmn.translator.core.text.EnglishText;
+import com.github.bogdanovmn.translator.core.translate.TranslateServiceUploadDuplicateException;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import com.github.bogdanovmn.translator.web.orm.*;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.etl;
 
-import com.github.bogdanovmn.translator.core.CompressedText;
-import com.github.bogdanovmn.translator.core.EnglishText;
+import com.github.bogdanovmn.translator.core.text.CompressedText;
+import com.github.bogdanovmn.translator.core.text.EnglishText;
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookDownloadProcess;
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookDownloadProcessRepository;
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.DownloadStatus;

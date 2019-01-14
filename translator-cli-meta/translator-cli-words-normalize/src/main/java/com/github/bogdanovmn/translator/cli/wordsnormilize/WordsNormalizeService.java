@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.cli.wordsnormilize;
 
-import com.github.bogdanovmn.translator.core.NormalizedWords;
+import com.github.bogdanovmn.translator.core.text.NormalizedWords;
 import com.github.bogdanovmn.translator.web.orm.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

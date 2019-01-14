@@ -2,8 +2,8 @@ package com.github.bogdanovmn.translator.cli.parser;
 
 
 import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
-import com.github.bogdanovmn.translator.core.EnglishText;
-import com.github.bogdanovmn.translator.core.NormalizedWords;
+import com.github.bogdanovmn.translator.core.text.EnglishText;
+import com.github.bogdanovmn.translator.core.text.NormalizedWords;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 
 import java.io.File;

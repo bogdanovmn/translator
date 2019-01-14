@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.service.google;
 
 import com.github.bogdanovmn.httpclient.phantomjs.SeleniumPhantomJsHttpClient;
-import com.github.bogdanovmn.translator.core.HttpTranslateService;
+import com.github.bogdanovmn.translator.core.translate.HttpTranslateService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

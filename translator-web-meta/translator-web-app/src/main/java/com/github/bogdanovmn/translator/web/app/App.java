@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app;
 
-import com.github.bogdanovmn.translator.core.TranslateService;
-import com.github.bogdanovmn.translator.core.WordDefinitionService;
+import com.github.bogdanovmn.translator.core.definition.WordDefinitionService;
+import com.github.bogdanovmn.translator.core.translate.TranslateService;
 import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 import com.github.bogdanovmn.translator.service.oxforddictionaries.OxfordWordDefinition;
 import org.springframework.boot.SpringApplication;

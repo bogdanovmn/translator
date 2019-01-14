@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.toremember;
 
-import com.github.bogdanovmn.translator.core.TranslateServiceException;
-import com.github.bogdanovmn.translator.core.TranslateServiceUnknownWordException;
+import com.github.bogdanovmn.translator.core.translate.TranslateServiceException;
+import com.github.bogdanovmn.translator.core.translate.TranslateServiceUnknownWordException;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
