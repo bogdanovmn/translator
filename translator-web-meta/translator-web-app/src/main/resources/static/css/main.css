@@ -62,6 +62,8 @@ div.source-block div.button-delete { border-color: darkred; color: darkred; marg
 
 div.cloud { text-align: justify; }
 
+p.word-definition b { color: #778d78}
+p.word-definition i { color: #a2bca3}
 
 .progressbar-wrapper {
 	position: relative;

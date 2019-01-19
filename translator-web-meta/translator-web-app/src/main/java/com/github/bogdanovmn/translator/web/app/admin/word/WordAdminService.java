@@ -34,16 +34,11 @@ class WordAdminService {
 		);
 	}
 
-	@Scheduled(fixedDelay = 12 * 3600 * 1000)
+	@Scheduled(fixedDelay = 12 * 3600 * 1000, initialDelay = 5 * 1000)
 	void updateHoldOverList() {
 		LocalDateTime expireDate = LocalDateTime.now().minus(2, ChronoUnit.DAYS);
 		LOG.info("Remove all hold over records updated before {}", expireDate);
 		holdOverWordRepository.deleteAllByUpdatedBefore(expireDate);
 		LOG.info("Success");
-	}
-
-	@Scheduled(fixedDelay = 3600 * 1000)
-	void fetchDefinitions() {
-
 	}
 }

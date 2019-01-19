@@ -16,6 +16,7 @@
 	<div id="word-{{word.id}}" class="card my-4" data-word-id="{{word.id}}">
 		<div class="card-header">
 			<b>{{word.name}}</b>
+			<span> {{word.definitions.0.pronunciation}}</span>
 			<span class="badge badge-secondary float-right font-weight-light">
 				{{#source}}
 					<b>{{frequency}}</b> упоминаний
@@ -26,10 +27,23 @@
 			</span>
 		</div>
 
-		<div id="word-content-{{id}}" class="{{#word.translates.0}}card-body text-muted{{/word.translates.0}}">
-			{{#word.translates}}
-				{{value}}{{^-last}}<i>,</i>{{/-last}}
-			{{/word.translates}}
+		<div id="word-content-{{id}}" class="{{#word.definitions.0}}card-body text-muted{{/word.definitions.0}}">
+			{{#word.definitions}}
+			<p class="word-definition">
+				<b>{{partOfSpeech.name}} <i>{{partOfSpeechNote}}</i></b>
+				<br><span class="description">{{description}}</span>
+				{{#synonyms}}
+					<br><i>Syn.:</i> {{synonyms}}
+				{{/synonyms}}
+				{{#examples.0}}
+					<br><i>Ex.:</i> {{examples.0.value}}
+				{{/examples.0}}
+			</p>
+			{{/word.definitions}}
+			<a class=""
+			   href="https://en.oxforddictionaries.com/definition/{{word.name}}"
+			   target="_blank">Подробнее
+			</a>
 		</div>
 
 		<div class="card-footer">
@@ -48,13 +62,13 @@
 						data-href="/word/{{word.id}}/hold-over">Пропустить
 				</button>
 
-				{{#userProgress.holdOverCount}}
-					<a role="button"
-					   class="btn btn-outline-primary btn-sm"
-					   href="https://en.oxforddictionaries.com/definition/{{word.name}}"
-					   target="_blank">Определение
-					</a>
-				{{/userProgress.holdOverCount}}
+				<!--{{#userProgress.holdOverCount}}-->
+					<!--<a role="button"-->
+					   <!--class="btn btn-outline-primary btn-sm"-->
+					   <!--href="https://en.oxforddictionaries.com/definition/{{word.name}}"-->
+					   <!--target="_blank">Определение-->
+					<!--</a>-->
+				<!--{{/userProgress.holdOverCount}}-->
 
 				{{#isAdmin}}
 					<button type="button"

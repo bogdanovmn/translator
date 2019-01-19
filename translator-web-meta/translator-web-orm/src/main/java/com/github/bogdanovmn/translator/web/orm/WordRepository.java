@@ -2,6 +2,7 @@ package com.github.bogdanovmn.translator.web.orm;
 
 import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueNameRepository;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -34,6 +35,7 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			+ " and   w.blackList = 0 "
 			+ " order by w.sourcesCount desc, w.frequence desc"
 	)
+//	@EntityGraph(attributePaths = "definitions")
 	List<WordWithUserProgress> unknownByAllSources(
 		@Param("userId") Integer userId,
 		Pageable pageable

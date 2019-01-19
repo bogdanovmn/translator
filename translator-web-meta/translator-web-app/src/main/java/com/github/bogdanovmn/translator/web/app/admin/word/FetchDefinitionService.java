@@ -83,7 +83,7 @@ class FetchDefinitionService {
 			WordDefinition wordDefinition = new WordDefinition()
 				.setWord(word)
 				.setPronunciation(
-					definitionInstances.get(0).pronunciation()
+					definitionInstanceImport.pronunciation()
 				);
 
 			for (PartOfSpeech partOfSpeechImport : definitionInstanceImport.partOfSpeeches()) {

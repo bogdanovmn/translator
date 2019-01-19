@@ -67,6 +67,11 @@ public class Word extends BaseEntityWithUniqueName {
 	private List<Translate> translates = new ArrayList<>();
 
 	@XmlTransient
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "word_id")
+	private List<WordDefinition> definitions = new ArrayList<>();
+
+	@XmlTransient
 	@OneToMany(mappedBy = "word")
 	private Set<WordSource> wordSources;
 
