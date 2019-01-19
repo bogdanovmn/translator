@@ -16,7 +16,6 @@
 	<div id="word-{{word.id}}" class="card my-4" data-word-id="{{word.id}}">
 		<div class="card-header">
 			<b>{{word.name}}</b>
-			<span> {{word.definitions.0.pronunciation}}</span>
 			<span class="badge badge-secondary float-right font-weight-light">
 				{{#source}}
 					<b>{{frequency}}</b> упоминаний
@@ -28,10 +27,11 @@
 		</div>
 
 		<div id="word-content-{{id}}" class="{{#word.definitions.0}}card-body text-muted{{/word.definitions.0}}">
+			<p class="text-body">{{word.definitions.0.pronunciation}}</p>
 			{{#word.definitions}}
 			<p class="word-definition">
 				<b>{{partOfSpeech.name}} <i>{{partOfSpeechNote}}</i></b>
-				<br><span class="description">{{description}}</span>
+				<br><span class="text-body">{{description}}</span>
 				{{#synonyms}}
 					<br><i>Syn.:</i> {{synonyms}}
 				{{/synonyms}}
@@ -61,14 +61,6 @@
 						data-id="hold-over"
 						data-href="/word/{{word.id}}/hold-over">Пропустить
 				</button>
-
-				<!--{{#userProgress.holdOverCount}}-->
-					<!--<a role="button"-->
-					   <!--class="btn btn-outline-primary btn-sm"-->
-					   <!--href="https://en.oxforddictionaries.com/definition/{{word.name}}"-->
-					   <!--target="_blank">Определение-->
-					<!--</a>-->
-				<!--{{/userProgress.holdOverCount}}-->
 
 				{{#isAdmin}}
 					<button type="button"

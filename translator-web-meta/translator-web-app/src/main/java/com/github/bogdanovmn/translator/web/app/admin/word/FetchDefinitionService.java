@@ -79,13 +79,6 @@ class FetchDefinitionService {
 		List<WordDefinition> wordDefinitions = new ArrayList<>();
 
 		for (DefinitionInstance definitionInstanceImport : definitionInstances) {
-
-			WordDefinition wordDefinition = new WordDefinition()
-				.setWord(word)
-				.setPronunciation(
-					definitionInstanceImport.pronunciation()
-				);
-
 			for (PartOfSpeech partOfSpeechImport : definitionInstanceImport.partOfSpeeches()) {
 				for (Sentence sentenceImport : partOfSpeechImport.sentences()) {
 					List<String> synonyms = new ArrayList<>();
@@ -93,7 +86,11 @@ class FetchDefinitionService {
 						synonyms.add(sentenceImport.synonyms().get(0).value());
 						synonyms.addAll(sentenceImport.synonyms().get(0).more());
 					}
-					wordDefinition
+					WordDefinition wordDefinition = new WordDefinition()
+						.setWord(word)
+						.setPronunciation(
+							definitionInstanceImport.pronunciation()
+						)
 						.setPartOfSpeech(
 							(WordDefinitionPartOfSpeech) entityFactory.getPersistBaseEntityWithUniqueName(
 								new WordDefinitionPartOfSpeech(
