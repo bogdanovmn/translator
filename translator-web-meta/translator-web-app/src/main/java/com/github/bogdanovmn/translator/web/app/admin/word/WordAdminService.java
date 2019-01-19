@@ -41,4 +41,9 @@ class WordAdminService {
 		holdOverWordRepository.deleteAllByUpdatedBefore(expireDate);
 		LOG.info("Success");
 	}
+
+	@Scheduled(fixedDelay = 3600 * 1000)
+	void fetchDefinitions() {
+
+	}
 }

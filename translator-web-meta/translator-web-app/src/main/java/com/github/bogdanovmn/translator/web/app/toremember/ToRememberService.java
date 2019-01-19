@@ -33,10 +33,6 @@ class ToRememberService {
 	private EntityFactory entityFactory;
 	@Autowired
 	private TranslateRepository translateRepository;
-	@Autowired
-	private SourceRepository sourceRepository;
-	@Autowired
-	private WordSourceRepository wordSourceRepository;
 
 	private User getUser() {
 		return securityService.getLoggedInUser();

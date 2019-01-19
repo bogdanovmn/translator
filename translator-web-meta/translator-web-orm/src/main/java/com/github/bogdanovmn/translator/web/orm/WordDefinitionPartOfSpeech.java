@@ -13,4 +13,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class WordDefinitionPartOfSpeech extends BaseEntityWithUniqueName {
+	public WordDefinitionPartOfSpeech(String name) {
+		super(name);
+	}
 }

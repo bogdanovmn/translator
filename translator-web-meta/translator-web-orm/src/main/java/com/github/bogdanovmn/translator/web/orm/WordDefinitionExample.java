@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Setter
@@ -12,8 +13,8 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 
 @Entity
-public class WordDefinitionExampleSentences extends BaseEntity {
+public class WordDefinitionExample extends BaseEntity {
+	@Column(length = 1000)
 	private String value;
-
-	private int placeHolderPosition;
+	private String note;
 }

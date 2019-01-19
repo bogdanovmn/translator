@@ -1,9 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.worddefinition;
 
-import com.github.bogdanovmn.translator.web.orm.WordDefinitionInstance;
+import com.github.bogdanovmn.translator.web.orm.WordDefinition;
 
 import java.util.List;
 
 public interface WordDefinitionService {
-	List<WordDefinitionInstance> definitions(String word);
+	List<WordDefinition> definitions(String word);
 }

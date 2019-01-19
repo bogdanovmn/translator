@@ -19,6 +19,8 @@ public class EntityRepositoryMapFactory {
 	private UserRoleRepository userRoleRepository;
 	@Autowired
 	private TranslateProviderRepository translateProviderRepository;
+	@Autowired
+	private WordDefinitionPartOfSpeechRepository wordDefinitionPartOfSpeechRepository;
 
 	public EntityRepositoryMapFactory() {
 	}
@@ -30,6 +32,7 @@ public class EntityRepositoryMapFactory {
 			put(UserRole.class,          userRoleRepository);
 			put(Word.class,              wordRepository);
 			put(TranslateProvider.class, translateProviderRepository);
+			put(WordDefinitionPartOfSpeech.class, wordDefinitionPartOfSpeechRepository);
 		}};
 	}
 

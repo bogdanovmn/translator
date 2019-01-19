@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +21,23 @@ public class WordDefinition extends BaseEntity {
 
 	private String pronunciation;
 
-	@OneToMany
+	private boolean crossReference;
+
+	@OneToOne
+	@JoinColumn(name = "part_of_speech_id")
+	private WordDefinitionPartOfSpeech partOfSpeech;
+
+	private String partOfSpeechNote;
+
+	@Column(length = 1000)
+	private String description;
+
+	private String descriptionNote;
+
+	@Column(length = 1000)
+	private String synonyms;
+
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "word_definition_id")
-	private List<WordDefinitionInstance> instances = new ArrayList<>();
+	private List<WordDefinitionExample> examples = new ArrayList<>();
 }
