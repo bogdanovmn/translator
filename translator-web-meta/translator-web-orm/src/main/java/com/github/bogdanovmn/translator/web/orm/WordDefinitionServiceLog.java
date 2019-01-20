@@ -38,7 +38,13 @@ public class WordDefinitionServiceLog extends BaseEntity {
 		updated = LocalDateTime.now();
 	}
 
+	public void notFound(String message) {
+		status = Status.NOT_FOUND;
+		updated = LocalDateTime.now();
+		error = message;
+	}
+
 	public static enum Status {
-		DONE, ERROR
+		DONE, ERROR, NOT_FOUND
 	}
 }

@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.core.definition;
 
 import com.github.bogdanovmn.httpclient.core.HttpClient;
 import com.github.bogdanovmn.translator.core.HttpService;
-import com.github.bogdanovmn.translator.core.ParseResponseException;
+import com.github.bogdanovmn.translator.core.HttpServiceException;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,25 +15,18 @@ public abstract class HttpWordDefinitionService extends HttpService<List<Definit
 	}
 
 	@Override
-	public final List<DefinitionInstance> definitions(String word) throws WordDefinitionServiceException {
+	public final List<DefinitionInstance> definitions(String word) throws HttpServiceException {
 		String htmlText;
 		try {
 			htmlText = httpClient.get(urlPrefix + word);
 		}
 		catch (IOException e) {
-			throw new WordDefinitionServiceException(e);
+			throw new HttpServiceException(e);
 		}
 
-		List<DefinitionInstance> result;
-		try {
-			result = parsedServiceResponse(
-				Objects.toString(htmlText, "")
-			);
-		}
-		catch (ParseResponseException e) {
-			throw new WordDefinitionServiceException(e);
-		}
-
-		return result;
+		return parsedServiceResponse(
+			Objects.toString(htmlText, ""),
+			word
+		);
 	}
 }

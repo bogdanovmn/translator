@@ -1,7 +1,9 @@
 package com.github.bogdanovmn.translator.service.oxforddictionaries;
 
 import com.github.bogdanovmn.httpclient.simple.SimpleHttpClient;
-import com.github.bogdanovmn.translator.core.ParseResponseException;
+import com.github.bogdanovmn.translator.core.ResponseException;
+import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
+import com.github.bogdanovmn.translator.core.ResponseParseException;
 import com.github.bogdanovmn.translator.core.definition.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,9 +27,18 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 	}
 
 	@Override
-	protected List<DefinitionInstance> parsedServiceResponse(String htmlText) throws ParseResponseException {
+	protected List<DefinitionInstance> parsedServiceResponse(String htmlText, String word)
+		throws ResponseException
+	{
 		List<DefinitionInstance> result = new ArrayList<>();
 		Document doc = Jsoup.parse(htmlText);
+
+		String articleWord = articleWord(doc);
+		if (!articleWord.equals(word)) {
+			throw new ResponseNotFoundException(
+				String.format("Wrong article word: '%s'", articleWord)
+			);
+		}
 
 		DefinitionInstance.DefinitionInstanceBuilder currentDefInstBuilder = null;
 		Elements blocks = doc.select("div[class*=entryHead],section[class=gramb],section[class*=pronSection]");
@@ -40,7 +51,7 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 			}
 			else {
 				if (currentDefInstBuilder == null) {
-					throw new ParseResponseException("Wrong blocks order");
+					throw new ResponseParseException("Wrong blocks order");
 				}
 				else if (block.hasClass("gramb")) {
 					currentDefInstBuilder.partOfSpeech(
@@ -55,10 +66,22 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 			}
 		}
 		if (currentDefInstBuilder == null) {
-			throw new ParseResponseException("No blocks found");
+			throw new ResponseParseException("No blocks found");
 		}
 		result.add(currentDefInstBuilder.build());
 		return result;
+	}
+
+	private String articleWord(Document doc) throws ResponseException {
+		Element noExactMatchBlock = doc.select("div[class=no-exact-matches] h2[class=searchHeading]").first();
+		if (noExactMatchBlock != null && noExactMatchBlock.text().startsWith("No exact matches found for")) {
+			throw new ResponseNotFoundException("Definition not found");
+		}
+		Element headerBlock = doc.select("div[class*=entryHead] header h1 em").first();
+		if (!headerBlock.hasText()) {
+			throw new ResponseParseException("Article word not found");
+		}
+		return headerBlock.text();
 	}
 
 	private PartOfSpeech parsedPartOfSpeech(Element block) {

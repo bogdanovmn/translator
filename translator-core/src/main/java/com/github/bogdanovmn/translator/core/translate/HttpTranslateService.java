@@ -2,7 +2,8 @@ package com.github.bogdanovmn.translator.core.translate;
 
 import com.github.bogdanovmn.httpclient.core.HttpClient;
 import com.github.bogdanovmn.translator.core.HttpService;
-import com.github.bogdanovmn.translator.core.ParseResponseException;
+import com.github.bogdanovmn.translator.core.HttpServiceException;
+import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -15,29 +16,25 @@ public abstract class HttpTranslateService extends HttpService<Set<String>> impl
 	}
 
 	@Override
-	public final Set<String> translate(String phrase) throws TranslateServiceException {
+	public final Set<String> translate(String phrase) throws HttpServiceException {
 		String htmlText;
 		try {
 			htmlText = httpClient.get(urlPrefix + phrase);
 		}
 		catch (IOException e) {
-			throw new TranslateServiceException(e);
+			throw new HttpServiceException(e);
 		}
 
-		Set<String> translatedValue;
-		try {
-			translatedValue = parsedServiceResponse(
-				Objects.toString(htmlText, "")
-			);
-		} catch (ParseResponseException e) {
-			throw new TranslateServiceException(e);
-		}
+		Set<String> translatedValue = parsedServiceResponse(
+			Objects.toString(htmlText, ""),
+			phrase
+		);
 
 		if (translatedValue == null || translatedValue.isEmpty()) {
-			throw new TranslateServiceException("Empty result. Something wrong...");
+			throw new ResponseNotFoundException("Empty result. Something wrong...");
 		}
 		if (translatedValue.size() == 1 && translatedValue.contains(phrase)) {
-			throw new TranslateServiceUnknownWordException(
+			throw new ResponseNotFoundException(
 				String.format(
 					"No translate for '%s'", phrase
 				)

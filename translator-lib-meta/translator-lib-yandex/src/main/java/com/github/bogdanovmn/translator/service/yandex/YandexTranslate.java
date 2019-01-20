@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.service.yandex;
 
 import com.github.bogdanovmn.httpclient.simple.SimpleHttpClient;
-import com.github.bogdanovmn.translator.core.ParseResponseException;
+import com.github.bogdanovmn.translator.core.ResponseParseException;
 import com.github.bogdanovmn.translator.core.translate.HttpTranslateService;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -27,7 +27,7 @@ public class YandexTranslate extends HttpTranslateService {
 	 }
  	 */
 	@Override
-	protected Set<String> parsedServiceResponse(String jsonText) throws ParseResponseException {
+	protected Set<String> parsedServiceResponse(String jsonText) throws ResponseParseException {
 		Set<String> result;
 
 		try {
@@ -45,7 +45,7 @@ public class YandexTranslate extends HttpTranslateService {
 				}};
 			}
 			else {
-				throw new ParseResponseException(
+				throw new ResponseParseException(
 					String.format(
 						"bad response code: %d", code
 					)
@@ -53,7 +53,7 @@ public class YandexTranslate extends HttpTranslateService {
 			}
 		}
 		catch (RuntimeException e) {
-			throw new ParseResponseException(
+			throw new ResponseParseException(
 				String.format(
 					"Parse json error: %s\nJSON: %s",
 						e.getMessage(), jsonText

@@ -14,7 +14,7 @@ public abstract class HttpService <ParsedAnswer> implements Closeable {
 		this.urlPrefix = urlPrefix;
 	}
 
-	protected abstract ParsedAnswer parsedServiceResponse(String htmlText) throws ParseResponseException;
+	protected abstract ParsedAnswer parsedServiceResponse(String htmlText, String term) throws ResponseException;
 
 	@Override
 	public void close() throws IOException {

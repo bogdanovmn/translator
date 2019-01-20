@@ -1,7 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin.upload;
 
 import com.github.bogdanovmn.translator.core.text.EnglishText;
-import com.github.bogdanovmn.translator.core.translate.TranslateServiceUploadDuplicateException;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import com.github.bogdanovmn.translator.web.orm.*;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +18,13 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class UploadBookService {
+class UploadBookService {
 	private final WordRepository wordRepository;
 	private final SourceRepository sourceRepository;
 	private final WordSourceRepository wordSourceRepository;
 
 	@Autowired
-	public UploadBookService(WordRepository wordRepository, SourceRepository sourceRepository, WordSourceRepository wordSourceRepository) {
+	UploadBookService(WordRepository wordRepository, SourceRepository sourceRepository, WordSourceRepository wordSourceRepository) {
 		this.wordRepository = wordRepository;
 		this.sourceRepository = sourceRepository;
 		this.wordSourceRepository = wordSourceRepository;
@@ -33,7 +32,7 @@ public class UploadBookService {
 
 	@Transactional(rollbackFor = Exception.class)
 	public synchronized Source upload(MultipartFile file)
-		throws IOException, TranslateServiceUploadDuplicateException
+		throws IOException, UploadDuplicateException
 	{
 		LOG.info("Import data from file");
 
@@ -41,7 +40,7 @@ public class UploadBookService {
 		String fileMd5 = DigestUtils.md5DigestAsHex(fileBytes);
 		Source source = this.sourceRepository.findFirstByContentHash(fileMd5);
 		if (source != null) {
-			throw new TranslateServiceUploadDuplicateException(
+			throw new UploadDuplicateException(
 				String.format(
 					"Такая книга уже загружена: %s (md5: %s)",
 						source.getName(),

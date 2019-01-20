@@ -1,6 +1,5 @@
 package com.github.bogdanovmn.translator.web.app.admin.upload;
 
-import com.github.bogdanovmn.translator.core.translate.TranslateServiceUploadDuplicateException;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
 import com.github.bogdanovmn.translator.web.orm.Source;
@@ -46,7 +45,7 @@ class UploadBookController extends AbstractVisualAdminController {
 			e.printStackTrace();
 			redirectAttributes.addFlashAttribute("customError", "Что-то пошло не так при загрузке файла");
 		}
-		catch (TranslateServiceUploadDuplicateException e) {
+		catch (UploadDuplicateException e) {
 			redirectAttributes.addFlashAttribute("customError", e.getMessage());
 		}
 

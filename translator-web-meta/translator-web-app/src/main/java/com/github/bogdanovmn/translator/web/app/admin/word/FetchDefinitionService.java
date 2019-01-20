@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin.word;
 
+import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
 import com.github.bogdanovmn.translator.core.definition.DefinitionInstance;
 import com.github.bogdanovmn.translator.core.definition.PartOfSpeech;
 import com.github.bogdanovmn.translator.core.definition.Sentence;
@@ -61,6 +62,11 @@ class FetchDefinitionService {
 
 					save(word, definitionInstances);
 					serviceLog.done();
+				}
+				catch (ResponseNotFoundException e) {
+					LOG.warn("Fetching success, but word is unknown: {}", e.getMessage());
+					serviceLog.notFound(e.getMessage());
+					word.setBlackList(true);
 				}
 				catch (Exception e) {
 					LOG.error("Fetching error", e);

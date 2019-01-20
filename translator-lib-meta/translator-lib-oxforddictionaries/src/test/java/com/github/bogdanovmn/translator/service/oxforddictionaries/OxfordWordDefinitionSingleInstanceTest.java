@@ -27,7 +27,7 @@ public class OxfordWordDefinitionSingleInstanceTest {
 			),
 			StandardCharsets.UTF_8
 		);
-		definitions = new OxfordWordDefinition().parsedServiceResponse(html);
+		definitions = new OxfordWordDefinition().parsedServiceResponse(html, "benefit");
 	}
 
 	@Test

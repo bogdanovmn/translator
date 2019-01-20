@@ -25,7 +25,8 @@ public interface UserHoldOverWordRepository extends JpaRepository<UserHoldOverWo
 	@Query(
 		"select uwho from UserHoldOverWord uwho" +
 			" left join WordDefinition wd on wd.word.id = uwho.word.id" +
-			" where wd is null"
+			" left join WordDefinitionServiceLog sl on sl.word.id = uwho.word.id" +
+			" where wd is null and sl is null"
 	)
 	@EntityGraph(attributePaths = "word")
 	List<UserHoldOverWord> allWithoutDefinition(Pageable pageable);

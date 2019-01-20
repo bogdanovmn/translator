@@ -27,23 +27,28 @@
 		</div>
 
 		<div id="word-content-{{id}}" class="{{#word.definitions.0}}card-body text-muted{{/word.definitions.0}}">
+			{{#word.definitions.0}}
 			<p class="text-body">{{word.definitions.0.pronunciation}}</p>
 			{{#word.definitions}}
-			<p class="word-definition">
-				<b>{{partOfSpeech.name}} <i>{{partOfSpeechNote}}</i></b>
-				<br><span class="text-body">{{description}}</span>
-				{{#synonyms}}
-					<br><i>Syn.:</i> {{synonyms}}
-				{{/synonyms}}
-				{{#examples.0}}
-					<br><i>Ex.:</i> {{examples.0.value}}
-				{{/examples.0}}
-			</p>
-			{{/word.definitions}}
-			<a class=""
-			   href="https://en.oxforddictionaries.com/definition/{{word.name}}"
-			   target="_blank">Подробнее
-			</a>
+					<p class="word-definition">
+						<b>{{partOfSpeech.name}} <i>{{partOfSpeechNote}}</i></b>
+						<br><span class="text-body">{{description}}</span>
+						{{#synonyms}}
+							<br><i>Syn.:</i> {{synonyms}}
+						{{/synonyms}}
+						{{#examples.0}}
+							<br><i>Ex.:</i> {{examples.0.value}}
+						{{/examples.0}}
+						{{#examples.1}}
+							<br><i>Ex.:</i> {{examples.1.value}}
+						{{/examples.1}}
+					</p>
+				{{/word.definitions}}
+				<a class=""
+				   href="https://en.oxforddictionaries.com/definition/{{word.name}}"
+				   target="_blank">Подробнее
+				</a>
+			{{/word.definitions.0}}
 		</div>
 
 		<div class="card-footer">
