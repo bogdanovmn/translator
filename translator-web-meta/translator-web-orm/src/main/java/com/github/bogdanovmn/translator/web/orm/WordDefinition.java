@@ -37,7 +37,7 @@ public class WordDefinition extends BaseEntity {
 	@Column(length = 1000)
 	private String synonyms;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "word_definition_id")
 	private List<WordDefinitionExample> examples = new ArrayList<>();
 }

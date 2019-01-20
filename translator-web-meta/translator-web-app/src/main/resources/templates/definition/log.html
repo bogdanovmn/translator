@@ -1,0 +1,37 @@
+{{#layout}}
+
+<h1>История получения определений слов</h1>
+
+	{{#statistic}}
+		<a class="btn btn-outline-secondary btn-sm"
+		   href="{{layout.contextPath}}/admin/definitions/log?status={{status}}">{{status}}
+			<span class="badge">{{count}}</span>
+		</a>
+	{{/statistic}}
+
+<table class="table table-sm table-hover">
+	<thead>
+	<tr>
+		<th>Слово</th>
+		<th>Статус</th>
+		<th>Обновлено</th>
+		<th>Текст ошибки</th>
+	</tr>
+	</thead>
+	<tbody>
+	{{#entries}}
+	<tr>
+		<td>{{word.name}}</td>
+		<td>{{status}}</td>
+		<td>{{updated}}</td>
+		<td>{{error}}</td>
+	</tr>
+	{{/entries}}
+	</tbody>
+</table>
+{{^entries}}
+<h2>Пусто</h2>
+{{/entries}}
+
+
+{{/layout}}

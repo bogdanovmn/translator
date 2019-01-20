@@ -2,14 +2,12 @@
 
 <h1>История импорта с allitebooks.com</h1>
 
-<div class="download-statistic">
-	{{#statistic}}
-		<a class="btn btn-outline-secondary btn-sm"
-		   href="{{layout.contextPath}}/admin/etl/download-process/{{status}}">{{status}}
-			<span class="badge">{{count}}</span>
-		</a>
-	{{/statistic}}
-</div>
+{{#statistic}}
+	<a class="btn btn-outline-secondary btn-sm"
+	   href="{{layout.contextPath}}/admin/etl/download-process/{{status}}">{{status}}
+		<span class="badge">{{count}}</span>
+	</a>
+{{/statistic}}
 
 {{#activeItems}}
 <div>

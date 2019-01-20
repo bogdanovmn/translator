@@ -2,17 +2,15 @@
 
 <h1>История импорта с allitebooks.com <span class="badge">({{status}})</span></h1>
 
-<div class="btn-group-sm">
-	<a class="btn btn-outline-primary btn-sm"
-	   href="{{layout.contextPath}}/admin/etl/download-process">Активность
+<a class="btn btn-outline-primary btn-sm"
+   href="{{layout.contextPath}}/admin/etl/download-process">Активность
+</a>
+{{#statistic}}
+	<a class="btn btn-outline-secondary btn-sm"
+	   href="{{layout.contextPath}}/admin/etl/download-process/{{status}}">{{status}}
+		<span class="badge">{{count}}</span>
 	</a>
-	{{#statistic}}
-		<a class="btn btn-outline-secondary btn-sm"
-		   href="{{layout.contextPath}}/admin/etl/download-process/{{status}}">{{status}}
-			<span class="badge">{{count}}</span>
-		</a>
-	{{/statistic}}
-</div>
+{{/statistic}}
 
 {{#items}}
 <div>

@@ -16,6 +16,7 @@ import java.util.Set;
 
 @Service
 class ToRememberService {
+	private final static int WORDS_PER_PAGE = 10;
 	@Autowired
 	private TranslateSecurityService securityService;
 	@Autowired
@@ -40,7 +41,7 @@ class ToRememberService {
 	List<WordRepository.WordWithUserProgress> getAll() {
 		return wordRepository.unknownByAllSources(
 			getUser().getId(),
-			PageRequest.of(0, 20)
+			PageRequest.of(0, WORDS_PER_PAGE)
 		);
 	}
 
@@ -48,7 +49,7 @@ class ToRememberService {
 		return wordRepository.unknownBySource(
 			getUser().getId(),
 			sourceId,
-			PageRequest.of(0, 20)
+			PageRequest.of(0, WORDS_PER_PAGE)
 		);
 	}
 

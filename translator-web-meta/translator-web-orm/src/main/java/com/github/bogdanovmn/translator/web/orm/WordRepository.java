@@ -34,7 +34,6 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			+ " and   w.blackList = 0 "
 			+ " order by w.sourcesCount desc, w.frequence desc"
 	)
-//	@EntityGraph(attributePaths = "definitions")
 	List<WordWithUserProgress> unknownByAllSources(
 		@Param("userId") Integer userId,
 		Pageable pageable

@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 class FetchDefinitionService {
+	private final WordRepository wordRepository;
 	private final WordDefinitionRepository wordDefinitionRepository;
 	private final UserHoldOverWordRepository holdOverWordRepository;
 	private final WordDefinitionServiceLogRepository logRepository;
@@ -28,12 +29,14 @@ class FetchDefinitionService {
 	private final EntityFactory entityFactory;
 
 	@Autowired
-	FetchDefinitionService(WordDefinitionRepository wordDefinitionRepository,
+	FetchDefinitionService(WordRepository wordRepository,
+						   WordDefinitionRepository wordDefinitionRepository,
 						   UserHoldOverWordRepository holdOverWordRepository,
 						   WordDefinitionServiceLogRepository logRepository,
 						   WordDefinitionService definitionService,
 						   EntityFactory entityFactory)
 	{
+		this.wordRepository = wordRepository;
 		this.wordDefinitionRepository = wordDefinitionRepository;
 		this.holdOverWordRepository = holdOverWordRepository;
 		this.logRepository = logRepository;
@@ -67,6 +70,7 @@ class FetchDefinitionService {
 					LOG.warn("Fetching success, but word is unknown: {}", e.getMessage());
 					serviceLog.notFound(e.getMessage());
 					word.setBlackList(true);
+					wordRepository.save(word);
 				}
 				catch (Exception e) {
 					LOG.error("Fetching error", e);
