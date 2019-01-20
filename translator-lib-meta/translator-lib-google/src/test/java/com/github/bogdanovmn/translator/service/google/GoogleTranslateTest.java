@@ -22,7 +22,7 @@ public class GoogleTranslateTest {
 			"UTF8"
 		);
 
-		Set<String> translates = new GoogleTranslate().parsedServiceResponse(html);
+		Set<String> translates = new GoogleTranslate().parsedServiceResponse(html, "bar");
 
 		assertEquals(
 			"Translates count", 5, translates.size()

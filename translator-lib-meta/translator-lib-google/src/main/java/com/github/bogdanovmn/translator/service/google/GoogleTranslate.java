@@ -20,7 +20,7 @@ public class GoogleTranslate extends HttpTranslateService {
 	}
 
 	@Override
-	protected Set<String> parsedServiceResponse(String htmlText) {
+	protected Set<String> parsedServiceResponse(String htmlText, String phrase) {
 		Document doc = Jsoup.parse(htmlText);
 		Element resultBox = doc
 			.select("span[class=tlid-translation translation]")

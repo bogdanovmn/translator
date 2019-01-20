@@ -27,7 +27,7 @@ public class YandexTranslate extends HttpTranslateService {
 	 }
  	 */
 	@Override
-	protected Set<String> parsedServiceResponse(String jsonText) throws ResponseParseException {
+	protected Set<String> parsedServiceResponse(String jsonText, String phrase) throws ResponseParseException {
 		Set<String> result;
 
 		try {
