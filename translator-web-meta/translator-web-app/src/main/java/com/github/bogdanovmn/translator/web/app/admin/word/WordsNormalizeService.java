@@ -21,18 +21,20 @@ public class WordsNormalizeService {
 	private final WordSourceRepository wordSourceRepository;
 	private final UserRememberedWordRepository userRememberedWordRepository;
 	private final UserHoldOverWordRepository userHoldOverWordRepository;
+	private final UserWordProgressRepository userWordProgressRepository;
 
 	@Autowired
 	public WordsNormalizeService(
 		WordRepository wordRepository,
 		WordSourceRepository wordSourceRepository,
 		UserRememberedWordRepository userRememberedWordRepository,
-		UserHoldOverWordRepository userHoldOverWordRepository)
+		UserHoldOverWordRepository userHoldOverWordRepository, UserWordProgressRepository userWordProgressRepository)
 	{
 		this.wordRepository = wordRepository;
 		this.wordSourceRepository = wordSourceRepository;
 		this.userRememberedWordRepository = userRememberedWordRepository;
 		this.userHoldOverWordRepository = userHoldOverWordRepository;
+		this.userWordProgressRepository = userWordProgressRepository;
 	}
 
 	public void dry() {
@@ -112,7 +114,7 @@ public class WordsNormalizeService {
 					);
 				}
 				else {
-					LOG.debug("New source '{}', add it for word", id);
+					LOG.info("New source '{}', add it for word", id);
 					wordSources.add(
 						new WordSource()
 							.setWord(word)
@@ -127,6 +129,7 @@ public class WordsNormalizeService {
 		wordSourceRepository.deleteAll(formSources);
 		userRememberedWordRepository.removeAllByWord(formWord);
 		userHoldOverWordRepository.removeAllByWord(formWord);
+		userWordProgressRepository.removeAllByWord(formWord);
 		wordRepository.delete(formWord);
 	}
 

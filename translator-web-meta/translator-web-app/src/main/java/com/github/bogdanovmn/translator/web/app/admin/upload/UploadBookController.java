@@ -2,7 +2,9 @@ package com.github.bogdanovmn.translator.web.app.admin.upload;
 
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
+import com.github.bogdanovmn.translator.web.app.infrastructure.ViewTemplate;
 import com.github.bogdanovmn.translator.web.orm.Source;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
-import java.util.HashMap;
 
-
+@Slf4j
 @Controller
 class UploadBookController extends AbstractVisualAdminController {
 	private final UploadBookService uploadBookService;
@@ -42,8 +43,14 @@ class UploadBookController extends AbstractVisualAdminController {
 			redirectAttributes.addFlashAttribute("source", source);
 		}
 		catch (IOException e) {
-			e.printStackTrace();
-			redirectAttributes.addFlashAttribute("customError", "Что-то пошло не так при загрузке файла");
+			LOG.error("Upload book error", e);
+			redirectAttributes.addFlashAttribute(
+				"customError",
+				String.format(
+					"Что-то пошло не так при загрузке файла (%s)",
+						e.getMessage()
+				)
+			);
 		}
 		catch (UploadDuplicateException e) {
 			redirectAttributes.addFlashAttribute("customError", e.getMessage());
@@ -56,11 +63,8 @@ class UploadBookController extends AbstractVisualAdminController {
 	ModelAndView form(
 		@RequestHeader(name = "referer", required = false) String referer)
 	{
-		return new ModelAndView(
-			"upload_book",
-			new HashMap<String, Object>() {{
-				put("referer" , referer);
-			}}
-		);
+		return new ViewTemplate("upload_book")
+			.with("referer" , referer)
+			.modelAndView();
 	}
 }
