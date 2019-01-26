@@ -8,11 +8,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class OxfordWordDefinitionWrongWordTest {
 
-	@Test(expected = ResponseNotFoundException.class)
-	public void shouldBeOnlyOneInstance() throws Exception {
+	@Test(expected = ResponseAnotherWordFormException.class)
+	public void shouldFoundAnotherWordForm() throws Exception {
 		String html = new String(
 			Files.readAllBytes(
 				Paths.get(
@@ -24,11 +25,9 @@ public class OxfordWordDefinitionWrongWordTest {
 		try {
 			new OxfordWordDefinition().parsedServiceResponse(html, "mans");
 		}
-		catch (ResponseNotFoundException e) {
-			assertEquals(
-				"Wrong article word: 'man'",
-				e.getMessage()
-			);
+		catch (ResponseAnotherWordFormException e) {
+			assertEquals("man", e.getWord());
+			assertNotNull(e.getDefinitions());
 			throw e;
 		}
 	}
