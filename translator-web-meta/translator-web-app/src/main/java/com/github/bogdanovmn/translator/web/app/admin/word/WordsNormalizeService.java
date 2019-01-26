@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.cli.wordsnormilize;
+package com.github.bogdanovmn.translator.web.app.admin.word;
 
 import com.github.bogdanovmn.translator.core.text.NormalizedWords;
 import com.github.bogdanovmn.translator.web.orm.*;
@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-class WordsNormalizeService {
+public class WordsNormalizeService {
 	private static final Logger LOG = LoggerFactory.getLogger(WordsNormalizeService.class);
 
 	private final WordRepository wordRepository;
@@ -23,7 +23,7 @@ class WordsNormalizeService {
 	private final UserHoldOverWordRepository userHoldOverWordRepository;
 
 	@Autowired
-	WordsNormalizeService(
+	public WordsNormalizeService(
 		WordRepository wordRepository,
 		WordSourceRepository wordSourceRepository,
 		UserRememberedWordRepository userRememberedWordRepository,
@@ -35,7 +35,7 @@ class WordsNormalizeService {
 		this.userHoldOverWordRepository = userHoldOverWordRepository;
 	}
 
-	void dry() {
+	public void dry() {
 		Set<Word> words = this.wordRepository.getAllByBlackListFalse();
 		NormalizedWords normalizedWords = new NormalizedWords(
 			words.stream()
@@ -47,7 +47,7 @@ class WordsNormalizeService {
 	}
 
 	@Transactional(rollbackFor = Exception.class)
-	public synchronized void normalize() {
+	public synchronized void normalizeAll() {
 		LOG.info("Start normalize process");
 
 		Map<String, Word> wordsMap = this.wordRepository.getAllByBlackListFalse().stream()
@@ -72,13 +72,9 @@ class WordsNormalizeService {
 
 				for (String form : forms) {
 					Word formWord = wordsMap.get(form);
-					Set<WordSource> formSources = wordSourceRepository.findAllByWord(formWord);
-
 					normalWord.incFrequence(formWord.getFrequence());
-					mergeSources(normalWord, formSources);
-					userRememberedWordRepository.removeAllByWord(formWord);
-					userHoldOverWordRepository.removeAllByWord(formWord);
-					wordRepository.delete(formWord);
+
+					mergeWords(normalWord, formWord);
 				}
 				wordRepository.save(normalWord);
 			}
@@ -86,7 +82,21 @@ class WordsNormalizeService {
 		LOG.info("Finish normalize process");
 	}
 
-	private void mergeSources(Word word, Set<WordSource> formSources) {
+	void mergeWordWithBaseValue(Word formWord, String base) {
+		Word baseWord = wordRepository.findFirstByName(base);
+		if (baseWord != null) {
+			LOG.info("Merge word '{}' to '{}'", formWord.getName(), base);
+			mergeWords(baseWord, formWord);
+		}
+		else {
+			LOG.info("Rename word '{}' to '{}'", formWord.getName(), base);
+			formWord.setName(base);
+			wordRepository.save(formWord);
+		}
+	}
+
+	private void mergeWords(Word word, Word formWord) {
+		Set<WordSource> formSources = wordSourceRepository.findAllByWord(formWord);
 		Set<WordSource> wordSources = wordSourceRepository.findAllByWord(word);
 
 		Map<Integer, WordSource> wordSourceMap = getSourceMap(wordSources);
@@ -109,10 +119,15 @@ class WordsNormalizeService {
 							.setCount(formSource.getCount())
 							.setSource(formSource.getSource())
 					);
+					word.incSourceCount();
 				}
-				wordSourceRepository.delete(formSource);
 			}
 		);
+		wordSourceRepository.saveAll(wordSources);
+		wordSourceRepository.deleteAll(formSources);
+		userRememberedWordRepository.removeAllByWord(formWord);
+		userHoldOverWordRepository.removeAllByWord(formWord);
+		wordRepository.delete(formWord);
 	}
 
 	private Map<Integer, WordSource> getSourceMap(Collection<WordSource> sources) {

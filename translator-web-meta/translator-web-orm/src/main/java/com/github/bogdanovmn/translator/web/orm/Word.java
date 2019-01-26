@@ -87,4 +87,9 @@ public class Word extends BaseEntityWithUniqueName {
 		this.frequence += incValue;
 		return this;
 	}
+
+	public Word incSourceCount() {
+		sourcesCount++;
+		return this;
+	}
 }

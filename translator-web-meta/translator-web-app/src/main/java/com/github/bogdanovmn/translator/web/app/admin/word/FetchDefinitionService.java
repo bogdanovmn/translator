@@ -5,6 +5,7 @@ import com.github.bogdanovmn.translator.core.definition.DefinitionInstance;
 import com.github.bogdanovmn.translator.core.definition.PartOfSpeech;
 import com.github.bogdanovmn.translator.core.definition.Sentence;
 import com.github.bogdanovmn.translator.core.definition.WordDefinitionService;
+import com.github.bogdanovmn.translator.service.oxforddictionaries.ResponseAnotherWordFormException;
 import com.github.bogdanovmn.translator.web.orm.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ class FetchDefinitionService {
 	private final UserHoldOverWordRepository holdOverWordRepository;
 	private final WordDefinitionServiceLogRepository logRepository;
 	private final WordDefinitionService definitionService;
+	private final WordsNormalizeService wordsNormalizeService;
 	private final EntityFactory entityFactory;
 
 	@Autowired
@@ -34,13 +36,14 @@ class FetchDefinitionService {
 						   UserHoldOverWordRepository holdOverWordRepository,
 						   WordDefinitionServiceLogRepository logRepository,
 						   WordDefinitionService definitionService,
-						   EntityFactory entityFactory)
+						   WordsNormalizeService wordsNormalizeService, EntityFactory entityFactory)
 	{
 		this.wordRepository = wordRepository;
 		this.wordDefinitionRepository = wordDefinitionRepository;
 		this.holdOverWordRepository = holdOverWordRepository;
 		this.logRepository = logRepository;
 		this.definitionService = definitionService;
+		this.wordsNormalizeService = wordsNormalizeService;
 		this.entityFactory = entityFactory;
 	}
 
@@ -66,6 +69,19 @@ class FetchDefinitionService {
 					save(word, definitionInstances);
 					serviceLog.done();
 				}
+				catch (ResponseAnotherWordFormException e) {
+					LOG.info("Detect another word form: '{}'", e.getWord());
+					serviceLog.anotherForm(
+						String.format(
+							"Found another word form: '%s' (original '%s')",
+							e.getWord(), word.getName()
+						)
+					);
+					normalizeAndSave(word, e);
+					serviceLog.setMessage(
+						serviceLog.getMessage() + ". Merged"
+					);
+				}
 				catch (ResponseNotFoundException e) {
 					LOG.warn("Fetching success, but word is unknown: {}", e.getMessage());
 					serviceLog.notFound(e.getMessage());
@@ -74,7 +90,7 @@ class FetchDefinitionService {
 				}
 				catch (Exception e) {
 					LOG.error("Fetching error", e);
-					serviceLog.setError(e.getMessage());
+					serviceLog.error(e.getMessage());
 				}
 				finally {
 					logRepository.save(serviceLog);
@@ -82,6 +98,12 @@ class FetchDefinitionService {
 			}
 		}
 		LOG.info("Complete fetch definitions");
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	public void normalizeAndSave(Word word, ResponseAnotherWordFormException ex) {
+		wordsNormalizeService.mergeWordWithBaseValue(word, ex.getWord());
+		save(word, ex.getDefinitions());
 	}
 
 	@Transactional(rollbackFor = Exception.class)

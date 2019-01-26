@@ -34,10 +34,14 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 		Document doc = Jsoup.parse(htmlText);
 
 		String articleWord = articleWord(doc);
+		boolean anotherWordForm = false;
 		if (!articleWord.equals(word)) {
-			throw new ResponseNotFoundException(
-				String.format("Wrong article word: '%s'", articleWord)
-			);
+			if (Character.isUpperCase(articleWord.charAt(0))) {
+				throw new ResponseNotFoundException(
+					String.format("Proper name: '%s'", articleWord)
+				);
+			}
+			anotherWordForm = true;
 		}
 
 		DefinitionInstance.DefinitionInstanceBuilder currentDefInstBuilder = null;
@@ -69,6 +73,13 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 			throw new ResponseParseException("No blocks found");
 		}
 		result.add(currentDefInstBuilder.build());
+
+		if (anotherWordForm) {
+			throw new ResponseAnotherWordFormException(
+				articleWord, result
+			);
+		}
+
 		return result;
 	}
 

@@ -24,10 +24,17 @@ public class WordDefinitionServiceLog extends BaseEntity {
 	private LocalDateTime updated;
 
 	@Column(length = 2000)
-	private String error;
+	private String message;
 
-	public WordDefinitionServiceLog setError(String msg) {
-		error = msg;
+	public WordDefinitionServiceLog setMessage(String msg) {
+		message = msg;
+		status = Status.ERROR;
+		updated = LocalDateTime.now();
+		return this;
+	}
+
+	public WordDefinitionServiceLog error(String msg) {
+		message = msg;
 		status = Status.ERROR;
 		updated = LocalDateTime.now();
 		return this;
@@ -41,10 +48,16 @@ public class WordDefinitionServiceLog extends BaseEntity {
 	public void notFound(String message) {
 		status = Status.NOT_FOUND;
 		updated = LocalDateTime.now();
-		error = message;
+		this.message = message;
+	}
+
+	public void anotherForm(String message) {
+		status = Status.ANOTHER_FORM;
+		updated = LocalDateTime.now();
+		this.message = message;
 	}
 
 	public static enum Status {
-		DONE, ERROR, NOT_FOUND
+		DONE, ERROR, NOT_FOUND, ANOTHER_FORM
 	}
 }
