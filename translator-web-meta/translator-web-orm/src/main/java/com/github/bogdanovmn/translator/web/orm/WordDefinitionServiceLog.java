@@ -28,15 +28,13 @@ public class WordDefinitionServiceLog extends BaseEntity {
 
 	public WordDefinitionServiceLog setMessage(String msg) {
 		message = msg;
-		status = Status.ERROR;
 		updated = LocalDateTime.now();
 		return this;
 	}
 
 	public WordDefinitionServiceLog error(String msg) {
-		message = msg;
 		status = Status.ERROR;
-		updated = LocalDateTime.now();
+		setMessage(msg);
 		return this;
 	}
 
@@ -47,14 +45,12 @@ public class WordDefinitionServiceLog extends BaseEntity {
 
 	public void notFound(String message) {
 		status = Status.NOT_FOUND;
-		updated = LocalDateTime.now();
-		this.message = message;
+		setMessage(message);
 	}
 
 	public void anotherForm(String message) {
 		status = Status.ANOTHER_FORM;
-		updated = LocalDateTime.now();
-		this.message = message;
+		setMessage(message);
 	}
 
 	public static enum Status {

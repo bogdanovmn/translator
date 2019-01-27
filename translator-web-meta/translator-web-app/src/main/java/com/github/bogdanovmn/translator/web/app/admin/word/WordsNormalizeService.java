@@ -84,20 +84,26 @@ public class WordsNormalizeService {
 		LOG.info("Finish normalize process");
 	}
 
-	void mergeWordWithBaseValue(Word formWord, String base) {
+	@Transactional(rollbackFor = Exception.class)
+	public Word mergeWordWithBaseValue(Word formWord, String base) {
+		Word result;
 		Word baseWord = wordRepository.findFirstByName(base);
 		if (baseWord != null) {
 			LOG.info("Merge word '{}' to '{}'", formWord.getName(), base);
 			mergeWords(baseWord, formWord);
+			result = baseWord;
 		}
 		else {
 			LOG.info("Rename word '{}' to '{}'", formWord.getName(), base);
 			formWord.setName(base);
 			wordRepository.save(formWord);
+			result = formWord;
 		}
+		return result;
 	}
 
-	private void mergeWords(Word word, Word formWord) {
+	@Transactional(rollbackFor = Exception.class)
+	public void mergeWords(Word word, Word formWord) {
 		Set<WordSource> formSources = wordSourceRepository.findAllByWord(formWord);
 		Set<WordSource> wordSources = wordSourceRepository.findAllByWord(word);
 
@@ -127,7 +133,7 @@ public class WordsNormalizeService {
 		);
 		wordSourceRepository.saveAll(wordSources);
 		wordSourceRepository.deleteAll(formSources);
-		userRememberedWordRepository.removeAllByWord(formWord);
+		userRememberedWordRepository.deleteAllByWord(formWord);
 		userHoldOverWordRepository.removeAllByWord(formWord);
 		userWordProgressRepository.removeAllByWord(formWord);
 		wordRepository.delete(formWord);

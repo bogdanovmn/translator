@@ -73,11 +73,19 @@ class FetchDefinitionService {
 					LOG.info("Detect another word form: '{}'", e.getWord());
 					serviceLog.anotherForm(
 						String.format(
-							"Found another word form: '%s' (original '%s')",
+							"Found base word form: '%s' (original '%s')",
 							e.getWord(), word.getName()
 						)
 					);
-					normalizeAndSave(word, e);
+					try {
+						serviceLog.setWord(
+							normalizeAndSave(word, e)
+						);
+					}
+					catch (Exception ex) {
+						serviceLog.error(ex.getMessage());
+						throw ex;
+					}
 					serviceLog.setMessage(
 						serviceLog.getMessage() + ". Merged"
 					);
@@ -101,9 +109,10 @@ class FetchDefinitionService {
 	}
 
 	@Transactional(rollbackFor = Exception.class)
-	public void normalizeAndSave(Word word, ResponseAnotherWordFormException ex) {
-		wordsNormalizeService.mergeWordWithBaseValue(word, ex.getWord());
-		save(word, ex.getDefinitions());
+	public Word normalizeAndSave(Word word, ResponseAnotherWordFormException ex) {
+		Word resultWord = wordsNormalizeService.mergeWordWithBaseValue(word, ex.getWord());
+		save(resultWord, ex.getDefinitions());
+		return resultWord;
 	}
 
 	@Transactional(rollbackFor = Exception.class)
