@@ -106,6 +106,16 @@ public class OxfordWordDefinitionMultiInstanceTest {
 	}
 
 	@Test
+	public void shouldParseSentenceDescription() throws Exception {
+		Sentence withSubSentences = definitions.get(0).partOfSpeeches().get(0).sentences().get(0);
+		assertEquals(
+			"Description of main sentence",
+			"Walk or run with leaping strides.",
+			withSubSentences.description()
+		);
+	}
+
+	@Test
 	public void shouldParseSubSentences() throws Exception {
 		Sentence withSubSentences = definitions.get(2).partOfSpeeches().get(1).sentences().get(3);
 		assertEquals(

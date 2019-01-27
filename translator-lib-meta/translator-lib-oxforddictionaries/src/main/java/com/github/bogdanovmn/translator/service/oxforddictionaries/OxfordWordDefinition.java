@@ -120,9 +120,10 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 	}
 
 	private Sentence parsedSentence(Element block, boolean subSentence) {
+		Element descriptionBlock = block.select("span[class=ind]").first();
 		Sentence.SentenceBuilder sentence = Sentence.builder()
 			.description(
-				block.select("span[class=ind]").text()
+				descriptionBlock == null ? null : descriptionBlock.text()
 			);
 
 		Element descriptionGrammaticalNoteBlock = block.select("span[class=grammatical_note]").first();
