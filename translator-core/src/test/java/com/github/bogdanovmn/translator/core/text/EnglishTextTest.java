@@ -9,28 +9,29 @@ import static org.junit.Assert.assertEquals;
 public class EnglishTextTest {
 	@Test
 	public void wordWrap() {
-		EnglishText text = new EnglishText(
+		EnglishText text = EnglishText.fromText(
 			"bla groovy-lang bla bla execu-\ntion " +
 				"proce‐ dure " +
 				"agile‐related"
 		);
 
-		text.printStatistic();
+		System.out.println(text.statistic());
+		System.out.println(text.statistic());
 
-		assertEquals("execu forms freq"      , 0, text.getWordFormsFrequance("execu"));
-		assertEquals("tion forms freq"       , 0, text.getWordFormsFrequance("tion"));
-		assertEquals("execution forms freq"  , 1, text.getWordFormsFrequance("execution"));
-		assertEquals("groovy-lang forms freq", 0, text.getWordFormsFrequance("groovy-lang"));
-		assertEquals("groovy forms freq"     , 1, text.getWordFormsFrequance("groovy"));
-		assertEquals("lang forms freq"       , 1, text.getWordFormsFrequance("lang"));
-		assertEquals("proce forms freq"      , 0, text.getWordFormsFrequance("proce"));
-		assertEquals("procedure forms freq"  , 1, text.getWordFormsFrequance("procedure"));
-		assertEquals("agile forms freq"      , 1, text.getWordFormsFrequance("agile"));
-		assertEquals("related forms freq"    , 1, text.getWordFormsFrequance("related"));
+		assertEquals("execu forms freq"      , 0, text.wordFrequency("execu"));
+		assertEquals("tion forms freq"       , 0, text.wordFrequency("tion"));
+		assertEquals("execution forms freq"  , 1, text.wordFrequency("execution"));
+		assertEquals("groovy-lang forms freq", 0, text.wordFrequency("groovy-lang"));
+		assertEquals("groovy forms freq"     , 1, text.wordFrequency("groovy"));
+		assertEquals("lang forms freq"       , 1, text.wordFrequency("lang"));
+		assertEquals("proce forms freq"      , 0, text.wordFrequency("proce"));
+		assertEquals("procedure forms freq"  , 1, text.wordFrequency("procedure"));
+		assertEquals("agile forms freq"      , 1, text.wordFrequency("agile"));
+		assertEquals("related forms freq"    , 1, text.wordFrequency("related"));
 	}
 	@Test
-	public void getWordFormsFrequance() throws Exception {
-		EnglishText text = new EnglishText(
+	public void getWordFormsFrequency() throws Exception {
+		EnglishText text = EnglishText.fromText(
 			"question questioning questions " +
 			"talk talks talking talked " +
 			"connect reconnect " +
@@ -38,17 +39,17 @@ public class EnglishTextTest {
 			"someword"
 		);
 
-		text.printStatistic();
+		System.out.println(text.statistic());
 
-		assertEquals("question forms freq", 3, text.getWordFormsFrequance("question"));
-		assertEquals("talk forms freq"    , 4, text.getWordFormsFrequance("talk"));
-		assertEquals("someword forms freq", 1, text.getWordFormsFrequance("someword"));
-		assertEquals("blabla forms freq"  , 0, text.getWordFormsFrequance("blabla"));
+		assertEquals("question forms freq", 3, text.wordFrequency("question"));
+		assertEquals("talk forms freq"    , 4, text.wordFrequency("talk"));
+		assertEquals("someword forms freq", 1, text.wordFrequency("someword"));
+		assertEquals("blabla forms freq"  , 0, text.wordFrequency("blabla"));
 	}
 
 	@Test
-	public void getWordFrequance() throws Exception {
-		EnglishText text = new EnglishText(
+	public void getWordFrequency() throws Exception {
+		EnglishText text = EnglishText.fromText(
 			"hello, world! hello, man! " +
 			"size_t hello_World  " +
 			"a aa " +
@@ -57,86 +58,86 @@ public class EnglishTextTest {
 			"executorDriver ExecutorClassName "
 		);
 
-		text.printStatistic();
+		System.out.println(text.statistic());
 
-		assertEquals("hello freq"  , 3, text.getWordFrequance("hello"));
-		assertEquals("world freq"  , 2, text.getWordFrequance("world"));
-		assertEquals("size freq"   , 1, text.getWordFrequance("size"));
-		assertEquals("t freq"      , 0, text.getWordFrequance("t"));
-		assertEquals("a freq"      , 0, text.getWordFrequance("a"));
-		assertEquals("aa freq"     , 0, text.getWordFrequance("aa"));
-		assertEquals("sdk freq"    , 0, text.getWordFrequance("bsd"));
-		assertEquals("goood freq"  , 0, text.getWordFrequance("goood"));
-		assertEquals("iii freq"    , 0, text.getWordFrequance("iii"));
-		assertEquals("cxxldflag freq", 0, text.getWordFrequance("cxxldflag"));
-		assertEquals("executor freq" , 2, text.getWordFrequance("executor"));
-		assertEquals("driver freq"   , 1, text.getWordFrequance("driver"));
-		assertEquals("class freq"    , 1, text.getWordFrequance("class"));
-		assertEquals("name freq"     , 1, text.getWordFrequance("name"));
+		assertEquals("hello freq"  , 3, text.wordFrequency("hello"));
+		assertEquals("world freq"  , 2, text.wordFrequency("world"));
+		assertEquals("size freq"   , 1, text.wordFrequency("size"));
+		assertEquals("t freq"      , 0, text.wordFrequency("t"));
+		assertEquals("a freq"      , 0, text.wordFrequency("a"));
+		assertEquals("aa freq"     , 0, text.wordFrequency("aa"));
+		assertEquals("sdk freq"    , 0, text.wordFrequency("bsd"));
+		assertEquals("goood freq"  , 0, text.wordFrequency("goood"));
+		assertEquals("iii freq"    , 0, text.wordFrequency("iii"));
+		assertEquals("cxxldflag freq", 0, text.wordFrequency("cxxldflag"));
+		assertEquals("executor freq" , 2, text.wordFrequency("executor"));
+		assertEquals("driver freq"   , 1, text.wordFrequency("driver"));
+		assertEquals("class freq"    , 1, text.wordFrequency("class"));
+		assertEquals("name freq"     , 1, text.wordFrequency("name"));
 	}
 
 	@Test
 	public void words() throws Exception {
-		EnglishText text = new EnglishText("hello, world! test2role руссиш");
+		EnglishText text = EnglishText.fromText("hello, world! test2role руссиш");
 
-		assertEquals(4, text.words().size());
+		assertEquals(4, text.uniqueWords().size());
 	}
 
 	@Test
 	public void iesPostfix() throws Exception {
-		EnglishText text = new EnglishText("binary binaries");
+		EnglishText text = EnglishText.fromText("binary binaries");
 
-		text.printStatistic();
+		System.out.println(text.statistic());
 
-		assertEquals("binary forms freq", 2, text.getWordFormsFrequance("binary"));
+		assertEquals("binary forms freq", 2, text.wordFrequency("binary"));
 
-		assertEquals(2, text.words().size());
+		assertEquals(2, text.uniqueWords().size());
 	}
 
 	@Test
 	public void versionWordForms() {
-		EnglishText text = new EnglishText(
+		EnglishText text = EnglishText.fromText(
 			"verified verifies " +
 			"verify --> [ subversion, versions, version ]"
 		);
 
-		text.printStatistic();
+		System.out.println(text.statistic());
 
-		assertEquals("version forms freq", 3, text.getWordFormsFrequance("version"));
+		assertEquals("version forms freq", 3, text.wordFrequency("version"));
 	}
 
 	@Test @Ignore
 	public void serializeWordForms() {
-		EnglishText text = new EnglishText(
+		EnglishText text = EnglishText.fromText(
 			"serialize  --> [serialization] " +
 			"serialized --> [serializable, serializing]"
 		);
 
-		text.printStatistic();
+		System.out.println(text.statistic());
 
-		assertEquals("serialize forms freq", 3, text.getWordFormsFrequance("serialize"));
+		assertEquals("serialize forms freq", 3, text.wordFrequency("serialize"));
 	}
 
 	@Test
 	public void transformWordForms() {
-		EnglishText text = new EnglishText(
+		EnglishText text = EnglishText.fromText(
 			"transform --> [transforming] " +
 				"transformation --> [transformations]"
 		);
 
-		text.printStatistic();
+		System.out.println(text.statistic());
 
-		assertEquals("transform forms freq", 4, text.getWordFormsFrequance("transform"));
+		assertEquals("transform forms freq", 4, text.wordFrequency("transform"));
 	}
 
 	@Test
 	public void smallBaseWordForms() {
-		EnglishText text = new EnglishText(
+		EnglishText text = EnglishText.fromText(
 			"var  --> [varies] "
 		);
 
-		text.printStatistic();
+		System.out.println(text.statistic());
 
-		assertEquals("var forms freq", 0, text.getWordFormsFrequance("var"));
+		assertEquals("var forms freq", 0, text.wordFrequency("var"));
 	}
 }

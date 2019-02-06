@@ -12,7 +12,7 @@ public class NormalizedWordsTest {
 	@Test
 	@Ignore
 	public void get() throws Exception {
-		NormalizedWords normalizedWords = new NormalizedWords(
+		NormalizedWords normalizedWords = NormalizedWords.of(
 			new HashSet<>(
 				Arrays.asList(
 	//				"question", "questioning", "questions",
@@ -30,7 +30,9 @@ public class NormalizedWordsTest {
 			)
 		);
 
-		normalizedWords.printWordsWithForms();
+		System.out.println(
+			normalizedWords.wordsWithFormsStatistic()
+		);
 		assertEquals(
 			new HashSet<>(Arrays.asList("talk", "question", "someWord", "connect", "system", "allocate")),
 			normalizedWords.get()

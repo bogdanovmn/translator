@@ -53,7 +53,7 @@ class UploadBookService {
 		DocumentContent fileContent = DocumentContent.fromInputStream(new ByteArrayInputStream(fileBytes));
 		LOG.info("File type: {}", fileContent.contentType());
 
-		EnglishText englishText = new EnglishText(fileContent.text());
+		EnglishText englishText = EnglishText.fromText(fileContent.text());
 		LOG.info("Prepare words");
 
 		Collection<String> words = englishText.normalizedWords();
@@ -91,7 +91,7 @@ class UploadBookService {
 					.setSource(source)
 					.setWord(word)
 					.setCount(
-						englishText.getWordFormsFrequance(wordStr)
+						englishText.wordFrequency(wordStr)
 					)
 			);
 		}

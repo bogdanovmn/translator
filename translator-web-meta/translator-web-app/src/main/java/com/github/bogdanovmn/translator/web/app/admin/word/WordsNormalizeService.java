@@ -39,13 +39,15 @@ public class WordsNormalizeService {
 
 	public void dry() {
 		Set<Word> words = this.wordRepository.getAllByBlackListFalse();
-		NormalizedWords normalizedWords = new NormalizedWords(
+		NormalizedWords normalizedWords = NormalizedWords.of(
 			words.stream()
 				.map(Word::getName)
 				.collect(Collectors.toSet())
 		);
 
-		normalizedWords.printWordsWithForms();
+		System.out.println(
+			normalizedWords.wordsWithFormsStatistic()
+		);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -59,27 +61,30 @@ public class WordsNormalizeService {
 
 		LOG.info("Total words before: {}", wordsMap.keySet().size());
 
-		NormalizedWords normalizedWords = new NormalizedWords(
+		NormalizedWords normalizedWords = NormalizedWords.of(
 			wordsMap.keySet()
 		);
 
 		LOG.info("Normalized words: {}", normalizedWords.get().size());
 
 		for (String normal : normalizedWords.get()) {
-			Set<String> forms = normalizedWords.getFormsForWord(normal);
-			if (!forms.isEmpty()) {
-				LOG.info("Word '{}' has forms: {}", normal, forms);
+			normalizedWords.wordForms(normal).ifPresent(
+				forms -> {
+					if (!forms.isEmpty()) {
+						LOG.info("Word '{}' has forms: {}", normal, forms);
 
-				Word normalWord = wordsMap.get(normal);
+						Word normalWord = wordsMap.get(normal);
 
-				for (String form : forms) {
-					Word formWord = wordsMap.get(form);
-					normalWord.incFrequence(formWord.getFrequence());
+						for (String form : forms) {
+							Word formWord = wordsMap.get(form);
+							normalWord.incFrequency(formWord.getFrequence());
 
-					mergeWords(normalWord, formWord);
+							mergeWords(normalWord, formWord);
+						}
+						wordRepository.save(normalWord);
+					}
 				}
-				wordRepository.save(normalWord);
-			}
+			);
 		}
 		LOG.info("Finish normalize process");
 	}

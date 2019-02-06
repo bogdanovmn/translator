@@ -40,11 +40,11 @@ class AllitebooksService {
 		Optional<BookDownloadProcess> downloadProcess = downloadProcessRepository.findById(id);
 		String result = "";
 		if (downloadProcess.isPresent()) {
-			result = new EnglishText(
+			result = EnglishText.fromText(
 				new CompressedText(
 					downloadProcess.get().getBook().getData()
 				).decompress()
-			).words().toString();
+			).normalizedWords().toString();
 		}
 		return result;
 	}

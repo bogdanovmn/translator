@@ -9,7 +9,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.github.bogdanovmn.translator.core" level="debug">
+    <logger name="com.github.bogdanovmn.translator.core" level="info">
         <appender-ref ref="STDOUT"/>
     </logger>
 </configuration>

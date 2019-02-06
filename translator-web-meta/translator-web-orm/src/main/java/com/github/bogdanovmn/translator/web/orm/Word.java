@@ -83,7 +83,7 @@ public class Word extends BaseEntityWithUniqueName {
 		super(id);
 	}
 
-	public Word incFrequence(int incValue) {
+	public Word incFrequency(int incValue) {
 		this.frequence += incValue;
 		return this;
 	}

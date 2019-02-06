@@ -7,6 +7,7 @@ import com.github.bogdanovmn.translator.core.text.NormalizedWords;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 
 import java.io.File;
+import java.util.Set;
 
 public class App {
 	public static void main(String[] args) throws Exception {
@@ -22,20 +23,23 @@ public class App {
 						)
 					);
 
-					EnglishText text = new EnglishText(
+					EnglishText text = EnglishText.fromText(
 						content.text()
 					);
-					text.printStatistic();
+					System.out.println(
+						text.statistic()
+					);
 
-					NormalizedWords normalizedWords = new NormalizedWords(text.words());
+					Set<String> uniqueWords = text.uniqueWords();
+					NormalizedWords normalizedWords = NormalizedWords.of(uniqueWords);
 					content.printMeta();
 
 					System.out.println(
 						String.format(
 							"Total uniq words: %d\nTotal normalized words: %d (%.0f%%)",
-								text.words().size(),
+								uniqueWords.size(),
 								normalizedWords.get().size(),
-								100 * ((float) normalizedWords.get().size() / text.words().size())
+								100 * ((float) normalizedWords.get().size() / uniqueWords.size())
 						)
 					);
 				}
