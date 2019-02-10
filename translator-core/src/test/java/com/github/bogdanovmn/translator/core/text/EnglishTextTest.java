@@ -55,7 +55,8 @@ public class EnglishTextTest {
 			"a aa " +
 			"goood iii " +
 			"bsd sdk cxxldflags " +
-			"executorDriver ExecutorClassName "
+			"executorDriver ExecutorClassName " +
+			"InfoQ"
 		);
 
 		System.out.println(text.statistic());
@@ -74,6 +75,7 @@ public class EnglishTextTest {
 		assertEquals("driver freq"   , 1, text.wordFrequency("driver"));
 		assertEquals("class freq"    , 1, text.wordFrequency("class"));
 		assertEquals("name freq"     , 1, text.wordFrequency("name"));
+		assertEquals("info freq"     , 1, text.wordFrequency("info"));
 	}
 
 	@Test

@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class NormalizeQualityTest {
-	private final static boolean OVERWRITE = true;
+	private final static boolean OVERWRITE = false;
 
 	private String goldName;
 
@@ -65,17 +65,23 @@ public class NormalizeQualityTest {
 
 		Patch<String> patch = DiffUtils.diff(model, Arrays.asList(statisticText.split("\n")));
 
+		StatisticDiff diff = new StatisticDiff();
 		patch.getDeltas()
 			.forEach(
-				delta ->
-					System.out.println(
-						String.format("%n%n%s%n----%s---->%n%s",
-							String.join("\n", delta.getSource().getLines()),
-							delta.getType().name(),
-							String.join("\n", delta.getTarget().getLines())
-						)
-					)
+				delta -> {
+					diff.addSource(delta.getSource().getLines());
+					diff.addTarget(delta.getTarget().getLines());
+//					System.out.println(
+//						String.format("%n%n%s%n----%s---->%n%s",
+//							String.join("\n", delta.getSource().getLines()),
+//							delta.getType().name(),
+//							String.join("\n", delta.getTarget().getLines())
+//						)
+//					);
+				}
 			);
+
+		diff.print();
 
 		assertEquals(
 			0,

@@ -25,7 +25,10 @@ public class EnglishText implements TextContent {
 		MapCounter<String> wordsCounter = new MapCounter<>();
 		MapCounter<String> ignoreWordsCounter = new MapCounter<>();
 
-		text = text.replaceAll("\\p{Pd}", "-");
+		text = text.replaceAll("\\p{Pd}", "-")
+			.replaceAll("['\"“”‘’„”«»]", "\"")
+			.replaceAll("\\w+://\\S+", " ")
+			.replaceAll("\\S+\\.\\w{2,3}\\s", " ");
 		String[] tokens = joinWraps(text.split("[^a-zA-Z-]+"));
 		for (String token : tokens) {
 			for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("[_-]")) {
