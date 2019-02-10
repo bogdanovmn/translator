@@ -156,6 +156,7 @@ W [  1] cats
 W [  1] kine
 W [  1] jobs
 W [  1] deed
+W [  1] john
 W [  1] dent
 W [  1] silk
 W [  1] tube
@@ -403,6 +404,7 @@ W [  1] hares
 W [  1] weepy
 W [  1] urged
 W [  1] yield
+W [  1] royal
 W [  1] bitsy
 W [  1] tying
 W [  1] snows
@@ -658,6 +660,7 @@ W [  1] crafts
 W [  1] loaves
 W [  1] tippet
 W [  1] wooded
+W [  1] author
 W [  1] talkin
 W [  1] swayed
 W [  1] elders
@@ -2431,7 +2434,6 @@ W [  2] fuel
 W [  2] pray
 W [  2] prey
 W [  2] clad
-W [  2] page
 W [  2] fuss
 W [  2] mill
 W [  2] bred
@@ -2494,6 +2496,7 @@ W [  2] calm
 W [  2] ours
 W [  2] dust
 W [  2] crow
+W [  2] book
 W [  2] duty
 W [  2] cape
 W [  2] born
@@ -2628,6 +2631,7 @@ W [  2] heaps
 W [  2] beech
 W [  2] fence
 W [  2] giddy
+W [  2] cover
 W [  2] jewel
 W [  2] thumb
 W [  2] siege
@@ -2648,7 +2652,6 @@ W [  2] hairy
 W [  2] uncle
 W [  2] spear
 W [  2] dazed
-W [  2] royal
 W [  2] tunic
 W [  2] poles
 W [  2] blunt
@@ -2746,6 +2749,7 @@ W [  2] poison
 W [  2] fields
 W [  2] fought
 W [  2] tugged
+W [  2] frying
 W [  2] issued
 W [  2] bobbed
 W [  2] widows
@@ -3008,7 +3012,6 @@ W [  2] pulling
 W [  2] fiddles
 W [  2] topmost
 W [  2] melting
-W [  2] comment
 W [  2] regions
 W [  2] damaged
 W [  2] perfect
@@ -3155,6 +3158,7 @@ W [  2] shallows
 W [  2] straying
 W [  2] unharmed
 W [  2] polished
+W [  2] royallib
 W [  2] jewelled
 W [  2] stabbing
 W [  2] thursday
@@ -3417,7 +3421,6 @@ W [  3] fail
 W [  3] fare
 W [  3] nine
 W [  3] nain
-W [  3] book
 W [  3] gets
 W [  3] ugly
 W [  3] mince
@@ -3481,7 +3484,6 @@ W [  3] porch
 W [  3] dived
 W [  3] eight
 W [  3] dimly
-W [  3] cover
 W [  3] agree
 W [  3] pride
 W [  3] steal
@@ -3534,7 +3536,6 @@ W [  3] puffed
 W [  3] galion
 W [  3] voiced
 W [  3] hatred
-W [  3] frying
 W [  3] shafts
 W [  3] direct
 W [  3] modern
@@ -3543,7 +3544,6 @@ W [  3] remark
 W [  3] charge
 W [  3] lasted
 W [  3] locked
-W [  3] author
 W [  3] eldest
 W [  3] cousin
 W [  3] moaned
@@ -4091,6 +4091,7 @@ W [  4] curious
 W [  4] stories
 W [  4] roasted
 W [  4] anybody
+W [  4] tolkien
 W [  4] cleared
 W [  4] victory
 W [  4] flashed
@@ -4449,7 +4450,6 @@ W [  6] dusk
 W [  6] bold
 W [  6] unto
 W [  6] deer
-W [  6] john
 W [  6] roar
 W [  6] fifty
 W [  6] mines
@@ -4877,7 +4877,6 @@ W [  9] various
 W [  9] thunder
 W [  9] sending
 W [  9] bundles
-W [  9] tolkien
 W [  9] tonight
 W [  9] meeting
 W [  9] marshes
@@ -5034,7 +5033,6 @@ W [ 11] changed
 W [ 11] buttons
 W [ 11] clothes
 W [ 11] thoughts
-W [ 11] royallib
 W [ 11] pleasant
 W [ 11] hurrying
 W [ 11] whispered
@@ -5778,7 +5776,7 @@ W [166] over
 W [167] little
 W [168] last
 W [169] went
-W [173] hobbit
+W [170] hobbit
 W [174] only
 W [174] mountain
 W [180] which
@@ -7115,14 +7113,6 @@ young --> [younger, youngest]
 your --> [yours]
 
 ---- Ignore statistic ----
-I [  1] b
-I [  1] e
-I [  1] g
-I [  1] p
-I [  1] q
-I [  1] u
-I [  1] w
-I [  1] z
 I [  1] st
 I [  1] co
 I [  1] cw
@@ -7151,12 +7141,10 @@ I [  1] zag
 I [  1] raw
 I [  1] mid
 I [  1] ire
-I [  1] txt
 I [  1] ash
 I [  1] bur
 I [  1] rub
 I [  1] ast
-I [  1] lib
 I [  1] dip
 I [  1] bet
 I [  1] ham
@@ -7201,10 +7189,7 @@ I [  1] sssss
 I [  1] xviii
 I [  1] yesss
 I [  1] precioussss
-I [  2] j
-I [  2] n
-I [  2] r
-I [  2] x
+I [  2] ru
 I [  2] sh
 I [  2] et
 I [  2] fa
@@ -7221,13 +7206,13 @@ I [  2] fry
 I [  2] lob
 I [  2] log
 I [  2] toe
+I [  2] url
 I [  2] hit
 I [  2] cat
 I [  2] elms
 I [  2] ssss
 I [  2] asks
 I [  2] orcs
-I [  3] v
 I [  3] bo
 I [  3] eh
 I [  3] ye
@@ -7260,11 +7245,11 @@ I [  4] egg
 I [  4] leg
 I [  4] ugh
 I [  4] lid
+I [  4] pan
 I [  4] kin
 I [  4] rid
 I [  4] her
 I [  4] web
-I [  4] url
 I [  4] fun
 I [  4] fed
 I [  4] sad
@@ -7277,7 +7262,6 @@ I [  5] ya
 I [  5] oh
 I [  5] pot
 I [  5] jug
-I [  5] pan
 I [  5] pay
 I [  5] axe
 I [  5] fro
@@ -7289,8 +7273,6 @@ I [  5] ill
 I [  5] eve
 I [  5] due
 I [  5] eggs
-I [  5] html
-I [  6] c
 I [  6] ro
 I [  6] ho
 I [  6] fit
@@ -7308,18 +7290,15 @@ I [  7] oak
 I [  7] age
 I [  7] mad
 I [  7] hid
-I [  8] d
 I [  8] cup
 I [  8] sea
 I [  8] isn
 I [  8] ate
 I [  8] hat
 I [  8] arch
-I [  8] http
 I [  9] bag
 I [  9] lie
 I [  9] joy
-I [ 10] m
 I [ 10] bay
 I [ 10] ten
 I [ 10] bow
@@ -7331,7 +7310,6 @@ I [ 11] six
 I [ 11] ori
 I [ 11] war
 I [ 11] ere
-I [ 12] ru
 I [ 12] tea
 I [ 12] met
 I [ 13] la
@@ -7352,7 +7330,6 @@ I [ 19] bed
 I [ 19] oin
 I [ 20] eye
 I [ 20] try
-I [ 20] jpg
 I [ 21] led
 I [ 22] sky
 I [ 22] tom
@@ -7378,11 +7355,9 @@ I [ 38] few
 I [ 39] bit
 I [ 40] big
 I [ 40] man
-I [ 42] 
 I [ 43] red
 I [ 46] why
 I [ 47] yes
-I [ 49] o
 I [ 50] air
 I [ 51] lay
 I [ 53] sun
@@ -7424,7 +7399,6 @@ I [170] go
 I [170] far
 I [182] my
 I [196] did
-I [236] t
 I [297] one
 I [301] so
 I [302] by
@@ -7433,7 +7407,6 @@ I [310] no
 I [322] are
 I [323] if
 I [339] we
-I [355] s
 I [373] be
 I [374] or
 I [377] out
@@ -7448,18 +7421,16 @@ I [742] not
 I [743] for
 I [778] on
 I [839] you
-I [863] i
 I [911] his
 I [953] had
 I [1240] it
 I [1391] was
 I [1487] in
 I [1919] he
-I [1982] a
 I [2118] to
 I [2518] of
 I [4531] and
-I [6170] the
+I [6167] the
 
-Total 53626 passed (5824 unique)
-Ignored 44006 (345 unique)
+Total 53594 passed (5822 unique)
+Ignored 40385 (318 unique)

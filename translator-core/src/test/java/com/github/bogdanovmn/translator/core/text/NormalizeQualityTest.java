@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class NormalizeQualityTest {
-	private final static boolean OVERWRITE = false;
+	private final static boolean OVERWRITE = true;
 
 	private String goldName;
 

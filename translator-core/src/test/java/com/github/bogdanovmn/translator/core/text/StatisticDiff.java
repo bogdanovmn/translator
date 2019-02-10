@@ -51,10 +51,13 @@ class StatisticDiff {
 		BigString deleted = new BigString();
 		source.forEach(
 			(word, line) -> {
-				if (target.containsKey(word)) {
-					System.out.println(
-						String.format("CHANGED %-15s\t%-10s ==> %-10s", word, line, target.get(word))
-					);
+				String targetWordLine = target.get(word);
+				if (targetWordLine != null) {
+					if (!targetWordLine.equals(line)) {
+						System.out.println(
+							String.format("CHANGED %-15s\t%-10s ==> %-10s", word, line, targetWordLine)
+						);
+					}
 				}
 				else {
 					deleted.addLine("DELETED %-15s\t%s", word, line);

@@ -26,22 +26,33 @@ public class EnglishText implements TextContent {
 		MapCounter<String> ignoreWordsCounter = new MapCounter<>();
 
 		text = text.replaceAll("\\p{Pd}", "-")
-			.replaceAll("['\"“”‘’„”«»]", "\"")
-			.replaceAll("\\w+://\\S+", " ")
-			.replaceAll("\\S+\\.\\w{2,3}\\s", " ");
-		String[] tokens = joinWraps(text.split("[^a-zA-Z-]+"));
+//			.replaceAll("['\"“”‘’„”«»]", "\"")
+			.replaceAll("&#\\d+;", " ")
+			.replaceAll("\\b(\\w|\\d)+\\d\\S+", " ") // like "42D5GrxOQFebf83DYgNl-g"
+			.replaceAll("\\b[A-Z][A-Z-]*\\d+[A-Z\\d]*\\b", " ") // like UTF-8 or KOI-8R
+			.replaceAll("\\w+://\\S+", " ") // URLs
+			.replaceAll("\\S+\\.\\w{2,3}\\s", " "); // like URLs without protocol or properties
+
+		String[] tokens = capslockTransform(
+			joinWraps(text.split("[^a-zA-Z-]+"))
+		);
+
 		for (String token : tokens) {
-			for (String normalizedToken : token.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase().split("[_-]")) {
+			for (String normalizedToken : token.replaceAll("([A-Z])", "_$1").toLowerCase().split("[_-]")) {
 				if (
 					(normalizedToken.length() < EnglishWord.MIN_BASE_LENGTH)
 						||
-						(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{3}.*"))
+						(normalizedToken.matches("^[" + CONSONANT_LETTERS + "]+$"))
 						||
-						(normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{5}.*"))
+						(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{3,}.*"))
+						||
+						(normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{5,}.*"))
 						||
 						normalizedToken.matches(".*(.)\\1{2,}.*")
 					) {
-					ignoreWordsCounter.increment(normalizedToken);
+					if (normalizedToken.length() > 1) {
+						ignoreWordsCounter.increment(normalizedToken);
+					}
 					continue;
 				}
 				wordsCounter.increment(normalizedToken);
@@ -52,12 +63,30 @@ public class EnglishText implements TextContent {
 
 	private static String[] joinWraps(String[] tokens) {
 		for (int i = 0; i < tokens.length; i++) {
-			if (tokens[i].endsWith("-") && i < (tokens.length - 1)) {
+			if (tokens[i].endsWith("-")
+				&& i < (tokens.length - 1)
+				&& (!tokens[i].matches("^[A-Z\\d]+-$")
+					|| isCapital(tokens[i + 1])
+				)
+			) {
 				tokens[i] = tokens[i].replaceFirst("-*$", "") + tokens[i + 1];
 				tokens[i + 1] = "";
 			}
 		}
 		return tokens;
+	}
+
+	private static String[] capslockTransform(String[] tokens) {
+		for (int i = 0; i < tokens.length; i++) {
+			if (isCapital(tokens[i])) {
+				tokens[i] = tokens[i].toLowerCase();
+			}
+		}
+		return tokens;
+	}
+
+	private static boolean isCapital(String str) {
+		return str.matches("^[A-Z]+$");
 	}
 
 	@Override

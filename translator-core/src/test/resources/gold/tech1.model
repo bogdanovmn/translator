@@ -50,6 +50,7 @@ W [  1] play
 W [  1] dice
 W [  1] hunt
 W [  1] sums
+W [  1] rand
 W [  1] foot
 W [  1] gate
 W [  1] jbod
@@ -68,26 +69,22 @@ W [  1] sell
 W [  1] self
 W [  1] wiki
 W [  1] link
-W [  1] coug
+W [  1] gson
 W [  1] lior
 W [  1] wing
 W [  1] lags
 W [  1] bulk
 W [  1] laid
 W [  1] peek
-W [  1] oses
 W [  1] ties
 W [  1] land
-W [  1] wals
-W [  1] aand
-W [  1] wans
 W [  1] voor
 W [  1] wasn
 W [  1] tips
 W [  1] tiny
 W [  1] tabs
-W [  1] swop
 W [  1] uuid
+W [  1] tree
 W [  1] jump
 W [  1] juma
 W [  1] chip
@@ -101,7 +98,6 @@ W [  1] menu
 W [  1] hops
 W [  1] sort
 W [  1] fish
-W [  1] akux
 W [  1] pose
 W [  1] body
 W [  1] ship
@@ -129,9 +125,7 @@ W [  1] deze
 W [  1] flag
 W [  1] flat
 W [  1] robi
-W [  1] sres
 W [  1] sage
-W [  1] myhh
 W [  1] said
 W [  1] reuse
 W [  1] solid
@@ -180,7 +174,6 @@ W [  1] wakes
 W [  1] sized
 W [  1] trees
 W [  1] mehta
-W [  1] cbcbe
 W [  1] knobs
 W [  1] wired
 W [  1] recap
@@ -213,7 +206,6 @@ W [  1] risks
 W [  1] risky
 W [  1] shift
 W [  1] black
-W [  1] ascii
 W [  1] leaky
 W [  1] feeds
 W [  1] sides
@@ -236,7 +228,6 @@ W [  1] brand
 W [  1] bella
 W [  1] ruled
 W [  1] mesos
-W [  1] kakfa
 W [  1] brain
 W [  1] ended
 W [  1] dress
@@ -272,7 +263,6 @@ W [  1] rough
 W [  1] purge
 W [  1] jason
 W [  1] steep
-W [  1] feffc
 W [  1] tight
 W [  1] focal
 W [  1] death
@@ -288,7 +278,6 @@ W [  1] taste
 W [  1] hosts
 W [  1] grace
 W [  1] hence
-W [  1] trunk
 W [  1] style
 W [  1] sheer
 W [  1] favor
@@ -327,6 +316,7 @@ W [  1] revert
 W [  1] adopts
 W [  1] attach
 W [  1] clause
+W [  1] javato
 W [  1] paying
 W [  1] budget
 W [  1] actual
@@ -391,9 +381,9 @@ W [  1] ofsale
 W [  1] markup
 W [  1] typing
 W [  1] reload
+W [  1] errata
 W [  1] builds
 W [  1] models
-W [  1] jitter
 W [  1] wanted
 W [  1] shines
 W [  1] poison
@@ -408,7 +398,6 @@ W [  1] modest
 W [  1] doubly
 W [  1] double
 W [  1] tragic
-W [  1] bginfo
 W [  1] screws
 W [  1] monkey
 W [  1] effect
@@ -434,7 +423,6 @@ W [  1] shifts
 W [  1] expire
 W [  1] closes
 W [  1] closer
-W [  1] ucrand
 W [  1] bonded
 W [  1] jstack
 W [  1] dalton
@@ -461,7 +449,6 @@ W [  1] irises
 W [  1] conver
 W [  1] kicked
 W [  1] readme
-W [  1] oqfebf
 W [  1] lesser
 W [  1] resign
 W [  1] neatly
@@ -473,7 +460,6 @@ W [  1] school
 W [  1] citing
 W [  1] cuddly
 W [  1] curves
-W [  1] murmur
 W [  1] apress
 W [  1] travel
 W [  1] waging
@@ -484,7 +470,6 @@ W [  1] videos
 W [  1] darwin
 W [  1] lucene
 W [  1] sandra
-W [  1] series
 W [  1] ismael
 W [  1] hashed
 W [  1] afford
@@ -521,7 +506,6 @@ W [  1] resort
 W [  1] noting
 W [  1] letter
 W [  1] handed
-W [  1] apiand
 W [  1] newest
 W [  1] street
 W [  1] bounce
@@ -562,6 +546,7 @@ W [  1] hosting
 W [  1] suffice
 W [  1] rebuilt
 W [  1] feeding
+W [  1] backoff
 W [  1] powered
 W [  1] erratic
 W [  1] nowhere
@@ -669,13 +654,11 @@ W [  1] digital
 W [  1] elapses
 W [  1] engines
 W [  1] vibrant
-W [  1] jdffile
 W [  1] origins
 W [  1] amazing
 W [  1] obscure
 W [  1] filters
 W [  1] tagging
-W [  1] samples
 W [  1] columns
 W [  1] precise
 W [  1] streaks
@@ -706,7 +689,7 @@ W [  1] welcome
 W [  1] reality
 W [  1] anomaly
 W [  1] immense
-W [  1] pdfonly
+W [  1] trapped
 W [  1] sizeavg
 W [  1] detects
 W [  1] circles
@@ -723,7 +706,6 @@ W [  1] exposes
 W [  1] kernels
 W [  1] michael
 W [  1] america
-W [  1] aadding
 W [  1] reddish
 W [  1] dragons
 W [  1] accepts
@@ -784,7 +766,6 @@ W [  1] surface
 W [  1] sizable
 W [  1] century
 W [  1] shuffle
-W [  1] epsinfo
 W [  1] belongs
 W [  1] parents
 W [  1] configu
@@ -812,14 +793,12 @@ W [  1] chances
 W [  1] passive
 W [  1] carries
 W [  1] counters
-W [  1] nbrokers
 W [  1] handheld
 W [  1] keywords
 W [  1] faithful
 W [  1] skeleton
 W [  1] suffered
 W [  1] supposed
-W [  1] epsfiles
 W [  1] tutorial
 W [  1] approval
 W [  1] populate
@@ -860,6 +839,7 @@ W [  1] assigner
 W [  1] adopting
 W [  1] adoption
 W [  1] grateful
+W [  1] brokerid
 W [  1] bandwith
 W [  1] occasion
 W [  1] whomever
@@ -881,9 +861,9 @@ W [  1] listings
 W [  1] recieved
 W [  1] releases
 W [  1] prologue
-W [  1] asciidoc
 W [  1] enriched
 W [  1] defended
+W [  1] facebook
 W [  1] bartlett
 W [  1] powering
 W [  1] revision
@@ -933,7 +913,6 @@ W [  1] incurred
 W [  1] nebraska
 W [  1] signings
 W [  1] verisign
-W [  1] utfbytes
 W [  1] displays
 W [  1] presence
 W [  1] saturate
@@ -948,7 +927,6 @@ W [  1] licensed
 W [  1] shipment
 W [  1] spending
 W [  1] obsolete
-W [  1] ccittfax
 W [  1] nullable
 W [  1] strongly
 W [  1] restrict
@@ -987,7 +965,6 @@ W [  1] isolated
 W [  1] finishes
 W [  1] insights
 W [  1] binaries
-W [  1] heatbeat
 W [  1] unwanted
 W [  1] threaded
 W [  1] siblings
@@ -1007,6 +984,7 @@ W [  1] unzipped
 W [  1] repaired
 W [  1] vacation
 W [  1] themboth
+W [  1] warnings
 W [  1] shopping
 W [  1] tradeoff
 W [  1] lifetime
@@ -1032,7 +1010,6 @@ W [  1] searched
 W [  1] visiting
 W [  1] captured
 W [  1] upgraded
-W [  1] runclass
 W [  1] sentence
 W [  1] director
 W [  1] archtype
@@ -1055,7 +1032,6 @@ W [  1] megabits
 W [  1] cheslack
 W [  1] simulate
 W [  1] ballpark
-W [  1] mqseries
 W [  1] covering
 W [  1] distinct
 W [  1] eligible
@@ -1131,7 +1107,6 @@ W [  1] attempted
 W [  1] rendering
 W [  1] entangled
 W [  1] embedding
-W [  1] mysqldata
 W [  1] generator
 W [  1] obligated
 W [  1] subsecond
@@ -1139,7 +1114,6 @@ W [  1] tradeoffs
 W [  1] interacts
 W [  1] telemetry
 W [  1] beaconing
-W [  1] compliant
 W [  1] reviewers
 W [  1] decoupled
 W [  1] purchased
@@ -1150,18 +1124,17 @@ W [  1] realistic
 W [  1] populated
 W [  1] considers
 W [  1] exceeding
-W [  1] utfpublic
 W [  1] educators
 W [  1] omissions
 W [  1] leverages
 W [  1] belonging
 W [  1] committer
-W [  1] nioserver
 W [  1] disabling
 W [  1] delivered
 W [  1] discusses
 W [  1] initiated
 W [  1] displayed
+W [  1] runscript
 W [  1] discarded
 W [  1] dataoften
 W [  1] differing
@@ -1177,7 +1150,6 @@ W [  1] answering
 W [  1] interrupt
 W [  1] retailers
 W [  1] overdraft
-W [  1] endoffset
 W [  1] september
 W [  1] dimension
 W [  1] governing
@@ -1210,7 +1182,6 @@ W [  1] virtually
 W [  1] placement
 W [  1] qualities
 W [  1] bookmarks
-W [  1] utfreturn
 W [  1] tradexvii
 W [  1] variation
 W [  1] confident
@@ -1261,10 +1232,10 @@ W [  1] numerical
 W [  1] targeting
 W [  1] accessible
 W [  1] largescale
+W [  1] maximumcan
 W [  1] converting
 W [  1] collocated
 W [  1] experiment
-W [  1] psxobjects
 W [  1] tombstones
 W [  1] industries
 W [  1] cocreating
@@ -1387,7 +1358,6 @@ W [  1] imbalances
 W [  1] laboratory
 W [  1] sequential
 W [  1] assistance
-W [  1] jpegimages
 W [  1] simulating
 W [  1] decorating
 W [  1] thumbnails
@@ -1409,6 +1379,7 @@ W [  1] presenting
 W [  1] algorithms
 W [  1] imaginable
 W [  1] governance
+W [  1] kafkausing
 W [  1] facilitate
 W [  1] reelection
 W [  1] productive
@@ -1433,7 +1404,6 @@ W [  1] accurately
 W [  1] subsequent
 W [  1] suspicious
 W [  1] disruptive
-W [  1] cprocessed
 W [  1] multimedia
 W [  1] facilities
 W [  1] collectors
@@ -1471,7 +1441,6 @@ W [  1] transparent
 W [  1] composition
 W [  1] withdrawing
 W [  1] expectation
-W [  1] rgbhandling
 W [  1] familiarity
 W [  1] millisecond
 W [  1] authorizing
@@ -1486,7 +1455,6 @@ W [  1] highlighted
 W [  1] salesperson
 W [  1] filehandles
 W [  1] materialize
-W [  1] cmykprofile
 W [  1] controllers
 W [  1] represented
 W [  1] fluctuation
@@ -1499,14 +1467,12 @@ W [  1] prioritized
 W [  1] centralized
 W [  1] competitive
 W [  1] outstanding
-W [  1] dscwarnings
 W [  1] kingfishers
 W [  1] terminology
 W [  1] encouraging
 W [  1] elastically
 W [  1] overlapping
 W [  1] repartition
-W [  1] iccprofiles
 W [  1] problematic
 W [  1] convenience
 W [  1] incorrectly
@@ -1536,7 +1502,6 @@ W [  1] temperature
 W [  1] perspective
 W [  1] protections
 W [  1] conditional
-W [  1] ureplicator
 W [  1] segregation
 W [  1] redirecting
 W [  1] concurrency
@@ -1553,7 +1518,6 @@ W [  1] highquality
 W [  1] allocations
 W [  1] abbreviated
 W [  1] sacrificing
-W [  1] kafkatopics
 W [  1] individuals
 W [  1] correctness
 W [  1] approaching
@@ -1573,7 +1537,6 @@ W [  1] sensitivity
 W [  1] exactlyonce
 W [  1] potentially
 W [  1] compliments
-W [  1] opicomments
 W [  1] standardize
 W [  1] authenticate
 W [  1] abbreviation
@@ -1585,7 +1548,6 @@ W [  1] intellectual
 W [  1] configuation
 W [  1] reservations
 W [  1] redistribute
-W [  1] cmykhandling
 W [  1] kerneltuning
 W [  1] duplications
 W [  1] transporting
@@ -1595,10 +1557,8 @@ W [  1] sequentially
 W [  1] interprocess
 W [  1] subsequently
 W [  1] catastrophic
-W [  1] zookeepertar
 W [  1] manufactures
 W [  1] unexpectedly
-W [  1] hwresolution
 W [  1] expectations
 W [  1] embarrassing
 W [  1] perpartition
@@ -1609,17 +1569,16 @@ W [  1] accomplished
 W [  1] multigigabit
 W [  1] highlighting
 W [  1] synchronized
-W [  1] dscreporting
 W [  1] gratulations
 W [  1] jumpstarting
 W [  1] synchronizes
 W [  1] consolidates
 W [  1] unstructured
+W [  1] reassigntool
 W [  1] satisfactory
 W [  1] constructors
 W [  1] deserialized
 W [  1] decompresses
-W [  1] sqlexception
 W [  1] conversation
 W [  1] intelligence
 W [  1] particularly
@@ -1627,7 +1586,6 @@ W [  1] irrespective
 W [  1] parallelizes
 W [  1] complication
 W [  1] contributing
-W [  1] dicmykvalues
 W [  1] guaranteeing
 W [  1] insufficient
 W [  1] fluctuations
@@ -1653,7 +1611,6 @@ W [  1] integrations
 W [  1] crosscluster
 W [  1] kalapurakkel
 W [  1] acknowledges
-W [  1] jsonformatted
 W [  1] parameterized
 W [  1] monotonically
 W [  1] topicretrying
@@ -1671,8 +1628,8 @@ W [  1] subtopologies
 W [  1] windowminimum
 W [  1] consolidating
 W [  1] inconsistency
-W [  1] jsonconverter
 W [  1] recompression
+W [  1] preservcliene
 W [  1] loadbalancing
 W [  1] experimenting
 W [  1] incorporating
@@ -1707,6 +1664,7 @@ W [  1] installations
 W [  1] traditionally
 W [  1] cybersecurity
 W [  1] notifications
+W [  1] bookquestions
 W [  1] informational
 W [  1] requestlatency
 W [  1] consumerssince
@@ -1715,13 +1673,14 @@ W [  1] pharmaceutical
 W [  1] simultaneously
 W [  1] semistructured
 W [  1] overestimating
+W [  1] myverification
+W [  1] connectinstead
 W [  1] countermetrics
+W [  1] replicautility
 W [  1] interdependent
 W [  1] crossdatacenter
 W [  1] desktopprinters
 W [  1] processorsthose
-W [  1] producerconfigs
-W [  1] replicaelection
 W [  1] requestresponse
 W [  1] computationally
 W [  1] straightforward
@@ -1737,11 +1696,7 @@ W [  1] responsibilities
 W [  1] misconfiguration
 W [  1] deterministically
 W [  1] garbagecollection
-W [  1] partitionidoffset
-W [  1] connectstandalone
 W [  1] setdistillerparams
-W [  1] reassignpartitions
-W [  1] newconsumerconfigs
 W [  1] kafkaunderstanding
 W [  1] consumermyconsumer
 W [  1] telecommunications
@@ -1749,10 +1704,12 @@ W [  1] schemacompatibility
 W [  1] kwaliteitsafdrukken
 W [  1] connectelasticsearch
 W [  1] unavailablepartitions
+W [  2] jpeg
 W [  2] flip
 W [  2] harm
 W [  2] sasl
 W [  2] says
+W [  2] docs
 W [  2] tech
 W [  2] bird
 W [  2] miss
@@ -1761,7 +1718,6 @@ W [  2] bits
 W [  2] cutt
 W [  2] bars
 W [  2] lots
-W [  2] slas
 W [  2] rich
 W [  2] told
 W [  2] sudo
@@ -1776,8 +1732,8 @@ W [  2] edit
 W [  2] seem
 W [  2] sees
 W [  2] held
+W [  2] conf
 W [  2] puts
-W [  2] gson
 W [  2] emit
 W [  2] thus
 W [  2] util
@@ -1790,9 +1746,7 @@ W [  2] tied
 W [  2] walk
 W [  2] warn
 W [  2] trek
-W [  2] tree
-W [  2] cpus
-W [  2] trim
+W [  2] chef
 W [  2] soft
 W [  2] july
 W [  2] tags
@@ -1816,13 +1770,13 @@ W [  2] clien
 W [  2] produ
 W [  2] picks
 W [  2] items
-W [  2] cwiki
 W [  2] areas
 W [  2] finds
 W [  2] staff
 W [  2] stage
 W [  2] legal
 W [  2] brown
+W [  2] stamp
 W [  2] stick
 W [  2] holds
 W [  2] treat
@@ -1871,6 +1825,7 @@ W [  2] audit
 W [  2] storm
 W [  2] nodeid
 W [  2] purged
+W [  2] mbeans
 W [  2] hotels
 W [  2] phases
 W [  2] italic
@@ -1924,6 +1879,7 @@ W [  2] steady
 W [  2] listen
 W [  2] visits
 W [  2] strict
+W [  2] series
 W [  2] cities
 W [  2] coming
 W [  2] excess
@@ -1949,6 +1905,7 @@ W [  2] spaces
 W [  2] emails
 W [  2] stress
 W [  2] spikes
+W [  2] puppet
 W [  2] traits
 W [  2] france
 W [  2] thanks
@@ -1960,10 +1917,8 @@ W [  2] bigger
 W [  2] routed
 W [  2] prepare
 W [  2] scratch
-W [  2] backoff
 W [  2] noatime
 W [  2] inserts
-W [  2] catalog
 W [  2] listens
 W [  2] picture
 W [  2] disable
@@ -1999,6 +1954,7 @@ W [  2] derived
 W [  2] portion
 W [  2] explore
 W [  2] effects
+W [  2] backlog
 W [  2] occured
 W [  2] turning
 W [  2] deletes
@@ -2010,7 +1966,6 @@ W [  2] backend
 W [  2] persist
 W [  2] trivial
 W [  2] efforts
-W [  2] youtube
 W [  2] purpose
 W [  2] boolean
 W [  2] channel
@@ -2044,6 +1999,7 @@ W [  2] binding
 W [  2] tracked
 W [  2] solving
 W [  2] holding
+W [  2] indices
 W [  2] shorter
 W [  2] impacts
 W [  2] couples
@@ -2059,6 +2015,7 @@ W [  2] isolate
 W [  2] offered
 W [  2] entered
 W [  2] trained
+W [  2] animals
 W [  2] closely
 W [  2] serving
 W [  2] pending
@@ -2077,6 +2034,7 @@ W [  2] randomly
 W [  2] outliers
 W [  2] shifting
 W [  2] schedule
+W [  2] snapshot
 W [  2] operates
 W [  2] inserted
 W [  2] fidelity
@@ -2161,7 +2119,6 @@ W [  2] assuring
 W [  2] payments
 W [  2] proceeds
 W [  2] tempting
-W [  2] devguide
 W [  2] stopping
 W [  2] extended
 W [  2] fetchers
@@ -2205,13 +2162,13 @@ W [  2] overwrite
 W [  2] zkconnect
 W [  2] literally
 W [  2] enriching
+W [  2] compliant
 W [  2] extremely
 W [  2] connected
 W [  2] partially
 W [  2] awareness
 W [  2] reprocess
 W [  2] throttled
-W [  2] dctencode
 W [  2] arbitrary
 W [  2] fluctuate
 W [  2] concluded
@@ -2258,11 +2215,11 @@ W [  2] servicing
 W [  2] singleton
 W [  2] computing
 W [  2] characters
-W [  2] confluence
 W [  2] delivering
 W [  2] decompress
 W [  2] comparison
 W [  2] stockstats
+W [  2] expiration
 W [  2] accumulate
 W [  2] unreliable
 W [  2] usefulness
@@ -2272,7 +2229,6 @@ W [  2] understood
 W [  2] constantly
 W [  2] precedence
 W [  2] originated
-W [  2] jsonobject
 W [  2] unexpected
 W [  2] contribute
 W [  2] configures
@@ -2345,7 +2301,7 @@ W [  2] experienced
 W [  2] fundamental
 W [  2] coordinated
 W [  2] calculation
-W [  2] dsccomments
+W [  2] permissions
 W [  2] uncompacted
 W [  2] departments
 W [  2] parallelism
@@ -2390,7 +2346,6 @@ W [  2] modifications
 W [  2] architectural
 W [  2] materializing
 W [  2] opportunities
-W [  2] dbtransaction
 W [  2] investigating
 W [  2] representation
 W [  2] transformation
@@ -2403,6 +2358,7 @@ W [  3] proc
 W [  3] tens
 W [  3] tend
 W [  3] init
+W [  3] brew
 W [  3] feel
 W [  3] maps
 W [  3] mark
@@ -2414,12 +2370,13 @@ W [  3] peer
 W [  3] tick
 W [  3] lang
 W [  3] late
-W [  3] chef
+W [  3] trim
 W [  3] hope
 W [  3] mess
 W [  3] face
 W [  3] dual
 W [  3] spin
+W [  3] acid
 W [  3] quick
 W [  3] banks
 W [  3] graph
@@ -2441,7 +2398,6 @@ W [  3] alone
 W [  3] bring
 W [  3] mkdir
 W [  3] carry
-W [  3] oreil
 W [  3] proof
 W [  3] prone
 W [  3] sales
@@ -2458,7 +2414,6 @@ W [  3] birds
 W [  3] shelf
 W [  3] shell
 W [  3] today
-W [  3] bleed
 W [  3] fonts
 W [  3] party
 W [  3] blocks
@@ -2475,7 +2430,6 @@ W [  3] gather
 W [  3] volume
 W [  3] driver
 W [  3] rights
-W [  3] errata
 W [  3] harder
 W [  3] refers
 W [  3] quorum
@@ -2491,9 +2445,7 @@ W [  3] ubuntu
 W [  3] sanity
 W [  3] ratios
 W [  3] saving
-W [  3] ktable
 W [  3] differ
-W [  3] puppet
 W [  3] latter
 W [  3] strong
 W [  3] viewed
@@ -2507,13 +2459,16 @@ W [  3] applies
 W [  3] serious
 W [  3] headers
 W [  3] ranging
+W [  3] product
 W [  3] dataset
+W [  3] twitter
 W [  3] planned
 W [  3] survive
 W [  3] printed
 W [  3] subject
 W [  3] highest
 W [  3] degrade
+W [  3] utility
 W [  3] useable
 W [  3] tpalino
 W [  3] classic
@@ -2521,7 +2476,6 @@ W [  3] fetched
 W [  3] remains
 W [  3] ensures
 W [  3] packets
-W [  3] backlog
 W [  3] assures
 W [  3] warning
 W [  3] counter
@@ -2542,26 +2496,22 @@ W [  3] doubles
 W [  3] sliding
 W [  3] bicubic
 W [  3] dropped
-W [  3] gcpause
 W [  3] expired
 W [  3] reduced
 W [  3] regions
 W [  3] perfect
-W [  3] indices
 W [  3] lacking
 W [  3] notices
 W [  3] leaving
 W [  3] edition
 W [  3] failing
 W [  3] protect
-W [  3] animals
 W [  3] relying
 W [  3] extreme
 W [  3] satisfy
 W [  3] infinite
 W [  3] exciting
 W [  3] managers
-W [  3] comments
 W [  3] networks
 W [  3] earliest
 W [  3] measured
@@ -2569,14 +2519,12 @@ W [  3] measures
 W [  3] priority
 W [  3] downtime
 W [  3] relative
-W [  3] brokerid
 W [  3] training
 W [  3] uncommon
 W [  3] released
 W [  3] surprise
 W [  3] dropping
 W [  3] reliably
-W [  3] facebook
 W [  3] deployed
 W [  3] slightly
 W [  3] boundary
@@ -2655,7 +2603,6 @@ W [  3] upgrading
 W [  3] detecting
 W [  3] collected
 W [  3] checksums
-W [  3] formatted
 W [  3] hostnames
 W [  3] hopefully
 W [  3] expressed
@@ -2663,7 +2610,6 @@ W [  3] establish
 W [  3] advisable
 W [  3] inventory
 W [  3] responses
-W [  3] expiration
 W [  3] importance
 W [  3] strategies
 W [  3] incredibly
@@ -2715,7 +2661,6 @@ W [  3] alternative
 W [  3] determining
 W [  3] suggestions
 W [  3] calculating
-W [  3] permissions
 W [  3] discrepancy
 W [  3] filesystems
 W [  3] conferences
@@ -2730,7 +2675,6 @@ W [  3] sophisticated
 W [  3] approximately
 W [  3] distributions
 W [  3] deserializing
-W [  3] bookquestions
 W [  3] unavailability
 W [  3] communications
 W [  3] authentication
@@ -2745,7 +2689,6 @@ W [  4] took
 W [  4] font
 W [  4] dive
 W [  4] libs
-W [  4] conf
 W [  4] cost
 W [  4] wrap
 W [  4] hold
@@ -2753,7 +2696,6 @@ W [  4] hook
 W [  4] fine
 W [  4] meta
 W [  4] free
-W [  4] acid
 W [  4] city
 W [  4] vice
 W [  4] kill
@@ -2782,13 +2724,16 @@ W [  4] birth
 W [  4] clear
 W [  4] agile
 W [  4] infos
+W [  4] repli
 W [  4] eight
 W [  4] heart
 W [  4] score
 W [  4] weeks
 W [  4] epoch
 W [  4] tuned
+W [  4] bleed
 W [  4] offer
+W [  4] delay
 W [  4] modes
 W [  4] begin
 W [  4] loads
@@ -2798,7 +2743,6 @@ W [  4] flume
 W [  4] versa
 W [  4] ready
 W [  4] became
-W [  4] mbeans
 W [  4] worked
 W [  4] unable
 W [  4] relies
@@ -2806,6 +2750,7 @@ W [  4] length
 W [  4] millis
 W [  4] depend
 W [  4] height
+W [  4] safari
 W [  4] daemon
 W [  4] stocks
 W [  4] delays
@@ -2826,6 +2771,7 @@ W [  4] anyone
 W [  4] safest
 W [  4] serial
 W [  4] faulty
+W [  4] script
 W [  4] copies
 W [  4] saying
 W [  4] adjust
@@ -2843,14 +2789,12 @@ W [  4] invalid
 W [  4] combine
 W [  4] avoided
 W [  4] forever
-W [  4] utility
 W [  4] logical
 W [  4] loggers
 W [  4] duality
 W [  4] decides
 W [  4] imagine
 W [  4] matters
-W [  4] qfactor
 W [  4] keeping
 W [  4] willing
 W [  4] succeed
@@ -2863,6 +2807,7 @@ W [  4] actions
 W [  4] minimal
 W [  4] typical
 W [  4] caching
+W [  4] oreilly
 W [  4] explain
 W [  4] loading
 W [  4] deliver
@@ -2899,9 +2844,6 @@ W [  4] applying
 W [  4] flexible
 W [  4] explains
 W [  4] evolving
-W [  4] linkedin
-W [  4] hsamples
-W [  4] acsimage
 W [  4] connects
 W [  4] workload
 W [  4] powerful
@@ -2913,7 +2855,6 @@ W [  4] diagnose
 W [  4] performs
 W [  4] improved
 W [  4] inactive
-W [  4] vsamples
 W [  4] feedback
 W [  4] informed
 W [  4] accepted
@@ -2921,13 +2862,11 @@ W [  4] direction
 W [  4] perfectly
 W [  4] realities
 W [  4] eliminate
-W [  4] downloads
 W [  4] resetting
 W [  4] encourage
 W [  4] countries
 W [  4] microsoft
 W [  4] improving
-W [  4] reporting
 W [  4] unplanned
 W [  4] maintains
 W [  4] exporting
@@ -2945,6 +2884,7 @@ W [  4] execution
 W [  4] designing
 W [  4] constants
 W [  4] isolation
+W [  4] formatted
 W [  4] corrupted
 W [  4] integrate
 W [  4] practices
@@ -2955,7 +2895,6 @@ W [  4] automation
 W [  4] accidental
 W [  4] formatting
 W [  4] requesting
-W [  4] pdfxoutput
 W [  4] definitely
 W [  4] categories
 W [  4] explaining
@@ -2989,8 +2928,6 @@ W [  4] modification
 W [  4] individually
 W [  4] distributing
 W [  4] demonstrated
-W [  4] confluentinc
-W [  4] oreillymedia
 W [  4] communicating
 W [  4] corresponding
 W [  4] inconsistencies
@@ -3002,10 +2939,11 @@ W [  5] pipe
 W [  5] team
 W [  5] zone
 W [  5] past
-W [  5] brew
 W [  5] bank
+W [  5] gzip
 W [  5] echo
 W [  5] huge
+W [  5] dict
 W [  5] drop
 W [  5] push
 W [  5] date
@@ -3014,10 +2952,12 @@ W [  5] busy
 W [  5] tion
 W [  5] soon
 W [  5] rule
+W [  5] rmem
 W [  5] post
 W [  5] unix
 W [  5] crop
 W [  5] shut
+W [  5] wmem
 W [  5] thank
 W [  5] flows
 W [  5] keeps
@@ -3038,7 +2978,6 @@ W [  5] wants
 W [  5] comma
 W [  5] years
 W [  5] slice
-W [  5] delay
 W [  5] words
 W [  5] alive
 W [  5] spends
@@ -3053,7 +2992,6 @@ W [  5] drives
 W [  5] driven
 W [  5] sizing
 W [  5] timely
-W [  5] encode
 W [  5] origin
 W [  5] places
 W [  5] amazon
@@ -3071,23 +3009,19 @@ W [  5] growth
 W [  5] couple
 W [  5] behave
 W [  5] snappy
-W [  5] script
 W [  5] copied
 W [  5] demand
 W [  5] report
 W [  5] thrown
 W [  5] nature
-W [  5] mailto
 W [  5] accept
 W [  5] symbol
 W [  5] tested
 W [  5] seeing
 W [  5] ordered
 W [  5] applied
-W [  5] product
 W [  5] biggest
 W [  5] killing
-W [  5] twitter
 W [  5] premise
 W [  5] heavily
 W [  5] further
@@ -3111,15 +3045,16 @@ W [  5] refresh
 W [  5] diagram
 W [  5] replace
 W [  5] percent
+W [  5] advance
 W [  5] reduces
 W [  5] testing
 W [  5] simpler
 W [  5] helpful
 W [  5] matches
+W [  5] display
 W [  5] managed
 W [  5] passing
 W [  5] fragile
-W [  5] snapshot
 W [  5] oriented
 W [  5] sections
 W [  5] assignor
@@ -3129,7 +3064,6 @@ W [  5] produces
 W [  5] foreword
 W [  5] protobuf
 W [  5] resource
-W [  5] profiles
 W [  5] proposed
 W [  5] combined
 W [  5] regional
@@ -3157,6 +3091,7 @@ W [  5] technical
 W [  5] selecting
 W [  5] attention
 W [  5] endlessly
+W [  5] reporting
 W [  5] requiring
 W [  5] workloads
 W [  5] automated
@@ -3212,7 +3147,6 @@ W [  5] manufacturing
 W [  5] authorization
 W [  5] responsibility
 W [  5] streamprocessing
-W [  6] jpeg
 W [  6] gone
 W [  6] root
 W [  6] hasn
@@ -3226,15 +3160,14 @@ W [  6] none
 W [  6] talk
 W [  6] sold
 W [  6] fill
-W [  6] rmem
 W [  6] nine
 W [  6] care
-W [  6] wmem
 W [  6] vary
 W [  6] tune
 W [  6] enter
 W [  6] loops
 W [  6] kreps
+W [  6] tests
 W [  6] forth
 W [  6] fully
 W [  6] embed
@@ -3247,13 +3180,16 @@ W [  6] scope
 W [  6] worry
 W [  6] waits
 W [  6] falls
+W [  6] flush
 W [  6] reach
 W [  6] deploy
 W [  6] decode
 W [  6] stable
+W [  6] center
 W [  6] banana
 W [  6] shared
 W [  6] scales
+W [  6] encode
 W [  6] manner
 W [  6] giving
 W [  6] limits
@@ -3288,7 +3224,6 @@ W [  6] success
 W [  6] program
 W [  6] runtime
 W [  6] neither
-W [  6] advance
 W [  6] finding
 W [  6] choices
 W [  6] varying
@@ -3296,6 +3231,7 @@ W [  6] learned
 W [  6] causing
 W [  6] scripts
 W [  6] question
+W [  6] comments
 W [  6] disaster
 W [  6] reducing
 W [  6] tolerate
@@ -3306,9 +3242,11 @@ W [  6] simplest
 W [  6] variable
 W [  6] familiar
 W [  6] hundreds
+W [  6] profiles
 W [  6] intended
 W [  6] appendix
 W [  6] yourself
+W [  6] download
 W [  6] analytics
 W [  6] exhausted
 W [  6] separator
@@ -3344,6 +3282,7 @@ W [  6] introduced
 W [  6] represents
 W [  6] separately
 W [  6] identifier
+W [  6] percentile
 W [  6] subscribed
 W [  6] conditions
 W [  6] timestamps
@@ -3364,7 +3303,6 @@ W [  6] administration
 W [  6] administrators
 W [  7] rows
 W [  7] pair
-W [  7] gzip
 W [  7] grow
 W [  7] dirs
 W [  7] come
@@ -3376,7 +3314,6 @@ W [  7] lists
 W [  7] goals
 W [  7] paths
 W [  7] books
-W [  7] tests
 W [  7] lines
 W [  7] keyed
 W [  7] media
@@ -3391,14 +3328,13 @@ W [  7] trace
 W [  7] reset
 W [  7] daily
 W [  7] parts
+W [  7] parse
 W [  7] break
 W [  7] helix
 W [  7] loses
-W [  7] flush
 W [  7] resume
 W [  7] matter
 W [  7] moment
-W [  7] center
 W [  7] append
 W [  7] engine
 W [  7] cycles
@@ -3428,8 +3364,8 @@ W [  7] strings
 W [  7] assumed
 W [  7] preface
 W [  7] exiting
+W [  7] plugins
 W [  7] rolling
-W [  7] display
 W [  7] wrapper
 W [  7] related
 W [  7] function
@@ -3442,6 +3378,7 @@ W [  7] parallel
 W [  7] learning
 W [  7] resolved
 W [  7] affected
+W [  7] reassign
 W [  7] machines
 W [  7] handlers
 W [  7] throttle
@@ -3450,7 +3387,6 @@ W [  7] interact
 W [  7] compared
 W [  7] searches
 W [  7] majority
-W [  7] download
 W [  7] drawback
 W [  7] coverage
 W [  7] recording
@@ -3493,12 +3429,12 @@ W [  8] wire
 W [  8] tile
 W [  8] side
 W [  8] week
+W [  8] block
 W [  8] press
 W [  8] shown
 W [  8] shoes
 W [  8] alter
 W [  8] admin
-W [  8] beans
 W [  8] logic
 W [  8] rates
 W [  8] leads
@@ -3506,7 +3442,6 @@ W [  8] width
 W [  8] robin
 W [  8] ahead
 W [  8] gives
-W [  8] repli
 W [  8] racks
 W [  8] quota
 W [  8] mount
@@ -3519,7 +3454,6 @@ W [  8] unlike
 W [  8] proper
 W [  8] printf
 W [  8] occurs
-W [  8] linger
 W [  8] remain
 W [  8] logger
 W [  8] months
@@ -3530,6 +3464,7 @@ W [  8] action
 W [  8] member
 W [  8] header
 W [  8] parser
+W [  8] burrow
 W [  8] insert
 W [  8] spread
 W [  8] chroot
@@ -3552,6 +3487,7 @@ W [  8] features
 W [  8] scalable
 W [  8] coupling
 W [  8] decision
+W [  8] recovery
 W [  8] printing
 W [  8] followed
 W [  8] embedded
@@ -3576,16 +3512,17 @@ W [  8] controlled
 W [  8] complexity
 W [  8] determined
 W [  8] compressed
+W [  8] myconsumer
 W [  8] definitive
 W [  8] situations
 W [  8] consistency
 W [  8] directories
 W [  8] subscribing
 W [  8] instructions
+W [  8] verification
 W [  8] connectivity
 W [  8] acknowledgments
 W [  9] term
-W [  9] dict
 W [  9] didn
 W [  9] wide
 W [  9] ever
@@ -3605,9 +3542,8 @@ W [  9] versus
 W [  9] taking
 W [  9] serdes
 W [  9] credit
-W [  9] safari
 W [  9] direct
-W [  9] github
+W [  9] pretty
 W [  9] follow
 W [  9] flight
 W [  9] unless
@@ -3622,6 +3558,8 @@ W [  9] whereas
 W [  9] stretch
 W [  9] certain
 W [  9] closing
+W [  9] samples
+W [  9] mytopic
 W [  9] shapira
 W [  9] periods
 W [  9] present
@@ -3630,6 +3568,7 @@ W [  9] largest
 W [  9] standby
 W [  9] sources
 W [  9] operate
+W [  9] configs
 W [  9] handled
 W [  9] balanced
 W [  9] allocate
@@ -3672,7 +3611,6 @@ W [  9] significantly
 W [  9] compatibility
 W [  9] administrator
 W [ 10] lets
-W [ 10] docs
 W [ 10] skip
 W [ 10] todd
 W [ 10] else
@@ -3681,6 +3619,7 @@ W [ 10] fast
 W [ 10] kind
 W [ 10] ones
 W [ 10] quite
+W [ 10] beans
 W [ 10] newer
 W [ 10] usual
 W [ 10] solve
@@ -3689,21 +3628,20 @@ W [ 10] focus
 W [ 10] found
 W [ 10] clean
 W [ 10] tells
+W [ 10] print
 W [ 10] array
 W [ 10] round
 W [ 10] views
-W [ 10] parse
 W [ 10] cycle
+W [ 10] guide
 W [ 10] policy
 W [ 10] export
 W [ 10] market
-W [ 10] pretty
 W [ 10] ensure
 W [ 10] kernel
 W [ 10] tables
 W [ 10] except
 W [ 10] fairly
-W [ 10] burrow
 W [ 10] little
 W [ 10] obvious
 W [ 10] builder
@@ -3718,7 +3656,6 @@ W [ 10] factors
 W [ 10] arrived
 W [ 10] reports
 W [ 10] members
-W [ 10] plugins
 W [ 10] elected
 W [ 10] calling
 W [ 10] collect
@@ -3726,7 +3663,6 @@ W [ 10] dynamic
 W [ 10] crashes
 W [ 10] scenario
 W [ 10] supports
-W [ 10] recovery
 W [ 10] fetching
 W [ 10] anything
 W [ 10] identify
@@ -3741,7 +3677,6 @@ W [ 10] whitelist
 W [ 10] enterprise
 W [ 10] deployment
 W [ 10] collecting
-W [ 10] resolution
 W [ 10] percentage
 W [ 10] successful
 W [ 10] maintaining
@@ -3755,7 +3690,10 @@ W [ 10] acknowledgment
 W [ 11] hand
 W [ 11] flow
 W [ 11] swap
+W [ 11] home
+W [ 11] host
 W [ 11] fall
+W [ 11] dump
 W [ 11] watch
 W [ 11] sizes
 W [ 11] among
@@ -3764,7 +3702,7 @@ W [ 11] leave
 W [ 11] adobe
 W [ 11] joins
 W [ 11] twice
-W [ 11] print
+W [ 11] ignore
 W [ 11] verify
 W [ 11] reader
 W [ 11] entity
@@ -3782,7 +3720,6 @@ W [ 11] context
 W [ 11] follows
 W [ 11] isvalid
 W [ 11] updates
-W [ 11] kstream
 W [ 11] nothing
 W [ 11] popular
 W [ 11] creation
@@ -3803,42 +3740,36 @@ W [ 11] decisions
 W [ 11] collector
 W [ 11] challenges
 W [ 11] membership
-W [ 11] percentile
+W [ 11] resolution
 W [ 11] maintained
+W [ 11] downsample
 W [ 11] implements
 W [ 11] allocation
 W [ 11] processors
 W [ 11] traditional
 W [ 11] payloadsize
 W [ 11] continuously
-W [ 11] verification
 W [ 11] compresscodec
 W [ 11] independently
 W [ 11] implementation
-W [ 11] gzipcompression
 W [ 12] pick
-W [ 12] feff
 W [ 12] curl
 W [ 12] slow
 W [ 12] wish
-W [ 12] home
 W [ 12] unit
-W [ 12] dump
 W [ 12] gets
 W [ 12] throw
-W [ 12] block
 W [ 12] third
 W [ 12] field
 W [ 12] wrote
 W [ 12] fails
+W [ 12] pages
 W [ 12] great
 W [ 12] along
 W [ 12] terms
 W [ 12] power
 W [ 12] split
-W [ 12] guide
 W [ 12] place
-W [ 12] ignore
 W [ 12] losing
 W [ 12] assign
 W [ 12] likely
@@ -3852,6 +3783,7 @@ W [ 12] trigger
 W [ 12] joining
 W [ 12] feature
 W [ 12] shutdown
+W [ 12] together
 W [ 12] modified
 W [ 12] advanced
 W [ 12] overhead
@@ -3864,7 +3796,6 @@ W [ 12] scenarios
 W [ 12] explicitly
 W [ 12] statistics
 W [ 12] discussing
-W [ 12] downsample
 W [ 12] serializing
 W [ 12] understanding
 W [ 12] infrastructure
@@ -3879,7 +3810,6 @@ W [ 13] known
 W [ 13] crash
 W [ 13] above
 W [ 13] valid
-W [ 13] pages
 W [ 13] magic
 W [ 13] names
 W [ 13] basis
@@ -3897,9 +3827,7 @@ W [ 13] changed
 W [ 13] services
 W [ 13] choosing
 W [ 13] override
-W [ 13] reassign
 W [ 13] managing
-W [ 13] together
 W [ 13] solution
 W [ 13] normally
 W [ 13] retrying
@@ -3907,6 +3835,7 @@ W [ 13] original
 W [ 13] argument
 W [ 13] generated
 W [ 13] companies
+W [ 13] heartbeat
 W [ 13] developer
 W [ 13] experience
 W [ 13] particular
@@ -3921,9 +3850,9 @@ W [ 13] appropriate
 W [ 13] configurable
 W [ 13] alternatives
 W [ 13] underreplicated
+W [ 14] uber
 W [ 14] goes
 W [ 14] idle
-W [ 14] pause
 W [ 14] apply
 W [ 14] refer
 W [ 14] alert
@@ -3943,18 +3872,24 @@ W [ 14] attempt
 W [ 14] meaning
 W [ 14] happens
 W [ 14] mapping
+W [ 14] scaling
 W [ 14] recover
 W [ 14] payload
 W [ 14] methods
+W [ 14] session
 W [ 14] smaller
 W [ 14] removed
 W [ 14] package
+W [ 14] contents
 W [ 14] checking
 W [ 14] location
+W [ 14] optional
 W [ 14] whenever
 W [ 14] retained
+W [ 14] preserve
 W [ 14] community
 W [ 14] ecosystem
+W [ 14] topicname
 W [ 14] correctly
 W [ 14] resources
 W [ 14] themselves
@@ -3965,13 +3900,10 @@ W [ 14] partitioner
 W [ 14] organizations
 W [ 15] hash
 W [ 15] risk
-W [ 15] uber
-W [ 15] bean
 W [ 15] fail
 W [ 15] safe
 W [ 15] disks
 W [ 15] going
-W [ 15] mbean
 W [ 15] price
 W [ 15] model
 W [ 15] world
@@ -3990,27 +3922,22 @@ W [ 15] formats
 W [ 15] earlier
 W [ 15] generic
 W [ 15] greater
-W [ 15] configs
 W [ 15] removing
-W [ 15] contents
 W [ 15] received
 W [ 15] platform
 W [ 15] designed
 W [ 15] complete
 W [ 15] actually
-W [ 15] preserve
 W [ 15] compacted
 W [ 15] situation
 W [ 15] solutions
 W [ 15] followers
 W [ 15] bandwidth
-W [ 15] topicname
 W [ 15] directory
-W [ 15] heartbeat
+W [ 15] localhost
 W [ 15] performing
 W [ 15] heartbeats
 W [ 15] requirement
-W [ 15] transaction
 W [ 15] synchronous
 W [ 15] communication
 W [ 16] tell
@@ -4036,19 +3963,19 @@ W [ 16] machine
 W [ 16] alerting
 W [ 16] probably
 W [ 16] physical
-W [ 16] optional
 W [ 16] callback
 W [ 16] specifies
 W [ 16] providing
 W [ 16] formatter
 W [ 16] networking
-W [ 16] myconsumer
 W [ 16] replicating
 W [ 16] development
 W [ 16] multicluster
 W [ 17] pass
 W [ 17] stop
+W [ 17] gray
 W [ 17] zero
+W [ 17] pause
 W [ 17] spent
 W [ 17] small
 W [ 17] assume
@@ -4057,14 +3984,15 @@ W [ 17] easily
 W [ 17] easier
 W [ 17] online
 W [ 17] points
+W [ 17] target
 W [ 17] images
 W [ 17] expect
 W [ 17] finally
 W [ 17] company
-W [ 17] scaling
 W [ 17] account
 W [ 17] waiting
 W [ 17] covered
+W [ 17] timeout
 W [ 17] handler
 W [ 17] logging
 W [ 17] expected
@@ -4078,6 +4006,7 @@ W [ 17] interface
 W [ 17] developers
 W [ 17] everything
 W [ 17] maintenance
+W [ 17] transaction
 W [ 17] transactions
 W [ 17] considerations
 W [ 17] transformations
@@ -4090,17 +4019,16 @@ W [ 18] cloud
 W [ 18] doing
 W [ 18] people
 W [ 18] modify
-W [ 18] target
 W [ 18] filter
 W [ 18] becomes
 W [ 18] website
-W [ 18] mytopic
 W [ 18] correct
 W [ 18] reasons
 W [ 18] polling
 W [ 18] handles
 W [ 18] stopped
 W [ 18] missing
+W [ 18] interval
 W [ 18] strategy
 W [ 18] follower
 W [ 18] validate
@@ -4113,7 +4041,6 @@ W [ 18] rebalances
 W [ 18] reasonable
 W [ 18] duplicates
 W [ 18] frameworks
-W [ 19] gray
 W [ 19] think
 W [ 19] email
 W [ 19] depth
@@ -4125,7 +4052,6 @@ W [ 19] stores
 W [ 19] health
 W [ 19] subset
 W [ 19] execute
-W [ 19] oreilly
 W [ 19] remember
 W [ 19] internal
 W [ 19] practice
@@ -4138,14 +4064,13 @@ W [ 19] completed
 W [ 19] validating
 W [ 19] previously
 W [ 19] measurement
-W [ 19] compression
 W [ 19] rebalancing
 W [ 19] asynchronous
 W [ 19] administering
 W [ 20] days
-W [ 20] host
 W [ 20] fact
 W [ 20] async
+W [ 20] color
 W [ 20] issue
 W [ 20] exist
 W [ 20] cover
@@ -4158,6 +4083,7 @@ W [ 20] country
 W [ 20] storing
 W [ 20] complex
 W [ 20] involved
+W [ 20] registry
 W [ 20] sequence
 W [ 20] settings
 W [ 20] software
@@ -4166,6 +4092,7 @@ W [ 20] testgroup
 W [ 20] guarantee
 W [ 20] serialize
 W [ 20] increasing
+W [ 20] difference
 W [ 20] frequently
 W [ 20] especially
 W [ 20] deserializers
@@ -4183,7 +4110,6 @@ W [ 21] enable
 W [ 21] cannot
 W [ 21] returns
 W [ 21] ability
-W [ 21] session
 W [ 21] restart
 W [ 21] changing
 W [ 21] depending
@@ -4191,23 +4117,22 @@ W [ 21] bootstrap
 W [ 21] recommend
 W [ 21] internals
 W [ 21] operating
-W [ 21] difference
 W [ 21] utilization
 W [ 21] immediately
 W [ 21] destination
+W [ 21] distributed
 W [ 22] core
-W [ 22] color
 W [ 22] stock
 W [ 22] reads
 W [ 22] match
 W [ 22] impact
 W [ 22] decide
 W [ 22] become
+W [ 22] minute
 W [ 22] looking
 W [ 22] suppose
 W [ 22] perform
 W [ 22] limited
-W [ 22] interval
 W [ 22] receives
 W [ 22] consider
 W [ 22] manually
@@ -4217,12 +4142,12 @@ W [ 22] operation
 W [ 22] completely
 W [ 23] left
 W [ 23] mind
+W [ 23] view
 W [ 23] serde
 W [ 23] again
 W [ 23] space
 W [ 23] larger
 W [ 23] choice
-W [ 23] minute
 W [ 23] reduce
 W [ 23] really
 W [ 23] unclean
@@ -4231,9 +4156,9 @@ W [ 23] property
 W [ 23] processes
 W [ 23] replicator
 W [ 23] connections
+W [ 23] documentation
 W [ 24] step
 W [ 24] word
-W [ 24] view
 W [ 24] built
 W [ 24] dirty
 W [ 24] track
@@ -4241,14 +4166,13 @@ W [ 24] unique
 W [ 24] writes
 W [ 24] normal
 W [ 24] regular
-W [ 24] registry
 W [ 24] failures
 W [ 24] maintain
+W [ 24] protocol
 W [ 24] deleting
 W [ 24] implement
 W [ 24] unavailable
 W [ 24] environment
-W [ 24] distributed
 W [ 24] measurements
 W [ 25] easy
 W [ 25] seen
@@ -4257,11 +4181,9 @@ W [ 25] limit
 W [ 25] avoid
 W [ 25] works
 W [ 25] queue
-W [ 25] profile
 W [ 25] workers
 W [ 25] general
 W [ 25] leaders
-W [ 25] protocol
 W [ 25] concepts
 W [ 25] capacity
 W [ 25] versions
@@ -4271,25 +4193,23 @@ W [ 25] therefore
 W [ 25] aggregation
 W [ 25] significant
 W [ 25] architectures
-W [ 25] documentation
 W [ 26] gwen
 W [ 26] added
 W [ 26] usage
-W [ 26] files
 W [ 26] better
 W [ 26] though
 W [ 26] design
-W [ 26] output
 W [ 26] pattern
 W [ 26] getting
 W [ 26] manager
 W [ 26] tracking
-W [ 26] allitebooks
 W [ 27] full
 W [ 27] lose
 W [ 27] rack
+W [ 27] auto
 W [ 27] build
 W [ 27] sends
+W [ 27] files
 W [ 27] happen
 W [ 27] publish
 W [ 27] service
@@ -4298,7 +4218,6 @@ W [ 27] creating
 W [ 27] behavior
 W [ 27] automatic
 W [ 27] something
-W [ 27] localhost
 W [ 27] instances
 W [ 27] understand
 W [ 27] automatically
@@ -4307,7 +4226,10 @@ W [ 28] task
 W [ 28] times
 W [ 28] lower
 W [ 28] takes
+W [ 28] search
 W [ 28] access
+W [ 28] profile
+W [ 28] maximum
 W [ 28] deleted
 W [ 28] perhaps
 W [ 28] offline
@@ -4321,35 +4243,32 @@ W [ 28] serialization
 W [ 29] best
 W [ 29] five
 W [ 29] rest
-W [ 29] auto
 W [ 29] sink
 W [ 29] cache
 W [ 29] close
 W [ 29] worker
 W [ 29] needed
-W [ 29] search
 W [ 29] linked
 W [ 29] behind
 W [ 29] higher
 W [ 29] overall
-W [ 29] maximum
 W [ 29] exactly
 W [ 29] minimum
 W [ 29] integer
-W [ 29] timeout
 W [ 29] seconds
 W [ 29] required
 W [ 29] describe
 W [ 29] currently
 W [ 29] compaction
+W [ 29] connection
 W [ 29] considered
 W [ 29] requirements
 W [ 29] milliseconds
-W [ 30] info
+W [ 30] bean
 W [ 30] move
 W [ 30] linux
 W [ 30] trade
-W [ 30] adding
+W [ 30] output
 W [ 30] specify
 W [ 30] section
 W [ 30] batches
@@ -4359,18 +4278,22 @@ W [ 30] delivery
 W [ 30] separate
 W [ 30] existing
 W [ 30] sometimes
-W [ 30] connection
+W [ 30] compression
 W [ 30] integration
 W [ 30] coordinator
+W [ 30] installation
 W [ 31] path
 W [ 31] main
 W [ 31] loss
+W [ 31] real
 W [ 31] call
 W [ 31] shows
 W [ 31] named
+W [ 31] adding
 W [ 31] across
 W [ 31] issues
-W [ 32] real
+W [ 32] info
+W [ 32] check
 W [ 32] older
 W [ 32] needs
 W [ 32] never
@@ -4379,48 +4302,50 @@ W [ 32] update
 W [ 32] require
 W [ 32] attributes
 W [ 32] configuring
-W [ 32] installation
+W [ 32] elasticsearch
 W [ 33] image
 W [ 33] makes
-W [ 33] values
+W [ 33] instead
 W [ 33] business
 W [ 33] topology
 W [ 33] following
 W [ 33] availability
 W [ 34] loop
-W [ 34] check
+W [ 34] retry
+W [ 34] mysql
 W [ 34] total
 W [ 34] starts
 W [ 34] moving
 W [ 34] tuning
+W [ 34] values
 W [ 34] primary
-W [ 34] instead
-W [ 34] objects
 W [ 34] starting
 W [ 34] increase
 W [ 34] specified
 W [ 34] producing
 W [ 34] serializers
-W [ 34] elasticsearch
 W [ 35] null
 W [ 35] port
-W [ 35] retry
 W [ 35] having
-W [ 35] return
-W [ 35] public
 W [ 35] working
+W [ 35] objects
 W [ 35] contain
+W [ 35] console
 W [ 35] pipeline
+W [ 35] preferred
 W [ 36] scale
 W [ 36] around
+W [ 36] return
+W [ 36] public
 W [ 36] support
 W [ 36] install
 W [ 36] through
 W [ 36] assigned
 W [ 36] activity
+W [ 36] confluent
 W [ 36] assignment
 W [ 37] find
-W [ 37] mysql
+W [ 37] login
 W [ 37] point
 W [ 37] things
 W [ 37] whether
@@ -4428,9 +4353,9 @@ W [ 37] already
 W [ 37] hardware
 W [ 37] typically
 W [ 37] messaging
-W [ 37] preferred
 W [ 37] replicated
 W [ 37] deserializer
+W [ 38] test
 W [ 38] open
 W [ 38] node
 W [ 38] note
@@ -4440,26 +4365,23 @@ W [ 38] several
 W [ 38] recommended
 W [ 39] been
 W [ 39] doesn
-W [ 39] login
 W [ 39] simply
 W [ 39] summary
 W [ 39] collection
 W [ 39] parameters
 W [ 39] datacenters
-W [ 40] test
 W [ 40] show
 W [ 40] longer
 W [ 40] receive
+W [ 40] control
 W [ 40] including
 W [ 40] guarantees
 W [ 41] less
 W [ 41] could
 W [ 41] latest
 W [ 41] enough
-W [ 41] control
 W [ 41] defaults
 W [ 41] failover
-W [ 41] processed
 W [ 41] responsible
 W [ 42] book
 W [ 42] cause
@@ -4470,134 +4392,134 @@ W [ 42] retries
 W [ 42] instance
 W [ 42] consumed
 W [ 42] discussed
+W [ 42] processed
+W [ 43] byte
+W [ 43] down
 W [ 43] uses
 W [ 43] rather
+W [ 43] monitor
 W [ 43] examples
-W [ 43] confluent
 W [ 43] successfully
-W [ 44] byte
-W [ 44] down
 W [ 44] load
 W [ 44] able
 W [ 44] until
 W [ 44] cross
 W [ 44] command
 W [ 44] started
-W [ 44] monitor
 W [ 44] committing
 W [ 45] good
 W [ 45] done
 W [ 45] next
+W [ 45] index
 W [ 45] created
 W [ 45] include
 W [ 45] similar
 W [ 45] failure
 W [ 45] includes
+W [ 45] election
 W [ 45] management
 W [ 46] later
 W [ 46] least
 W [ 46] props
 W [ 46] types
 W [ 46] called
-W [ 46] handling
 W [ 46] subscribe
 W [ 46] reassignment
 W [ 47] code
 W [ 47] level
 W [ 47] buffer
 W [ 47] average
-W [ 47] console
-W [ 47] election
 W [ 47] configure
 W [ 47] configured
 W [ 47] configurations
+W [ 48] users
 W [ 48] traffic
+W [ 48] handling
 W [ 48] problems
 W [ 48] production
-W [ 49] users
-W [ 49] index
 W [ 49] stored
+W [ 49] delete
 W [ 49] itself
 W [ 49] details
 W [ 49] produced
+W [ 49] timestamp
 W [ 50] option
 W [ 50] active
+W [ 50] windows
 W [ 50] results
 W [ 50] additional
 W [ 51] page
 W [ 51] format
-W [ 51] factor
-W [ 51] delete
 W [ 51] storage
 W [ 51] servers
 W [ 51] discuss
 W [ 51] provides
 W [ 51] contains
-W [ 51] timestamp
 W [ 52] here
 W [ 52] line
-W [ 52] windows
+W [ 52] wait
 W [ 52] possible
 W [ 52] addition
 W [ 52] segments
-W [ 53] apis
+W [ 52] metadata
 W [ 53] high
 W [ 53] being
 W [ 53] large
+W [ 53] window
 W [ 53] method
 W [ 53] changes
+W [ 53] latency
 W [ 53] response
 W [ 53] installing
 W [ 54] since
-W [ 54] latency
 W [ 55] part
 W [ 55] join
 W [ 55] under
-W [ 55] metadata
-W [ 56] window
+W [ 55] factor
+W [ 56] groups
 W [ 56] usually
 W [ 56] setting
-W [ 56] exception
 W [ 56] pipelines
+W [ 57] tool
 W [ 57] would
 W [ 57] thread
 W [ 57] external
-W [ 58] tool
-W [ 58] wait
+W [ 57] exception
+W [ 57] retention
 W [ 58] simple
 W [ 58] provided
 W [ 58] building
 W [ 58] serializer
 W [ 59] keep
+W [ 59] json
+W [ 59] connectors
 W [ 60] allow
+W [ 60] tools
 W [ 60] within
 W [ 60] always
-W [ 61] json
-W [ 61] tools
 W [ 61] based
 W [ 61] errors
 W [ 61] consume
 W [ 61] rebalance
+W [ 61] properties
 W [ 62] back
 W [ 62] work
 W [ 62] three
 W [ 62] still
 W [ 62] allows
-W [ 62] groups
+W [ 62] threads
 W [ 65] false
 W [ 65] result
-W [ 65] threads
-W [ 65] connectors
 W [ 65] operations
 W [ 65] reliability
 W [ 66] useful
 W [ 66] reliable
-W [ 66] properties
 W [ 67] were
 W [ 67] look
+W [ 67] class
 W [ 67] options
 W [ 68] often
-W [ 68] retention
+W [ 68] config
 W [ 69] take
 W [ 69] over
 W [ 69] without
@@ -4605,14 +4527,13 @@ W [ 69] mirroring
 W [ 70] problem
 W [ 71] much
 W [ 71] last
-W [ 71] object
+W [ 71] segment
 W [ 72] sent
 W [ 72] tasks
 W [ 72] either
 W [ 72] written
 W [ 73] long
-W [ 73] class
-W [ 73] config
+W [ 73] object
 W [ 73] produce
 W [ 73] clusters
 W [ 73] consuming
@@ -4628,16 +4549,15 @@ W [ 77] even
 W [ 77] batch
 W [ 77] common
 W [ 77] however
+W [ 77] current
 W [ 77] throughput
 W [ 79] writing
-W [ 79] segment
-W [ 82] current
+W [ 83] poll
 W [ 83] create
 W [ 83] amount
-W [ 84] poll
+W [ 84] avro
 W [ 84] once
 W [ 85] write
-W [ 86] avro
 W [ 86] provide
 W [ 87] reading
 W [ 88] sure
@@ -4648,28 +4568,29 @@ W [ 89] their
 W [ 90] another
 W [ 91] sending
 W [ 92] know
+W [ 92] true
+W [ 92] local
 W [ 92] default
 W [ 93] parameter
+W [ 94] schema
 W [ 95] such
-W [ 96] true
 W [ 96] store
 W [ 96] second
 W [ 97] read
 W [ 97] case
 W [ 97] both
 W [ 97] datacenter
+W [ 98] java
 W [ 98] rate
 W [ 98] must
 W [ 98] about
 W [ 98] controller
 W [ 99] error
-W [ 99] schema
 W [100] does
-W [100] java
 W [100] like
 W [101] running
+W [102] fetch
 W [102] count
-W [102] local
 W [103] every
 W [104] state
 W [105] order
@@ -4681,31 +4602,30 @@ W [107] figure
 W [107] network
 W [108] event
 W [109] where
+W [109] server
 W [109] producers
-W [110] fetch
 W [110] metric
+W [110] connector
 W [110] important
 W [111] information
 W [113] replication
-W [114] table
-W [114] connector
+W [115] source
 W [115] systems
 W [116] what
 W [116] sync
-W [116] source
 W [117] want
-W [117] server
+W [117] table
 W [117] customer
 W [118] size
+W [118] replica
 W [119] means
 W [121] while
+W [121] clients
 W [122] make
 W [122] those
 W [122] before
 W [122] requests
 W [122] available
-W [123] replica
-W [123] clients
 W [123] different
 W [124] disk
 W [124] first
@@ -4719,46 +4639,47 @@ W [141] mirror
 W [142] them
 W [146] into
 W [148] bytes
+W [150] type
 W [151] file
 W [151] most
 W [151] multiple
-W [152] type
+W [152] start
 W [153] single
 W [155] many
-W [156] string
+W [157] string
 W [157] streams
-W [159] start
 W [161] monitoring
 W [164] than
 W [164] then
+W [164] connect
+W [169] apache
 W [169] applications
-W [170] only
+W [171] only
 W [175] same
-W [176] connect
 W [177] some
-W [180] client
-W [183] commit
+W [177] client
+W [182] commit
 W [183] records
-W [187] request
+W [185] zookeeper
+W [186] request
 W [192] value
 W [194] other
-W [194] zookeeper
-W [195] apache
 W [197] these
 W [198] used
-W [200] group
-W [205] name
+W [199] group
+W [199] replicas
+W [201] name
 W [209] application
 W [210] your
 W [215] leader
 W [219] they
 W [220] number
-W [225] replicas
-W [229] using
+W [226] example
+W [228] using
 W [229] events
-W [244] brokers
-W [245] offset
-W [248] topics
+W [233] topics
+W [244] offset
+W [245] brokers
 W [258] also
 W [259] need
 W [261] record
@@ -4767,33 +4688,32 @@ W [263] configuration
 W [265] system
 W [270] more
 W [275] consumers
-W [277] example
 W [278] there
 W [287] metrics
 W [295] chapter
 W [303] which
 W [308] each
-W [318] stream
 W [326] have
+W [329] stream
 W [339] processing
-W [350] producer
+W [346] producer
 W [375] message
-W [390] partitions
-W [400] time
+W [384] partitions
+W [397] time
+W [453] cluster
 W [476] when
-W [482] cluster
-W [492] broker
+W [479] broker
 W [521] from
 W [536] messages
-W [591] partition
+W [581] partition
 W [636] with
-W [742] consumer
-W [764] data
-W [797] topic
+W [728] consumer
+W [758] data
+W [776] topic
 W [985] will
-W [1101] this
+W [1100] this
 W [1405] that
-W [1642] kafka
+W [1499] kafka
 
 ---- Word forms ----
 able --> [enabling, disabling, disable, enable, disabled, enabled]
@@ -5081,7 +5001,7 @@ diverge --> [diverging]
 divide --> [divides]
 document --> [documents, documented, documentation]
 double --> [doubles]
-download --> [downloads, downloaded]
+download --> [downloaded]
 drawback --> [drawbacks]
 drive --> [driver, drives]
 drop --> [drops]
@@ -5332,7 +5252,6 @@ match --> [mismatches, matched, matches, matching]
 materialized --> [materializing]
 materials --> [materialize]
 matter --> [matters]
-mbean --> [mbeans]
 mean --> [means, meaning, meaningless]
 measure --> [measurement, measurements]
 measured --> [measures]
@@ -5391,7 +5310,6 @@ operations --> [operational]
 optimize --> [optimally, optimization, optimizations]
 option --> [optionally, options, optional]
 order --> [ordered, ordering, orders]
-oreil --> [oreilly]
 organization --> [organizations]
 origin --> [original, originally, origins]
 originated --> [originating]
@@ -5755,7 +5673,7 @@ volume --> [volumes]
 wait --> [waiting, waits]
 want --> [wanted, wants]
 warehouse --> [warehousing]
-warn --> [warning]
+warn --> [warnings, warning]
 waste --> [wasting]
 watch --> [watches, watchers, watching]
 water --> [watered]
@@ -5781,81 +5699,74 @@ zero --> [nonzero]
 zone --> [zones]
 
 ---- Ignore statistic ----
-I [  1] h
-I [  1] q
-I [  1] ac
-I [  1] ae
-I [  1] af
+I [  1] ad
 I [  1] al
-I [  1] bf
-I [  1] cg
-I [  1] ch
-I [  1] co
-I [  1] df
-I [  1] ec
-I [  1] et
-I [  1] fa
-I [  1] fd
-I [  1] fe
-I [  1] ft
-I [  1] gj
-I [  1] gz
-I [  1] hi
-I [  1] hn
-I [  1] kk
-I [  1] kv
-I [  1] lr
-I [  1] mc
-I [  1] mf
-I [  1] mu
-I [  1] mx
-I [  1] nl
-I [  1] ob
-I [  1] om
-I [  1] pu
-I [  1] rc
-I [  1] ri
+I [  1] sc
 I [  1] si
-I [  1] sq
 I [  1] st
 I [  1] sy
+I [  1] co
 I [  1] te
-I [  1] tf
+I [  1] es
+I [  1] et
 I [  1] vi
-I [  1] vu
 I [  1] wa
+I [  1] ft
 I [  1] wi
 I [  1] xv
+I [  1] xx
+I [  1] hi
+I [  1] ix
+I [  1] mc
+I [  1] ns
+I [  1] om
 I [  1] egg
+I [  1] csv
+I [  1] pmc
+I [  1] lea
 I [  1] ted
 I [  1] deu
 I [  1] vii
-I [  1] bbe
-I [  1] ips
+I [  1] ler
+I [  1] jar
+I [  1] std
 I [  1] hoc
+I [  1] sum
+I [  1] suo
 I [  1] gmt
 I [  1] cep
-I [  1] tgz
-I [  1] sfc
+I [  1] ses
+I [  1] sve
+I [  1] nld
 I [  1] abs
-I [  1] acc
+I [  1] asf
 I [  1] die
+I [  1] ace
+I [  1] ata
 I [  1] tie
 I [  1] reg
+I [  1] lit
 I [  1] ita
 I [  1] tip
+I [  1] hat
+I [  1] opm
 I [  1] cht
 I [  1] chs
-I [  1] tjx
-I [  1] zwf
-I [  1] kzb
-I [  1] eng
+I [  1] que
+I [  1] sys
+I [  1] kit
+I [  1] ptb
 I [  1] pct
-I [  1] grx
+I [  1] wan
+I [  1] yes
+I [  1] war
 I [  1] enu
 I [  1] bid
+I [  1] age
+I [  1] awt
+I [  1] mom
+I [  1] fal
 I [  1] fra
-I [  1] eps
 I [  1] odd
 I [  1] doc
 I [  1] aid
@@ -5863,403 +5774,289 @@ I [  1] dot
 I [  1] air
 I [  1] ble
 I [  1] toy
-I [  1] blm
-I [  1] xxd
 I [  1] xxi
-I [  1] ery
 I [  1] urw
 I [  1] esp
-I [  1] lab
-I [  1] ale
-I [  1] dry
-I [  1] rom
-I [  1] oil
-I [  1] csv
-I [  1] pmc
-I [  1] lea
-I [  1] ler
-I [  1] std
-I [  1] bsd
-I [  1] sum
-I [  1] suo
-I [  1] sve
-I [  1] nld
-I [  1] dyg
-I [  1] asf
-I [  1] ata
-I [  1] lit
-I [  1] hat
-I [  1] opm
-I [  1] que
-I [  1] syn
-I [  1] sys
-I [  1] kit
-I [  1] ptb
-I [  1] wan
-I [  1] yes
-I [  1] war
-I [  1] awt
-I [  1] mom
-I [  1] fal
-I [  1] fdb
-I [  1] fdd
 I [  1] fed
+I [  1] lab
 I [  1] kor
 I [  1] dan
 I [  1] jms
+I [  1] ale
 I [  1] dba
 I [  1] xiv
 I [  1] xix
+I [  1] dry
 I [  1] lsi
-I [  1] san
+I [  1] oil
 I [  1] mvn
 I [  1] jpn
 I [  1] sax
 I [  1] opts
-I [  1] amzn
+I [  1] smtp
 I [  1] cnxn
-I [  1] urls
+I [  1] isbn
 I [  1] args
 I [  1] eggs
+I [  1] viii
 I [  1] owls
 I [  1] owns
-I [  1] smtp
-I [  1] ssds
-I [  1] viii
+I [  1] html
 I [  1] xviii
-I [  1] pdfxno
-I [  1] pdfxset
 I [  1] jmxtrans
 I [  1] usuallly
-I [  1] pdfxtrim
-I [  1] pdfxbleed
-I [  1] utfstring
 I [  1] healthcheck
-I [  1] pdfxtrapped
-I [  1] pdfxregistry
-I [  1] pdfxcompliant
-I [  2] l
-I [  2] z
-I [  2] bb
-I [  2] bc
-I [  2] cb
+I [  2] ca
+I [  2] cd
 I [  2] cp
 I [  2] de
-I [  2] ea
-I [  2] fc
+I [  2] tv
 I [  2] fi
-I [  2] fm
+I [  2] xi
 I [  2] ip
-I [  2] ix
-I [  2] ko
+I [  2] kb
 I [  2] mi
 I [  2] mv
 I [  2] na
 I [  2] ni
 I [  2] op
-I [  2] sc
-I [  2] tv
-I [  2] un
-I [  2] xi
+I [  2] led
+I [  2] dev
 I [  2] fix
-I [  2] bat
+I [  2] nio
+I [  2] apt
 I [  2] bbu
+I [  2] cus
+I [  2] cut
 I [  2] ceo
 I [  2] cer
-I [  2] seg
-I [  2] acb
-I [  2] ace
+I [  2] art
 I [  2] ack
 I [  2] tid
 I [  2] rep
-I [  2] rgb
-I [  2] zxf
-I [  2] age
-I [  2] tmp
-I [  2] fun
-I [  2] mes
-I [  2] met
-I [  2] sre
-I [  2] ttn
-I [  2] csp
-I [  2] led
-I [  2] nio
-I [  2] apt
-I [  2] cus
-I [  2] cut
-I [  2] art
 I [  2] pro
 I [  2] opt
-I [  2] iec
-I [  2] yjk
+I [  2] ids
+I [  2] foo
+I [  2] zxf
+I [  2] pdf
+I [  2] tmp
+I [  2] fun
 I [  2] dad
 I [  2] dag
 I [  2] hit
-I [  2] oxz
+I [  2] son
+I [  2] sql
 I [  2] car
+I [  2] mes
+I [  2] met
+I [  2] sre
+I [  2] acts
+I [  2] ctrl
+I [  2] ends
+I [  2] acls
 I [  2] oltp
 I [  2] asks
 I [  2] srvr
-I [  2] pdfx
-I [  2] dwsg
-I [  2] acts
-I [  2] ctrl
-I [  2] hdds
-I [  2] ends
-I [  2] xmls
 I [  2] xiii
-I [  2] rgbprofile
 I [  2] worthwhile
-I [  3] p
-I [  3] w
-I [  3] cf
-I [  3] he
-I [  3] ki
-I [  3] nr
 I [  3] se
 I [  3] ti
-I [  3] tea
-I [  3] dev
+I [  3] en
+I [  3] he
+I [  3] zk
+I [  3] ki
+I [  3] nr
+I [  3] ssl
 I [  3] cdc
-I [  3] cea
-I [  3] cfg
+I [  3] mit
+I [  3] bug
+I [  3] dir
+I [  3] pri
 I [  3] elt
 I [  3] she
-I [  3] foo
+I [  3] gap
+I [  3] hdd
+I [  3] pub
 I [  3] eof
+I [  3] mon
 I [  3] cli
 I [  3] uri
 I [  3] usa
 I [  3] con
-I [  3] ssl
-I [  3] jar
-I [  3] mit
-I [  3] bug
-I [  3] pri
-I [  3] gap
-I [  3] hdd
-I [  3] pub
-I [  3] mon
-I [  3] zip
-I [  3] fds
 I [  3] him
 I [  3] tar
 I [  3] cal
-I [  3] isbn
-I [  4] dc
-I [  4] eb
-I [  4] en
-I [  4] kb
-I [  4] lz
-I [  4] mq
-I [  4] ps
+I [  3] cat
+I [  3] zoo
 I [  4] tb
 I [  4] tp
-I [  4] zk
 I [  4] xml
 I [  4] jre
 I [  4] ran
 I [  4] rao
-I [  4] jun
-I [  4] red
-I [  4] dns
-I [  4] row
 I [  4] eye
 I [  4] sub
 I [  4] mix
 I [  4] ibm
+I [  4] jun
+I [  4] red
+I [  4] dns
 I [  4] tab
-I [  4] cat
-I [  4] efa
+I [  4] dsl
+I [  4] row
+I [  4] http
 I [  4] clickstream
-I [  5] j
-I [  5] cd
-I [  5] ee
+I [  5] ps
 I [  5] me
-I [  5] xx
 I [  5] raw
-I [  5] pay
-I [  5] gui
-I [  5] dsl
 I [  5] bus
 I [  5] lib
+I [  5] pay
 I [  5] non
 I [  5] nor
 I [  5] her
+I [  5] zip
 I [  5] var
 I [  5] xfs
 I [  5] inc
-I [  6] v
-I [  6] ef
-I [  6] dir
-I [  6] wsl
+I [  6] sh
 I [  6] ssd
-I [  6] ext
 I [  6] jay
 I [  6] aws
+I [  6] bin
+I [  6] wsl
 I [  6] his
 I [  6] downstream
-I [  7] r
-I [  7] ad
-I [  7] ipv
+I [  7] jdk
 I [  7] six
-I [  7] pdf
-I [  7] ids
+I [  7] com
 I [  7] apps
-I [  8] k
-I [  8] dab
 I [  8] cas
 I [  8] hdfs
-I [  9] db
+I [  9] vm
 I [  9] mac
 I [  9] web
 I [  9] git
 I [ 10] sf
-I [ 10] th
 I [ 10] vs
 I [ 10] bad
-I [ 10] fax
 I [ 10] saw
 I [ 10] nyc
-I [ 10] acls
-I [ 11] m
-I [ 11] vm
+I [ 11] ds
 I [ 11] fit
+I [ 11] fax
 I [ 11] box
 I [ 11] crc
-I [ 12] ca
+I [ 12] ls
 I [ 12] ok
+I [ 12] tcp
 I [ 12] say
 I [ 12] offs
 I [ 13] via
 I [ 13] won
 I [ 13] big
 I [ 13] job
-I [ 13] html
 I [ 14] re
 I [ 14] isn
 I [ 14] top
+I [ 14] url
 I [ 14] etl
-I [ 14] jdk
 I [ 14] adds
-I [ 15] u
 I [ 15] jvm
 I [ 15] lot
 I [ 16] ask
+I [ 17] io
 I [ 18] gb
 I [ 18] did
-I [ 18] url
 I [ 18] had
-I [ 18] tcp
-I [ 19] x
+I [ 18] num
 I [ 19] got
+I [ 19] bit
+I [ 20] gc
 I [ 20] hub
-I [ 20] https
+I [ 20] jdbc
 I [ 21] sec
 I [ 21] net
-I [ 21] num
-I [ 22] gc
 I [ 22] yet
 I [ 22] low
-I [ 23] o
 I [ 23] off
-I [ 24] etc
+I [ 23] usr
+I [ 23] etc
+I [ 24] mb
 I [ 24] far
-I [ 24] jdbc
-I [ 25] n
-I [ 25] io
-I [ 25] bin
+I [ 25] min
 I [ 25] too
-I [ 25] sql
 I [ 25] due
-I [ 26] min
-I [ 27] mb
-I [ 28] isr
-I [ 28] int
-I [ 30] ly
+I [ 26] int
+I [ 27] isr
+I [ 30] jmx
 I [ 30] cpu
 I [ 30] try
-I [ 30] jmx
 I [ 31] go
 I [ 32] avg
-I [ 33] usr
+I [ 33] ms
 I [ 33] who
 I [ 33] acks
-I [ 35] www
+I [ 34] org
 I [ 37] day
 I [ 38] app
 I [ 39] dr
-I [ 39] us
 I [ 39] ve
 I [ 40] why
+I [ 41] us
 I [ 42] old
 I [ 43] don
-I [ 43] zoo
-I [ 47] bit
-I [ 52] os
+I [ 44] os
 I [ 52] put
-I [ 54] g
+I [ 56] let
 I [ 56] add
 I [ 56] map
-I [ 56] let
 I [ 59] api
-I [ 61] i
 I [ 62] now
-I [ 63] lag
-I [ 65] end
+I [ 62] lag
+I [ 64] end
+I [ 66] max
 I [ 71] own
 I [ 72] ll
-I [ 72] org
-I [ 76] b
-I [ 76] sh
-I [ 81] max
 I [ 84] few
-I [ 93] http
 I [ 96] our
-I [ 97] ms
+I [ 98] id
 I [101] any
-I [103] d
+I [103] run
 I [106] its
-I [107] com
-I [109] run
 I [110] way
 I [116] may
-I [118] id
 I [136] up
 I [138] see
+I [140] my
 I [141] do
 I [142] out
-I [150] per
-I [151] c
-I [151] my
-I [153] set
+I [146] per
+I [154] set
 I [158] two
 I [158] was
 I [159] no
 I [169] get
-I [177] t
-I [181] f
-I [182] key
+I [175] key
 I [185] has
+I [188] log
 I [202] so
-I [212] log
-I [238] e
-I [263] s
 I [273] new
 I [294] one
 I [295] but
 I [302] how
 I [321] at
 I [363] an
-I [383] use
+I [382] use
 I [418] not
-I [437] by
+I [436] by
 I [440] all
 I [501] or
 I [579] if
-I [648] as
+I [650] as
 I [660] on
-I [727] can
+I [726] can
 I [813] be
 I [893] we
 I [894] are
@@ -6267,13 +6064,11 @@ I [976] you
 I [990] it
 I [1369] for
 I [1864] in
-I [2013] is
-I [2015] 
+I [2066] is
 I [2131] of
-I [2374] and
-I [2652] a
-I [3446] to
+I [2376] and
+I [3444] to
 I [6605] the
 
-Total 68979 passed (4795 unique)
-Ignored 44012 (493 unique)
+Total 67997 passed (4715 unique)
+Ignored 37023 (370 unique)

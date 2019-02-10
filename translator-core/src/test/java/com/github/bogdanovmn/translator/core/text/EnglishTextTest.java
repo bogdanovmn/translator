@@ -12,7 +12,8 @@ public class EnglishTextTest {
 		EnglishText text = EnglishText.fromText(
 			"bla groovy-lang bla bla execu-\ntion " +
 				"proce‐ dure " +
-				"agile‐related"
+				"agile‐related JSON-\nformatted JSON-formatted " +
+				"RESTAU- RANT"
 		);
 
 		System.out.println(text.statistic());
@@ -28,6 +29,8 @@ public class EnglishTextTest {
 		assertEquals("procedure forms freq"  , 1, text.wordFrequency("procedure"));
 		assertEquals("agile forms freq"      , 1, text.wordFrequency("agile"));
 		assertEquals("related forms freq"    , 1, text.wordFrequency("related"));
+		assertEquals("formatted forms freq"  , 2, text.wordFrequency("formatted"));
+		assertEquals("restaurant forms freq" , 1, text.wordFrequency("restaurant"));
 	}
 	@Test
 	public void getWordFormsFrequency() throws Exception {
@@ -50,13 +53,15 @@ public class EnglishTextTest {
 	@Test
 	public void getWordFrequency() throws Exception {
 		EnglishText text = EnglishText.fromText(
+			"&#230;sophagus " +
 			"hello, world! hello, man! " +
 			"size_t hello_World  " +
 			"a aa " +
 			"goood iii " +
 			"bsd sdk cxxldflags " +
 			"executorDriver ExecutorClassName " +
-			"InfoQ"
+			"InfoQ /UCRandBGInfo " +
+			"UTF-8 bytes \"42D5GrxOQFebf83DYgNl-g\" "
 		);
 
 		System.out.println(text.statistic());
@@ -75,14 +80,18 @@ public class EnglishTextTest {
 		assertEquals("driver freq"   , 1, text.wordFrequency("driver"));
 		assertEquals("class freq"    , 1, text.wordFrequency("class"));
 		assertEquals("name freq"     , 1, text.wordFrequency("name"));
-		assertEquals("info freq"     , 1, text.wordFrequency("info"));
+		assertEquals("info freq"     , 2, text.wordFrequency("info"));
+		assertEquals("bginfo freq"   , 0, text.wordFrequency("bginfo"));
+		assertEquals("bytes freq"    , 1, text.wordFrequency("bytes"));
+		assertEquals("febf freq"     , 0, text.wordFrequency("febf"));
+		assertEquals("sophagus freq" , 1, text.wordFrequency("sophagus"));
 	}
 
 	@Test
 	public void words() throws Exception {
 		EnglishText text = EnglishText.fromText("hello, world! test2role руссиш");
 
-		assertEquals(4, text.uniqueWords().size());
+		assertEquals(2, text.uniqueWords().size());
 	}
 
 	@Test

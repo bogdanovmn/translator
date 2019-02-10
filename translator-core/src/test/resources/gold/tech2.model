@@ -6,8 +6,6 @@ W [  1] harm
 W [  1] pile
 W [  1] hats
 W [  1] hate
-W [  1] gore
-W [  1] sats
 W [  1] rose
 W [  1] ezra
 W [  1] pipe
@@ -45,6 +43,7 @@ W [  1] sums
 W [  1] dies
 W [  1] gall
 W [  1] fold
+W [  1] foot
 W [  1] rare
 W [  1] plow
 W [  1] dips
@@ -102,10 +101,8 @@ W [  1] byte
 W [  1] quiz
 W [  1] fuji
 W [  1] bias
-W [  1] mids
 W [  1] mike
 W [  1] oops
-W [  1] easo
 W [  1] park
 W [  1] ears
 W [  1] mini
@@ -142,6 +139,7 @@ W [  1] lift
 W [  1] cope
 W [  1] norm
 W [  1] blow
+W [  1] dash
 W [  1] dave
 W [  1] limp
 W [  1] wine
@@ -411,6 +409,7 @@ W [  1] loyal
 W [  1] faber
 W [  1] spark
 W [  1] traps
+W [  1] infoq
 W [  1] seals
 W [  1] trait
 W [  1] alpha
@@ -779,6 +778,7 @@ W [  1] traded
 W [  1] horses
 W [  1] deming
 W [  1] endure
+W [  1] poster
 W [  1] morrow
 W [  1] finite
 W [  1] morals
@@ -824,9 +824,9 @@ W [  1] amusing
 W [  1] rejects
 W [  1] obvious
 W [  1] copying
-W [  1] uploads
 W [  1] ranging
 W [  1] breadth
+W [  1] dinners
 W [  1] presses
 W [  1] cameras
 W [  1] honesty
@@ -1030,6 +1030,7 @@ W [  1] divorce
 W [  1] empathy
 W [  1] fraught
 W [  1] blended
+W [  1] blender
 W [  1] labeled
 W [  1] painful
 W [  1] checked
@@ -1104,6 +1105,7 @@ W [  1] chronic
 W [  1] fittest
 W [  1] betting
 W [  1] aerobic
+W [  1] midthis
 W [  1] diploma
 W [  1] settled
 W [  1] ancient
@@ -1328,7 +1330,6 @@ W [  1] availity
 W [  1] marginal
 W [  1] leonardo
 W [  1] decisive
-W [  1] megawatt
 W [  1] restrict
 W [  1] dominant
 W [  1] worrying
@@ -1376,6 +1377,7 @@ W [  1] snowball
 W [  1] isolated
 W [  1] carnegie
 W [  1] finishes
+W [  1] abstract
 W [  1] enforces
 W [  1] founding
 W [  1] crashing
@@ -1586,7 +1588,6 @@ W [  1] rankings
 W [  1] troubled
 W [  1] nebulous
 W [  1] brochure
-W [  1] pmiagile
 W [  1] mastered
 W [  1] analysts
 W [  1] eschewed
@@ -1813,6 +1814,7 @@ W [  1] designate
 W [  1] consulted
 W [  1] addictive
 W [  1] detailing
+W [  1] addiction
 W [  1] billboard
 W [  1] spaghetti
 W [  1] audiences
@@ -2460,13 +2462,11 @@ W [  1] commodities
 W [  1] celebration
 W [  1] santisteban
 W [  1] polyamorous
-W [  1] booksupport
 W [  1] synergistic
 W [  1] therapeutic
 W [  1] heightening
 W [  1] theoretical
 W [  1] quadrillion
-W [  1] pisainfocus
 W [  1] readability
 W [  1] correlating
 W [  1] invalidated
@@ -2486,6 +2486,7 @@ W [  1] elimination
 W [  1] practically
 W [  1] constructor
 W [  1] reestablish
+W [  1] permissions
 W [  1] imagination
 W [  1] fascinating
 W [  1] warehousing
@@ -2521,7 +2522,6 @@ W [  1] reservations
 W [  1] paraphrasing
 W [  1] nonscholarly
 W [  1] conveniences
-W [  1] pisaproducts
 W [  1] redistribute
 W [  1] nderstanding
 W [  1] disconnected
@@ -2589,6 +2589,7 @@ W [  1] performances
 W [  1] embellishing
 W [  1] customizable
 W [  1] replacements
+W [  1] platinumedge
 W [  1] reestimating
 W [  1] bureaucratic
 W [  1] generational
@@ -2603,7 +2604,6 @@ W [  1] highlighting
 W [  1] conservation
 W [  1] considerably
 W [  1] universality
-W [  1] casacolumbia
 W [  1] relentlessly
 W [  1] kaleidoscope
 W [  1] distributing
@@ -2645,7 +2645,6 @@ W [  1] ramifications
 W [  1] irreplaceable
 W [  1] incorporation
 W [  1] encyclopedias
-W [  1] racingreverse
 W [  1] qualitatively
 W [  1] unnecessarily
 W [  1] extensibility
@@ -2774,6 +2773,7 @@ W [  1] telecommunications
 W [  1] operationalization
 W [  1] individualcentered
 W [  1] findmytruestoftruelove
+W [  1] agilprojectmanagementfd
 W [  1] contractorsubcontractor
 W [  2] hasn
 W [  2] baby
@@ -2782,10 +2782,8 @@ W [  2] star
 W [  2] wool
 W [  2] mate
 W [  2] yeah
-W [  2] mbas
 W [  2] died
 W [  2] rank
-W [  2] foot
 W [  2] food
 W [  2] gate
 W [  2] plug
@@ -2824,7 +2822,6 @@ W [  2] ring
 W [  2] slow
 W [  2] whim
 W [  2] cook
-W [  2] dash
 W [  2] wild
 W [  2] noun
 W [  2] ucla
@@ -2836,6 +2833,7 @@ W [  2] file
 W [  2] fish
 W [  2] duck
 W [  2] dunn
+W [  2] yard
 W [  2] cart
 W [  2] cars
 W [  2] crum
@@ -2846,6 +2844,7 @@ W [  2] eyes
 W [  2] dept
 W [  2] zero
 W [  2] flat
+W [  2] safe
 W [  2] flew
 W [  2] click
 W [  2] picks
@@ -2874,6 +2873,7 @@ W [  2] older
 W [  2] samir
 W [  2] renee
 W [  2] prove
+W [  2] sites
 W [  2] aimed
 W [  2] adopt
 W [  2] viral
@@ -2943,7 +2943,6 @@ W [  2] freed
 W [  2] eliot
 W [  2] prime
 W [  2] prima
-W [  2] infoq
 W [  2] heavy
 W [  2] seats
 W [  2] downs
@@ -3003,6 +3002,7 @@ W [  2] colors
 W [  2] guides
 W [  2] checks
 W [  2] bogged
+W [  2] square
 W [  2] killer
 W [  2] acting
 W [  2] shield
@@ -3078,7 +3078,6 @@ W [  2] father
 W [  2] wonder
 W [  2] excels
 W [  2] nevada
-W [  2] poster
 W [  2] mutual
 W [  2] modify
 W [  2] retain
@@ -3100,7 +3099,6 @@ W [  2] telling
 W [  2] virally
 W [  2] serious
 W [  2] pretest
-W [  2] dinners
 W [  2] adjusts
 W [  2] markets
 W [  2] harness
@@ -3186,7 +3184,6 @@ W [  2] outlook
 W [  2] distant
 W [  2] hobbies
 W [  2] teaches
-W [  2] blender
 W [  2] selfand
 W [  2] twitter
 W [  2] glasses
@@ -3327,7 +3324,6 @@ W [  2] plumbing
 W [  2] damaging
 W [  2] curators
 W [  2] explains
-W [  2] abstract
 W [  2] invented
 W [  2] unlikely
 W [  2] gameplay
@@ -3346,7 +3342,6 @@ W [  2] stopping
 W [  2] pyramids
 W [  2] petraeus
 W [  2] hesitant
-W [  2] blogspot
 W [  2] adequate
 W [  2] blogging
 W [  2] balanced
@@ -3456,7 +3451,6 @@ W [  2] exception
 W [  2] generates
 W [  2] investors
 W [  2] gradually
-W [  2] scrumplop
 W [  2] educating
 W [  2] gigabytes
 W [  2] countries
@@ -3481,7 +3475,6 @@ W [  2] adaptable
 W [  2] universal
 W [  2] milestone
 W [  2] resolving
-W [  2] addiction
 W [  2] adjective
 W [  2] benefited
 W [  2] specialty
@@ -3571,6 +3564,7 @@ W [  2] reflection
 W [  2] harnessing
 W [  2] overstated
 W [  2] accustomed
+W [  2] cheatsheet
 W [  2] networking
 W [  2] disconnect
 W [  2] anticipate
@@ -3726,7 +3720,6 @@ W [  2] documenting
 W [  2] subscribers
 W [  2] credentials
 W [  2] intentional
-W [  2] permissions
 W [  2] christensen
 W [  2] empowerment
 W [  2] uncertainty
@@ -3798,7 +3791,6 @@ W [  2] manufacturers
 W [  2] inexpensively
 W [  2] distinguished
 W [  2] inappropriate
-W [  2] scrumalliance
 W [  2] realistically
 W [  2] uninterrupted
 W [  2] modifications
@@ -3810,11 +3802,8 @@ W [  2] accomplishment
 W [  2] characteristic
 W [  2] demobilization
 W [  2] improvisations
-W [  2] theagileschool
-W [  2] agilemanifesto
 W [  2] selfmanagement
 W [  2] professionally
-W [  2] theleanstartup
 W [  2] ineffectiveness
 W [  2] characteristics
 W [  2] recommendations
@@ -3822,9 +3811,7 @@ W [  2] pharmaceuticals
 W [  2] acknowledgments
 W [  2] kindergarteners
 W [  2] selforganization
-W [  2] scrumdevelopment
 W [  2] intrapreneurship
-W [  2] scaledagileframework
 W [  3] roll
 W [  3] flip
 W [  3] root
@@ -3856,7 +3843,6 @@ W [  3] bill
 W [  3] dots
 W [  3] miss
 W [  3] mita
-W [  3] cmos
 W [  3] ride
 W [  3] slip
 W [  3] slot
@@ -3872,6 +3858,7 @@ W [  3] cake
 W [  3] kick
 W [  3] mold
 W [  3] nasa
+W [  3] oecd
 W [  3] deck
 W [  3] deep
 W [  3] desk
@@ -3885,7 +3872,6 @@ W [  3] howey
 W [  3] shape
 W [  3] links
 W [  3] david
-W [  3] sites
 W [  3] entry
 W [  3] brand
 W [  3] joint
@@ -3976,7 +3962,6 @@ W [  3] queues
 W [  3] sorely
 W [  3] circle
 W [  3] steady
-W [  3] square
 W [  3] sounds
 W [  3] safely
 W [  3] vetted
@@ -4102,7 +4087,6 @@ W [  3] payment
 W [  3] players
 W [  3] seeking
 W [  3] swarmed
-W [  3] laytons
 W [  3] federal
 W [  3] mistake
 W [  3] enabled
@@ -4352,6 +4336,7 @@ W [  3] progressing
 W [  3] expressions
 W [  3] prioritizes
 W [  3] centralized
+W [  3] scrumguides
 W [  3] frustrating
 W [  3] contributed
 W [  3] alternative
@@ -4409,7 +4394,7 @@ W [  3] differentiated
 W [  3] collaboratively
 W [  3] extracurricular
 W [  3] miscommunication
-W [  3] agilprojectmanagementfd
+W [  4] pisa
 W [  4] cult
 W [  4] ford
 W [  4] gave
@@ -4425,9 +4410,7 @@ W [  4] felt
 W [  4] told
 W [  4] town
 W [  4] cold
-W [  4] yard
 W [  4] cash
-W [  4] oecd
 W [  4] hadn
 W [  4] relax
 W [  4] pitch
@@ -4470,6 +4453,7 @@ W [  4] truth
 W [  4] royce
 W [  4] tunes
 W [  4] angie
+W [  4] store
 W [  4] stone
 W [  4] deploy
 W [  4] widely
@@ -4689,7 +4673,6 @@ W [  4] hawthorne
 W [  4] practiced
 W [  4] migration
 W [  4] automation
-W [  4] cheatsheet
 W [  4] complaints
 W [  4] dashboards
 W [  4] monitoring
@@ -4709,6 +4692,7 @@ W [  4] disruption
 W [  4] highlights
 W [  4] consisting
 W [  4] invaluable
+W [  4] importance
 W [  4] physically
 W [  4] directions
 W [  4] background
@@ -4766,6 +4750,7 @@ W [  4] connections
 W [  4] quantitative
 W [  4] representing
 W [  4] individually
+W [  4] presentation
 W [  4] facilitating
 W [  4] integrations
 W [  4] capabilities
@@ -4798,6 +4783,7 @@ W [  5] okay
 W [  5] byod
 W [  5] byoa
 W [  5] onto
+W [  5] page
 W [  5] zone
 W [  5] path
 W [  5] pass
@@ -4880,6 +4866,7 @@ W [  5] defect
 W [  5] spread
 W [  5] affect
 W [  5] living
+W [  5] racing
 W [  5] filter
 W [  5] hopkins
 W [  5] planner
@@ -4891,6 +4878,7 @@ W [  5] credits
 W [  5] storage
 W [  5] insight
 W [  5] updated
+W [  5] reverse
 W [  5] america
 W [  5] reached
 W [  5] removal
@@ -5008,7 +4996,6 @@ W [  5] governance
 W [  5] productive
 W [  5] affordable
 W [  5] restaurant
-W [  5] importance
 W [  5] incredible
 W [  5] optimistic
 W [  5] cumulative
@@ -5069,12 +5056,10 @@ W [  5] underperformance
 W [  5] representational
 W [  6] pick
 W [  6] sale
-W [  6] pisa
 W [  6] knew
 W [  6] rule
 W [  6] runs
 W [  6] faux
-W [  6] page
 W [  6] info
 W [  6] rise
 W [  6] edit
@@ -5090,6 +5075,7 @@ W [  6] forum
 W [  6] sides
 W [  6] stuff
 W [  6] topic
+W [  6] yahoo
 W [  6] ended
 W [  6] layer
 W [  6] tough
@@ -5110,12 +5096,12 @@ W [  6] funds
 W [  6] tells
 W [  6] price
 W [  6] score
-W [  6] store
 W [  6] jordan
 W [  6] nimble
 W [  6] chunks
 W [  6] occurs
 W [  6] places
+W [  6] morgan
 W [  6] resist
 W [  6] looked
 W [  6] emails
@@ -5144,7 +5130,6 @@ W [  6] opposed
 W [  6] invited
 W [  6] feeling
 W [  6] adopted
-W [  6] reverse
 W [  6] rollout
 W [  6] cheaper
 W [  6] harvard
@@ -5183,7 +5168,6 @@ W [  6] download
 W [  6] bringing
 W [  6] involves
 W [  6] adoption
-W [  6] jpmorgan
 W [  6] boundary
 W [  6] detailed
 W [  6] delivers
@@ -5245,7 +5229,6 @@ W [  6] establishes
 W [  6] sufficiently
 W [  6] additionally
 W [  6] facilitation
-W [  6] presentation
 W [  6] distractions
 W [  6] concentration
 W [  6] exponentially
@@ -5308,7 +5291,6 @@ W [  7] facing
 W [  7] thanks
 W [  7] highly
 W [  7] chance
-W [  7] racing
 W [  7] workers
 W [  7] authors
 W [  7] remains
@@ -5436,6 +5418,7 @@ W [  8] sign
 W [  8] hire
 W [  8] pace
 W [  8] none
+W [  8] blog
 W [  8] fine
 W [  8] jeff
 W [  8] body
@@ -5443,7 +5426,6 @@ W [  8] finds
 W [  8] bytes
 W [  8] leave
 W [  8] piece
-W [  8] yahoo
 W [  8] basis
 W [  8] twice
 W [  8] calls
@@ -5469,6 +5451,7 @@ W [  8] worker
 W [  8] commit
 W [  8] manual
 W [  8] errors
+W [  8] degree
 W [  8] phases
 W [  8] forced
 W [  8] layers
@@ -5591,6 +5574,7 @@ W [  9] costly
 W [  9] almost
 W [  9] evolve
 W [  9] output
+W [  9] extras
 W [  9] hugely
 W [  9] breaks
 W [  9] expand
@@ -5859,7 +5843,6 @@ W [ 11] constantly
 W [ 11] approaches
 W [ 11] purchasing
 W [ 11] versatility
-W [ 11] scrumguides
 W [ 11] accordingly
 W [ 11] determining
 W [ 11] communicate
@@ -5948,8 +5931,8 @@ W [ 12] conversations
 W [ 12] transitioning
 W [ 12] subcontractors
 W [ 13] hand
+W [ 13] mark
 W [ 13] post
-W [ 13] blog
 W [ 13] state
 W [ 13] water
 W [ 13] rates
@@ -6011,7 +5994,6 @@ W [ 13] bottlenecks
 W [ 13] potentially
 W [ 13] specifically
 W [ 13] consistently
-W [ 13] platinumedge
 W [ 13] productivity
 W [ 13] representative
 W [ 13] responsibility
@@ -6036,6 +6018,7 @@ W [ 14] credit
 W [ 14] visual
 W [ 14] charts
 W [ 14] pieces
+W [ 14] minute
 W [ 14] adjust
 W [ 14] cycles
 W [ 14] claims
@@ -6087,7 +6070,6 @@ W [ 15] easier
 W [ 15] choose
 W [ 15] reason
 W [ 15] report
-W [ 15] degree
 W [ 15] invest
 W [ 15] survey
 W [ 15] device
@@ -6118,16 +6100,18 @@ W [ 15] experienced
 W [ 15] incrementally
 W [ 16] half
 W [ 16] turn
-W [ 16] mark
 W [ 16] sets
 W [ 16] late
 W [ 16] pair
 W [ 16] hold
+W [ 16] hour
 W [ 16] came
 W [ 16] house
+W [ 16] final
 W [ 16] known
 W [ 16] looks
 W [ 16] visit
+W [ 16] month
 W [ 16] ideal
 W [ 16] boards
 W [ 16] states
@@ -6163,7 +6147,7 @@ W [ 16] facilitates
 W [ 16] multitasking
 W [ 16] clarification
 W [ 17] save
-W [ 17] final
+W [ 17] video
 W [ 17] cloud
 W [ 17] drive
 W [ 17] party
@@ -6200,13 +6184,11 @@ W [ 18] room
 W [ 18] meet
 W [ 18] jobs
 W [ 18] took
-W [ 18] hour
 W [ 18] coach
 W [ 18] notes
 W [ 18] users
 W [ 18] asked
 W [ 18] power
-W [ 18] month
 W [ 18] whole
 W [ 18] risks
 W [ 18] lives
@@ -6222,6 +6204,7 @@ W [ 18] begins
 W [ 18] anyone
 W [ 18] finish
 W [ 18] timing
+W [ 18] reports
 W [ 18] general
 W [ 18] duration
 W [ 18] affinity
@@ -6244,7 +6227,6 @@ W [ 19] waste
 W [ 19] check
 W [ 19] trust
 W [ 19] enable
-W [ 19] minute
 W [ 19] social
 W [ 19] travel
 W [ 19] trying
@@ -6252,7 +6234,6 @@ W [ 19] hiring
 W [ 19] sticky
 W [ 19] helping
 W [ 19] startup
-W [ 19] reports
 W [ 19] clearly
 W [ 19] parents
 W [ 19] timebox
@@ -6278,7 +6259,6 @@ W [ 20] view
 W [ 20] share
 W [ 20] terms
 W [ 20] write
-W [ 20] video
 W [ 20] words
 W [ 20] fixed
 W [ 20] sizes
@@ -6304,7 +6284,6 @@ W [ 21] rate
 W [ 21] read
 W [ 21] pull
 W [ 21] stable
-W [ 21] extras
 W [ 21] little
 W [ 21] flyover
 W [ 21] masters
@@ -6379,8 +6358,11 @@ W [ 23] effectiveness
 W [ 23] representatives
 W [ 24] shown
 W [ 24] leads
+W [ 24] wiley
 W [ 24] input
 W [ 24] plans
+W [ 24] poker
+W [ 24] cards
 W [ 24] wants
 W [ 24] worked
 W [ 24] values
@@ -6424,16 +6406,14 @@ W [ 26] lead
 W [ 26] uses
 W [ 26] order
 W [ 26] weeks
-W [ 26] poker
-W [ 26] cards
 W [ 26] taking
 W [ 26] versus
 W [ 26] shared
+W [ 26] groups
 W [ 26] wedding
 W [ 26] improved
 W [ 26] children
 W [ 26] fibonacci
-W [ 26] allitebooks
 W [ 26] implemented
 W [ 26] implementing
 W [ 26] manufacturing
@@ -6441,7 +6421,6 @@ W [ 26] documentation
 W [ 27] lack
 W [ 27] went
 W [ 27] built
-W [ 27] wiley
 W [ 27] exist
 W [ 27] event
 W [ 27] result
@@ -6469,12 +6448,12 @@ W [ 28] major
 W [ 28] makes
 W [ 28] likely
 W [ 28] weight
-W [ 28] groups
 W [ 28] finance
 W [ 28] forward
 W [ 28] against
 W [ 28] discuss
 W [ 28] setting
+W [ 28] research
 W [ 28] starting
 W [ 28] estimated
 W [ 28] increases
@@ -6496,7 +6475,6 @@ W [ 29] further
 W [ 29] deliver
 W [ 29] improve
 W [ 29] although
-W [ 29] research
 W [ 29] increment
 W [ 30] areas
 W [ 30] helps
@@ -6564,6 +6542,7 @@ W [ 34] once
 W [ 34] call
 W [ 34] card
 W [ 34] allow
+W [ 34] group
 W [ 34] either
 W [ 34] ensure
 W [ 34] return
@@ -6593,7 +6572,6 @@ W [ 35] continuous
 W [ 35] understand
 W [ 35] operations
 W [ 36] bring
-W [ 36] group
 W [ 36] actual
 W [ 36] client
 W [ 36] concept
@@ -6664,7 +6642,6 @@ W [ 41] tangible
 W [ 41] potential
 W [ 42] huge
 W [ 42] days
-W [ 42] safe
 W [ 42] hours
 W [ 42] moving
 W [ 42] achieve
@@ -6697,10 +6674,10 @@ W [ 44] list
 W [ 44] large
 W [ 44] points
 W [ 44] longer
+W [ 44] content
 W [ 44] questions
 W [ 44] opportunity
 W [ 45] takes
-W [ 45] content
 W [ 45] meeting
 W [ 45] program
 W [ 45] defects
@@ -6731,6 +6708,7 @@ W [ 49] experience
 W [ 49] organizational
 W [ 50] going
 W [ 50] great
+W [ 50] works
 W [ 50] there
 W [ 50] clear
 W [ 50] years
@@ -6742,7 +6720,6 @@ W [ 51] amount
 W [ 51] multiple
 W [ 51] approach
 W [ 51] principles
-W [ 52] works
 W [ 52] enough
 W [ 52] without
 W [ 52] resources
@@ -6757,6 +6734,7 @@ W [ 54] times
 W [ 54] stories
 W [ 54] benefits
 W [ 54] necessary
+W [ 54] estimation
 W [ 54] prioritization
 W [ 55] look
 W [ 55] news
@@ -6767,12 +6745,12 @@ W [ 55] increase
 W [ 55] solutions
 W [ 55] organizations
 W [ 56] role
+W [ 56] year
 W [ 56] cross
 W [ 56] allows
 W [ 56] future
 W [ 56] created
 W [ 56] complete
-W [ 56] estimation
 W [ 57] very
 W [ 57] tools
 W [ 57] costs
@@ -6789,7 +6767,6 @@ W [ 58] money
 W [ 58] problems
 W [ 58] portfolio
 W [ 58] processes
-W [ 59] year
 W [ 59] real
 W [ 59] stage
 W [ 59] board
@@ -6802,6 +6779,7 @@ W [ 60] good
 W [ 60] still
 W [ 61] here
 W [ 61] doesn
+W [ 61] dummies
 W [ 61] actually
 W [ 61] challenges
 W [ 61] technology
@@ -6809,15 +6787,16 @@ W [ 62] made
 W [ 62] specific
 W [ 63] overview
 W [ 63] building
+W [ 64] less
 W [ 64] does
 W [ 64] roles
 W [ 64] cycle
 W [ 64] entire
 W [ 64] another
+W [ 64] healthcare
 W [ 65] provide
 W [ 65] increased
 W [ 65] throughout
-W [ 66] less
 W [ 66] risk
 W [ 66] whether
 W [ 66] velocity
@@ -6835,13 +6814,12 @@ W [ 67] functionality
 W [ 68] system
 W [ 68] learning
 W [ 68] decisions
-W [ 68] healthcare
+W [ 69] book
 W [ 69] doing
 W [ 69] create
 W [ 69] however
 W [ 69] everyone
 W [ 69] traditional
-W [ 70] book
 W [ 70] steps
 W [ 70] integration
 W [ 71] single
@@ -6855,21 +6833,21 @@ W [ 74] better
 W [ 74] practices
 W [ 74] developers
 W [ 75] able
+W [ 75] person
 W [ 75] important
 W [ 76] self
 W [ 76] skills
 W [ 76] number
-W [ 76] person
 W [ 76] running
 W [ 76] testing
 W [ 77] member
 W [ 78] performance
 W [ 78] retrospective
 W [ 79] features
+W [ 80] focus
 W [ 80] highest
 W [ 80] quality
 W [ 81] both
-W [ 81] focus
 W [ 81] getting
 W [ 81] communication
 W [ 82] issues
@@ -6888,7 +6866,6 @@ W [ 86] could
 W [ 86] changes
 W [ 86] different
 W [ 87] week
-W [ 87] dummies
 W [ 88] dating
 W [ 89] individual
 W [ 90] during
@@ -6933,12 +6910,12 @@ W [118] review
 W [119] while
 W [119] items
 W [120] master
+W [121] percent
 W [122] data
 W [123] such
 W [123] before
 W [124] used
 W [124] take
-W [124] percent
 W [125] same
 W [125] down
 W [126] want
@@ -6965,8 +6942,8 @@ W [149] sprints
 W [149] service
 W [150] example
 W [154] should
+W [156] family
 W [157] using
-W [157] family
 W [157] working
 W [158] life
 W [159] members
@@ -6992,7 +6969,7 @@ W [199] need
 W [205] projects
 W [212] process
 W [215] through
-W [221] agile
+W [222] agile
 W [222] business
 W [224] planning
 W [229] them
@@ -7012,7 +6989,7 @@ W [387] more
 W [388] work
 W [390] will
 W [403] their
-W [436] chapter
+W [434] chapter
 W [438] time
 W [453] what
 W [466] from
@@ -7024,11 +7001,11 @@ W [619] your
 W [715] they
 W [794] sprint
 W [805] product
-W [849] this
+W [848] this
 W [945] with
 W [1037] team
 W [1432] that
-W [1960] scrum
+W [1941] scrum
 
 ---- Word forms ----
 abandon --> [abandoned, abandonment]
@@ -7758,7 +7735,6 @@ last --> [lasts, lasting]
 late --> [relate, related, relating]
 launch --> [launching, launched]
 layer --> [layers]
-layton --> [laytons]
 lead --> [leader, leading, leads, leadership, leaders, leaderless]
 leaps --> [leaping]
 learn --> [learned, relearned, learners, learner, learns, learning, learnings]
@@ -8509,14 +8485,13 @@ your --> [yours]
 zone --> [zones]
 
 ---- Ignore statistic ----
-I [  1] z
 I [  1] cd
 I [  1] eb
 I [  1] eq
 I [  1] fy
 I [  1] gb
-I [  1] ht
 I [  1] ix
+I [  1] la
 I [  1] mb
 I [  1] mr
 I [  1] nh
@@ -8528,16 +8503,16 @@ I [  1] sc
 I [  1] sr
 I [  1] tb
 I [  1] te
-I [  1] tm
+I [  1] ts
+I [  1] uk
 I [  1] vp
+I [  1] vs
 I [  1] wi
-I [  1] wp
 I [  1] xi
 I [  1] xl
 I [  1] xp
 I [  1] xs
 I [  1] bag
-I [  1] tex
 I [  1] bbq
 I [  1] bce
 I [  1] aan
@@ -8558,7 +8533,7 @@ I [  1] pbk
 I [  1] cio
 I [  1] von
 I [  1] sir
-I [  1] eng
+I [  1] pdf
 I [  1] bid
 I [  1] rid
 I [  1] peg
@@ -8577,7 +8552,6 @@ I [  1] etc
 I [  1] las
 I [  1] spc
 I [  1] gym
-I [  1] sql
 I [  1] ron
 I [  1] meh
 I [  1] oil
@@ -8589,11 +8563,9 @@ I [  1] jan
 I [  1] ape
 I [  1] nix
 I [  1] apt
-I [  1] tvs
 I [  1] cum
 I [  1] pop
 I [  1] arm
-I [  1] asm
 I [  1] lit
 I [  1] hat
 I [  1] iec
@@ -8612,7 +8584,6 @@ I [  1] fed
 I [  1] fee
 I [  1] nut
 I [  1] dan
-I [  1] eco
 I [  1] xii
 I [  1] tap
 I [  1] tao
@@ -8629,25 +8600,16 @@ I [  1] sad
 I [  1] zoo
 I [  1] ink
 I [  1] ins
-I [  1] nyc
 I [  1] scpm
-I [  1] inch
-I [  1] dvds
 I [  1] offs
 I [  1] andr
 I [  1] kpmg
 I [  1] epdf
-I [  1] olds
 I [  1] viii
 I [  1] xiii
 I [  1] worthwhile
 I [  1] fourthfloor
-I [  2] f
-I [  2] g
-I [  2] h
-I [  2] k
 I [  2] kb
-I [  2] la
 I [  2] mc
 I [  2] ms
 I [  2] nj
@@ -8677,7 +8639,6 @@ I [  2] plc
 I [  2] sum
 I [  2] ate
 I [  2] tzu
-I [  2] ids
 I [  2] psd
 I [  2] psm
 I [  2] bye
@@ -8688,20 +8649,18 @@ I [  2] gen
 I [  2] web
 I [  2] joe
 I [  2] sam
+I [  2] http
 I [  2] arms
 I [  2] mmbd
 I [  2] arts
 I [  2] isbn
 I [  2] pspo
 I [  2] downstream
-I [  3] j
-I [  3] l
-I [  3] y
+I [  3] co
 I [  3] de
 I [  3] ea
 I [  3] fi
-I [  3] th
-I [  3] uk
+I [  3] os
 I [  3] bas
 I [  3] bay
 I [  3] hot
@@ -8710,7 +8669,6 @@ I [  3] isp
 I [  3] pad
 I [  3] pat
 I [  3] shy
-I [  3] pdf
 I [  3] sky
 I [  3] guy
 I [  3] lag
@@ -8721,12 +8679,12 @@ I [  3] ict
 I [  3] dad
 I [  3] strengths
 I [  3] postsprint
-I [  4] n
-I [  4] o
 I [  4] id
 I [  4] pi
+I [  4] rs
 I [  4] aca
 I [  4] bed
+I [  4] gov
 I [  4] gpa
 I [  4] pen
 I [  4] dog
@@ -8739,16 +8697,12 @@ I [  4] csm
 I [  4] mid
 I [  4] ken
 I [  4] mom
-I [  4] cfds
 I [  4] odds
 I [  4] owns
 I [  4] nclb
-I [  4] ehrs
 I [  4] acts
 I [  4] cspo
 I [  4] shrm
-I [  5] w
-I [  5] co
 I [  5] ted
 I [  5] die
 I [  5] got
@@ -8768,6 +8722,7 @@ I [  6] ha
 I [  6] ri
 I [  6] ago
 I [  6] pre
+I [  6] org
 I [  6] npr
 I [  6] npv
 I [  6] jim
@@ -8775,8 +8730,8 @@ I [  6] los
 I [  6] uat
 I [  6] him
 I [  6] win
-I [  7] r
 I [  7] ci
+I [  7] ds
 I [  7] paa
 I [  7] bit
 I [  7] ups
@@ -8784,13 +8739,11 @@ I [  7] led
 I [  7] bug
 I [  7] tdd
 I [  7] apps
-I [  8] q
+I [  8] lo
 I [  8] tv
 I [  8] ehr
-I [  8] gov
 I [  8] rep
 I [  8] law
-I [  8] plo
 I [  8] nor
 I [  8] gap
 I [  9] qa
@@ -8801,9 +8754,7 @@ I [  9] eye
 I [  9] bus
 I [  9] hit
 I [  9] wip
-I [  9] https
 I [  9] lengths
-I [ 10] p
 I [ 10] via
 I [ 10] iaa
 I [ 10] saw
@@ -8811,18 +8762,13 @@ I [ 11] fix
 I [ 11] sit
 I [ 11] fbi
 I [ 11] saa
-I [ 12] e
-I [ 12] u
 I [ 12] far
 I [ 13] net
 I [ 13] app
 I [ 13] cut
+I [ 13] sat
 I [ 14] age
 I [ 14] eat
-I [ 14] sat
-I [ 15] b
-I [ 15] c
-I [ 15] x
 I [ 15] dev
 I [ 15] erp
 I [ 15] ops
@@ -8832,6 +8778,7 @@ I [ 17] met
 I [ 17] art
 I [ 18] hr
 I [ 18] act
+I [ 18] www
 I [ 18] lot
 I [ 18] inc
 I [ 19] low
@@ -8841,10 +8788,10 @@ I [ 20] pay
 I [ 21] us
 I [ 21] bad
 I [ 21] due
+I [ 22] com
 I [ 22] buy
 I [ 23] vi
 I [ 23] car
-I [ 24] d
 I [ 24] mvp
 I [ 25] six
 I [ 25] top
@@ -8854,20 +8801,18 @@ I [ 26] fun
 I [ 27] won
 I [ 28] she
 I [ 28] put
+I [ 29] old
 I [ 30] fit
-I [ 31] old
 I [ 31] run
 I [ 34] ask
-I [ 36] m
 I [ 36] did
 I [ 36] per
 I [ 36] why
 I [ 37] me
 I [ 38] isn
-I [ 39] iii
-I [ 41] org
+I [ 38] iii
+I [ 40] fe
 I [ 41] her
-I [ 42] v
 I [ 43] big
 I [ 46] off
 I [ 46] few
@@ -8878,21 +8823,17 @@ I [ 51] ten
 I [ 54] yet
 I [ 57] ii
 I [ 57] le
-I [ 57] ss
 I [ 64] too
 I [ 65] own
-I [ 69] http
 I [ 72] he
 I [ 73] his
-I [ 76] www
 I [ 76] our
 I [ 77] had
 I [ 81] my
-I [ 82] com
+I [ 85] go
 I [ 85] key
 I [ 86] ve
 I [ 86] now
-I [ 88] go
 I [ 94] set
 I [ 97] two
 I [113] ll
@@ -8922,30 +8863,25 @@ I [305] all
 I [332] how
 I [357] if
 I [372] not
-I [399] t
 I [409] an
 I [434] by
 I [449] one
-I [466] i
 I [534] at
 I [633] or
-I [707] s
 I [758] can
 I [864] are
-I [905] as
+I [906] as
 I [911] be
 I [950] on
 I [1092] it
 I [1189] you
 I [1649] for
 I [1710] is
-I [2004] 
-I [2015] in
-I [2669] a
-I [2908] of
+I [2014] in
+I [2906] of
 I [3604] to
 I [4211] and
 I [6641] the
 
-Total 79277 passed (7030 unique)
-Ignored 47924 (437 unique)
+Total 79004 passed (7007 unique)
+Ignored 41176 (397 unique)
