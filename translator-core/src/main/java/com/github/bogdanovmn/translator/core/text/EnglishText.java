@@ -1,7 +1,8 @@
 package com.github.bogdanovmn.translator.core.text;
 
 import com.github.bogdanovmn.translator.core.BigString;
-import com.github.bogdanovmn.translator.core.MapCounter;
+import com.github.bogdanovmn.translator.core.ObjCounter;
+import com.github.bogdanovmn.translator.core.StringCounter;
 
 import java.util.Comparator;
 import java.util.Optional;
@@ -10,11 +11,11 @@ import java.util.Set;
 public class EnglishText implements TextContent {
 	private final static String CONSONANT_LETTERS = "qwrtpsdfghkljzxcvbnm";
 
-	private final MapCounter<String> wordsCounter;
-	private final MapCounter<String> ignoreWordsCounter;
+	private final ObjCounter<String> wordsCounter;
+	private final ObjCounter<String> ignoreWordsCounter;
 	private NormalizedWords normalizedWords;
 
-	private EnglishText(MapCounter<String> wordsCounter, MapCounter<String> ignoreWordsCounter) {
+	private EnglishText(ObjCounter<String> wordsCounter, ObjCounter<String> ignoreWordsCounter) {
 		this.wordsCounter = wordsCounter;
 		this.ignoreWordsCounter = ignoreWordsCounter;
 		this.normalizedWords = NormalizedWords.of(wordsCounter.keys());
@@ -22,20 +23,16 @@ public class EnglishText implements TextContent {
 	}
 
 	public static EnglishText fromText(String text) {
-		MapCounter<String> wordsCounter = new MapCounter<>();
-		MapCounter<String> ignoreWordsCounter = new MapCounter<>();
+		StringCounter wordsCounter = new StringCounter();
+		StringCounter ignoreWordsCounter = new StringCounter();
 
-		text = text.replaceAll("\\p{Pd}", "-")
-//			.replaceAll("['\"“”‘’„”«»]", "\"")
-			.replaceAll("&#\\d+;", " ")
-			.replaceAll("\\b(\\w|\\d)+\\d\\S+", " ") // like "42D5GrxOQFebf83DYgNl-g"
-			.replaceAll("\\b[A-Z][A-Z-]*\\d+[A-Z\\d]*\\b", " ") // like UTF-8 or KOI-8R
-			.replaceAll("\\w+://\\S+", " ") // URLs
-			.replaceAll("\\S+\\.\\w{2,3}\\s", " "); // like URLs without protocol or properties
+		Tokenizer tokenizer = Tokenizer.of(text);
 
 		String[] tokens = capslockTransform(
 			joinWraps(text.split("[^a-zA-Z-]+"))
 		);
+
+		ProperNames properNames = ProperNames.fromWordTokens(tokens);
 
 		for (String token : tokens) {
 			for (String normalizedToken : token.replaceAll("([A-Z])", "_$1").toLowerCase().split("[_-]")) {
@@ -49,6 +46,8 @@ public class EnglishText implements TextContent {
 						(normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{5,}.*"))
 						||
 						normalizedToken.matches(".*(.)\\1{2,}.*")
+						||
+						properNames.weight(normalizedToken) > 0
 					) {
 					if (normalizedToken.length() > 1) {
 						ignoreWordsCounter.increment(normalizedToken);
@@ -139,7 +138,7 @@ public class EnglishText implements TextContent {
 		return result.toString();
 	}
 
-	private String tokensStatistic(MapCounter<String> tokensCache, String prefix) {
+	private String tokensStatistic(ObjCounter<String> tokensCache, String prefix) {
 		BigString result = new BigString();
 		tokensCache.keys().stream()
 			.sorted(

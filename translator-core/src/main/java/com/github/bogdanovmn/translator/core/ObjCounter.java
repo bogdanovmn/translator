@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class MapCounter<KeyType> {
+public class ObjCounter<KeyType> {
 	private final Map<KeyType, Integer> counter = new HashMap<>();
 
 	public void increment(KeyType obj) {
@@ -23,5 +23,9 @@ public class MapCounter<KeyType> {
 
 	public int get(KeyType obj) {
 		return counter.getOrDefault(obj, 0);
+	}
+
+	public void remove(KeyType obj) {
+		counter.remove(obj);
 	}
 }
