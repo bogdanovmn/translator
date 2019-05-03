@@ -3,10 +3,12 @@ package com.github.bogdanovmn.translator.core.text;
 import com.github.bogdanovmn.translator.core.BigString;
 import com.github.bogdanovmn.translator.core.ObjCounter;
 import com.github.bogdanovmn.translator.core.StringCounter;
+import com.github.bogdanovmn.translator.core.Timer;
 
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
+
 
 public class EnglishText implements TextContent {
 	private final static String CONSONANT_LETTERS = "qwrtpsdfghkljzxcvbnm";
@@ -26,15 +28,13 @@ public class EnglishText implements TextContent {
 		StringCounter wordsCounter = new StringCounter();
 		StringCounter ignoreWordsCounter = new StringCounter();
 
-		Tokenizer tokenizer = Tokenizer.of(text);
-
-		String[] tokens = capslockTransform(
-			joinWraps(text.split("[^a-zA-Z-]+"))
+		Tokens tokens = JoinWrapsTokens.of(
+			Tokens.of(text)
 		);
 
-		ProperNames properNames = ProperNames.fromWordTokens(tokens);
+		ProperNames properNames = Timer.messure("Proper names", () -> ProperNames.fromWordTokens(tokens));
 
-		for (String token : tokens) {
+		for (String token : tokens.wordsWithoutCapslock()) {
 			for (String normalizedToken : token.replaceAll("([A-Z])", "_$1").toLowerCase().split("[_-]")) {
 				if (
 					(normalizedToken.length() < EnglishWord.MIN_BASE_LENGTH)
@@ -47,7 +47,7 @@ public class EnglishText implements TextContent {
 						||
 						normalizedToken.matches(".*(.)\\1{2,}.*")
 						||
-						properNames.weight(normalizedToken) > 0
+						properNames.contains(normalizedToken)
 					) {
 					if (normalizedToken.length() > 1) {
 						ignoreWordsCounter.increment(normalizedToken);
@@ -58,34 +58,6 @@ public class EnglishText implements TextContent {
 			}
 		}
 		return new EnglishText(wordsCounter, ignoreWordsCounter);
-	}
-
-	private static String[] joinWraps(String[] tokens) {
-		for (int i = 0; i < tokens.length; i++) {
-			if (tokens[i].endsWith("-")
-				&& i < (tokens.length - 1)
-				&& (!tokens[i].matches("^[A-Z\\d]+-$")
-					|| isCapital(tokens[i + 1])
-				)
-			) {
-				tokens[i] = tokens[i].replaceFirst("-*$", "") + tokens[i + 1];
-				tokens[i + 1] = "";
-			}
-		}
-		return tokens;
-	}
-
-	private static String[] capslockTransform(String[] tokens) {
-		for (int i = 0; i < tokens.length; i++) {
-			if (isCapital(tokens[i])) {
-				tokens[i] = tokens[i].toLowerCase();
-			}
-		}
-		return tokens;
-	}
-
-	private static boolean isCapital(String str) {
-		return str.matches("^[A-Z]+$");
 	}
 
 	@Override

@@ -3,37 +3,56 @@ package com.github.bogdanovmn.translator.core.text;
 import com.github.bogdanovmn.translator.core.StringCounter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 
 class ProperNames {
-	private final StringCounter withFirstCapital;
+	private final Set<String> names;
 
-	private ProperNames(StringCounter withFirstCapital) {
-		this.withFirstCapital = withFirstCapital;
+	private ProperNames(Set<String> names) {
+		this.names = names;
 	}
 
-	static ProperNames fromWordTokens(String[] tokens) {
+	static ProperNames fromWordTokens(Tokens tokens) {
 		Set<String> regularTokens = new HashSet<>();
-		StringCounter tokensWithFirstCapital = new StringCounter();
-		for (String token : tokens) {
-			if (token.matches("^[A-Z][a-z]+$")) {
-				tokensWithFirstCapital.increment(token.toLowerCase());
-			} else {
-				regularTokens.add(token);
+		StringCounter tokenWithFirstCapital = new StringCounter();
+		StringCounter tokenWithFirstCapitalInMiddleOfSentence = new StringCounter();
+		List<Token> allTokens = tokens.all();
+		for (int i = 0; i < allTokens.size(); i++) {
+			Token currentToken = allTokens.get(i);
+			if (currentToken.isFirstCapital()) {
+				String word = currentToken.toString().toLowerCase();
+				tokenWithFirstCapital.increment(word);
+				if (i != 0 && allTokens.get(i - 1).isWord()) {
+					tokenWithFirstCapitalInMiddleOfSentence.increment(word);
+				}
+			}
+			else if (currentToken.isWord()){
+				regularTokens.add(currentToken.toString());
 			}
 		}
-		regularTokens.forEach(
+		// Remove false positives
+		Set<String> firstCapitalWordToIgnore = new HashSet<>();
+		tokenWithFirstCapital.keys().forEach(
 			token -> {
-				if (tokensWithFirstCapital.get(token) > 0) {
-					tokensWithFirstCapital.remove(token);
+				if (regularTokens.contains(token)
+						|| tokenWithFirstCapitalInMiddleOfSentence.get(token) < 1
+						|| tokenWithFirstCapital.get(token) < 2
+				) {
+					firstCapitalWordToIgnore.add(token);
 				}
 			}
 		);
 
-		return new ProperNames(tokensWithFirstCapital);
+		return new ProperNames(
+			tokenWithFirstCapital.keys().stream()
+				.filter(word -> !firstCapitalWordToIgnore.contains(word))
+				.collect(Collectors.toSet()));
 	}
 
-	public int weight(String token) {
-		return withFirstCapital.get(token);
+	public boolean contains(String token) {
+		return names.contains(token.toLowerCase());
 	}
 }

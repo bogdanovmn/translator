@@ -17,7 +17,6 @@ public class EnglishTextTest {
 		);
 
 		System.out.println(text.statistic());
-		System.out.println(text.statistic());
 
 		assertEquals("execu forms freq"      , 0, text.wordFrequency("execu"));
 		assertEquals("tion forms freq"       , 0, text.wordFrequency("tion"));
@@ -90,6 +89,8 @@ public class EnglishTextTest {
 	@Test
 	public void words() throws Exception {
 		EnglishText text = EnglishText.fromText("hello, world! test2role руссиш");
+
+		System.out.println(text.statistic());
 
 		assertEquals(2, text.uniqueWords().size());
 	}
