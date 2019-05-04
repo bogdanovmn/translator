@@ -33,6 +33,11 @@ class JoinWrapsTokens {
 					ignoreNext = true;
 					LOG.debug("Join wrap: {} + {} = {}", currentToken, nextToken, result.get(result.size() - 1));
 				}
+				else {
+					result.add(
+						new Token(currentToken.toString().replace("-$", ""))
+					);
+				}
 			}
 			else {
 				result.add(currentToken);

@@ -1,7 +1,6 @@
 package com.github.bogdanovmn.translator.core.text;
 
 import com.github.bogdanovmn.translator.core.BigString;
-import com.github.bogdanovmn.translator.core.ObjCounter;
 import com.github.bogdanovmn.translator.core.StringCounter;
 import com.github.bogdanovmn.translator.core.Timer;
 
@@ -13,11 +12,11 @@ import java.util.Set;
 public class EnglishText implements TextContent {
 	private final static String CONSONANT_LETTERS = "qwrtpsdfghkljzxcvbnm";
 
-	private final ObjCounter<String> wordsCounter;
-	private final ObjCounter<String> ignoreWordsCounter;
+	private final StringCounter wordsCounter;
+	private final StringCounter ignoreWordsCounter;
 	private NormalizedWords normalizedWords;
 
-	private EnglishText(ObjCounter<String> wordsCounter, ObjCounter<String> ignoreWordsCounter) {
+	private EnglishText(StringCounter wordsCounter, StringCounter ignoreWordsCounter) {
 		this.wordsCounter = wordsCounter;
 		this.ignoreWordsCounter = ignoreWordsCounter;
 		this.normalizedWords = NormalizedWords.of(wordsCounter.keys());
@@ -110,7 +109,7 @@ public class EnglishText implements TextContent {
 		return result.toString();
 	}
 
-	private String tokensStatistic(ObjCounter<String> tokensCache, String prefix) {
+	private String tokensStatistic(StringCounter tokensCache, String prefix) {
 		BigString result = new BigString();
 		tokensCache.keys().stream()
 			.sorted(
