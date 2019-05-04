@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.core.text;
 
-import com.github.bogdanovmn.translator.core.BigString;
-import com.github.bogdanovmn.translator.core.StringCounter;
-import com.github.bogdanovmn.translator.core.Timer;
+import com.github.bogdanovmn.common.core.BigString;
+import com.github.bogdanovmn.common.core.StringCounter;
+import com.github.bogdanovmn.common.log.Timer;
 
 import java.util.Comparator;
 import java.util.Optional;
@@ -31,7 +31,7 @@ public class EnglishText implements TextContent {
 			Tokens.of(text)
 		);
 
-		ProperNames properNames = Timer.messure("Proper names", () -> ProperNames.fromWordTokens(tokens));
+		ProperNames properNames = Timer.measure("Proper names", () -> ProperNames.fromWordTokens(tokens));
 
 		for (String token : tokens.wordsWithoutCapslock()) {
 			for (String normalizedToken : token.replaceAll("([A-Z])", "_$1").toLowerCase().split("[_-]")) {

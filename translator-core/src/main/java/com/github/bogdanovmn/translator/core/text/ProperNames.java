@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.core.text;
 
-import com.github.bogdanovmn.translator.core.StringCounter;
+import com.github.bogdanovmn.common.core.StringCounter;
 
 import java.util.HashSet;
 import java.util.List;
