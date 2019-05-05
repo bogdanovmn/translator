@@ -10,6 +10,7 @@ public class EnglishTextTest {
 	@Test
 	public void wordWrap() {
 		EnglishText text = EnglishText.fromText(
+			"flash-' " +
 			"bla groovy-lang bla bla execu-\ntion " +
 				"proce‐ dure " +
 				"agile‐related JSON-\nformatted JSON-formatted " +
@@ -17,8 +18,8 @@ public class EnglishTextTest {
 		);
 
 		System.out.println(text.statistic());
-		System.out.println(text.statistic());
 
+		assertEquals("flash forms freq"      , 1, text.wordFrequency("flash"));
 		assertEquals("execu forms freq"      , 0, text.wordFrequency("execu"));
 		assertEquals("tion forms freq"       , 0, text.wordFrequency("tion"));
 		assertEquals("execution forms freq"  , 1, text.wordFrequency("execution"));
@@ -90,6 +91,8 @@ public class EnglishTextTest {
 	@Test
 	public void words() throws Exception {
 		EnglishText text = EnglishText.fromText("hello, world! test2role руссиш");
+
+		System.out.println(text.statistic());
 
 		assertEquals(2, text.uniqueWords().size());
 	}

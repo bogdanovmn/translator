@@ -730,7 +730,6 @@ W [  1] weapon
 W [  1] snares
 W [  1] stoops
 W [  1] circus
-W [  1] agoand
 W [  1] warily
 W [  1] murmur
 W [  1] barren
@@ -785,7 +784,6 @@ W [  1] prefer
 W [  1] smelly
 W [  1] fading
 W [  1] healed
-W [  1] agobut
 W [  1] tossed
 W [  1] laughs
 W [  1] tinged
@@ -820,7 +818,6 @@ W [  1] flabby
 W [  1] caring
 W [  1] messrs
 W [  1] chiefs
-W [  1] neckwe
 W [  1] stuffs
 W [  1] moored
 W [  1] limped
@@ -1890,7 +1887,6 @@ W [  1] defending
 W [  1] residence
 W [  1] smokering
 W [  1] lightened
-W [  1] autumnand
 W [  1] shuffling
 W [  1] mouthless
 W [  1] butterfly
@@ -1977,7 +1973,6 @@ W [  1] toothsome
 W [  1] clockless
 W [  1] arranging
 W [  1] continued
-W [  1] itpinched
 W [  1] jabbering
 W [  1] insulting
 W [  1] shambling
@@ -2318,7 +2313,6 @@ W [  1] brilliantly
 W [  1] snapdragons
 W [  1] prophesying
 W [  1] journeyings
-W [  1] rememberand
 W [  1] waterlogged
 W [  1] suggestions
 W [  1] opportunity
@@ -2419,7 +2413,6 @@ W [  1] disrespectfully
 W [  1] representatives
 W [  1] inconveniencing
 W [  2] sake
-W [  2] sale
 W [  2] sand
 W [  2] owed
 W [  2] hark
@@ -2598,7 +2591,6 @@ W [  2] huger
 W [  2] argue
 W [  2] april
 W [  2] force
-W [  2] grubb
 W [  2] lamps
 W [  2] baked
 W [  2] faced
@@ -2717,7 +2709,6 @@ W [  2] worthy
 W [  2] credit
 W [  2] threat
 W [  2] untidy
-W [  2] beater
 W [  2] beaten
 W [  2] uproar
 W [  2] shares
@@ -2749,7 +2740,6 @@ W [  2] poison
 W [  2] fields
 W [  2] fought
 W [  2] tugged
-W [  2] frying
 W [  2] issued
 W [  2] bobbed
 W [  2] widows
@@ -2904,7 +2894,6 @@ W [  2] traffic
 W [  2] wasting
 W [  2] worried
 W [  2] accused
-W [  2] bywater
 W [  2] slapped
 W [  2] fellows
 W [  2] payment
@@ -2941,7 +2930,6 @@ W [  2] authors
 W [  2] holiday
 W [  2] wielded
 W [  2] paddled
-W [  2] douglas
 W [  2] meadows
 W [  2] fainter
 W [  2] seeming
@@ -3005,7 +2993,6 @@ W [  2] cinders
 W [  2] painted
 W [  2] beggars
 W [  2] trusted
-W [  2] british
 W [  2] genuine
 W [  2] croaked
 W [  2] pulling
@@ -3036,7 +3023,6 @@ W [  2] runners
 W [  2] longing
 W [  2] wearily
 W [  2] bottles
-W [  2] butsaid
 W [  2] crusted
 W [  2] parting
 W [  2] largest
@@ -3049,7 +3035,6 @@ W [  2] gripped
 W [  2] panting
 W [  2] forging
 W [  2] jogging
-W [  2] esquire
 W [  2] fancies
 W [  2] unusual
 W [  2] bending
@@ -3161,7 +3146,6 @@ W [  2] polished
 W [  2] royallib
 W [  2] jewelled
 W [  2] stabbing
-W [  2] thursday
 W [  2] grandson
 W [  2] trampled
 W [  2] confused
@@ -3264,7 +3248,6 @@ W [  2] southward
 W [  2] thrusting
 W [  2] comforted
 W [  2] fashioned
-W [  2] dorwinion
 W [  2] crackling
 W [  2] chestnuts
 W [  2] struggled
@@ -3399,7 +3382,6 @@ W [  3] push
 W [  3] noon
 W [  3] oars
 W [  3] yore
-W [  3] azog
 W [  3] wing
 W [  3] wire
 W [  3] wade
@@ -3408,7 +3390,6 @@ W [  3] pegs
 W [  3] swam
 W [  3] army
 W [  3] bush
-W [  3] warg
 W [  3] wasn
 W [  3] wave
 W [  3] lazy
@@ -3420,7 +3401,6 @@ W [  3] hour
 W [  3] fail
 W [  3] fare
 W [  3] nine
-W [  3] nain
 W [  3] gets
 W [  3] ugly
 W [  3] mince
@@ -3495,7 +3475,6 @@ W [  3] hullo
 W [  3] waist
 W [  3] globe
 W [  3] signs
-W [  3] bungo
 W [  3] thorn
 W [  3] level
 W [  3] poked
@@ -3506,7 +3485,6 @@ W [  3] horns
 W [  3] guide
 W [  3] drank
 W [  3] hedge
-W [  3] biter
 W [  3] grumpy
 W [  3] sunset
 W [  3] worked
@@ -3533,9 +3511,9 @@ W [  3] blazed
 W [  3] praise
 W [  3] eyries
 W [  3] puffed
-W [  3] galion
 W [  3] voiced
 W [  3] hatred
+W [  3] frying
 W [  3] shafts
 W [  3] direct
 W [  3] modern
@@ -3775,7 +3753,6 @@ W [  3] hurtling
 W [  3] position
 W [  3] blinking
 W [  3] troubles
-W [  3] tomnoddy
 W [  3] moreover
 W [  3] unlikely
 W [  3] lighting
@@ -3795,7 +3772,6 @@ W [  3] bothering
 W [  3] anxiously
 W [  3] advancing
 W [  3] splendour
-W [  3] wednesday
 W [  3] descended
 W [  3] naturally
 W [  3] expecting
@@ -3823,7 +3799,6 @@ W [  3] according
 W [  3] courtyard
 W [  3] searching
 W [  3] untouched
-W [  3] glamdring
 W [  3] hastening
 W [  3] collected
 W [  3] described
@@ -3856,7 +3831,6 @@ W [  3] reputation
 W [  3] assistance
 W [  3] fluttering
 W [  3] occasional
-W [  3] bullroarer
 W [  3] waterfalls
 W [  3] undoubtedly
 W [  3] overhanging
@@ -3917,7 +3891,6 @@ W [  4] pots
 W [  4] body
 W [  4] boil
 W [  4] rent
-W [  4] carc
 W [  4] boys
 W [  4] amid
 W [  4] tubs
@@ -4079,19 +4052,16 @@ W [  4] blowing
 W [  4] boiling
 W [  4] rescued
 W [  4] yerself
-W [  4] pinched
 W [  4] dungeon
 W [  4] slender
 W [  4] recover
 W [  4] scarlet
 W [  4] praised
 W [  4] streams
-W [  4] tookish
 W [  4] curious
 W [  4] stories
 W [  4] roasted
 W [  4] anybody
-W [  4] tolkien
 W [  4] cleared
 W [  4] victory
 W [  4] flashed
@@ -4170,9 +4140,7 @@ W [  4] twinkling
 W [  4] disturbed
 W [  4] unguarded
 W [  4] countless
-W [  4] bagginses
 W [  4] blackened
-W [  4] rivendell
 W [  4] ourselves
 W [  4] threshold
 W [  4] happening
@@ -4206,13 +4174,11 @@ W [  4] prosperous
 W [  4] absolutely
 W [  4] impression
 W [  4] difficulty
-W [  4] belladonna
 W [  4] astonished
 W [  4] blundering
 W [  4] enchantment
 W [  4] information
 W [  4] interrupted
-W [  4] necromancer
 W [  4] occasionally
 W [  4] preparations
 W [  5] pick
@@ -4220,7 +4186,6 @@ W [  5] halt
 W [  5] pity
 W [  5] dogs
 W [  5] tent
-W [  5] bill
 W [  5] bite
 W [  5] bits
 W [  5] bade
@@ -4244,7 +4209,6 @@ W [  5] cram
 W [  5] spot
 W [  5] shan
 W [  5] view
-W [  5] bolg
 W [  5] mood
 W [  5] join
 W [  5] sack
@@ -4349,6 +4313,7 @@ W [  5] letting
 W [  5] excited
 W [  5] warning
 W [  5] counted
+W [  5] pinched
 W [  5] rushing
 W [  5] wrought
 W [  5] hissing
@@ -4362,7 +4327,6 @@ W [  5] glimmer
 W [  5] yelping
 W [  5] charged
 W [  5] whistle
-W [  5] english
 W [  5] winding
 W [  5] edition
 W [  5] gleamed
@@ -4509,7 +4473,6 @@ W [  6] stairs
 W [  6] chairs
 W [  6] closer
 W [  6] kettle
-W [  6] homely
 W [  6] kicked
 W [  6] hailed
 W [  6] desire
@@ -4541,7 +4504,6 @@ W [  6] dreamed
 W [  6] country
 W [  6] council
 W [  6] snapped
-W [  6] orcrist
 W [  6] replied
 W [  6] plunder
 W [  6] puffing
@@ -4562,7 +4524,6 @@ W [  6] thousand
 W [  6] imagined
 W [  6] drinking
 W [  6] fastened
-W [  6] gondolin
 W [  6] nonsense
 W [  6] dwarvish
 W [  6] clearing
@@ -4590,11 +4551,9 @@ W [  6] fortunately
 W [  6] disappointed
 W [  7] worm
 W [  7] wore
-W [  7] neck
 W [  7] didn
 W [  7] keys
 W [  7] beat
-W [  7] june
 W [  7] hook
 W [  7] glow
 W [  7] howl
@@ -4625,7 +4584,6 @@ W [  7] rider
 W [  7] funny
 W [  7] goods
 W [  7] creep
-W [  7] moria
 W [  7] rough
 W [  7] steel
 W [  7] tight
@@ -4696,7 +4654,6 @@ W [  7] dangling
 W [  7] shouting
 W [  7] sticking
 W [  7] steadily
-W [  7] attercop
 W [  7] squeaked
 W [  7] argument
 W [  7] downwards
@@ -4705,7 +4662,6 @@ W [  7] desperate
 W [  7] excellent
 W [  7] shoulders
 W [  7] disappear
-W [  7] ravenhill
 W [  7] commotion
 W [  7] important
 W [  7] afternoon
@@ -4719,6 +4675,7 @@ W [  8] sank
 W [  8] pipe
 W [  8] step
 W [  8] lose
+W [  8] neck
 W [  8] raft
 W [  8] fond
 W [  8] whom
@@ -4931,7 +4888,6 @@ W [ 10] boats
 W [ 10] aloud
 W [ 10] faces
 W [ 10] names
-W [ 10] durin
 W [ 10] twice
 W [ 10] truth
 W [ 10] broad
@@ -4942,7 +4898,6 @@ W [ 10] earth
 W [ 10] stony
 W [ 10] spoken
 W [ 10] polite
-W [ 10] girion
 W [ 10] fright
 W [ 10] slopes
 W [ 10] talked
@@ -4977,7 +4932,6 @@ W [ 10] thirteen
 W [ 10] carrying
 W [ 10] although
 W [ 10] laughter
-W [ 10] esgaroth
 W [ 10] scrambled
 W [ 10] immediately
 W [ 11] save
@@ -5137,7 +5091,6 @@ W [ 14] ears
 W [ 14] past
 W [ 14] toes
 W [ 14] four
-W [ 14] nori
 W [ 14] wine
 W [ 14] wise
 W [ 14] care
@@ -5159,7 +5112,6 @@ W [ 14] rolled
 W [ 14] dreams
 W [ 14] yellow
 W [ 14] anyway
-W [ 14] autumn
 W [ 14] turning
 W [ 14] carrock
 W [ 14] present
@@ -5169,7 +5121,6 @@ W [ 14] actually
 W [ 14] vanished
 W [ 14] meanwhile
 W [ 14] miserable
-W [ 14] oakenshield
 W [ 15] woke
 W [ 15] foot
 W [ 15] shot
@@ -5193,6 +5144,7 @@ W [ 15] sprang
 W [ 15] beards
 W [ 15] happen
 W [ 15] notice
+W [ 15] autumn
 W [ 15] hanging
 W [ 15] pleased
 W [ 15] quietly
@@ -5283,7 +5235,6 @@ W [ 18] taking
 W [ 18] became
 W [ 18] lonely
 W [ 18] voices
-W [ 18] thrain
 W [ 18] wooden
 W [ 18] escape
 W [ 18] having
@@ -5307,8 +5258,6 @@ W [ 19] held
 W [ 19] laid
 W [ 19] hold
 W [ 19] sign
-W [ 19] thror
-W [ 19] bifur
 W [ 19] tales
 W [ 19] mouth
 W [ 19] table
@@ -5323,7 +5272,6 @@ W [ 19] hundred
 W [ 19] managed
 W [ 19] farewell
 W [ 19] difficult
-W [ 19] arkenstone
 W [ 19] uncomfortable
 W [ 20] rope
 W [ 20] does
@@ -5346,7 +5294,6 @@ W [ 20] given
 W [ 20] heavy
 W [ 20] runes
 W [ 20] guard
-W [ 20] wargs
 W [ 20] tired
 W [ 20] middle
 W [ 20] nearer
@@ -5362,7 +5309,6 @@ W [ 21] blue
 W [ 21] fine
 W [ 21] sing
 W [ 21] liked
-W [ 21] bofur
 W [ 21] bring
 W [ 21] miles
 W [ 21] misty
@@ -5370,7 +5316,6 @@ W [ 21] supper
 W [ 21] hungry
 W [ 21] barrel
 W [ 21] killed
-W [ 21] dwalin
 W [ 21] expect
 W [ 21] singing
 W [ 21] climbed
@@ -5418,14 +5363,12 @@ W [ 23] leave
 W [ 23] stuck
 W [ 23] doors
 W [ 23] years
-W [ 23] gloin
 W [ 23] golden
 W [ 23] secret
 W [ 23] return
 W [ 23] leaves
 W [ 23] cannot
 W [ 23] followed
-W [ 23] elvenking
 W [ 23] sometimes
 W [ 24] half
 W [ 24] fear
@@ -5469,7 +5412,6 @@ W [ 26] merry
 W [ 26] grass
 W [ 26] often
 W [ 26] lived
-W [ 26] elrond
 W [ 26] beneath
 W [ 26] dragons
 W [ 26] standing
@@ -5486,19 +5428,15 @@ W [ 27] guessed
 W [ 28] bank
 W [ 28] sure
 W [ 28] kept
-W [ 28] dain
 W [ 28] true
-W [ 28] bert
 W [ 28] luck
 W [ 28] deal
 W [ 28] making
 W [ 28] bright
 W [ 28] opened
-W [ 28] william
 W [ 28] shadows
 W [ 28] barrels
 W [ 28] darkness
-W [ 28] mirkwood
 W [ 28] precious
 W [ 28] themselves
 W [ 29] talk
@@ -5556,7 +5494,6 @@ W [ 34] almost
 W [ 34] strong
 W [ 34] running
 W [ 34] perhaps
-W [ 34] remember
 W [ 35] east
 W [ 35] best
 W [ 35] front
@@ -5564,11 +5501,11 @@ W [ 35] silver
 W [ 35] filled
 W [ 35] stones
 W [ 35] suppose
+W [ 35] remember
 W [ 36] turn
 W [ 36] done
 W [ 36] wish
 W [ 36] beyond
-W [ 37] dori
 W [ 37] road
 W [ 37] sound
 W [ 37] eagles
@@ -5579,7 +5516,6 @@ W [ 37] against
 W [ 38] west
 W [ 38] food
 W [ 38] fact
-W [ 38] kili
 W [ 38] voice
 W [ 38] white
 W [ 38] every
@@ -5646,7 +5582,6 @@ W [ 50] looking
 W [ 50] friends
 W [ 51] cold
 W [ 51] wide
-W [ 51] fili
 W [ 51] deep
 W [ 51] really
 W [ 52] tell
@@ -5665,12 +5600,10 @@ W [ 54] morning
 W [ 55] hand
 W [ 55] already
 W [ 56] asked
-W [ 57] bard
 W [ 57] take
 W [ 58] lost
 W [ 59] feet
 W [ 59] used
-W [ 59] bombur
 W [ 59] turned
 W [ 59] coming
 W [ 60] seen
@@ -5687,7 +5620,6 @@ W [ 63] town
 W [ 63] place
 W [ 63] goblin
 W [ 64] upon
-W [ 64] beorn
 W [ 64] valley
 W [ 64] something
 W [ 65] also
@@ -5698,7 +5630,6 @@ W [ 66] others
 W [ 68] shall
 W [ 68] looked
 W [ 69] path
-W [ 69] balin
 W [ 70] look
 W [ 70] course
 W [ 71] ring
@@ -5718,7 +5649,6 @@ W [ 83] began
 W [ 84] head
 W [ 84] eyes
 W [ 85] along
-W [ 86] smaug
 W [ 87] quite
 W [ 92] seemed
 W [ 92] without
@@ -5740,7 +5670,6 @@ W [ 99] elves
 W [100] night
 W [100] behind
 W [101] going
-W [101] baggins
 W [102] left
 W [103] water
 W [103] other
@@ -5781,7 +5710,6 @@ W [174] only
 W [174] mountain
 W [180] which
 W [185] still
-W [187] gandalf
 W [189] good
 W [190] after
 W [193] again
@@ -5800,7 +5728,6 @@ W [235] before
 W [244] more
 W [247] would
 W [248] into
-W [252] thorin
 W [256] very
 W [256] came
 W [266] then
@@ -5815,8 +5742,7 @@ W [441] have
 W [526] their
 W [537] there
 W [542] them
-W [555] bilbo
-W [582] said
+W [584] said
 W [660] with
 W [701] were
 W [1070] that
@@ -5870,7 +5796,6 @@ await --> [awaiting, awaits]
 awful --> [awfully]
 back --> [backed, backs]
 backward --> [backwards]
-baggins --> [bagginses]
 bake --> [baked]
 balance --> [balancing, balanced]
 bang --> [banging]
@@ -5887,7 +5812,7 @@ battle --> [battles]
 beam --> [beams]
 bear --> [beard, bearded, bearers, bears, beards]
 beast --> [beastly, beasts]
-beat --> [beating, beats, beater]
+beat --> [beating, beats]
 beautiful --> [beautifully]
 become --> [becoming]
 bedroom --> [bedrooms]
@@ -6364,7 +6289,7 @@ hoist --> [hoisted]
 hold --> [holding]
 hole --> [holes]
 hollow --> [hollows]
-home --> [homeless, homes, homely]
+home --> [homeless, homes]
 honour --> [honoured]
 hood --> [hooded, hoods]
 hook --> [hooks]
@@ -6978,7 +6903,7 @@ title --> [titles]
 toast --> [toasting, toasted]
 tone --> [tones]
 tongue --> [tongues]
-took --> [mistook, tookishness, tookishly, tooks, tookish]
+took --> [mistook, tookishness, tookishly, tooks]
 torch --> [torches]
 toss --> [tossing, tossed]
 touch --> [touches, touched, touching]
@@ -7044,7 +6969,6 @@ wall --> [walled, walls]
 wand --> [wandered, wander, wandering, wanderings]
 want --> [wanting, wanted, wants]
 wards --> [reward, rewarded, inwards]
-warg --> [wargs]
 warm --> [warming, warmed, warmer]
 warn --> [warnings, warned, warning]
 warrior --> [warriors]
@@ -7113,16 +7037,10 @@ young --> [younger, youngest]
 your --> [yours]
 
 ---- Ignore statistic ----
-I [  1] st
 I [  1] co
 I [  1] cw
-I [  1] th
-I [  1] um
 I [  1] ea
 I [  1] ee
-I [  1] vi
-I [  1] xi
-I [  1] xv
 I [  1] hi
 I [  1] ii
 I [  1] iv
@@ -7131,150 +7049,185 @@ I [  1] lo
 I [  1] ng
 I [  1] oo
 I [  1] ow
+I [  1] st
+I [  1] th
+I [  1] um
+I [  1] vi
+I [  1] xi
+I [  1] xv
 I [  1] fix
-I [  1] jam
 I [  1] vii
 I [  1] rag
-I [  1] jar
 I [  1] ram
-I [  1] zag
 I [  1] raw
-I [  1] mid
 I [  1] ire
-I [  1] ash
-I [  1] bur
-I [  1] rub
-I [  1] ast
 I [  1] dip
 I [  1] bet
-I [  1] ham
 I [  1] ell
 I [  1] paw
 I [  1] she
-I [  1] gap
 I [  1] sip
-I [  1] ork
 I [  1] nab
 I [  1] peg
 I [  1] rim
-I [  1] zig
 I [  1] xvi
-I [  1] aye
 I [  1] odd
 I [  1] gun
 I [  1] ain
 I [  1] toy
-I [  1] mrs
 I [  1] cob
 I [  1] est
 I [  1] uss
-I [  1] xii
 I [  1] net
+I [  1] box
+I [  1] jam
+I [  1] jar
+I [  1] zag
+I [  1] mid
+I [  1] ash
+I [  1] bur
+I [  1] rub
+I [  1] ast
+I [  1] ham
+I [  1] gap
+I [  1] ork
+I [  1] zig
+I [  1] aye
+I [  1] mrs
+I [  1] xii
 I [  1] xiv
 I [  1] tat
 I [  1] xix
 I [  1] mug
-I [  1] box
 I [  1] imp
 I [  1] cap
 I [  1] ink
-I [  1] arts
-I [  1] viii
 I [  1] hmmm
 I [  1] owls
 I [  1] inns
+I [  1] arts
+I [  1] viii
 I [  1] orth
 I [  1] xiii
 I [  1] sssss
 I [  1] xviii
 I [  1] yesss
 I [  1] precioussss
-I [  2] ru
-I [  2] sh
 I [  2] et
 I [  2] fa
+I [  2] ru
+I [  2] sh
 I [  2] ray
 I [  2] hoy
 I [  2] bee
+I [  2] ivy
+I [  2] hut
+I [  2] fry
+I [  2] toe
 I [  2] rug
 I [  2] lil
 I [  2] icy
 I [  2] yew
-I [  2] ivy
-I [  2] hut
-I [  2] fry
 I [  2] lob
 I [  2] log
-I [  2] toe
-I [  2] url
 I [  2] hit
 I [  2] cat
+I [  2] sale
 I [  2] elms
 I [  2] ssss
 I [  2] asks
 I [  2] orcs
+I [  2] grubb
+I [  2] beater
+I [  2] british
+I [  2] douglas
+I [  2] esquire
+I [  2] bywater
+I [  2] thursday
+I [  2] dorwinion
 I [  3] bo
 I [  3] eh
 I [  3] ye
-I [  3] tub
 I [  3] baa
 I [  3] fir
-I [  3] sss
 I [  3] bar
 I [  3] rat
-I [  3] pop
-I [  3] buy
 I [  3] iss
 I [  3] tip
 I [  3] fog
-I [  3] nod
 I [  3] shy
 I [  3] sir
-I [  3] orc
 I [  3] bid
-I [  3] hey
 I [  3] dog
+I [  3] url
+I [  3] pie
+I [  3] boy
+I [  3] dug
+I [  3] tub
+I [  3] sss
+I [  3] pop
+I [  3] buy
+I [  3] nod
+I [  3] orc
+I [  3] hey
 I [  3] iii
 I [  3] gem
 I [  3] ear
-I [  3] pie
-I [  3] boy
 I [  3] win
-I [  3] dug
+I [  3] nain
+I [  3] warg
+I [  3] azog
+I [  3] bungo
+I [  3] biter
+I [  3] galion
+I [  3] tomnoddy
+I [  3] wednesday
+I [  3] glamdring
+I [  3] bullroarer
 I [  4] egg
-I [  4] leg
 I [  4] ugh
-I [  4] lid
-I [  4] pan
-I [  4] kin
 I [  4] rid
+I [  4] fun
+I [  4] leg
+I [  4] lid
+I [  4] kin
 I [  4] her
 I [  4] web
-I [  4] fun
 I [  4] fed
 I [  4] sad
 I [  4] inn
 I [  4] ends
+I [  4] carc
+I [  4] tolkien
+I [  4] tookish
+I [  4] rivendell
+I [  4] bagginses
 I [  4] preciousss
-I [  5] ss
+I [  4] belladonna
+I [  4] necromancer
 I [  5] er
-I [  5] ya
 I [  5] oh
-I [  5] pot
+I [  5] ss
+I [  5] ya
 I [  5] jug
+I [  5] pan
 I [  5] pay
-I [  5] axe
 I [  5] fro
 I [  5] aid
-I [  5] owl
 I [  5] ale
 I [  5] tra
-I [  5] ill
 I [  5] eve
 I [  5] due
+I [  5] pot
+I [  5] axe
+I [  5] owl
+I [  5] ill
+I [  5] bill
 I [  5] eggs
-I [  6] ro
+I [  5] bolg
+I [  5] english
 I [  6] ho
+I [  6] ro
 I [  6] fit
 I [  6] beg
 I [  6] foe
@@ -7282,17 +7235,24 @@ I [  6] mat
 I [  6] lad
 I [  6] spy
 I [  6] row
+I [  6] homely
+I [  6] orcrist
+I [  6] gondolin
 I [  7] bat
 I [  7] hot
-I [  7] arm
 I [  7] die
 I [  7] oak
 I [  7] age
 I [  7] mad
+I [  7] arm
 I [  7] hid
-I [  8] cup
+I [  7] june
+I [  7] moria
+I [  7] attercop
+I [  7] ravenhill
 I [  8] sea
 I [  8] isn
+I [  8] cup
 I [  8] ate
 I [  8] hat
 I [  8] arch
@@ -7303,13 +7263,16 @@ I [ 10] bay
 I [ 10] ten
 I [ 10] bow
 I [ 10] cry
+I [ 10] durin
+I [ 10] girion
+I [ 10] esgaroth
+I [ 11] ha
 I [ 11] re
 I [ 11] ve
-I [ 11] ha
 I [ 11] six
+I [ 11] ere
 I [ 11] ori
 I [ 11] war
-I [ 11] ere
 I [ 12] tea
 I [ 12] met
 I [ 13] la
@@ -7320,38 +7283,56 @@ I [ 13] bye
 I [ 13] wet
 I [ 13] job
 I [ 14] em
-I [ 14] cut
 I [ 14] dry
+I [ 14] cut
+I [ 14] nori
+I [ 14] oakenshield
 I [ 15] yer
 I [ 16] key
 I [ 18] run
 I [ 18] lot
+I [ 18] thrain
 I [ 19] bed
 I [ 19] oin
-I [ 20] eye
+I [ 19] thror
+I [ 19] bifur
+I [ 19] arkenstone
 I [ 20] try
+I [ 20] eye
+I [ 20] wargs
 I [ 21] led
+I [ 21] bofur
+I [ 21] dwalin
 I [ 22] sky
 I [ 22] tom
 I [ 22] map
+I [ 23] gloin
+I [ 23] elvenking
 I [ 25] bad
 I [ 25] fat
 I [ 26] won
 I [ 26] son
+I [ 26] elrond
 I [ 27] ran
 I [ 27] elf
 I [ 28] ll
 I [ 28] sit
+I [ 28] bert
+I [ 28] dain
+I [ 28] william
+I [ 28] mirkwood
 I [ 29] arms
 I [ 30] eat
 I [ 32] set
-I [ 33] ask
 I [ 33] new
-I [ 35] ago
+I [ 33] ask
 I [ 35] use
 I [ 36] top
 I [ 36] low
+I [ 37] ago
+I [ 37] dori
 I [ 38] few
+I [ 38] kili
 I [ 39] bit
 I [ 40] big
 I [ 40] man
@@ -7360,23 +7341,30 @@ I [ 46] why
 I [ 47] yes
 I [ 50] air
 I [ 51] lay
+I [ 51] fili
 I [ 53] sun
 I [ 57] nor
+I [ 57] bard
 I [ 59] put
+I [ 59] bombur
 I [ 60] sat
 I [ 62] own
+I [ 64] beorn
 I [ 68] mr
 I [ 68] how
+I [ 69] balin
 I [ 70] let
 I [ 79] saw
 I [ 81] yet
 I [ 82] say
 I [ 83] two
 I [ 85] men
+I [ 86] smaug
 I [ 88] has
 I [ 91] may
 I [ 96] its
 I [ 99] day
+I [101] baggins
 I [106] end
 I [106] our
 I [109] am
@@ -7398,7 +7386,9 @@ I [169] see
 I [170] go
 I [170] far
 I [182] my
+I [187] gandalf
 I [196] did
+I [252] thorin
 I [297] one
 I [301] so
 I [302] by
@@ -7406,14 +7396,15 @@ I [307] now
 I [310] no
 I [322] are
 I [323] if
-I [339] we
+I [340] we
 I [373] be
 I [374] or
 I [377] out
 I [379] up
 I [451] him
 I [505] is
-I [658] but
+I [555] bilbo
+I [661] but
 I [669] all
 I [674] at
 I [704] as
@@ -7423,14 +7414,14 @@ I [778] on
 I [839] you
 I [911] his
 I [953] had
-I [1240] it
+I [1241] it
 I [1391] was
 I [1487] in
 I [1919] he
 I [2118] to
 I [2518] of
-I [4531] and
+I [4534] and
 I [6167] the
 
-Total 53594 passed (5822 unique)
-Ignored 40385 (318 unique)
+Total 51521 passed (5748 unique)
+Ignored 42469 (385 unique)

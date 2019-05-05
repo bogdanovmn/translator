@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.core.text;
 
-import com.github.bogdanovmn.translator.core.BigString;
+import com.github.bogdanovmn.common.core.BigString;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;

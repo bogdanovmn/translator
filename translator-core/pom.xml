@@ -23,6 +23,14 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.github.bogdanovmn.common</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.bogdanovmn.common</groupId>
+            <artifactId>common-log</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.github.java-diff-utils</groupId>
             <artifactId>java-diff-utils</artifactId>
             <version>4.0</version>
