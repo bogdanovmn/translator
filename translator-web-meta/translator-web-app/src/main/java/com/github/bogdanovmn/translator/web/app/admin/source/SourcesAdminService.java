@@ -27,10 +27,8 @@ class SourcesAdminService {
 	public synchronized void delete(int sourceId) {
 		LOG.info("Delete source with id = {}", sourceId);
 
-		Source source = sourceRepository.getOne(sourceId);
-		if (source == null) {
-			throw new IllegalStateException("Source not exists");
-		}
+		Source source = sourceRepository.findById(sourceId)
+			.orElseThrow(() -> new IllegalStateException("Source not exists"));
 
 		LOG.info("Delete word links");
 		wordSourceRepository.deleteAllBySource(source);
