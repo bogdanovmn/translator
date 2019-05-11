@@ -8,7 +8,6 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
 
-
 public class EnglishText implements TextContent {
 	private final static String CONSONANT_LETTERS = "qwrtpsdfghkljzxcvbnm";
 
@@ -38,6 +37,8 @@ public class EnglishText implements TextContent {
 				if (
 					(normalizedToken.length() < EnglishWord.MIN_BASE_LENGTH)
 						||
+						(normalizedToken.length() > EnglishWord.MAX_BASE_LENGTH)
+						||
 						(normalizedToken.matches("^[" + CONSONANT_LETTERS + "]+$"))
 						||
 						(normalizedToken.length() < 5 && normalizedToken.matches(".*[" + CONSONANT_LETTERS + "]{3,}.*"))
@@ -47,7 +48,7 @@ public class EnglishText implements TextContent {
 						normalizedToken.matches(".*(.)\\1{2,}.*")
 						||
 						properNames.contains(normalizedToken)
-					) {
+				) {
 					if (normalizedToken.length() > 1) {
 						ignoreWordsCounter.increment(normalizedToken);
 					}

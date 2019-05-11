@@ -14,6 +14,7 @@ class EnglishWord {
 	private static final Logger LOG = LoggerFactory.getLogger(EnglishWord.class);
 
 	public final static int MIN_BASE_LENGTH = 4;
+	public final static int MAX_BASE_LENGTH = 30;
 	private final static List<String> POSTFIXES = Stream.of(
 		"s", "es", "ies", "ing",
 		"ed", "d",

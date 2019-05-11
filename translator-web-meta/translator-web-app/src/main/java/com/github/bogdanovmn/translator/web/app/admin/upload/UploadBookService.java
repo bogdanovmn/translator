@@ -81,8 +81,8 @@ class UploadBookService {
 			Word word = wordsMap.get(wordStr);
 			if (null == word) {
 				word = new Word(wordStr);
-				wordRepository.save(word);
 				LOG.info("New word: {}", wordStr);
+				wordRepository.save(word);
 				newWordsCount++;
 			}
 
