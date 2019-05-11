@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		.and().formLogin()
 			.loginPage("/login")
-			.defaultSuccessUrl("/to-remember/all", true)
+			.defaultSuccessUrl("/unknown-words", true)
 			.permitAll()
 
 		.and().logout()

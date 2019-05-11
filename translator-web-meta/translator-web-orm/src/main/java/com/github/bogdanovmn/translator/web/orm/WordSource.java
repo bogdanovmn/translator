@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlIDREF;
 	@NamedNativeQuery(
 		name = "WordSource.toRemember",
 		resultClass = WordSource.class,
-		query = WordSourceNativeQuery.TO_REMEMBER_WORDS_BY_SOURCE
+		query = WordSourceNativeQuery.UNKNOWN_WORDS_BY_SOURCE
 	)
 })
 public class WordSource extends BaseEntity {

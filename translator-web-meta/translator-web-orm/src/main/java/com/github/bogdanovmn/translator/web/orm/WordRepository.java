@@ -31,6 +31,7 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			+ " left join UserWordProgress uwp on w.id = uwp.word.id and uwp.user.id = :userId "
 			+ " where urw.word.id is null "
 			+ " and   uhow.word.id is null "
+			+ " and   w.sourcesCount > 0 "
 			+ " and   w.blackList = 0 "
 			+ " order by w.sourcesCount desc, w.frequence desc"
 	)

@@ -64,6 +64,6 @@ class RegistrationController extends AbstractMinVisualController {
 			user.getPasswordHash()
 		);
 
-		return new ModelAndView("redirect:/to-remember");
+		return new ModelAndView("redirect:/unknown-words");
 	}
 }

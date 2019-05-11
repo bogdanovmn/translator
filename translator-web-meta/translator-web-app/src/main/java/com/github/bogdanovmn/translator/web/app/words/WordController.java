@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.toremember;
+package com.github.bogdanovmn.translator.web.app.words;
 
 import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractController;
@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/word/{id}")
 class WordController extends AbstractController {
-	private final ToRememberService toRememberService;
+	private final UnknownWordsService unknownWordsService;
 
 	@Autowired
-	WordController(ToRememberService toRememberService) {
-		this.toRememberService = toRememberService;
+	WordController(UnknownWordsService unknownWordsService) {
+		this.unknownWordsService = unknownWordsService;
 	}
 
 	@PutMapping("/remembered")
 	ResponseEntity remembered(@PathVariable Integer id) {
-		toRememberService.rememberWord(id);
+		unknownWordsService.rememberWord(getUser(), id);
 		return ResponseEntity.ok().build();
 	}
 
@@ -33,7 +33,7 @@ class WordController extends AbstractController {
 	ResponseEntity<String> translate(@PathVariable Integer id) {
 		String result;
 		try {
-			result = toRememberService.translateWord(id);
+			result = unknownWordsService.translateWord(id);
 		}
 		catch (ResponseNotFoundException e) {
 			LOG.warn("Translate word (id={}) not found: ", e.getMessage());
@@ -51,7 +51,7 @@ class WordController extends AbstractController {
 
 	@PutMapping("/hold-over")
 	ResponseEntity holdOver(@PathVariable Integer id) {
-		toRememberService.holdOverWord(id);
+		unknownWordsService.holdOverWord(getUser(), id);
 		return ResponseEntity.ok().build();
 	}
 }

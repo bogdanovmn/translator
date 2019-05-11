@@ -17,28 +17,12 @@ div.button {
 
 div.error { border-radius: 10px; border: 1px solid #d47d7d; background: #f5cccc; text-align: center; color: #4c260b; padding: 10px 30px; }
 
-div.word-to-remember-block {
-	/*display: inline-block; margin: 10px; */
-	padding: 5px 5px 12px 5px;
-	text-align: left; font-size: 160%;
-	background: #fafcfd; border-radius: 10px; border: 1px dotted #bed5e0;
-}
-
 div.download-process-item { margin: 10px; padding: 5px 10px; border: 1px dotted gray; text-align: left;}
 div.download-process-item div.ERROR { border-color: #b43f39 }
 div.download-process-item div.DOWNLOADING { border-color: #1299b4 }
 div.download-process-item div.WAIT { border-color: #a2bca3 }
 div.download-process-item div.DONE { border-color: #09b24d; }
 div.download-process-item span.error { color: #b43f39; }
-
-div.word-to-remember-block div.word  { margin: 5px; }
-div.word-to-remember-block div.stats { font-size: 40%; color: #d4d4d4; text-align: right; }
-div.word-to-remember-block span.translate { color: cornflowerblue; font-weight: bold; font-size: 60%; }
-div.word-to-remember-block span.translate i { color: #a2c0f7; font-weight: normal; }
-div.word-to-remember-block div.button-remembered { border-color: seagreen; color: seagreen; }
-div.word-to-remember-block div.button-translate  { border-color: cornflowerblue; color: cornflowerblue; }
-div.word-to-remember-block div.button-hold-over  { border-color: cornflowerblue; color: cornflowerblue; }
-div.word-to-remember-block div.button-delete { border-color: darkred; color: darkred; }
 
 button.hidden { display: none; }
 div.in-action div.button { border: 1px dotted gray; color: gray; }
@@ -47,7 +31,7 @@ table.import-info { margin: 10px; }
 table.import-info td { padding: 5px 10px; }
 table.import-info td:first-child { font-weight: bold; }
 
-div.to-remember-note-block { text-align: center; color: #b9bfbf;  margin: 30px auto; }
+div.unknown-word-note-block { text-align: center; color: #b9bfbf;  margin: 30px auto; }
 
 div.source-block {
 	width: 85%;

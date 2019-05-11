@@ -6,7 +6,7 @@ import java.util.List;
 public class HeadMenu {
 	public enum ITEM {
 		REMEMBERED,
-		TO_REMEMBER,
+		UNKNOWN_WORDS,
 		SOURCES,
 		SETTINGS,
 		ADMIN,
@@ -44,8 +44,8 @@ public class HeadMenu {
 		if (!this.isPrepared) {
 			items = new ArrayList<>();
 //			items.add(new MenuItem(ITEM.REMEMBERED.name(), "/remembered", "Уже изучено"));
-			items.add(new MenuItem(ITEM.TO_REMEMBER.name(), "/to-remember/all", "Изучить"));
-			items.add(new MenuItem(ITEM.SOURCES.name(), "/sources/all", "Источники"));
+			items.add(new MenuItem(ITEM.UNKNOWN_WORDS.name(), "/unknown-words", "Изучить"));
+			items.add(new MenuItem(ITEM.SOURCES.name(), "/sources", "Источники"));
 			items.add(new MenuItem(ITEM.CLOUD.name(), "/cloud", "Облако слов"));
 			if (this.isAdmin) {
 				items.add(new MenuItem(ITEM.ADMIN.name(), "/admin/upload-book", "Админка"));

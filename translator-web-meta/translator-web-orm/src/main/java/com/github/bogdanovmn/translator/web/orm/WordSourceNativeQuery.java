@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm;
 
 class WordSourceNativeQuery {
-	private static final String TO_REMEMBER_WORDS_BY_SOURCE_RARE =
+	private static final String UNKNOWN_WORDS_BY_SOURCE_RARE =
 		"select ws.*"
 			+ " from  word2source ws"
 			+ " join word w on w.id = ws.word_id"
@@ -14,9 +14,9 @@ class WordSourceNativeQuery {
 			+ " order by ws.count ";
 
 
-	private static final String TO_REMEMBER_WORDS_BY_SOURCE_FREQUENT = TO_REMEMBER_WORDS_BY_SOURCE_RARE + "desc";
+	private static final String UNKNOWN_WORDS_BY_SOURCE_FREQUENT = UNKNOWN_WORDS_BY_SOURCE_RARE + "desc";
 
-	static final String TO_REMEMBER_WORDS_BY_SOURCE =
-		"(" + TO_REMEMBER_WORDS_BY_SOURCE_FREQUENT + " limit ?3) UNION (" + TO_REMEMBER_WORDS_BY_SOURCE_RARE + " limit ?4)";
+	static final String UNKNOWN_WORDS_BY_SOURCE =
+		"(" + UNKNOWN_WORDS_BY_SOURCE_FREQUENT + " limit ?3) UNION (" + UNKNOWN_WORDS_BY_SOURCE_RARE + " limit ?4)";
 
 }

@@ -99,6 +99,6 @@ class UserSettingsController extends AbstractVisualController {
 
 		userRepository.save(user);
 
-		return new ModelAndView("redirect:/to-remember/all");
+		return new ModelAndView("redirect:/unknown-words");
 	}
 }

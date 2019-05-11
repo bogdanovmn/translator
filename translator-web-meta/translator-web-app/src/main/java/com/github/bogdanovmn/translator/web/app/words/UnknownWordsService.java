@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.toremember;
+package com.github.bogdanovmn.translator.web.app.words;
 
 import com.github.bogdanovmn.translator.core.HttpServiceException;
 import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
@@ -15,10 +15,8 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-class ToRememberService {
+class UnknownWordsService {
 	private final static int WORDS_PER_PAGE = 10;
-	@Autowired
-	private TranslateSecurityService securityService;
 	@Autowired
 	private UserRememberedWordRepository userRememberedWordRepository;
 	@Autowired
@@ -34,30 +32,18 @@ class ToRememberService {
 	@Autowired
 	private TranslateRepository translateRepository;
 
-	private User getUser() {
-		return securityService.getLoggedInUser();
-	}
-
-	List<WordRepository.WordWithUserProgress> getAll() {
+	List<WordRepository.WordWithUserProgress> getAll(User user) {
 		return wordRepository.unknownByAllSources(
-			getUser().getId(),
+			user.getId(),
 			PageRequest.of(0, WORDS_PER_PAGE)
 		);
 	}
 
-	List<WordRepository.WordBySourceWithUserProgress> getAllBySource(Integer sourceId) {
-		return wordRepository.unknownBySource(
-			getUser().getId(),
-			sourceId,
-			PageRequest.of(0, WORDS_PER_PAGE)
-		);
-	}
-
-	void rememberWord(Integer wordId) {
-		if (null == userRememberedWordRepository.findFirstByUserAndWordId(getUser(), wordId)) {
+	void rememberWord(User user, Integer wordId) {
+		if (null == userRememberedWordRepository.findFirstByUserAndWordId(user, wordId)) {
 			userRememberedWordRepository.save(
 				new UserRememberedWord()
-					.setUser(getUser())
+					.setUser(user)
 					.setWord(new Word(wordId))
 					.setUpdated(new Date())
 			);
@@ -65,18 +51,18 @@ class ToRememberService {
 	}
 
 	@Transactional(rollbackFor = Exception.class)
-	public void holdOverWord(Integer wordId) {
-		if (null == userHoldOverWordRepository.findFirstByUserAndWordId(getUser(), wordId)) {
+	public void holdOverWord(User user, Integer wordId) {
+		if (null == userHoldOverWordRepository.findFirstByUserAndWordId(user, wordId)) {
 			Word word = new Word(wordId);
 			userHoldOverWordRepository.save(
 				new UserHoldOverWord()
-					.setUser(getUser())
+					.setUser(user)
 					.setWord(word)
 			);
-			UserWordProgress progress = userWordProgressRepository.findByUserAndWord(getUser(), word);
+			UserWordProgress progress = userWordProgressRepository.findByUserAndWord(user, word);
 			if (null == progress) {
 				progress = new UserWordProgress()
-					.setUser(getUser())
+					.setUser(user)
 					.setWord(word);
 			}
 			progress.incHoldOverCount();
