@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.bogdanovmn.httpclient</groupId>
-            <artifactId>http-client-impl-simple</artifactId>
+            <artifactId>http-client-simple</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>

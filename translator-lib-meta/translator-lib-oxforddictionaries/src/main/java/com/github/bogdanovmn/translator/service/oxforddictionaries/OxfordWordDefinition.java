@@ -1,9 +1,9 @@
 package com.github.bogdanovmn.translator.service.oxforddictionaries;
 
+import com.github.bogdanovmn.httpclient.core.ResponseException;
+import com.github.bogdanovmn.httpclient.core.ResponseNotFoundException;
+import com.github.bogdanovmn.httpclient.core.ResponseParseException;
 import com.github.bogdanovmn.httpclient.simple.SimpleHttpClient;
-import com.github.bogdanovmn.translator.core.ResponseException;
-import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
-import com.github.bogdanovmn.translator.core.ResponseParseException;
 import com.github.bogdanovmn.translator.core.definition.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.core.translate;
+package com.github.bogdanovmn.translator.core.text;
 
 import java.util.HashMap;
 import java.util.Map;

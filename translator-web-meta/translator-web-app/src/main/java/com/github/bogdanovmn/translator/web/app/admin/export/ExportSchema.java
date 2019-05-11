@@ -20,16 +20,8 @@ class ExportSchema {
 	private List<Source> sources;
 
 	@XmlElementWrapper
-	@XmlElement(name = "translateProvider")
-	private List<TranslateProvider> translateProviders;
-
-	@XmlElementWrapper
 	@XmlElement(name = "word")
 	private List<Word> words;
-
-	@XmlElementWrapper
-	@XmlElement(name = "translate")
-	private List<Translate> translates;
 
 	@XmlElementWrapper
 	@XmlElement(name = "link")
@@ -38,13 +30,6 @@ class ExportSchema {
 	@XmlElementWrapper
 	@XmlElement(name = "user")
 	private List<ExportSchema.ExportUser> users = new ArrayList<>();
-
-
-	ExportSchema setTranslates(List<Translate> translates) {
-		translates.forEach(x -> x.setId(null));
-		this.translates = translates;
-		return this;
-	}
 
 	ExportSchema setWordSources(List<WordSource> wordSources) {
 		wordSources.forEach(x -> x.setId(null));

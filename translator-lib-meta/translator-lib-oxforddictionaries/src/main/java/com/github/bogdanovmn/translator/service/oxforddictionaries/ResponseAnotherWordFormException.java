@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.service.oxforddictionaries;
 
-import com.github.bogdanovmn.translator.core.ResponseException;
+import com.github.bogdanovmn.httpclient.core.ResponseException;
 import com.github.bogdanovmn.translator.core.definition.DefinitionInstance;
 import lombok.Getter;
 

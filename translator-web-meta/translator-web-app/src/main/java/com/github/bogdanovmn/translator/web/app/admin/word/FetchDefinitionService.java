@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin.word;
 
-import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
+import com.github.bogdanovmn.httpclient.core.ResponseNotFoundException;
 import com.github.bogdanovmn.translator.core.definition.DefinitionInstance;
 import com.github.bogdanovmn.translator.core.definition.PartOfSpeech;
 import com.github.bogdanovmn.translator.core.definition.Sentence;

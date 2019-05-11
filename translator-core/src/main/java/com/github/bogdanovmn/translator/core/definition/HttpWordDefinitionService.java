@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.core.definition;
 
 import com.github.bogdanovmn.httpclient.core.HttpClient;
-import com.github.bogdanovmn.translator.core.HttpService;
-import com.github.bogdanovmn.translator.core.HttpServiceException;
+import com.github.bogdanovmn.httpclient.core.HttpService;
+import com.github.bogdanovmn.httpclient.core.HttpServiceException;
 
 import java.io.IOException;
 import java.util.List;

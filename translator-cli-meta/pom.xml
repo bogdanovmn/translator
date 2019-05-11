@@ -15,7 +15,7 @@
     <packaging>pom</packaging>
 
     <modules>
-		<module>translator-cli-translate</module>
+		<module>translator-cli-word-definition</module>
 		<module>translator-cli-parser</module>
 		<module>translator-cli-words-normalize</module>
 	</modules>

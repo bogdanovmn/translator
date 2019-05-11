@@ -36,10 +36,6 @@
 		</dependency>
         <dependency>
             <groupId>com.github.bogdanovmn.translator</groupId>
-            <artifactId>translator-lib-google</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.bogdanovmn.translator</groupId>
             <artifactId>translator-lib-oxforddictionaries</artifactId>
         </dependency>
 

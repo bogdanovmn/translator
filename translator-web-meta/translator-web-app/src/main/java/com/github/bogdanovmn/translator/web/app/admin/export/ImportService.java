@@ -27,8 +27,6 @@ class ImportService {
 	@Autowired
 	private EntityFactory entityFactory;
 	@Autowired
-	private TranslateRepository translateRepository;
-	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private SourceRepository sourceRepository;
@@ -68,32 +66,6 @@ class ImportService {
 			LOG.info("Source '{}' word links import done", source.getRawName());
 		}
 		return resultSources;
-	}
-
-	private void importTranslates(ImportSchema importSchema, ExportWordCache exportWordCache) {
-		Map<Integer, TranslateProvider> translateProviderByExportId = importSchema.getTranslateProviders().stream()
-			.collect(Collectors.toMap(
-				ImportSchema.ImportTranslateProvider::getId,
-				x -> (TranslateProvider) entityFactory.getPersistBaseEntityWithUniqueName(
-					new TranslateProvider(x.getName())
-				)
-			));
-
-		LOG.info("Translates import start");
-		for (ImportSchema.ImportTranslate importTranslate : importSchema.getTranslates()) {
-			Word word = exportWordCache.getByExportId(importTranslate.getWordId());
-			Translate translate = new Translate()
-				.setValue(importTranslate.getValue())
-				.setWord(word)
-				.setProvider(
-					translateProviderByExportId.get(importTranslate.getProviderId())
-				);
-
-			List<Translate> wordTranslates = word.getTranslates();
-			if (!wordTranslates.contains(translate)) {
-				translateRepository.save(translate);
-			}
-		}
 	}
 
 	private List<User> importUsers(ImportSchema importSchema, ExportWordCache exportWordCache) {
@@ -172,12 +144,6 @@ class ImportService {
 		// Sources with words
 
 		List<Source> resultSources = importSources(importSchema, exportWordCache);
-
-		// Translates
-
-		LOG.info("Prepare and save translate providers");
-		importTranslates(importSchema, exportWordCache);
-		LOG.info("Translates import done");
 
 		// User words lists
 

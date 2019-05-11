@@ -1,9 +1,5 @@
 package com.github.bogdanovmn.translator.web.app.words;
 
-import com.github.bogdanovmn.translator.core.HttpServiceException;
-import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
-import com.github.bogdanovmn.translator.core.translate.TranslateService;
-import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Service
 class UnknownWordsService {
@@ -25,12 +20,6 @@ class UnknownWordsService {
 	private UserWordProgressRepository userWordProgressRepository;
 	@Autowired
 	private WordRepository wordRepository;
-	@Autowired
-	private TranslateService translateService;
-	@Autowired
-	private EntityFactory entityFactory;
-	@Autowired
-	private TranslateRepository translateRepository;
 
 	List<WordRepository.WordWithUserProgress> getAll(User user) {
 		return wordRepository.unknownByAllSources(
@@ -68,42 +57,5 @@ class UnknownWordsService {
 			progress.incHoldOverCount();
 			userWordProgressRepository.save(progress);
 		}
-	}
-
-	String translateWord(Integer wordId) throws HttpServiceException {
-		Word word = wordRepository.findById(wordId)
-			.orElseThrow(() ->
-				new RuntimeException(
-					String.format("Unknown word (id = %d", wordId)
-				)
-			);
-
-		TranslateProvider provider = (TranslateProvider) entityFactory.getPersistBaseEntityWithUniqueName(
-			new TranslateProvider("Google")
-		);
-
-		Set<String> translates;
-		try {
-			translates = translateService.translate(word.getName());
-			translates.forEach(x ->
-				translateRepository.save(
-					new Translate()
-						.setProvider(provider)
-						.setWord(word)
-						.setValue(x)
-				)
-			);
-		}
-		catch (ResponseNotFoundException e) {
-			translateRepository.save(
-				new Translate()
-					.setProvider(provider)
-					.setWord(word)
-					.setValue(null)
-			);
-			throw new ResponseNotFoundException(e.getMessage());
-		}
-
-		return String.join(", ", translates);
 	}
 }

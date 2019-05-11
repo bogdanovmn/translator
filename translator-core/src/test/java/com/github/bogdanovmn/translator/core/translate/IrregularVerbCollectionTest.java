@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.core.translate;
 
+import com.github.bogdanovmn.translator.core.text.IrregularVerbCollection;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

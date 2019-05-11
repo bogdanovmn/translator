@@ -14,10 +14,6 @@ class ExportService {
 	@Autowired
 	private WordRepository wordRepository;
 	@Autowired
-	private TranslateRepository translateRepository;
-	@Autowired
-	private TranslateProviderRepository translateProviderRepository;
-	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private SourceRepository sourceRepository;
@@ -36,14 +32,8 @@ class ExportService {
 				.setSources(
 					sourceRepository.findAll()
 				)
-				.setTranslateProviders(
-					translateProviderRepository.findAll()
-				)
 				.setWords(
 					wordRepository.findAll()
-				)
-				.setTranslates(
-					translateRepository.findAll()
 				)
 				.setWordSources(
 					wordSourceRepository.findAll()

@@ -10,17 +10,13 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>translator-cli-translate</artifactId>
+	<artifactId>translator-cli-word-definition</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.github.bogdanovmn.translator</groupId>
-			<artifactId>translator-lib-google</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.bogdanovmn.translator</groupId>
-			<artifactId>translator-lib-yandex</artifactId>
+			<artifactId>translator-lib-oxforddictionaries</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -30,10 +26,10 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<skipAssembly>false</skipAssembly>
-					<finalName>translator</finalName>
+					<finalName>word-definition</finalName>
 					<archive>
 						<manifest>
-							<mainClass>com.github.bogdanovmn.translator.cli.translate.App</mainClass>
+							<mainClass>com.github.bogdanovmn.translator.cli.definition.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

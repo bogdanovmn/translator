@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.core.definition;
 
-import com.github.bogdanovmn.translator.core.HttpServiceException;
+import com.github.bogdanovmn.httpclient.core.HttpServiceException;
 
 import java.util.List;
 

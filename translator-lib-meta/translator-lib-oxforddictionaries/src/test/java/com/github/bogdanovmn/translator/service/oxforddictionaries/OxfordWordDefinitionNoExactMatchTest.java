@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.service.oxforddictionaries;
 
-import com.github.bogdanovmn.translator.core.ResponseNotFoundException;
+import com.github.bogdanovmn.httpclient.core.ResponseNotFoundException;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;

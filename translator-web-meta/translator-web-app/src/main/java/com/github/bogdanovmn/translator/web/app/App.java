@@ -1,8 +1,6 @@
 package com.github.bogdanovmn.translator.web.app;
 
 import com.github.bogdanovmn.translator.core.definition.WordDefinitionService;
-import com.github.bogdanovmn.translator.core.translate.TranslateService;
-import com.github.bogdanovmn.translator.service.google.GoogleTranslate;
 import com.github.bogdanovmn.translator.service.oxforddictionaries.OxfordWordDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,11 +29,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class App {
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
-	}
-
-	@Bean
-	public TranslateService getTranslateService() {
-		return new GoogleTranslate();
 	}
 
 	@Bean

@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.core.translate;
+package com.github.bogdanovmn.translator.core.text;
 
 public class IrregularVerb {
 	private final String baseForm;

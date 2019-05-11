@@ -19,10 +19,6 @@ import java.util.Set;
 @NoArgsConstructor
 
 @Entity
-@NamedEntityGraph(
-	name = "wordsWithTranslate",
-	attributeNodes = @NamedAttributeNode("translates")
-)
 @NamedNativeQueries({
 	@NamedNativeQuery(
 		name = "Word.allBySourceForCloud",
@@ -60,11 +56,6 @@ public class Word extends BaseEntityWithUniqueName {
 	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	@Column(nullable = false)
 	private boolean blackList = false;
-
-	@XmlTransient
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "word_id")
-	private List<Translate> translates = new ArrayList<>();
 
 	@XmlTransient
 	@OneToMany(cascade = CascadeType.ALL)

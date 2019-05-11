@@ -15,8 +15,6 @@
     <packaging>pom</packaging>
 
     <modules>
-		<module>translator-lib-google</module>
-		<module>translator-lib-yandex</module>
 		<module>translator-lib-oxforddictionaries</module>
 	</modules>
 
