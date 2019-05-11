@@ -13,7 +13,8 @@ public interface SourceRepository extends JpaRepository<Source, Integer> {
 		"FROM Source s " +
 		"JOIN WordSource ws ON ws.source.id = s.id " +
 		"LEFT JOIN UserRememberedWord urw ON urw.word.id = ws.word.id AND urw.user.id = ?1 " +
-		"GROUP BY s"
+		"GROUP BY s " +
+		"ORDER BY s.id DESC"
 	)
 	List<WithUserStatistic> getAllWithUserStatistic(Integer userId);
 
