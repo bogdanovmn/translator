@@ -38,6 +38,9 @@ class SourcesAdminService {
 		wordSourceRepository.flush();
 		wordRepository.updateStatistic();
 
-		LOG.info("Delete is done");
+		LOG.info("Remove unused words");
+		wordRepository.removeUnused();
+
+		LOG.info("Deletion is done");
 	}
 }

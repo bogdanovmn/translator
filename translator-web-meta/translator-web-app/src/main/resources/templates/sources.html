@@ -24,7 +24,8 @@
 				{{#isAdmin}}
 					<button type="button"
 							class="btn btn-sm btn-outline-danger"
-							data-id="delete"
+							data-action="delete"
+							data-source-id="{{source.id}}"
 							data-href="/admin/sources/{{source.id}}">Удалить
 					</button>
 				{{/isAdmin}}
@@ -45,35 +46,35 @@
 		function() {
 			var button = $(this);
 			var actionUrl = "{{layout.contextPath}}" + button.attr("data-href")
-			var sourceBlock = button.parent();
-			var sourceBlockId = sourceBlock.attr('id');
+			var sourceBlockId = button.attr('data-source-id');
 
 			if (sourceBlockInAction[sourceBlockId]) {
 				return
 			}
 
 			sourceBlockInAction[sourceBlockId] = true;
-			sourceBlock.toggleClass("in-action");
+			button.prop("disabled", true);
 
-			switch (button.attr("data-id")) {
+			switch (button.attr("data-action")) {
 				case "delete":
-					actionAndHide(sourceBlock, actionUrl, "DELETE");
+					actionAndHide(sourceBlockId, actionUrl, "DELETE");
 					break;
 			}
 		}
 	);
 
-	function actionAndHide(sourceBlock, url, method) {
+	function actionAndHide(sourceBlockId, url, method) {
 		console.log("[action and hide] " + url);
 		$.ajax({ url: url, method: method})
 			.done(function(resp) {
 				console.log('[OK] ' + url);
-				sourceBlock.remove();
+				$("#source-" + sourceBlockId).remove();
 			})
 			.fail(function (jqXHR, excpetion) {
 				console.log("[ERROR]" + url + "\n" + excpetion)
 			})
 			.always(function () {
+				sourceBlockInAction[sourceBlockId] = false;
 			});
 	}
 </script>

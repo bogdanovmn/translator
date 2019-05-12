@@ -87,4 +87,20 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			"set word.frequence = stat.freq, word.sources_count = stat.sources"
 	)
 	void updateStatistic();
+
+	@Modifying
+	@Query(
+		nativeQuery = true,
+		value =
+			"delete word from word " +
+			"left join user_remembered_word urw on word.id = urw.word_id " +
+			"left join user_hold_over_word uhow on word.id = uhow.word_id " +
+			"left join user_word_progress uwp   on word.id = uwp.word_id " +
+			"where word.black_list = 0 " +
+			"and   word.sources_count = 0 " +
+			"and   urw.id  is null " +
+			"and   uhow.id is null " +
+			"and   uwp.id  is null"
+	)
+	void removeUnused();
 }

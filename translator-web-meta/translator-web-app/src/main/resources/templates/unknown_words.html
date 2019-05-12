@@ -55,7 +55,7 @@
 			<div class="btn-group">
 				<button type="button"
 						class="btn btn-outline-success btn-sm"
-						data-id="remembered"
+						data-action="remembered"
 						data-word-id="{{word.id}}"
 						data-href="/word/{{word.id}}/remembered">Знаю!
 				</button>
@@ -63,14 +63,14 @@
 				<button type="button"
 						class="btn btn-outline-secondary btn-sm"
 						data-word-id="{{word.id}}"
-						data-id="hold-over"
+						data-action="hold-over"
 						data-href="/word/{{word.id}}/hold-over">Пропустить
 				</button>
 
 				{{#isAdmin}}
 					<button type="button"
 							class="btn btn-outline-danger btn-sm"
-							data-id="black-list"
+							data-action="black-list"
 							data-word-id="{{word.id}}"
 							data-href="/admin/word/{{word.id}}/black-list">Удалить
 					</button>
@@ -113,10 +113,7 @@
 			}
 			wordBlockInAction[wordBlockId] = true;
 
-			switch (button.attr("data-id")) {
-				case "translate":
-					translate(wordBlock, actionUrl);
-					break;
+			switch (button.attr("data-action")) {
 				case "hold-over":
 					actionAndHide(wordBlock, actionUrl);
 					break;
@@ -131,26 +128,6 @@
 			}
 		}
 	);
-
-	function translate(wordBlock, url) {
-		console.log("[translate] " + url);
-		$.ajax({ url: url, method: 'PUT'})
-			.done(function(resp) {
-				var wordId = wordBlock.attr("data-word-id");
-				var contentBlock = $('#word-content-' + wordId);
-				contentBlock.text(resp);
-				contentBlock.addClass("card-body text-muted");
-				wordBlock.find("[data-id=translate]").hide();
-				wordBlock.find("[data-id=hold-over]").toggleClass("hidden");
-				console.log('[OK] ' + url);
-			})
-			.fail(function (jqXHR, excpetion) {
-				console.log("[ERROR]" + url + "\n" + excpetion)
-			})
-			.always(function () {
-				wordBlockInAction[wordBlock.attr('id')] = false;
-			});
-	}
 
 	function actionAndHide(wordBlock, url) {
 		console.log("[action and hide] " + url);
