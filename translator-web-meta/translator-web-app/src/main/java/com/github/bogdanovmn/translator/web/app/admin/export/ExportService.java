@@ -1,6 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
-import com.github.bogdanovmn.translator.web.orm.*;
+import com.github.bogdanovmn.translator.web.orm.entity.SourceRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.UserRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.WordRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.WordSourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

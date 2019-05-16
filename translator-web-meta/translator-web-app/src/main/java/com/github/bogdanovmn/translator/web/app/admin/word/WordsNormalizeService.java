@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.word;
 
 import com.github.bogdanovmn.translator.core.text.NormalizedWords;
-import com.github.bogdanovmn.translator.web.orm.*;
+import com.github.bogdanovmn.translator.web.orm.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
 
+import com.github.bogdanovmn.common.spring.jpa.BaseEntity;
 import com.github.bogdanovmn.translator.core.text.CompressedText;
-import com.github.bogdanovmn.translator.orm.core.BaseEntity;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import lombok.Getter;
 import lombok.Setter;

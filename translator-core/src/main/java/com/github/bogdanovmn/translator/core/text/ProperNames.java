@@ -5,13 +5,12 @@ import com.github.bogdanovmn.common.core.StringCounter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 
-class ProperNames {
-	private final Set<String> names;
+public class ProperNames {
+	private final StringCounter names;
 
-	private ProperNames(Set<String> names) {
+	private ProperNames(StringCounter names) {
 		this.names = names;
 	}
 
@@ -46,13 +45,19 @@ class ProperNames {
 			}
 		);
 
-		return new ProperNames(
-			tokenWithFirstCapital.keys().stream()
-				.filter(word -> !firstCapitalWordToIgnore.contains(word))
-				.collect(Collectors.toSet()));
+		firstCapitalWordToIgnore.forEach(tokenWithFirstCapital::remove);
+		return new ProperNames(tokenWithFirstCapital);
 	}
 
 	public boolean contains(String token) {
-		return names.contains(token.toLowerCase());
+		return names.get(token.toLowerCase()) > 0;
+	}
+
+	public int frequency(String name) {
+		return names.get(name.toLowerCase());
+	}
+
+	public Set<String> names() {
+		return names.keys();
 	}
 }

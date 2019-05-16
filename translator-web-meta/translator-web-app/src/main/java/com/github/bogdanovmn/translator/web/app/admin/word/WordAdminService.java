@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.web.app.admin.word;
 
-import com.github.bogdanovmn.translator.web.orm.UserHoldOverWordRepository;
-import com.github.bogdanovmn.translator.web.orm.Word;
-import com.github.bogdanovmn.translator.web.orm.WordRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.UserHoldOverWordRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.Word;
+import com.github.bogdanovmn.translator.web.orm.entity.WordRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.source;
 
-import com.github.bogdanovmn.translator.web.orm.*;
+import com.github.bogdanovmn.translator.web.orm.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

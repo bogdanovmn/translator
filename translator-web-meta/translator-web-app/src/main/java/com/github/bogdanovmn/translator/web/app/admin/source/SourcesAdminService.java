@@ -1,9 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin.source;
 
-import com.github.bogdanovmn.translator.web.orm.Source;
-import com.github.bogdanovmn.translator.web.orm.SourceRepository;
-import com.github.bogdanovmn.translator.web.orm.WordRepository;
-import com.github.bogdanovmn.translator.web.orm.WordSourceRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +12,16 @@ class SourcesAdminService {
 	private final SourceRepository sourceRepository;
 	private final WordSourceRepository wordSourceRepository;
 	private final WordRepository wordRepository;
+	private final ProperNameRepository properNameRepository;
+	private final ProperNameSourceRepository properNameSourceRepository;
 
 	@Autowired
-	SourcesAdminService(SourceRepository sourceRepository, WordSourceRepository wordSourceRepository, WordRepository wordRepository) {
+	SourcesAdminService(SourceRepository sourceRepository, WordSourceRepository wordSourceRepository, WordRepository wordRepository, ProperNameRepository properNameRepository, ProperNameSourceRepository properNameSourceRepository) {
 		this.sourceRepository = sourceRepository;
 		this.wordSourceRepository = wordSourceRepository;
 		this.wordRepository = wordRepository;
+		this.properNameRepository = properNameRepository;
+		this.properNameSourceRepository = properNameSourceRepository;
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -32,6 +33,8 @@ class SourcesAdminService {
 
 		LOG.info("Delete word links");
 		wordSourceRepository.deleteAllBySource(source);
+		LOG.info("Remove proper names");
+		properNameSourceRepository.deleteAllBySource(source);
 		sourceRepository.delete(source);
 
 		LOG.info("Update Word statistic");
@@ -40,6 +43,9 @@ class SourcesAdminService {
 
 		LOG.info("Remove unused words");
 		wordRepository.removeUnused();
+
+		LOG.info("Remove unused proper names");
+		properNameRepository.removeUnused();
 
 		LOG.info("Deletion is done");
 	}

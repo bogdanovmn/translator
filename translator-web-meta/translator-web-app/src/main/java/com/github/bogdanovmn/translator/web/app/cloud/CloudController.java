@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.web.app.cloud;
 
+import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.HeadMenu;
-import com.github.bogdanovmn.translator.web.app.infrastructure.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.source.SourcesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,15 +49,15 @@ class CloudController extends AbstractVisualController {
 		.modelAndView();
 	}
 
-	@GetMapping("/source/{id}")
+	@GetMapping("/sources/{sourceId}")
 	ModelAndView bySource(
-		@PathVariable Integer id,
+		@PathVariable Integer sourceId,
 		@RequestParam(required = false, defaultValue = "false", name = "all") Boolean showAll,
 		@RequestParam(required = false, defaultValue = "true",  name = "unknown") Boolean showUnknown,
 		@RequestParam(required = false, defaultValue = "false", name = "remembered") Boolean showRemembered
 	) {
 		CloudContentFilter filter = new CloudContentFilter(
-			"/cloud/source/" + id,
+			"/cloud/sources/" + sourceId,
 			new HashMap<CloudContentFilterToggle, Boolean>() {{
 				put(CloudContentFilterToggle.ALL, showAll);
 				put(CloudContentFilterToggle.UNKNOWN, showUnknown);
@@ -65,9 +65,27 @@ class CloudController extends AbstractVisualController {
 			}}
 		);
 		return new ViewTemplate("cloud")
-			.with("words", cloudService.sourceWords(id, filter, getUser()))
+			.with("words", cloudService.sourceWords(sourceId, filter, getUser()))
 			.with("filter", filter)
-			.with("source", sourcesService.get(id))
+			.with("source", sourcesService.get(sourceId))
+		.modelAndView();
+	}
+
+	@GetMapping("/sources/{sourceId}/proper-names")
+	ModelAndView properNamesBySource(@PathVariable Integer sourceId) {
+		CloudContentFilter filter = new CloudContentFilter(
+			"/cloud/sources/" + sourceId,
+			new HashMap<CloudContentFilterToggle, Boolean>() {{
+				put(CloudContentFilterToggle.ALL, false);
+				put(CloudContentFilterToggle.UNKNOWN, false);
+				put(CloudContentFilterToggle.REMEMBERED, false);
+			}}
+		);
+		return new ViewTemplate("cloud")
+			.with("words", cloudService.sourceProperNames(sourceId))
+			.with("filter", filter)
+			.with("source", sourcesService.get(sourceId))
+			.with("properNames", true)
 		.modelAndView();
 	}
 }

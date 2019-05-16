@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.infrastructure.config.security;
 
-import com.github.bogdanovmn.translator.web.orm.User;
-import com.github.bogdanovmn.translator.web.orm.UserRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.User;
+import com.github.bogdanovmn.translator.web.orm.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -4,8 +4,8 @@ import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualCon
 import com.github.bogdanovmn.translator.web.app.infrastructure.FormErrors;
 import com.github.bogdanovmn.translator.web.app.infrastructure.HeadMenu;
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.Md5PasswordEncoder;
-import com.github.bogdanovmn.translator.web.orm.User;
-import com.github.bogdanovmn.translator.web.orm.UserRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.User;
+import com.github.bogdanovmn.translator.web.orm.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;

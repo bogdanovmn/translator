@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.infrastructure.config.security;
 
-import com.github.bogdanovmn.translator.web.orm.User;
-import com.github.bogdanovmn.translator.web.orm.UserRole;
+import com.github.bogdanovmn.translator.web.orm.entity.User;
+import com.github.bogdanovmn.translator.web.orm.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.definition;
 
-import com.github.bogdanovmn.translator.web.orm.WordDefinitionServiceLog;
-import com.github.bogdanovmn.translator.web.orm.WordDefinitionServiceLogRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.WordDefinitionServiceLog;
+import com.github.bogdanovmn.translator.web.orm.entity.WordDefinitionServiceLogRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 

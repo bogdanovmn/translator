@@ -23,12 +23,12 @@
             <artifactId>translator-parser-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.bogdanovmn.translator</groupId>
-            <artifactId>translator-orm-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.bogdanovmn.common</groupId>
+            <artifactId>common-spring</artifactId>
         </dependency>
     </dependencies>
 </project>

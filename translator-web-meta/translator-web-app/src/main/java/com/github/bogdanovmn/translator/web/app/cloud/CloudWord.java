@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.cloud;
 
-import com.github.bogdanovmn.translator.web.orm.Word;
+import com.github.bogdanovmn.translator.web.orm.entity.Word;
 
 class CloudWord {
 	private final Word word;

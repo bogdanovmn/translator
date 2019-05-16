@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
-import com.github.bogdanovmn.translator.web.orm.*;
+import com.github.bogdanovmn.common.spring.jpa.EntityFactory;
+import com.github.bogdanovmn.translator.web.orm.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

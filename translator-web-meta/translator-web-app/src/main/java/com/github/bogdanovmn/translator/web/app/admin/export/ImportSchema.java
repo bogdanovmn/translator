@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
-import com.github.bogdanovmn.translator.web.orm.Source;
-import com.github.bogdanovmn.translator.web.orm.SourceType;
+import com.github.bogdanovmn.translator.web.orm.entity.Source;
+import com.github.bogdanovmn.translator.web.orm.entity.SourceType;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;

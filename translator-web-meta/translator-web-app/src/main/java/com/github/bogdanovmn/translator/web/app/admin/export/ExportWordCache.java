@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
-import com.github.bogdanovmn.translator.web.orm.EntityFactory;
-import com.github.bogdanovmn.translator.web.orm.Word;
+import com.github.bogdanovmn.common.spring.jpa.EntityFactory;
+import com.github.bogdanovmn.translator.web.orm.entity.Word;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +29,7 @@ class ExportWordCache {
 		if (word == null) {
 			wordByExportId.put(
 				id,
-				(Word) entityFactory.getPersistBaseEntityWithUniqueName(
+				entityFactory.getPersistBaseEntityWithUniqueName(
 					new Word(wordNameByExportId.get(id))
 				)
 			);

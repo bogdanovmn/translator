@@ -1,12 +1,12 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
+import com.github.bogdanovmn.common.spring.jpa.BaseEntityRepository;
 import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface BookDownloadProcessRepository extends JpaRepository<BookDownloadProcess, Integer> {
+public interface BookDownloadProcessRepository extends BaseEntityRepository<BookDownloadProcess> {
 	List<BookDownloadProcess> findTop10ByStatus(DownloadStatus status);
 
 	@EntityGraph(attributePaths = {"meta"})

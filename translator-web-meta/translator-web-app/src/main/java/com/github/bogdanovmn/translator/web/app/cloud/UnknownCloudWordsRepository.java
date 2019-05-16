@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.cloud;
 
-import com.github.bogdanovmn.translator.web.orm.WordRepository;
+import com.github.bogdanovmn.translator.web.orm.entity.WordRepository;
 
 import java.util.List;
 

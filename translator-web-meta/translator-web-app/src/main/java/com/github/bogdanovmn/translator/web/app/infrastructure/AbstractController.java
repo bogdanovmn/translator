@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.infrastructure;
 
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.TranslateSecurityService;
-import com.github.bogdanovmn.translator.web.orm.User;
+import com.github.bogdanovmn.translator.web.orm.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 

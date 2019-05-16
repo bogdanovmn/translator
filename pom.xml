@@ -16,7 +16,6 @@
 		<module>translator-parser-meta</module>
 		<module>translator-web-meta</module>
 		<module>translator-etl-meta</module>
-		<module>translator-orm-core</module>
 	</modules>
 
 	<properties>
@@ -24,7 +23,7 @@
 		<java.version>1.8</java.version>
 		<spring-boot.version>2.1.3.RELEASE</spring-boot.version>
 		<http-client.version>2.1.5</http-client.version>
-		<common.version>1.1.0</common.version>
+		<common.version>1.2.1</common.version>
 	</properties>
 
 	<dependencyManagement>
@@ -98,6 +97,11 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.common</groupId>
 				<artifactId>common-log</artifactId>
+				<version>${common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn.common</groupId>
+				<artifactId>common-spring</artifactId>
 				<version>${common.version}</version>
 			</dependency>
 

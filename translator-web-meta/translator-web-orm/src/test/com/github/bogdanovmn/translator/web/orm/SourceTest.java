@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.web.orm;
 
+import com.github.bogdanovmn.translator.web.orm.entity.Source;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

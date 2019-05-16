@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.github.bogdanovmn.common.spring.jpa.BaseEntityRepository;
 
-public interface BookRepository extends JpaRepository<Book, Integer> {
+public interface BookRepository extends BaseEntityRepository<Book> {
 }

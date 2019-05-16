@@ -1,8 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.admin.upload;
 
 import com.github.bogdanovmn.translator.core.text.EnglishText;
+import com.github.bogdanovmn.translator.core.text.ProperNames;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
-import com.github.bogdanovmn.translator.web.orm.*;
+import com.github.bogdanovmn.translator.web.orm.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +20,16 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 class UploadBookService {
-	private final WordRepository wordRepository;
-	private final SourceRepository sourceRepository;
-	private final WordSourceRepository wordSourceRepository;
-
 	@Autowired
-	UploadBookService(WordRepository wordRepository, SourceRepository sourceRepository, WordSourceRepository wordSourceRepository) {
-		this.wordRepository = wordRepository;
-		this.sourceRepository = sourceRepository;
-		this.wordSourceRepository = wordSourceRepository;
-	}
+	private WordRepository wordRepository;
+	@Autowired
+	private SourceRepository sourceRepository;
+	@Autowired
+	private WordSourceRepository wordSourceRepository;
+	@Autowired
+	private ProperNameRepository properNameRepository;
+	@Autowired
+	private ProperNameSourceRepository properNameSourceRepository;
 
 	@Transactional(rollbackFor = Exception.class)
 	public synchronized Source upload(MultipartFile file)
@@ -58,7 +59,7 @@ class UploadBookService {
 
 		Collection<String> words = englishText.normalizedWords();
 
-		source = this.sourceRepository.save(
+		source = sourceRepository.save(
 			new Source()
 				.setRawName(file.getOriginalFilename())
 				.setContentHash(fileMd5)
@@ -69,7 +70,7 @@ class UploadBookService {
 		);
 
 		LOG.info("Load exists words");
-		Map<String, Word> wordsMap = this.wordRepository.findAll().stream()
+		Map<String, Word> wordsMap = wordRepository.findAll().stream()
 			.collect(Collectors.toMap(
 				Word::getName, x -> x
 			));
@@ -101,6 +102,36 @@ class UploadBookService {
 		wordRepository.updateStatistic();
 		LOG.info("Update words statistic done");
 
+		LOG.info("Import proper names");
+		importProperNames(source, englishText.properNames());
+
 		return source;
+	}
+
+	private void importProperNames(Source source, ProperNames properNames) {
+		LOG.info("Load exists proper names");
+		Map<String, ProperName> existsProperNames = properNameRepository.findAll().stream()
+			.collect(Collectors.toMap(
+				ProperName::getName, x -> x
+			));
+		LOG.info("{} proper names in DB total", existsProperNames.size());
+
+		properNames.names().forEach(
+			name -> {
+				ProperName properName = existsProperNames.get(name);
+				if (properName == null) {
+					LOG.info("New proper name: {}", name);
+					properName = properNameRepository.save(
+						new ProperName(name)
+					);
+				}
+				properNameSourceRepository.save(
+					new ProperNameSource()
+						.setProperName(properName)
+						.setCount(properNames.frequency(name))
+						.setSource(source)
+				);
+			}
+		);
 	}
 }

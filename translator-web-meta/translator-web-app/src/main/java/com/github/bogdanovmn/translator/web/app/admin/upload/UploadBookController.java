@@ -1,9 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.admin.upload;
 
+import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
-import com.github.bogdanovmn.translator.web.app.infrastructure.ViewTemplate;
-import com.github.bogdanovmn.translator.web.orm.Source;
+import com.github.bogdanovmn.translator.web.orm.entity.Source;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

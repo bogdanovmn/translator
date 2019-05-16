@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
-import com.github.bogdanovmn.translator.web.orm.*;
+import com.github.bogdanovmn.translator.web.orm.entity.*;
 import lombok.Getter;
 import lombok.Setter;
 

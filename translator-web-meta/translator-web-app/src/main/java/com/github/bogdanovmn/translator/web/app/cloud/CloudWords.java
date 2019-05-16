@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.cloud;
 
-import com.github.bogdanovmn.translator.orm.core.BaseEntityWithUniqueName;
-import com.github.bogdanovmn.translator.web.orm.Word;
+import com.github.bogdanovmn.common.spring.jpa.BaseEntityWithUniqueName;
+import com.github.bogdanovmn.translator.web.orm.entity.Word;
 
 import java.util.Comparator;
 import java.util.List;

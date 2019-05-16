@@ -21,7 +21,7 @@ class CloudContentFilter {
 			.collect(Collectors.toList());
 	}
 
-	CloudContentFilterToggle activeToggle() {
+	private CloudContentFilterToggle activeToggle() {
 		return Arrays.stream(CloudContentFilterToggle.values())
 			.filter(toggleValue::get)
 			.findFirst()

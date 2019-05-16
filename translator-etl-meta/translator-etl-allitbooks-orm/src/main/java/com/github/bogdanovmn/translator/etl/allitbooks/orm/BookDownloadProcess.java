@@ -1,6 +1,6 @@
 package com.github.bogdanovmn.translator.etl.allitbooks.orm;
 
-import com.github.bogdanovmn.translator.orm.core.BaseEntity;
+import com.github.bogdanovmn.common.spring.jpa.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 

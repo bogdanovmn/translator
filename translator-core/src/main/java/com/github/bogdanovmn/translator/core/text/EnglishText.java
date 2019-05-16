@@ -8,18 +8,19 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.Set;
 
-public class EnglishText implements TextContent {
+public class EnglishText {
 	private final static String CONSONANT_LETTERS = "qwrtpsdfghkljzxcvbnm";
 
 	private final StringCounter wordsCounter;
 	private final StringCounter ignoreWordsCounter;
 	private NormalizedWords normalizedWords;
+	private final ProperNames properNames;
 
-	private EnglishText(StringCounter wordsCounter, StringCounter ignoreWordsCounter) {
+	private EnglishText(StringCounter wordsCounter, StringCounter ignoreWordsCounter, ProperNames properNames) {
 		this.wordsCounter = wordsCounter;
 		this.ignoreWordsCounter = ignoreWordsCounter;
 		this.normalizedWords = NormalizedWords.of(wordsCounter.keys());
-
+		this.properNames = properNames;
 	}
 
 	public static EnglishText fromText(String text) {
@@ -57,20 +58,21 @@ public class EnglishText implements TextContent {
 				wordsCounter.increment(normalizedToken);
 			}
 		}
-		return new EnglishText(wordsCounter, ignoreWordsCounter);
+		return new EnglishText(wordsCounter, ignoreWordsCounter, properNames);
 	}
 
-	@Override
+	public ProperNames properNames() {
+		return properNames;
+	}
+
 	public Set<String> uniqueWords() {
 		return wordsCounter.keys();
 	}
 
-	@Override
 	public Set<String> normalizedWords() {
 		return normalizedWords.get();
 	}
 
-	@Override
 	public int wordFrequency(String word) {
 		int result = wordsCounter.get(word);
 		if (result > 0) {
