@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
@@ -120,9 +121,10 @@ class UploadBookService {
 			name -> {
 				ProperName properName = existsProperNames.get(name);
 				if (properName == null) {
-					LOG.info("New proper name: {}", name);
+					String capitalizedName = StringUtils.capitalize(name);
+					LOG.info("New proper name: {}", capitalizedName);
 					properName = properNameRepository.save(
-						new ProperName(name)
+						new ProperName(capitalizedName)
 					);
 				}
 				properNameSourceRepository.save(
