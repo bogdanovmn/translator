@@ -30,7 +30,7 @@ public abstract class AbstractVisualController extends AbstractController {
 		model.addAttribute("menu", new HeadMenu(currentMenuItem(), isAdmin()).getItems());
 		model.addAttribute("adminMenu", new AdminMenu(currentAdminMenuItem()).getItems());
 		model.addAttribute("userName", getUser().getName());
-		model.addAllAttributes(statisticService.getUserWordRememberedStatistic());
+		model.addAllAttributes(statisticService.getUserWordRememberedStatistic(getUser()));
 	}
 
 	protected abstract HeadMenu.ITEM currentMenuItem();

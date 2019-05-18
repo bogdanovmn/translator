@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.source;
 
 import com.github.bogdanovmn.translator.web.orm.entity.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@Slf4j
 public class SourcesService {
 	private final static int WORDS_PER_PAGE = 10;
 

@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin.upload;
 
+import com.github.bogdanovmn.common.stream.StringMap;
 import com.github.bogdanovmn.translator.core.text.EnglishText;
 import com.github.bogdanovmn.translator.core.text.ProperNames;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
@@ -15,8 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -71,14 +70,15 @@ class UploadBookService {
 		);
 
 		LOG.info("Load exists words");
-		Map<String, Word> wordsMap = wordRepository.findAll().stream()
-			.collect(Collectors.toMap(
-				Word::getName, x -> x
-			));
+		StringMap<Word> wordsMap = new StringMap<>(
+			wordRepository.findAll(),
+			Word::getName
+		);
 
 		LOG.info("Import words: {}", words.size());
 
 		int newWordsCount = 0;
+		int blackListCount = 0;
 		for (String wordStr : words) {
 			Word word = wordsMap.get(wordStr);
 			if (null == word) {
@@ -86,6 +86,9 @@ class UploadBookService {
 				LOG.info("New word: {}", wordStr);
 				wordRepository.save(word);
 				newWordsCount++;
+			}
+			else if (word.isBlackList()) {
+				blackListCount++;
 			}
 
 			wordSourceRepository.save(
@@ -96,6 +99,11 @@ class UploadBookService {
 						englishText.wordFrequency(wordStr)
 					)
 			);
+		}
+
+		if (blackListCount > 0) {
+			LOG.info("Black list words count = {}", blackListCount);
+			sourceRepository.save(source.setBlackListCount(blackListCount));
 		}
 
 		LOG.info("Import words done. New words: {}", newWordsCount);
@@ -111,10 +119,10 @@ class UploadBookService {
 
 	private void importProperNames(Source source, ProperNames properNames) {
 		LOG.info("Load exists proper names");
-		Map<String, ProperName> existsProperNames = properNameRepository.findAll().stream()
-			.collect(Collectors.toMap(
-				ProperName::getName, x -> x
-			));
+		StringMap<ProperName> existsProperNames = new StringMap<>(
+			properNameRepository.findAll(),
+			ProperName::getName
+		);
 		LOG.info("{} proper names in DB total", existsProperNames.size());
 
 		properNames.names().forEach(

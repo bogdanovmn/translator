@@ -21,4 +21,12 @@ public interface UserRememberedWordRepository extends BaseEntityRepository<UserR
 				"JOIN word2source ws ON ws.word_id = urw.word_id AND urw.user_id = :userId AND ws.source_id = :sourceId"
 	)
 	Long getCountBySource(@Param("userId") Integer userId, @Param("sourceId") Integer sourceId);
+
+	@Query(
+		"select count(w) " +
+		"from Word w " +
+		"join UserRememberedWord uwr on w.id = uwr.word.id and uwr.user.id = :userId " +
+		"where w.sourcesCount > 0"
+	)
+	Integer countByUserWithExistingSourcesOnly(@Param("userId") Integer userId);
 }

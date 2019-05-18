@@ -1,5 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.word;
 
+import com.github.bogdanovmn.common.stream.IntegerMap;
+import com.github.bogdanovmn.common.stream.StringMap;
 import com.github.bogdanovmn.translator.core.text.NormalizedWords;
 import com.github.bogdanovmn.translator.web.orm.entity.*;
 import org.slf4j.Logger;
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -54,10 +55,10 @@ public class WordsNormalizeService {
 	public synchronized void normalizeAll() {
 		LOG.info("Start normalize process");
 
-		Map<String, Word> wordsMap = this.wordRepository.getAllByBlackListFalse().stream()
-			.collect(Collectors.toMap(
-				Word::getName, x -> x
-			));
+		StringMap<Word> wordsMap = new StringMap<>(
+			wordRepository.getAllByBlackListFalse(),
+			Word::getName
+		);
 
 		LOG.info("Total words before: {}", wordsMap.keySet().size());
 
@@ -112,8 +113,8 @@ public class WordsNormalizeService {
 		Set<WordSource> formSources = wordSourceRepository.findAllByWord(formWord);
 		Set<WordSource> wordSources = wordSourceRepository.findAllByWord(word);
 
-		Map<Integer, WordSource> wordSourceMap = getSourceMap(wordSources);
-		Map<Integer, WordSource> formSourceMap = getSourceMap(formSources);
+		IntegerMap<WordSource> wordSourceMap = getSourceMap(wordSources);
+		IntegerMap<WordSource> formSourceMap = getSourceMap(formSources);
 
 		formSourceMap.forEach(
 			(id, formSource) -> {
@@ -144,10 +145,7 @@ public class WordsNormalizeService {
 		wordRepository.delete(formWord);
 	}
 
-	private Map<Integer, WordSource> getSourceMap(Collection<WordSource> sources) {
-		return sources.stream()
-			.collect(Collectors.toMap(
-				WordSource::getId, x -> x
-			));
+	private IntegerMap<WordSource> getSourceMap(Collection<WordSource> sources) {
+		return new IntegerMap<>(sources, WordSource::getId);
 	}
 }

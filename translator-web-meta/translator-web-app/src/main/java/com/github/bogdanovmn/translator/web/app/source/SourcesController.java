@@ -32,12 +32,12 @@ class SourcesController extends AbstractVisualController {
 		.modelAndView();
 	}
 
-	@GetMapping("/{id}/unknown-words")
-	ModelAndView source(@PathVariable Integer id) {
+	@GetMapping("/{sourceId}/unknown-words")
+	ModelAndView source(@PathVariable Integer sourceId) {
 		return new ViewTemplate("unknown_words")
-			.with("words", sourcesService.getUnknownWordsBySource(getUser(), id))
-			.with("source", sourcesService.get(id))
-			.with("userCount", sourcesService.userRememberedWordsCount(getUser().getId(), id))
+			.with("words", sourcesService.getUnknownWordsBySource(getUser(), sourceId))
+			.with("source", sourcesService.get(sourceId))
+			.with("userCount", sourcesService.userRememberedWordsCount(getUser().getId(), sourceId))
 			.modelAndView();
 	}
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word> {
-	Integer countByBlackListFalse();
+	Integer countByBlackListFalseAndSourcesCountGreaterThan(Integer sourcesCount);
 
 	Set<Word> getAllByBlackListFalse();
 

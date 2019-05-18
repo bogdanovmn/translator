@@ -36,7 +36,8 @@ public class Source extends BaseEntity {
 	@XmlAttribute
 	private String rawName;
 	@XmlAttribute
-	private Integer wordsCount;
+	private int wordsCount;
+	private int blackListCount;
 
 	@XmlAttribute
 	@Column(length = 32, unique = true)
@@ -78,4 +79,11 @@ public class Source extends BaseEntity {
 		return normalizedName;
 	}
 
+	public void incBlackListCount() {
+		blackListCount++;
+	}
+
+	public int getNonBlackListCount() {
+		return wordsCount - blackListCount;
+	}
 }
