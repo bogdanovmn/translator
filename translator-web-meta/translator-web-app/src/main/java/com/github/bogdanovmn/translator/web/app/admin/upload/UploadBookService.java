@@ -127,9 +127,9 @@ class UploadBookService {
 
 		properNames.names().forEach(
 			name -> {
-				ProperName properName = existsProperNames.get(name);
+				String capitalizedName = StringUtils.capitalize(name);
+				ProperName properName = existsProperNames.get(capitalizedName);
 				if (properName == null) {
-					String capitalizedName = StringUtils.capitalize(name);
 					LOG.info("New proper name: {}", capitalizedName);
 					properName = properNameRepository.save(
 						new ProperName(capitalizedName)
