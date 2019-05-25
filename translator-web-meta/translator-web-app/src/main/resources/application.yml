@@ -43,6 +43,12 @@ menu:
       - id: ETL
         title: Allitebooks log
         url: /admin/etl/download-process
+      - id: EXPORT
+        title: Экспорт слов пользователей
+        url: /admin/export
+      - id: IMPORT
+        title: Импорт слов пользователей
+        url: /admin/import
   - id: SETTINGS
     title: Настройки
     url: /user/settings

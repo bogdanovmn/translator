@@ -1,15 +1,11 @@
 package com.github.bogdanovmn.translator.web.orm.entity;
 
-import com.github.bogdanovmn.common.spring.convert.ExportToXmlBooleanAdapter;
 import com.github.bogdanovmn.common.spring.jpa.BaseEntityWithUniqueName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -47,21 +43,15 @@ import java.util.Set;
 	)
 })
 public class Word extends BaseEntityWithUniqueName {
-	@XmlTransient
 	private int frequency;
-	@XmlTransient
 	private int sourcesCount;
 
-	@XmlAttribute
-	@XmlJavaTypeAdapter(ExportToXmlBooleanAdapter.class)
 	@Column(nullable = false)
 	private boolean blackList = false;
 
-	@XmlTransient
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "word")
 	private List<WordDefinition> definitions = new ArrayList<>();
 
-	@XmlTransient
 	@OneToMany(mappedBy = "word")
 	private Set<WordSource> wordSources;
 

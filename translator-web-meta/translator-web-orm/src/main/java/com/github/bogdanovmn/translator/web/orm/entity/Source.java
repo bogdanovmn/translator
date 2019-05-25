@@ -7,8 +7,6 @@ import lombok.Setter;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -26,24 +24,17 @@ public class Source extends BaseEntity {
 		Pattern.compile("^(.*)\\.(\\w{1,4})$")
 	);
 
-	@XmlAttribute
 	@Enumerated(EnumType.STRING)
 	private SourceType type;
-	@XmlAttribute
 	private String author;
-	@XmlAttribute
 	private String title;
-	@XmlAttribute
 	private String rawName;
-	@XmlAttribute
 	private int wordsCount;
 	private int blackListCount;
 
-	@XmlAttribute
 	@Column(length = 32, unique = true)
 	private String contentHash;
 
-	@XmlTransient
 	@OneToMany(mappedBy = "source")
 	private Set<WordSource> wordSources;
 

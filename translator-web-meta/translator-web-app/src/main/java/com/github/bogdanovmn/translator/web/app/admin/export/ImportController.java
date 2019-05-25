@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
+import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -54,11 +54,8 @@ class ImportController extends AbstractVisualAdminController {
 	ModelAndView form(
 		@RequestHeader(name = "referer", required = false) String referer
 	) {
-		return new ModelAndView(
-			"import",
-			new HashMap<String, Object>() {{
-				put("referer" , referer);
-			}}
-		);
+		return new ViewTemplate("import")
+			.with("referer" , referer)
+		.modelAndView();
 	}
 }

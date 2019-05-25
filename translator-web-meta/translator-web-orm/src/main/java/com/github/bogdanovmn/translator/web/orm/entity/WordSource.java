@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlIDREF;
 
 @Setter
 @Getter
@@ -30,17 +28,12 @@ import javax.xml.bind.annotation.XmlIDREF;
 	)
 })
 public class WordSource extends BaseEntity {
-	@XmlAttribute
 	private Integer count;
 
-	@XmlIDREF
-	@XmlAttribute(name = "wid")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "word_id")
 	private Word word;
 
-	@XmlIDREF
-	@XmlAttribute(name = "sid")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "source_id")
 	private Source source;

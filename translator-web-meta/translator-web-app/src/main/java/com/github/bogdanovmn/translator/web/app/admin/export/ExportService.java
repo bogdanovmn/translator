@@ -1,9 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
-import com.github.bogdanovmn.translator.web.orm.entity.SourceRepository;
 import com.github.bogdanovmn.translator.web.orm.entity.UserRepository;
 import com.github.bogdanovmn.translator.web.orm.entity.WordRepository;
-import com.github.bogdanovmn.translator.web.orm.entity.WordSourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +16,6 @@ class ExportService {
 	private WordRepository wordRepository;
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private SourceRepository sourceRepository;
-	@Autowired
-	private WordSourceRepository wordSourceRepository;
 
 	void export(OutputStream outputStream)
 		throws JAXBException
@@ -32,15 +26,9 @@ class ExportService {
 
 		marshaller.marshal(
 			new ExportSchema()
-				.setSources(
-					sourceRepository.findAll()
-				)
-				.setWords(
-					wordRepository.findAll()
-				)
-				.setWordSources(
-					wordSourceRepository.findAll()
-				)
+//				.setWords(
+//					wordRepository.findAll()
+//				)
 				.setUsers(
 					userRepository.findAll()
 				),

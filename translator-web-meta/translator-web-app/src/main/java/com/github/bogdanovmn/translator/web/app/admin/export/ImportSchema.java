@@ -1,195 +1,40 @@
 package com.github.bogdanovmn.translator.web.app.admin.export;
 
-import com.github.bogdanovmn.translator.web.orm.entity.Source;
-import com.github.bogdanovmn.translator.web.orm.entity.SourceType;
+import lombok.Getter;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name = "translatorExport")
-@XmlAccessorType(XmlAccessType.FIELD)
-class ImportSchema {
-	@XmlElementWrapper
-	@XmlElement(name = "source")
-	private List<ImportSource> sources;
+@Getter
 
-	@XmlElementWrapper
-	@XmlElement(name = "translateProvider")
-	private List<ImportTranslateProvider> translateProviders;
+@XmlRootElement(name = "translatorExport")
+class ImportSchema {
 
 	@XmlElementWrapper
 	@XmlElement(name = "word")
 	private List<ImportWord> words;
 
 	@XmlElementWrapper
-	@XmlElement(name = "translate")
-	private List<ImportTranslate> translates;
-
-	@XmlElementWrapper
-	@XmlElement(name = "link")
-	private List<ImportWordSource> wordSources;
-
-	@XmlElementWrapper
 	@XmlElement(name = "user")
 	private List<ImportUser> users = new ArrayList<>();
 
-	List<ImportSource> getSources() {
-		return sources;
-	}
-
-	List<ImportTranslateProvider> getTranslateProviders() {
-		return translateProviders;
-	}
-
-	List<ImportWord> getWords() {
-		return words;
-	}
-
-	List<ImportTranslate> getTranslates() {
-		return translates;
-	}
-
-	List<ImportWordSource> getWordSources() {
-		return wordSources;
-	}
-
-	List<ImportUser> getUsers() {
-		return users;
-	}
-
+	@Getter
 	static class ImportUser {
 		@XmlAttribute
 		private String email;
 		@XmlList
 		private List<Integer> rememberedWords;
-		@XmlList
-		private List<Integer> holdOverWords;
-
-		String getEmail() {
-			return email;
-		}
-
-		List<Integer> getRememberedWords() {
-			return rememberedWords;
-		}
-
-		List<Integer> getHoldOverWords() {
-			return holdOverWords;
-		}
 	}
 
-	static class ImportSource {
-		@XmlAttribute(name = "ref")
-		private int id;
-		@XmlAttribute
-		private String rawName;
-		@XmlAttribute
-		private String author;
-		@XmlAttribute
-		private String title;
-		@XmlAttribute
-		private String contentHash;
-		@XmlAttribute
-		private String type;
-		@XmlAttribute
-		private int wordsCount;
-
-		int getId() {
-			return id;
-		}
-
-		String getContentHash() {
-			return contentHash;
-		}
-
-		Source toDomain() {
-			return new Source()
-				.setRawName(rawName)
-				.setAuthor(author)
-				.setTitle(title)
-				.setContentHash(contentHash)
-				.setType(SourceType.valueOf(type))
-				.setWordsCount(wordsCount);
-		}
-	}
-
-	static class ImportTranslateProvider {
-		@XmlAttribute(name = "ref")
-		private int id;
-		@XmlAttribute
-		private String name;
-
-		int getId() {
-			return id;
-		}
-
-		public String getName() {
-			return name;
-		}
-	}
-
+	@Getter
 	static class ImportWord {
-		@XmlAttribute(name = "ref")
-		private int id;
+		@XmlAttribute
+		private int ref;
 		@XmlAttribute
 		private String name;
 		@XmlAttribute
 		private boolean blackList;
-
-		int getId() {
-			return id;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public boolean isBlackList() {
-			return blackList;
-		}
-	}
-
-	static class ImportTranslate {
-		@XmlAttribute(name = "wid")
-		private int wordId;
-		@XmlAttribute(name = "pid")
-		private int providerId;
-		@XmlAttribute
-		private String value;
-
-		int getWordId() {
-			return wordId;
-		}
-
-		int getProviderId() {
-			return providerId;
-		}
-
-		public String getValue() {
-			return value;
-		}
-	}
-
-	static class ImportWordSource {
-		@XmlAttribute(name = "wid")
-		private int wordId;
-		@XmlAttribute(name = "sid")
-		private int sourceId;
-		@XmlAttribute
-		private int count;
-
-		int getSourceId() {
-			return sourceId;
-		}
-
-		int getWordId() {
-			return wordId;
-		}
-
-		int getCount() {
-			return count;
-		}
 	}
 }
 

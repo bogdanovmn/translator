@@ -24,6 +24,13 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 	List<Word> allBySourceForCloud(Integer sourceId);
 
 	@Query(
+		"select w from Word w " +
+		"join UserRememberedWord urw on w.id = urw.word.id " +
+		"group by w "
+	)
+	List<Word> allRememberedForExport();
+
+	@Query(
 		"select w as word, uwp as userProgress"
 			+ " from Word w"
 			+ " left join UserHoldOverWord uhow on w.id = uhow.word.id and uhow.user.id = :userId "

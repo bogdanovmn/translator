@@ -17,7 +17,7 @@ class ExportWordCache {
 	ExportWordCache(List<ImportSchema.ImportWord> words, EntityFactory entityFactory) {
 		wordNameByExportId = words.stream()
 			.collect(Collectors.toMap(
-				ImportSchema.ImportWord::getId,
+				ImportSchema.ImportWord::getRef,
 				ImportSchema.ImportWord::getName
 			)
 		);
