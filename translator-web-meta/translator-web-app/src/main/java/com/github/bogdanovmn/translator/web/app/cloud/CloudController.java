@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.web.app.cloud;
 
 import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
-import com.github.bogdanovmn.translator.web.app.infrastructure.HeadMenu;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
 import com.github.bogdanovmn.translator.web.app.source.SourcesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +25,8 @@ class CloudController extends AbstractVisualController {
 	}
 
 	@Override
-	protected HeadMenu.ITEM currentMenuItem() {
-		return HeadMenu.ITEM.CLOUD;
+	protected MenuItem currentMenuItem() {
+		return MenuItem.CLOUD;
 	}
 
 	@GetMapping

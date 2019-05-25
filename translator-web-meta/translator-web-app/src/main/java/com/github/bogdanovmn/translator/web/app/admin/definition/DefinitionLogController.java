@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.web.app.admin.definition;
 
 import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
-import com.github.bogdanovmn.translator.web.app.infrastructure.AdminMenu;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
 import com.github.bogdanovmn.translator.web.orm.entity.WordDefinitionServiceLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +20,8 @@ class DefinitionLogController extends AbstractVisualAdminController {
 	}
 
 	@Override
-	protected AdminMenu.ITEM currentAdminMenuItem() {
-		return AdminMenu.ITEM.DEFINITION_LOG;
+	protected MenuItem currentAdminMenuItem() {
+		return MenuItem.DEFINITION_LOG;
 	}
 
 	@GetMapping("/definitions/log/last")

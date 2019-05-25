@@ -2,6 +2,8 @@ package com.github.bogdanovmn.translator.web.app.infrastructure;
 
 import com.github.bogdanovmn.translator.web.app.StatisticService;
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.mustache.Layout;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuBuilder;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
 import com.samskivert.mustache.Mustache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,9 @@ public abstract class AbstractVisualController extends AbstractController {
 	@Autowired
 	private StatisticService statisticService;
 
+	@Autowired
+	private MenuBuilder menuBuilder;
+
 	@Value("${server.servlet.context-path:}")
 	private String contextPath;
 
@@ -27,12 +32,17 @@ public abstract class AbstractVisualController extends AbstractController {
 
 	@ModelAttribute
 	public void addCommonAttributes(Model model) {
-		model.addAttribute("menu", new HeadMenu(currentMenuItem(), isAdmin()).getItems());
-		model.addAttribute("adminMenu", new AdminMenu(currentAdminMenuItem()).getItems());
+		model.addAttribute(
+			"menu",
+			menuBuilder
+				.setSelectedItem(currentMenuItem())
+				.setUser(getUser())
+				.build()
+		);
 		model.addAttribute("userName", getUser().getName());
 		model.addAllAttributes(statisticService.getUserWordRememberedStatistic(getUser()));
 	}
 
-	protected abstract HeadMenu.ITEM currentMenuItem();
-	protected AdminMenu.ITEM currentAdminMenuItem() { return AdminMenu.ITEM.NONE; }
+	protected abstract MenuItem currentMenuItem();
+	protected MenuItem currentAdminMenuItem() { return MenuItem.NONE; }
 }
