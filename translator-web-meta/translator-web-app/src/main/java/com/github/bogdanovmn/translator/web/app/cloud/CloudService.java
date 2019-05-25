@@ -30,7 +30,7 @@ class CloudService {
 	List<CloudWord> sourceProperNames(Integer sourceId) {
 		return new CloudWords(
 			properNameRepository.properNameWordsBySourceId(sourceId).stream()
-				.map(x -> new Word(x.getName()).setFrequence(x.getCount()))
+				.map(x -> new Word(x.getName()).setFrequency(x.getCount()))
 				.collect(Collectors.toList())
 		).words();
 	}

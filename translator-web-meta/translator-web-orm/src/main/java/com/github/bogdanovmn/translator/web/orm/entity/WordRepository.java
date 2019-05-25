@@ -14,7 +14,7 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 
 	Set<Word> getAllByBlackListFalse();
 
-	List<Word> findAllByBlackListFalseAndFrequenceGreaterThanOrderByName(Integer minimalFrequency);
+	List<Word> findAllByBlackListFalseAndFrequencyGreaterThanOrderByName(Integer minimalFrequency);
 
 
 	List<Word> allRememberedForCloud(Integer userId);
@@ -33,7 +33,7 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			+ " and   uhow.word.id is null "
 			+ " and   w.sourcesCount > 0 "
 			+ " and   w.blackList = 0 "
-			+ " order by w.sourcesCount desc, w.frequence desc"
+			+ " order by w.sourcesCount desc, w.frequency desc"
 	)
 	List<WordWithUserProgress> unknownByAllSources(
 		@Param("userId") Integer userId,
@@ -84,7 +84,7 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			"    left join word2source ws on w.id = ws.word_id " +
 			"    group by w.id " +
 			") stat on stat.id = word.id " +
-			"set word.frequence = stat.freq, word.sources_count = stat.sources"
+			"set word.frequency = stat.freq, word.sources_count = stat.sources"
 	)
 	void updateStatistic();
 
@@ -96,10 +96,12 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			"left join user_remembered_word urw on word.id = urw.word_id " +
 			"left join user_hold_over_word uhow on word.id = uhow.word_id " +
 			"left join user_word_progress uwp   on word.id = uwp.word_id " +
+			"left join word_definition_service_log wdl on word.id = wdl.word_id " +
 			"where word.black_list = 0 " +
 			"and   word.sources_count = 0 " +
 			"and   urw.id  is null " +
 			"and   uhow.id is null " +
+			"and   wdl.id   is null " +
 			"and   uwp.id  is null"
 	)
 	void removeUnused();

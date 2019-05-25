@@ -25,16 +25,16 @@ class CloudWords {
 	}
 
 	List<CloudWord> words() {
-		final int wordMaxFreq = words.stream().mapToInt(Word::getFrequence).max().orElse(0);
+		final int wordMaxFreq = words.stream().mapToInt(Word::getFrequency).max().orElse(0);
 
 		return words.stream()
-			.filter(word -> word.getFrequence() * 1000 / wordMaxFreq > 5) // > 0.5%
+			.filter(word -> word.getFrequency() * 1000 / wordMaxFreq > 5) // > 0.5%
 			.filter(word -> !STOP_WORDS.matcher(word.getName()).matches())
 			.sorted(Comparator.comparing(BaseEntityWithUniqueName::getName))
 			.map(
 				word -> new CloudWord(
 					word,
-					word.getFrequence() * (MAX_SIZE_PERCENT - MIN_SIZE_PERCENT) / wordMaxFreq + MIN_SIZE_PERCENT
+					word.getFrequency() * (MAX_SIZE_PERCENT - MIN_SIZE_PERCENT) / wordMaxFreq + MIN_SIZE_PERCENT
 				)
 			)
 			.collect(Collectors.toList());

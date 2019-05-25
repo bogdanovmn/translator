@@ -2,7 +2,7 @@ package com.github.bogdanovmn.translator.web.orm.entity;
 
 class WordCloudNativeQuery {
 	private static final String WORD_BY_SOURCE_FOR_FIELDS =
-		"w.id, w.name, ws.count frequence, w.black_list, w.sources_count ";
+		"w.id, w.name, ws.count frequency, w.black_list, w.sources_count ";
 
 	static final String ALL_BY_SOURCE =
 		"SELECT " + WORD_BY_SOURCE_FOR_FIELDS +

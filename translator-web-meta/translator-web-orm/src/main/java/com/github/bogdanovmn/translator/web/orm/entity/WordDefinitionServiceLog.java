@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 public class WordDefinitionServiceLog extends BaseEntity {
 	@OneToOne
-	@JoinColumn(name = "word_id")
+	@JoinColumn(name = "word_id", referencedColumnName = "id")
 	private Word word;
 
 	@Enumerated(EnumType.STRING)

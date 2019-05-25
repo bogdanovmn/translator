@@ -9,7 +9,7 @@ class AllCloudWordsRepository implements CloudWordsRepository {
 	@Override
 	public List<CloudWord> all(WordRepository wordRepository, Integer userId) {
 		return new CloudWords(
-			wordRepository.findAllByBlackListFalseAndFrequenceGreaterThanOrderByName(1)
+			wordRepository.findAllByBlackListFalseAndFrequencyGreaterThanOrderByName(1)
 		).words();
 	}
 

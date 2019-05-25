@@ -5,17 +5,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Setter
 @Getter
 @NoArgsConstructor
 
 @Entity
-@Table(name = "proper_name2source")
+@Table(
+	name = "proper_name2source",
+	uniqueConstraints = {
+		@UniqueConstraint(
+			columnNames = {"source_id", "proper_name_id"}
+		)
+	}
+)
 public class ProperNameSource extends BaseEntity {
 	private Integer count;
 

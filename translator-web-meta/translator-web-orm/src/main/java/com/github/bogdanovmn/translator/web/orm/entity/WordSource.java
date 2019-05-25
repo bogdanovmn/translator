@@ -14,7 +14,14 @@ import javax.xml.bind.annotation.XmlIDREF;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "word2source")
+@Table(
+	name = "word2source",
+	uniqueConstraints = {
+		@UniqueConstraint(
+			columnNames = {"word_id", "source_id"}
+		)
+	}
+)
 @NamedNativeQueries({
 	@NamedNativeQuery(
 		name = "WordSource.toRemember",

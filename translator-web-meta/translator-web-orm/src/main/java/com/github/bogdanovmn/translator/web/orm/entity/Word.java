@@ -48,7 +48,7 @@ import java.util.Set;
 })
 public class Word extends BaseEntityWithUniqueName {
 	@XmlTransient
-	private int frequence;
+	private int frequency;
 	@XmlTransient
 	private int sourcesCount;
 
@@ -58,8 +58,7 @@ public class Word extends BaseEntityWithUniqueName {
 	private boolean blackList = false;
 
 	@XmlTransient
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "word_id")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "word")
 	private List<WordDefinition> definitions = new ArrayList<>();
 
 	@XmlTransient
@@ -75,7 +74,7 @@ public class Word extends BaseEntityWithUniqueName {
 	}
 
 	public Word incFrequency(int incValue) {
-		this.frequence += incValue;
+		this.frequency += incValue;
 		return this;
 	}
 

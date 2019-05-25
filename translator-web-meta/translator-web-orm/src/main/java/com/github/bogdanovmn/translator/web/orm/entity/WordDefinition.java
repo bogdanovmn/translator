@@ -15,8 +15,8 @@ import java.util.List;
 
 @Entity
 public class WordDefinition extends BaseEntity {
-	@OneToOne
-	@JoinColumn(name = "word_id")
+	@ManyToOne
+	@JoinColumn(name = "word_id", nullable = false)
 	private Word word;
 
 	private String pronunciation;

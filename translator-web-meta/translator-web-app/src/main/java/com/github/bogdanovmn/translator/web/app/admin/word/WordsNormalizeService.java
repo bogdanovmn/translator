@@ -78,7 +78,7 @@ public class WordsNormalizeService {
 
 						for (String form : forms) {
 							Word formWord = wordsMap.get(form);
-							normalWord.incFrequency(formWord.getFrequence());
+							normalWord.incFrequency(formWord.getFrequency());
 
 							mergeWords(normalWord, formWord);
 						}
