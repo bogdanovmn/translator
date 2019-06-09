@@ -44,5 +44,4 @@ public abstract class AbstractVisualController extends AbstractController {
 	}
 
 	protected abstract MenuItem currentMenuItem();
-	protected MenuItem currentAdminMenuItem() { return MenuItem.NONE; }
 }

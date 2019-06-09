@@ -18,6 +18,7 @@ public enum MenuItem {
 	IMPORT,
 	ETL,
 	DEFINITION_LOG,
+	NORMALIZATION,
 
 	// Not selected
 

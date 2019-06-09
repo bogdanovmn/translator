@@ -28,7 +28,7 @@ class UploadBookController extends AbstractVisualAdminController {
 	}
 
 	@Override
-	protected MenuItem currentAdminMenuItem() {
+	protected MenuItem currentMenuItem() {
 		return MenuItem.UPLOAD_BOOK;
 	}
 

@@ -1,42 +1,34 @@
-package com.github.bogdanovmn.translator.web.app.admin.word;
+package com.github.bogdanovmn.translator.web.app.admin.word.normalization;
 
 import com.github.bogdanovmn.common.stream.IntegerMap;
 import com.github.bogdanovmn.common.stream.StringMap;
 import com.github.bogdanovmn.translator.core.text.NormalizedWords;
 import com.github.bogdanovmn.translator.web.orm.entity.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class WordsNormalizeService {
-	private static final Logger LOG = LoggerFactory.getLogger(WordsNormalizeService.class);
-
-	private final WordRepository wordRepository;
-	private final WordSourceRepository wordSourceRepository;
-	private final UserRememberedWordRepository userRememberedWordRepository;
-	private final UserHoldOverWordRepository userHoldOverWordRepository;
-	private final UserWordProgressRepository userWordProgressRepository;
-
 	@Autowired
-	public WordsNormalizeService(
-		WordRepository wordRepository,
-		WordSourceRepository wordSourceRepository,
-		UserRememberedWordRepository userRememberedWordRepository,
-		UserHoldOverWordRepository userHoldOverWordRepository, UserWordProgressRepository userWordProgressRepository)
-	{
-		this.wordRepository = wordRepository;
-		this.wordSourceRepository = wordSourceRepository;
-		this.userRememberedWordRepository = userRememberedWordRepository;
-		this.userHoldOverWordRepository = userHoldOverWordRepository;
-		this.userWordProgressRepository = userWordProgressRepository;
-	}
+	private WordRepository wordRepository;
+	@Autowired
+	private NormalizedWordCandidateRepository normalizedWordCandidateRepository;
+	@Autowired
+	private WordSourceRepository wordSourceRepository;
+	@Autowired
+	private UserRememberedWordRepository userRememberedWordRepository;
+	@Autowired
+	private UserHoldOverWordRepository userHoldOverWordRepository;
+	@Autowired
+	private UserWordProgressRepository userWordProgressRepository;
 
 	public void dry() {
 		Set<Word> words = this.wordRepository.getAllByBlackListFalse();
@@ -52,15 +44,15 @@ public class WordsNormalizeService {
 	}
 
 	@Transactional(rollbackFor = Exception.class)
-	public synchronized void normalizeAll() {
-		LOG.info("Start normalize process");
+	public synchronized void prepareNormalizeCandidates() {
+		LOG.info("Start normalized word candidates preparation");
 
 		StringMap<Word> wordsMap = new StringMap<>(
 			wordRepository.getAllByBlackListFalse(),
 			Word::getName
 		);
 
-		LOG.info("Total words before: {}", wordsMap.keySet().size());
+		LOG.info("Total words: {}", wordsMap.keySet().size());
 
 		NormalizedWords normalizedWords = NormalizedWords.of(
 			wordsMap.keySet()
@@ -68,26 +60,23 @@ public class WordsNormalizeService {
 
 		LOG.info("Normalized words: {}", normalizedWords.get().size());
 
+		LOG.info("Clean up normalized words table");
+		normalizedWordCandidateRepository.deleteAll();
+
 		for (String normal : normalizedWords.get()) {
 			normalizedWords.wordForms(normal).ifPresent(
 				forms -> {
 					if (!forms.isEmpty()) {
-						LOG.info("Word '{}' has forms: {}", normal, forms);
-
-						Word normalWord = wordsMap.get(normal);
-
-						for (String form : forms) {
-							Word formWord = wordsMap.get(form);
-							normalWord.incFrequency(formWord.getFrequency());
-
-							mergeWords(normalWord, formWord);
-						}
-						wordRepository.save(normalWord);
+						normalizedWordCandidateRepository.save(
+							new NormalizedWordCandidate()
+								.setBase(normal)
+								.setForms(forms.toString())
+						);
 					}
 				}
 			);
 		}
-		LOG.info("Finish normalize process");
+		LOG.info("Finish normalized word candidates preparation");
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -95,7 +84,6 @@ public class WordsNormalizeService {
 		Word result;
 		Word baseWord = wordRepository.findFirstByName(base);
 		if (baseWord != null) {
-			LOG.info("Merge word '{}' to '{}'", formWord.getName(), base);
 			mergeWords(baseWord, formWord);
 			result = baseWord;
 		}
@@ -110,6 +98,8 @@ public class WordsNormalizeService {
 
 	@Transactional(rollbackFor = Exception.class)
 	public void mergeWords(Word word, Word formWord) {
+		LOG.info("Merge word '{}' to '{}'", formWord.getName(), word.getName());
+
 		Set<WordSource> formSources = wordSourceRepository.findAllByWord(formWord);
 		Set<WordSource> wordSources = wordSourceRepository.findAllByWord(word);
 
@@ -147,5 +137,23 @@ public class WordsNormalizeService {
 
 	private IntegerMap<WordSource> getSourceMap(Collection<WordSource> sources) {
 		return new IntegerMap<>(sources, WordSource::getId);
+	}
+
+	List<NormalizedWordCandidate> getAllCandidates() {
+		return normalizedWordCandidateRepository.findAllSortedByLength();
+	}
+
+	synchronized void approveCandidate(Integer id) {
+		NormalizedWordCandidate candidate = normalizedWordCandidateRepository.getOne(id);
+		candidate.getFormsWords().forEach(
+			formWord -> {
+				mergeWords(new Word(candidate.getBase()), formWord);
+			}
+		);
+
+	}
+
+	void deleteCandidate(Integer id) {
+
 	}
 }

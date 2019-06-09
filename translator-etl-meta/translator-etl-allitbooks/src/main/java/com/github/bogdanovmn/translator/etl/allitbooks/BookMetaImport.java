@@ -2,6 +2,7 @@ package com.github.bogdanovmn.translator.etl.allitbooks;
 
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookMeta;
 import com.github.bogdanovmn.translator.etl.allitbooks.orm.BookMetaRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
+@Slf4j
 class BookMetaImport {
-	private static final Logger LOG = LoggerFactory.getLogger(BookMetaImport.class);
 
-	private final Pattern EDITION_PATTERN = Pattern.compile("^(.*),\\s+(\\w+)\\s+edition", Pattern.CASE_INSENSITIVE);
+	private static final Pattern EDITION_PATTERN = Pattern.compile("^(.*),\\s+(\\w+)\\s+edition", Pattern.CASE_INSENSITIVE);
 
 	private final BookMetaRepository bookMetaRepository;
 

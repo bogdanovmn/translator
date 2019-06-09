@@ -4,6 +4,7 @@ import com.github.bogdanovmn.common.stream.StringMap;
 import com.github.bogdanovmn.translator.core.text.EnglishText;
 import com.github.bogdanovmn.translator.core.text.ProperNames;
 import com.github.bogdanovmn.translator.parser.common.DocumentContent;
+import com.github.bogdanovmn.translator.web.app.admin.word.normalization.WordsNormalizeService;
 import com.github.bogdanovmn.translator.web.orm.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ class UploadBookService {
 	private ProperNameRepository properNameRepository;
 	@Autowired
 	private ProperNameSourceRepository properNameSourceRepository;
+	@Autowired
+	private WordsNormalizeService wordsNormalizeService;
 
 	@Transactional(rollbackFor = Exception.class)
 	public synchronized Source upload(MultipartFile file)
@@ -83,7 +86,7 @@ class UploadBookService {
 			Word word = wordsMap.get(wordStr);
 			if (null == word) {
 				word = new Word(wordStr);
-				LOG.info("New word: {}", wordStr);
+				LOG.debug("New word: {}", wordStr);
 				wordRepository.save(word);
 				newWordsCount++;
 			}
@@ -113,6 +116,9 @@ class UploadBookService {
 
 		LOG.info("Import proper names");
 		importProperNames(source, englishText.properNames());
+
+		LOG.info("Prepare word normalization");
+		wordsNormalizeService.prepareNormalizeCandidates();
 
 		return source;
 	}

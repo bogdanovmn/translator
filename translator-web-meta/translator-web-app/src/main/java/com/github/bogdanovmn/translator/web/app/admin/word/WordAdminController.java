@@ -16,7 +16,7 @@ class WordAdminController extends AbstractAdminController {
 		this.wordAdminService = wordAdminService;
 	}
 
-	@PutMapping("/word/{id}/black-list")
+	@PutMapping("/words/{id}/black-list")
 	ResponseEntity blackList(@PathVariable Integer id) {
 		wordAdminService.blackListWord(id);
 		return ResponseEntity.ok().build();

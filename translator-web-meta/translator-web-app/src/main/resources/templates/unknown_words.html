@@ -57,14 +57,14 @@
 						class="btn btn-outline-success btn-sm"
 						data-action="remembered"
 						data-word-id="{{word.id}}"
-						data-href="/word/{{word.id}}/remembered">Знаю!
+						data-href="/words/{{word.id}}/remembered">Знаю!
 				</button>
 
 				<button type="button"
 						class="btn btn-outline-secondary btn-sm"
 						data-word-id="{{word.id}}"
 						data-action="hold-over"
-						data-href="/word/{{word.id}}/hold-over">Пропустить
+						data-href="/words/{{word.id}}/hold-over">Пропустить
 				</button>
 
 				{{#isAdmin}}
@@ -72,7 +72,7 @@
 							class="btn btn-outline-danger btn-sm"
 							data-action="black-list"
 							data-word-id="{{word.id}}"
-							data-href="/admin/word/{{word.id}}/black-list">Удалить
+							data-href="/admin/words/{{word.id}}/black-list">Удалить
 					</button>
 				{{/isAdmin}}
 			</div>

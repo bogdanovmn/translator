@@ -3,6 +3,7 @@ package com.github.bogdanovmn.translator.core.text;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterOutputStream;
 
@@ -26,7 +27,7 @@ public class CompressedText {
 		try (OutputStream out = new InflaterOutputStream(decompressedStream)) {
 			out.write(data);
 		}
-		return new String(decompressedStream.toByteArray(), "UTF-8");
+		return new String(decompressedStream.toByteArray(), StandardCharsets.UTF_8);
 	}
 
 	public byte[] bytes() {

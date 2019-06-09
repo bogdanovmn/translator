@@ -23,7 +23,7 @@ class AllitebooksController extends AbstractVisualAdminController {
 	}
 
 	@Override
-	protected MenuItem currentAdminMenuItem() {
+	protected MenuItem currentMenuItem() {
 		return MenuItem.ETL;
 	}
 

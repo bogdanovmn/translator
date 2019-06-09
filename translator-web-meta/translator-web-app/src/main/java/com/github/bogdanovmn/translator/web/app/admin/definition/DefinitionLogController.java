@@ -20,7 +20,7 @@ class DefinitionLogController extends AbstractVisualAdminController {
 	}
 
 	@Override
-	protected MenuItem currentAdminMenuItem() {
+	protected MenuItem currentMenuItem() {
 		return MenuItem.DEFINITION_LOG;
 	}
 

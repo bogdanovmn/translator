@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 
 @RestController
-@RequestMapping("/word/{id}")
+@RequestMapping("/words/{id}")
 class WordController extends AbstractController {
 	private final UnknownWordsService unknownWordsService;
 

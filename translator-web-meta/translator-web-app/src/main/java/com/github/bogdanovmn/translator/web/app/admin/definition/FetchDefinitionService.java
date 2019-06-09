@@ -1,4 +1,4 @@
-package com.github.bogdanovmn.translator.web.app.admin.word;
+package com.github.bogdanovmn.translator.web.app.admin.definition;
 
 import com.github.bogdanovmn.common.spring.jpa.EntityFactory;
 import com.github.bogdanovmn.httpclient.core.ResponseNotFoundException;
@@ -7,6 +7,7 @@ import com.github.bogdanovmn.translator.core.definition.PartOfSpeech;
 import com.github.bogdanovmn.translator.core.definition.Sentence;
 import com.github.bogdanovmn.translator.core.definition.WordDefinitionService;
 import com.github.bogdanovmn.translator.service.oxforddictionaries.ResponseAnotherWordFormException;
+import com.github.bogdanovmn.translator.web.app.admin.word.normalization.WordsNormalizeService;
 import com.github.bogdanovmn.translator.web.orm.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -134,7 +135,7 @@ class FetchDefinitionService {
 							definitionInstanceImport.pronunciation()
 						)
 						.setPartOfSpeech(
-							(WordDefinitionPartOfSpeech) entityFactory.getPersistBaseEntityWithUniqueName(
+							entityFactory.getPersistBaseEntityWithUniqueName(
 								new WordDefinitionPartOfSpeech(
 									partOfSpeechImport.name()
 								)

@@ -40,6 +40,9 @@ menu:
       - id: DEFINITION_LOG
         title: Определения слов
         url: /admin/definitions/log/last
+      - id: NORMALIZATION
+        title: Нормализация слов
+        url: /admin/normalization
       - id: ETL
         title: Allitebooks log
         url: /admin/etl/download-process
