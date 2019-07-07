@@ -30,11 +30,11 @@ import javax.persistence.*;
 public class WordSource extends BaseEntity {
 	private Integer count;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "word_id")
 	private Word word;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "source_id")
 	private Source source;
 

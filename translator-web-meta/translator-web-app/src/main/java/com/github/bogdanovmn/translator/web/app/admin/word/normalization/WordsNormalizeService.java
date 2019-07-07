@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -103,25 +102,25 @@ public class WordsNormalizeService {
 		Set<WordSource> formSources = wordSourceRepository.findAllByWord(formWord);
 		Set<WordSource> wordSources = wordSourceRepository.findAllByWord(word);
 
-		IntegerMap<WordSource> wordSourceMap = getSourceMap(wordSources);
-		IntegerMap<WordSource> formSourceMap = getSourceMap(formSources);
+		IntegerMap<WordSource> wordSourceMap = new IntegerMap<>(wordSources, ws -> ws.getSource().getId());
+		IntegerMap<WordSource> formSourceMap = new IntegerMap<>(formSources, ws -> ws.getSource().getId());
 
 		formSourceMap.forEach(
-			(id, formSource) -> {
+			(formSourceId, formWordSource) -> {
 				// Слово и его форма из одного источника
-				if (wordSourceMap.containsKey(id)) {
-					LOG.info("Same source '{}', increment source word counter", id);
-					wordSourceMap.get(id).incCount(
-						formSource.getCount()
+				if (wordSourceMap.containsKey(formSourceId)) {
+					LOG.info("Same source '{}', increment the source word counter", formSourceId);
+					wordSourceMap.get(formSourceId).incCount(
+						formWordSource.getCount()
 					);
 				}
 				else {
-					LOG.info("New source '{}', add it for word", id);
+					LOG.info("New source '{}', add it for the word", formSourceId);
 					wordSources.add(
 						new WordSource()
 							.setWord(word)
-							.setCount(formSource.getCount())
-							.setSource(formSource.getSource())
+							.setCount(formWordSource.getCount())
+							.setSource(formWordSource.getSource())
 					);
 					word.incSourceCount();
 				}
@@ -133,10 +132,6 @@ public class WordsNormalizeService {
 		userHoldOverWordRepository.removeAllByWord(formWord);
 		userWordProgressRepository.removeAllByWord(formWord);
 		wordRepository.delete(formWord);
-	}
-
-	private IntegerMap<WordSource> getSourceMap(Collection<WordSource> sources) {
-		return new IntegerMap<>(sources, WordSource::getId);
 	}
 
 	List<NormalizedWordCandidate> getAllCandidates() {

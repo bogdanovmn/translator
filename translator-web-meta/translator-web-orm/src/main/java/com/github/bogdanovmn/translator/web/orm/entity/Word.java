@@ -49,7 +49,7 @@ public class Word extends BaseEntityWithUniqueName {
 	@Column(nullable = false)
 	private boolean blackList = false;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "word")
+	@OneToMany(mappedBy = "word")
 	private List<WordDefinition> definitions = new ArrayList<>();
 
 	@OneToMany(mappedBy = "word")
