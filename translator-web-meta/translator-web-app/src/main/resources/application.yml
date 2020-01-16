@@ -32,7 +32,7 @@ menu:
     url: /cloud
   - id: ADMIN
     title: Админка
-    admin: true
+    role: Admin
     items:
       - id: UPLOAD
         title: Загрузить книгу

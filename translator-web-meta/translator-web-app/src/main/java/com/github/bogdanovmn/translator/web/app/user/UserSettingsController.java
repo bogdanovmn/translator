@@ -1,9 +1,10 @@
 package com.github.bogdanovmn.translator.web.app.user;
 
+import com.github.bogdanovmn.common.spring.menu.MenuItem;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.FormErrors;
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.Md5PasswordEncoder;
-import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MainMenuItem;
 import com.github.bogdanovmn.translator.web.orm.entity.User;
 import com.github.bogdanovmn.translator.web.orm.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ class UserSettingsController extends AbstractVisualController {
 
 	@Override
 	protected MenuItem currentMenuItem() {
-		return MenuItem.SETTINGS;
+		return MainMenuItem.SETTINGS;
 	}
 
 	@InitBinder

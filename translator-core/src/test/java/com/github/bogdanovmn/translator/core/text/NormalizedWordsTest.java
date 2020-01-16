@@ -1,5 +1,7 @@
 package com.github.bogdanovmn.translator.core.text;
 
+
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -7,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 import static org.junit.Assert.assertEquals;
+
 
 public class NormalizedWordsTest {
 	@Test

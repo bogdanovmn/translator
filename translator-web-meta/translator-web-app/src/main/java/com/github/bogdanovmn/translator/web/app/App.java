@@ -1,8 +1,8 @@
 package com.github.bogdanovmn.translator.web.app;
 
+import com.github.bogdanovmn.common.spring.menu.MenuConfiguration;
 import com.github.bogdanovmn.translator.core.definition.WordDefinitionService;
 import com.github.bogdanovmn.translator.service.oxforddictionaries.OxfordWordDefinition;
-import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

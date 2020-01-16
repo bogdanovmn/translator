@@ -1,8 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.admin.word.normalization;
 
+import com.github.bogdanovmn.common.spring.menu.MenuItem;
 import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
-import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MainMenuItem;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +23,7 @@ class NormalizedWordCandidateController extends AbstractVisualAdminController {
 
 	@Override
 	protected MenuItem currentMenuItem() {
-		return MenuItem.NORMALIZATION;
+		return MainMenuItem.NORMALIZATION;
 	}
 
 	@GetMapping("/normalization")

@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm.entity;
 
 import com.github.bogdanovmn.common.spring.jpa.BaseEntityWithUniqueName;
+import com.github.bogdanovmn.common.spring.menu.UserAuthorization;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 
 @Entity
-public class User extends BaseEntityWithUniqueName {
+public class User extends BaseEntityWithUniqueName implements UserAuthorization {
 	@Column(unique = true, nullable = false)
 	private String email;
 
@@ -41,5 +42,15 @@ public class User extends BaseEntityWithUniqueName {
 
 	public User(String name) {
 		super(name);
+	}
+
+	@Override
+	public String userName() {
+		return getName();
+	}
+
+	@Override
+	public boolean withRole(String role) {
+		return roles.contains(new UserRole(role));
 	}
 }

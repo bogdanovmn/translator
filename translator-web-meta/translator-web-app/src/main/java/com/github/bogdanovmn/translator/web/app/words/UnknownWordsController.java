@@ -1,8 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.words;
 
+import com.github.bogdanovmn.common.spring.menu.MenuItem;
 import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
-import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MainMenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ class UnknownWordsController extends AbstractVisualController {
 
 	@Override
 	protected MenuItem currentMenuItem() {
-		return MenuItem.UNKNOWN_WORDS;
+		return MainMenuItem.UNKNOWN_WORDS;
 	}
 
 	@GetMapping

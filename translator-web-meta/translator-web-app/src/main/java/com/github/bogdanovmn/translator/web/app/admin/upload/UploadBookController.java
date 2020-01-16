@@ -1,8 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.admin.upload;
 
+import com.github.bogdanovmn.common.spring.menu.MenuItem;
 import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualAdminController;
-import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
+import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MainMenuItem;
 import com.github.bogdanovmn.translator.web.orm.entity.Source;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ class UploadBookController extends AbstractVisualAdminController {
 
 	@Override
 	protected MenuItem currentMenuItem() {
-		return MenuItem.UPLOAD_BOOK;
+		return MainMenuItem.UPLOAD_BOOK;
 	}
 
 	@PostMapping("/upload-book")

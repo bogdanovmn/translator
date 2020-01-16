@@ -1,9 +1,9 @@
 package com.github.bogdanovmn.translator.web.app.infrastructure;
 
+import com.github.bogdanovmn.common.spring.menu.MenuBuilder;
+import com.github.bogdanovmn.common.spring.menu.MenuItem;
 import com.github.bogdanovmn.translator.web.app.StatisticService;
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.mustache.Layout;
-import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuBuilder;
-import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MenuItem;
 import com.samskivert.mustache.Mustache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

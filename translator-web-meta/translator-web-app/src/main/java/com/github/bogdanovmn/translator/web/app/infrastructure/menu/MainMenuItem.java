@@ -1,6 +1,8 @@
 package com.github.bogdanovmn.translator.web.app.infrastructure.menu;
 
-public enum MenuItem {
+import com.github.bogdanovmn.common.spring.menu.MenuItem;
+
+public enum MainMenuItem implements MenuItem {
 
 	// Regular user items
 
@@ -22,5 +24,10 @@ public enum MenuItem {
 
 	// Not selected
 
-	NONE
+	NONE;
+
+	@Override
+	public String note() {
+		return null;
+	}
 }
