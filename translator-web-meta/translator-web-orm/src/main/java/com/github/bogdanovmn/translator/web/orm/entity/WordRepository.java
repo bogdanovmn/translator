@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.orm.entity;
 
 import com.github.bogdanovmn.common.spring.jpa.BaseEntityWithUniqueNameRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -40,7 +41,7 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			+ " and   uhow.word.id is null "
 			+ " and   w.sourcesCount > 0 "
 			+ " and   w.blackList = 0 "
-			+ " order by w.sourcesCount desc, w.frequency desc"
+//			+ " order by w.sourcesCount desc, w.frequency desc"
 	)
 	List<WordWithUserProgress> unknownByAllSources(
 		@Param("userId") Integer userId,
@@ -50,6 +51,22 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 		Word getWord();
 		UserWordProgress getUserProgress();
 	}
+
+	@Query(
+		"select w"
+		+ " from Word w"
+		+ " left join UserHoldOverWord uhow on w.id = uhow.word.id and uhow.user.id = :userId "
+		+ " left join UserRememberedWord urw on w.id = urw.word.id and urw.user.id = :userId "
+		+ " where urw.word.id is null "
+		+ " and   uhow.word.id is null "
+		+ " and   w.sourcesCount > 0 "
+		+ " and   w.blackList = 0 "
+//		+ " order by w.name"
+	)
+	Page<Word> unknownByAllSourcesLite(
+		@Param("userId") Integer userId,
+		Pageable pageable
+	);
 
 	@Query(
 		"select ws as wordSource, uwp as userProgress"
@@ -62,16 +79,15 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			+ " and   uhow.word.id is NULL "
 			+ " and   w.blackList = 0 "
 			+ " and   ws.source.id = :sourceId"
-			+ " order by ws.count desc"
+//			+ " order by ws.count desc"
 	)
 	List<WordBySourceWithUserProgress> unknownBySource(
 		@Param("userId") Integer userId,
 		@Param("sourceId") Integer sourceId,
 		Pageable pageable
 	);
-	interface WordBySourceWithUserProgress {
+	interface WordBySourceWithUserProgress extends WordWithUserProgress {
 		WordSource getWordSource();
-		UserWordProgress getUserProgress();
 		default Word getWord() {
 			return getWordSource().getWord();
 		}
@@ -79,6 +95,24 @@ public interface WordRepository extends BaseEntityWithUniqueNameRepository<Word>
 			return getWordSource().getCount();
 		}
 	}
+
+	@Query(
+		"select w"
+		+ " from WordSource ws"
+		+ " join Word w on w.id = ws.word.id"
+		+ " left join UserHoldOverWord uhow  on w.id = uhow.word.id and uhow.user.id = :userId "
+		+ " left join UserRememberedWord urw on w.id = urw.word.id  and urw.user.id = :userId "
+		+ " where urw.word.id is NULL "
+		+ " and   uhow.word.id is NULL "
+		+ " and   w.blackList = 0 "
+		+ " and   ws.source.id = :sourceId"
+//		+ " order by w.name"
+	)
+	Page<Word> unknownBySourceLite(
+		@Param("userId") Integer userId,
+		@Param("sourceId") Integer sourceId,
+		Pageable pageable
+	);
 
 	@Modifying
 	@Query(

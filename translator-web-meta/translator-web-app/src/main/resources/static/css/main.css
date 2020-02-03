@@ -80,3 +80,10 @@ p.word-definition i { color: #a2bca3}
 	margin-left: .1rem;
 	margin-right: .1rem;
 }
+
+.badge-sm {
+	font-size: 40%;
+	vertical-align: text-top;
+	/*top: 10px; //depends on your font-size*/
+	/*position: relative;*/
+}

@@ -1,17 +1,7 @@
 {{#layout}}
 
-{{#words.0}}
-	{{#source}}
-		<h1>{{.}}</h1>
-		<a  role="button"
-			class="btn btn-outline-secondary btn-sm"
-			href="{{layout.contextPath}}/cloud/sources/{{id}}">Облако слов
-		</a>
-	{{/source}}
-	{{^source}}
-		<h1>Слова из всех источников</h1>
-	{{/source}}
-{{/words.0}}
+{{> unknown_words/title}}
+
 {{#words}}
 	<div id="word-{{word.id}}" class="card my-4" data-word-id="{{word.id}}">
 		<div class="card-header">
@@ -80,22 +70,8 @@
 	</div>
 {{/words}}
 
-{{#words.0}}
-	<a href=""><img src="{{layout.contextPath}}/img/refresh.png" alt="refresh"/></a>
-	<div class="unknown-word-note-block">
-		Осталось изучить
-		{{#source}}
-			<b>{{source.wordsCount}}</b> слов. Уже изучено: {{userCount}}<b></b>
-		{{/source}}
-		{{^source}}
-			<b>{{toRememberCount}}</b> слов. Уже изучено: <b>{{rememberedCount}}</b>
-		{{/source}}
-	</div>
-{{/words.0}}
+{{> unknown_words/bottom}}
 
-{{^words}}
-	<h2>Все уже изучено</h2>
-{{/words}}
 
 <script>
 	var wordBlockInAction = {};

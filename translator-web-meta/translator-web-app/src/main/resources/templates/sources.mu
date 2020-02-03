@@ -16,7 +16,7 @@
 		<div class="card-footer">
 			<div class="btn-group">
 				<a class="btn btn-sm btn-outline-secondary"
-				   href="{{layout.contextPath}}/sources/{{source.id}}/unknown-words">Изучать
+				   href="{{layout.contextPath}}/unknown-words?source={{source.id}}">Изучать
 				</a>
 				<a class="btn btn-sm btn-outline-secondary"
 				   href="{{layout.contextPath}}/cloud/sources/{{source.id}}">Облако слов

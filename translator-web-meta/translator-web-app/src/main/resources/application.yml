@@ -17,7 +17,7 @@ spring.servlet.multipart.max-request-size: 228MB
 #debug: true
 
 server.servlet.context-path: /translator
-spring.mustache.suffix: .html
+spring.mustache.suffix: .mu
 
 menu:
   items:

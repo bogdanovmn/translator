@@ -20,7 +20,7 @@
 
 	<a  role="button"
 		class="btn btn-outline-primary btn-sm float-right"
-		href="{{layout.contextPath}}/sources/{{id}}/unknown-words">Изучать!
+		href="{{layout.contextPath}}/unknown-words?source={{id}}">Изучать!
 	</a>
 {{/source}}
 
