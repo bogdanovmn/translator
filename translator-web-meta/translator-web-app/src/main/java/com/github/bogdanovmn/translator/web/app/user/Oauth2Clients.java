@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.Optional;
+
 @Component
 class Oauth2Clients {
 	private final Oauth2ClientConfiguration configuration;
@@ -21,9 +23,13 @@ class Oauth2Clients {
 			.apiKey(providerSettings.getClientId())
 			.apiSecret(providerSettings.getSecretKey())
 			.callback(
-				ServletUriComponentsBuilder.fromCurrentContextPath().build().toString()
-					+ configuration.getCallbackUrl()
-					+ provider
+				Optional.ofNullable(
+					configuration.getCallbackUrlPrefix())
+				.orElse(
+					ServletUriComponentsBuilder.fromCurrentContextPath().build().toString()
+				)
+				+ configuration.getCallbackUrl()
+				+ provider
 			)
 			.grantType("authorization_code")
 			.build(provider.getApiInstance());

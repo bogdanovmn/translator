@@ -14,6 +14,8 @@ public class Oauth2ClientConfiguration {
 	private Map<OAuth2Provider, Settings> providers;
 	@Getter
 	private String callbackUrl;
+	@Getter
+	private String callbackUrlPrefix;
 
 	@Data
 	static class Settings {
