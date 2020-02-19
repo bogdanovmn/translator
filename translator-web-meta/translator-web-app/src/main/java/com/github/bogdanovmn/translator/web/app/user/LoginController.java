@@ -1,5 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.user;
 
+import com.github.bogdanovmn.common.spring.mvc.Redirect;
+import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractMinVisualController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,13 +13,14 @@ class LoginController extends AbstractMinVisualController {
 	@GetMapping("/login")
 	ModelAndView form(Model model, String error) {
 		if (getUser() != null) {
-			return new ModelAndView("redirect:/unknown-words");
+			return new Redirect("/unknown-words").modelAndView();
 		}
 
+		ViewTemplate template = new ViewTemplate("login");
 		if (error != null) {
-			model.addAttribute("customError", "Попробуйте еще разок");
+			template.with("customError", "Попробуйте еще разок");
 		}
 
-		return new ModelAndView("login", model.asMap());
+		return template.modelAndView();
 	}
 }

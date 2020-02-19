@@ -1,11 +1,14 @@
 package com.github.bogdanovmn.translator.web.app.user;
 
 import com.github.bogdanovmn.common.spring.menu.MenuItem;
+import com.github.bogdanovmn.common.spring.mvc.Redirect;
+import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.FormErrors;
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.Md5PasswordEncoder;
 import com.github.bogdanovmn.translator.web.app.infrastructure.menu.MainMenuItem;
 import com.github.bogdanovmn.translator.web.orm.entity.User;
+import com.github.bogdanovmn.translator.web.orm.entity.UserOAuth2Repository;
 import com.github.bogdanovmn.translator.web.orm.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -22,10 +25,12 @@ import javax.validation.Valid;
 @RequestMapping("/user/settings")
 class UserSettingsController extends AbstractVisualController {
 	private final UserRepository userRepository;
+	private final UserOAuth2Repository userOAuth2Repository;
 
 	@Autowired
-	UserSettingsController(UserRepository userRepository) {
+	UserSettingsController(UserRepository userRepository, UserOAuth2Repository userOAuth2Repository) {
 		this.userRepository = userRepository;
+		this.userOAuth2Repository = userOAuth2Repository;
 	}
 
 	@Override
@@ -39,20 +44,15 @@ class UserSettingsController extends AbstractVisualController {
 	}
 
 	@GetMapping
-	ModelAndView form(
-		Model model,
-		@RequestHeader(name = "referer", required = false) String referer
-	) {
+	ModelAndView form(@RequestHeader(name = "referer", required = false) String referer) {
 		User user = getUser();
-
-		model.addAttribute("referer", referer);
-		model.addAttribute("userEmail", user.getEmail());
-		model.addAttribute("userRegistrationDate", user.getRegisterDate());
-		model.addAttribute(
-			"userSettingsForm",
-			new UserSettingsForm()
-		);
-		return new ModelAndView("user_settings");
+		return new ViewTemplate("user_settings")
+			.with("referer", referer)
+			.with("userEmail", user.getEmail())
+			.with("userRegistrationDate", user.getRegisterDate())
+			.with("userSettingsForm", new UserSettingsForm())
+			.with("socialProviders", userOAuth2Repository.findAllByUser(user))
+		.modelAndView();
 	}
 
 	@PostMapping
@@ -100,6 +100,6 @@ class UserSettingsController extends AbstractVisualController {
 
 		userRepository.save(user);
 
-		return new ModelAndView("redirect:/unknown-words");
+		return new Redirect("/unknown-words").modelAndView();
 	}
 }

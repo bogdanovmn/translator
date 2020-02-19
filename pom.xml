@@ -21,9 +21,9 @@
 	<properties>
 		<encoding>UTF-8</encoding>
 		<java.version>1.8</java.version>
-		<spring-boot.version>2.2.2.RELEASE</spring-boot.version>
+		<spring-boot.version>2.2.4.RELEASE</spring-boot.version>
 		<http-client.version>2.1.5</http-client.version>
-		<common.version>1.4.2</common.version>
+		<common.version>1.4.4</common.version>
 	</properties>
 
 	<dependencyManagement>
@@ -108,6 +108,11 @@
 			<!-- Libs -->
 
 			<dependency>
+				<groupId>com.github.scribejava</groupId>
+				<artifactId>scribejava-apis</artifactId>
+				<version>2.3.0</version>
+			</dependency>
+			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>22.0</version>
@@ -145,12 +150,12 @@
 			<dependency>
 				<groupId>org.apache.tika</groupId>
 				<artifactId>tika-parsers</artifactId>
-				<version>1.20</version>
+				<version>1.22</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.tika</groupId>
 				<artifactId>tika-core</artifactId>
-				<version>1.20</version>
+				<version>1.22</version>
 			</dependency>
 			<dependency>
 				<groupId>org.webjars</groupId>
@@ -181,6 +186,11 @@
 				<groupId>com.h2database</groupId>
 				<artifactId>h2</artifactId>
 				<version>1.4.194</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.ulisesbocchio</groupId>
+				<artifactId>jasypt-spring-boot-starter</artifactId>
+				<version>3.0.2</version>
 			</dependency>
 			<dependency>
 				<!-- Import dependency management from Spring Boot -->
@@ -219,6 +229,11 @@
 					<testSource>${java.version}</testSource>
 					<testTarget>${java.version}</testTarget>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.ulisesbocchio</groupId>
+				<artifactId>jasypt-maven-plugin</artifactId>
+				<version>3.0.2</version>
 			</plugin>
 		</plugins>
 	</build>

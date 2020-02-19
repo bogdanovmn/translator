@@ -33,7 +33,7 @@
 	<form method=post enctype="multipart/form-data">
 		<table>
 		<tr>
-			<td><input type=file name=file value='{{ImportForm.file}'>
+			<td><input type=file name=file value='{{ImportForm.file}}'>
             <td>{{formError.file}}
 		<tr>
 			<td colspan=2><input type=submit value='  Импорт в БД  '>
