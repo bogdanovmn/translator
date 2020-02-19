@@ -25,9 +25,6 @@ class Oauth2Controller extends AbstractMinVisualController {
 	private final RegistrationService registrationService;
 	private final TranslateSecurityService securityService;
 
-	@Value("${oauth2.providers.GitHub.client-id}")
-	private String clientId;
-
 	Oauth2Controller(Oauth2Clients oauth2Clients, RegistrationService registrationService, TranslateSecurityService securityService) {
 		this.oauth2Clients = oauth2Clients;
 		this.registrationService = registrationService;
