@@ -47,7 +47,7 @@
 			<small class="text-danger">{{formError.name}}</small>
 		</div>
 		<input type=submit class="btn btn-lg btn-primary" name=register_submit value='Готово'>
-		<a class="btn btn-lg btn-outline-secondary" href="{{layout.contextPath}}/login">Войти</a>
+		<a class="btn btn-lg btn-outline-secondary" href="{{layout.contextPath}}/login">Отмена</a>
 	</form>
 </div>
 

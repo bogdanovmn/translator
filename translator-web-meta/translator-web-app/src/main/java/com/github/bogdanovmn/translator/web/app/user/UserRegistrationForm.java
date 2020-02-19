@@ -1,8 +1,11 @@
 package com.github.bogdanovmn.translator.web.app.user;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Data
 class UserRegistrationForm {
 	@NotNull
 	@Size(min=3, max=20)
@@ -18,41 +21,4 @@ class UserRegistrationForm {
 
 	@NotNull
 	private String email;
-
-
-	String getName() {
-		return name;
-	}
-
-	public UserRegistrationForm setName(String name) {
-		this.name = name;
-		return this;
-	}
-
-	String getPassword() {
-		return password;
-	}
-
-	public UserRegistrationForm setPassword(String password) {
-		this.password = password;
-		return this;
-	}
-
-	String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-
-	public UserRegistrationForm setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
-		return this;
-	}
-
-	String getEmail() {
-		return email;
-	}
-
-	public UserRegistrationForm setEmail(String email) {
-		this.email = email;
-		return this;
-	}
 }

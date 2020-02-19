@@ -1,6 +1,7 @@
 package com.github.bogdanovmn.translator.web.app.user;
 
 import com.github.bogdanovmn.common.spring.menu.MenuItem;
+import com.github.bogdanovmn.common.spring.mvc.Redirect;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractVisualController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.FormErrors;
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.Md5PasswordEncoder;
@@ -100,6 +101,6 @@ class UserSettingsController extends AbstractVisualController {
 
 		userRepository.save(user);
 
-		return new ModelAndView("redirect:/unknown-words");
+		return new Redirect("/unknown-words").modelAndView();
 	}
 }

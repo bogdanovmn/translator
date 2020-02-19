@@ -19,6 +19,15 @@ spring.servlet.multipart.max-request-size: 228MB
 server.servlet.context-path: /translator
 spring.mustache.suffix: .mu
 
+jasypt.encryptor.password: ${ENCRYPT_KEY:}
+
+oauth2:
+  callback-url: /oauth2/callback?provider=
+  providers:
+    GitHub:
+      client-id: ENC(o8HiGESL9g7VVUsQmwhK4ht80duLLWXOZjoN63BQDVwbqYidHNwLpbF+q4yHHVI7ftVhSLm6RXClcH4ttJGcJQ==)
+      secret-key: ENC(HUDVO+RlVI46Czaf8FYIKm6jtIr6G6mKNQBM+++AhM8AmAhIwAuRCz+/P5TuIq/Tmv+OJB7c9IR/+MflYpR6uUwQorLD0fSceLnHUpFSkNU=)
+
 menu:
   items:
   - id: UNKNOWN_WORDS

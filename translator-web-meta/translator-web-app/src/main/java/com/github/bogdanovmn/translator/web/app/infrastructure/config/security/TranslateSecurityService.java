@@ -2,8 +2,7 @@ package com.github.bogdanovmn.translator.web.app.infrastructure.config.security;
 
 
 import com.github.bogdanovmn.translator.web.orm.entity.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,10 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class TranslateSecurityService {
-	private static final Logger LOG = LoggerFactory.getLogger(TranslateSecurityService.class);
-
 	private final AuthenticationManager authenticationManager;
 	private final UserDetailsService userDetailsService;
 
@@ -38,8 +36,8 @@ public class TranslateSecurityService {
 		return null;
 	}
 
-	public void login(String username, String password) {
-		UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+	public void login(String userName, String password) {
+		UserDetails userDetails = this.userDetailsService.loadUserByUsername(userName);
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
 			= new UsernamePasswordAuthenticationToken(
 				userDetails,
@@ -51,7 +49,7 @@ public class TranslateSecurityService {
 
 		if (usernamePasswordAuthenticationToken.isAuthenticated()) {
 			SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-			LOG.info(String.format("Auto login %s successfully!", username));
+			LOG.info("Auto login '{}' successfully!", userName);
 		}
 	}
 }
