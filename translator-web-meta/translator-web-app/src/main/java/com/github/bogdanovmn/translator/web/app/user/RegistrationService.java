@@ -49,8 +49,8 @@ class RegistrationService {
 		);
 	}
 
-	User updateUserPassword(User user, String newPassword) {
-		return userRepository.save(
+	void updateUserPassword(User user, String newPassword) {
+		userRepository.save(
 			user.setPasswordHash(
 				DigestUtils.md5DigestAsHex(
 					newPassword.getBytes()
