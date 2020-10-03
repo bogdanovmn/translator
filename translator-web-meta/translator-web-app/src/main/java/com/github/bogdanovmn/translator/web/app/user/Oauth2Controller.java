@@ -1,14 +1,15 @@
 package com.github.bogdanovmn.translator.web.app.user;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.bogdanovmn.common.spring.mvc.Redirect;
 import com.github.bogdanovmn.common.spring.mvc.ViewTemplate;
 import com.github.bogdanovmn.translator.web.app.infrastructure.AbstractMinVisualController;
 import com.github.bogdanovmn.translator.web.app.infrastructure.config.security.TranslateSecurityService;
 import com.github.bogdanovmn.translator.web.orm.entity.User;
-import com.github.scribejava.core.model.*;
+import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.github.scribejava.core.model.OAuthRequest;
+import com.github.scribejava.core.model.Response;
+import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/oauth2")
@@ -42,15 +46,15 @@ class Oauth2Controller extends AbstractMinVisualController {
 	ModelAndView oauth2(
 		@RequestParam("provider") OAuth2Provider provider,
 		@RequestParam("code") String code
-	) throws JsonProcessingException {
+	) throws IOException, InterruptedException, ExecutionException {
 
 		ServletUriComponentsBuilder.fromCurrentContextPath().removePathExtension();
 		OAuth20Service service = oauth2Clients.service(provider);
-		OAuth2AccessToken accessToken = service.getAccessToken(new Verifier(code));
+		OAuth2AccessToken accessToken = service.getAccessToken(code);
 
-		OAuthRequest request = new OAuthRequest(Verb.GET, provider.getUserInfoUrl(), service);
+		OAuthRequest request = new OAuthRequest(Verb.GET, provider.getUserInfoUrl());
 		service.signRequest(accessToken, request);
-		Response response = request.send();
+		Response response = service.execute(request);
 
 		if (response.isSuccessful()) {
 			Oauth2UserInfoResponse userInfo = provider.parsedResponse(response.getBody());

@@ -19,8 +19,7 @@ class Oauth2Clients {
 
 	OAuth20Service service(OAuth2Provider provider) {
 		Oauth2ClientConfiguration.Settings providerSettings = configuration.byProvider(provider);
-		return new ServiceBuilder()
-			.apiKey(providerSettings.getClientId())
+		return new ServiceBuilder(providerSettings.getClientId())
 			.apiSecret(providerSettings.getSecretKey())
 			.callback(
 				Optional.ofNullable(
@@ -31,7 +30,6 @@ class Oauth2Clients {
 				+ configuration.getCallbackUrl()
 				+ provider
 			)
-			.grantType("authorization_code")
 			.build(provider.getApiInstance());
 	}
 }
