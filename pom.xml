@@ -13,7 +13,6 @@
 		<module>translator-core</module>
 		<module>translator-cli-meta</module>
 		<module>translator-lib-meta</module>
-		<module>translator-parser-meta</module>
 		<module>translator-web-meta</module>
 		<module>translator-etl-meta</module>
 	</modules>
@@ -23,7 +22,7 @@
 		<java.version>1.8</java.version>
 		<spring-boot.version>2.2.4.RELEASE</spring-boot.version>
 		<http-client.version>2.1.5</http-client.version>
-		<common.version>1.4.4</common.version>
+		<common.version>1.7.0</common.version>
 	</properties>
 
 	<dependencyManagement>
@@ -34,11 +33,6 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.translator</groupId>
 				<artifactId>translator-core</artifactId>
-				<version>1.0-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.bogdanovmn.translator</groupId>
-				<artifactId>translator-parser-common</artifactId>
 				<version>1.0-SNAPSHOT</version>
 			</dependency>
 			<dependency>
@@ -67,7 +61,7 @@
 			<dependency>
 				<groupId>com.github.bogdanovmn.cmdline</groupId>
 				<artifactId>cmdline-app</artifactId>
-				<version>2.0.0</version>
+				<version>2.2.0</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.httpclient</groupId>
@@ -90,19 +84,24 @@
 				<version>1.7.1</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.bogdanovmn.common</groupId>
+				<groupId>com.github.bogdanovmn.common.core</groupId>
 				<artifactId>common-core</artifactId>
 				<version>${common.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.bogdanovmn.common</groupId>
+				<groupId>com.github.bogdanovmn.common.log</groupId>
 				<artifactId>common-log</artifactId>
 				<version>${common.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.bogdanovmn.common</groupId>
+				<groupId>com.github.bogdanovmn.common.spring</groupId>
 				<artifactId>common-spring</artifactId>
 				<version>${common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn.txtparser</groupId>
+				<artifactId>text-parser</artifactId>
+				<version>1.0.3</version>
 			</dependency>
 
 			<!-- Libs -->
@@ -212,7 +211,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -237,23 +236,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<!--<repositories>-->
-		<!--<repository>-->
-			<!--<snapshots>-->
-				<!--<enabled>true</enabled>-->
-			<!--</snapshots>-->
-			<!--<id>central</id>-->
-			<!--<name>bintray</name>-->
-			<!--<url>https://jcenter.bintray.com</url>-->
-		<!--</repository>-->
-		<!--<repository>-->
-			<!--<snapshots>-->
-				<!--<enabled>true</enabled>-->
-			<!--</snapshots>-->
-			<!--<id>my</id>-->
-			<!--<name>bintray</name>-->
-			<!--<url>https://dl.bintray.com/bogdanovmn/maven-repo</url>-->
-		<!--</repository>-->
-	<!--</repositories>-->
 </project>

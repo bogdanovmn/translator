@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.cli.definition;
 
 
-import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
+import com.github.bogdanovmn.cmdline.CmdLineAppBuilder;
 import com.github.bogdanovmn.translator.core.definition.HttpWordDefinitionService;
 import com.github.bogdanovmn.translator.service.oxforddictionaries.OxfordWordDefinition;
 

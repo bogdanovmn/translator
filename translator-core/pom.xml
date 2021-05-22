@@ -23,11 +23,11 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.bogdanovmn.common</groupId>
+            <groupId>com.github.bogdanovmn.common.core</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.bogdanovmn.common</groupId>
+            <groupId>com.github.bogdanovmn.common.log</groupId>
             <artifactId>common-log</artifactId>
         </dependency>
         <dependency>

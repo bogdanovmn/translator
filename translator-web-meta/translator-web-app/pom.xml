@@ -31,9 +31,9 @@
             <artifactId>translator-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.bogdanovmn.translator</groupId>
-            <artifactId>translator-parser-common</artifactId>
-		</dependency>
+            <groupId>com.github.bogdanovmn.txtparser</groupId>
+            <artifactId>text-parser</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.github.bogdanovmn.translator</groupId>
             <artifactId>translator-lib-oxforddictionaries</artifactId>

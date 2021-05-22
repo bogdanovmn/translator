@@ -23,7 +23,7 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.bogdanovmn.common</groupId>
+            <groupId>com.github.bogdanovmn.common.spring</groupId>
             <artifactId>common-spring</artifactId>
         </dependency>
 	</dependencies>

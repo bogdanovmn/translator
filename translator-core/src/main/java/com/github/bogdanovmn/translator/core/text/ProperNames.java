@@ -53,7 +53,7 @@ public class ProperNames {
 		return names.get(token.toLowerCase()) > 0;
 	}
 
-	public int frequency(String name) {
+	public long frequency(String name) {
 		return names.get(name.toLowerCase());
 	}
 

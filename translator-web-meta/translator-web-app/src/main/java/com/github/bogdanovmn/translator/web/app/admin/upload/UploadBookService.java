@@ -3,9 +3,9 @@ package com.github.bogdanovmn.translator.web.app.admin.upload;
 import com.github.bogdanovmn.common.stream.StringMap;
 import com.github.bogdanovmn.translator.core.text.EnglishText;
 import com.github.bogdanovmn.translator.core.text.ProperNames;
-import com.github.bogdanovmn.translator.parser.common.DocumentContent;
 import com.github.bogdanovmn.translator.web.app.admin.word.normalization.WordsNormalizeService;
 import com.github.bogdanovmn.translator.web.orm.entity.*;
+import com.github.bogdanovmn.txtparser.DocumentContent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,7 +99,7 @@ class UploadBookService {
 					.setSource(source)
 					.setWord(word)
 					.setCount(
-						englishText.wordFrequency(wordStr)
+						(int) englishText.wordFrequency(wordStr)
 					)
 			);
 		}
@@ -144,7 +144,7 @@ class UploadBookService {
 				properNameSourceRepository.save(
 					new ProperNameSource()
 						.setProperName(properName)
-						.setCount(properNames.frequency(name))
+						.setCount((int) properNames.frequency(name))
 						.setSource(source)
 				);
 			}

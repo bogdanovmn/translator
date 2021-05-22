@@ -73,8 +73,8 @@ public class EnglishText {
 		return normalizedWords.get();
 	}
 
-	public int wordFrequency(String word) {
-		int result = wordsCounter.get(word);
+	public long wordFrequency(String word) {
+		long result = wordsCounter.get(word);
 		if (result > 0) {
 			Optional<Set<String>> forms = normalizedWords.wordForms(word);
 			if (forms.isPresent()) {
@@ -104,9 +104,9 @@ public class EnglishText {
 				tokensStatistic(ignoreWordsCounter, "I")
 			)
 			.addLine("Total %d passed (%d unique)\nIgnored %d (%d unique)",
-				words.stream().map(wordsCounter::get).mapToInt(Integer::intValue).sum(),
+				words.stream().map(wordsCounter::get).mapToInt(Long::intValue).sum(),
 				words.size(),
-				ignoreWords.stream().map(ignoreWordsCounter::get).mapToInt(Integer::intValue).sum(),
+				ignoreWords.stream().map(ignoreWordsCounter::get).mapToInt(Long::intValue).sum(),
 				ignoreWords.size()
 			);
 		return result.toString();

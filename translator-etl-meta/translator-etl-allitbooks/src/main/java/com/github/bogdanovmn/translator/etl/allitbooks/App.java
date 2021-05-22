@@ -1,7 +1,7 @@
 package com.github.bogdanovmn.translator.etl.allitbooks;
 
 
-import com.github.bogdanovmn.cmdlineapp.CmdLineAppBuilder;
+import com.github.bogdanovmn.cmdline.CmdLineAppBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
