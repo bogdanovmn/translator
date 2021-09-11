@@ -28,7 +28,7 @@ public class OxfordWordDefinitionLeastBugTest {
 			),
 			StandardCharsets.UTF_8
 		);
-		definitions = new OxfordWordDefinition().parsedServiceResponse(html, "least");
+		definitions = new OxfordWordDefinition().parsedServiceResponse(html).instances();
 	}
 
 	@Test

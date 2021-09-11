@@ -2,15 +2,11 @@ package com.github.bogdanovmn.translator.web.app.admin.definition;
 
 import com.github.bogdanovmn.common.spring.jpa.EntityFactory;
 import com.github.bogdanovmn.httpclient.core.ResponseNotFoundException;
-import com.github.bogdanovmn.translator.core.definition.DefinitionInstance;
-import com.github.bogdanovmn.translator.core.definition.PartOfSpeech;
-import com.github.bogdanovmn.translator.core.definition.Sentence;
-import com.github.bogdanovmn.translator.core.definition.WordDefinitionService;
-import com.github.bogdanovmn.translator.service.oxforddictionaries.ResponseAnotherWordFormException;
+import com.github.bogdanovmn.translator.core.definition.*;
 import com.github.bogdanovmn.translator.web.app.admin.word.normalization.WordsNormalizeService;
 import com.github.bogdanovmn.translator.web.orm.entity.*;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -23,6 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 class FetchDefinitionService {
 	private final WordRepository wordRepository;
 	private final WordDefinitionRepository wordDefinitionRepository;
@@ -31,23 +28,6 @@ class FetchDefinitionService {
 	private final WordDefinitionService definitionService;
 	private final WordsNormalizeService wordsNormalizeService;
 	private final EntityFactory entityFactory;
-
-	@Autowired
-	FetchDefinitionService(WordRepository wordRepository,
-						   WordDefinitionRepository wordDefinitionRepository,
-						   UserHoldOverWordRepository holdOverWordRepository,
-						   WordDefinitionServiceLogRepository logRepository,
-						   WordDefinitionService definitionService,
-						   WordsNormalizeService wordsNormalizeService, EntityFactory entityFactory)
-	{
-		this.wordRepository = wordRepository;
-		this.wordDefinitionRepository = wordDefinitionRepository;
-		this.holdOverWordRepository = holdOverWordRepository;
-		this.logRepository = logRepository;
-		this.definitionService = definitionService;
-		this.wordsNormalizeService = wordsNormalizeService;
-		this.entityFactory = entityFactory;
-	}
 
 
 	@Scheduled(fixedDelay = 1800 * 1000)
@@ -72,11 +52,11 @@ class FetchDefinitionService {
 					serviceLog.done();
 				}
 				catch (ResponseAnotherWordFormException e) {
-					LOG.info("Detect another word form: '{}'", e.getWord());
+					LOG.info("Detect another word form: '{}'", e.definition().word());
 					serviceLog.anotherForm(
 						String.format(
 							"Found base word form: '%s' (original '%s')",
-							e.getWord(), word.getName()
+							e.definition().word(), word.getName()
 						)
 					);
 					try {
@@ -112,8 +92,8 @@ class FetchDefinitionService {
 
 	@Transactional(rollbackFor = Exception.class)
 	public Word normalizeAndSave(Word word, ResponseAnotherWordFormException ex) {
-		Word resultWord = wordsNormalizeService.mergeWordWithBaseValue(word, ex.getWord());
-		save(resultWord, ex.getDefinitions());
+		Word resultWord = wordsNormalizeService.mergeWordWithBaseValue(word, ex.definition().word());
+		save(resultWord, ex.definition().instances());
 		return resultWord;
 	}
 

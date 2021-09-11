@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.service.oxforddictionaries;
 
+import com.github.bogdanovmn.translator.core.definition.ResponseAnotherWordFormException;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -22,11 +23,12 @@ public class OxfordWordDefinitionWrongWordTest {
 			StandardCharsets.UTF_8
 		);
 		try {
-			new OxfordWordDefinition().parsedServiceResponse(html, "mans");
+//			new OxfordWordDefinition().parsedServiceResponse(html, "mans");
+			new OxfordWordDefinition().parsedServiceResponse(html);
 		}
 		catch (ResponseAnotherWordFormException e) {
-			assertEquals("man", e.getWord());
-			assertNotNull(e.getDefinitions());
+			assertEquals("man", e.definition().word());
+			assertNotNull(e.definition().instances());
 			throw e;
 		}
 	}

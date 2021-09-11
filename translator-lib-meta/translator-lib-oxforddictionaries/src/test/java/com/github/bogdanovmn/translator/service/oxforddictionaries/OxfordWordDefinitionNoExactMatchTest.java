@@ -22,7 +22,7 @@ public class OxfordWordDefinitionNoExactMatchTest {
 			StandardCharsets.UTF_8
 		);
 		try {
-			new OxfordWordDefinition().parsedServiceResponse(html, "xxx");
+			new OxfordWordDefinition().parsedServiceResponse(html);
 		}
 		catch (ResponseNotFoundException e) {
 			assertEquals(

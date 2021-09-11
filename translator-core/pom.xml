@@ -15,7 +15,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.bogdanovmn.httpclient</groupId>
+            <groupId>com.github.bogdanovmn.httpclient.core</groupId>
             <artifactId>http-client-core</artifactId>
         </dependency>
         <dependency>

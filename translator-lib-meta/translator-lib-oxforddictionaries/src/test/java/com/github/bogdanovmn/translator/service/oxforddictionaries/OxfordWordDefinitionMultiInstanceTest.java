@@ -31,7 +31,7 @@ public class OxfordWordDefinitionMultiInstanceTest {
 			),
 			StandardCharsets.UTF_8
 		);
-		definitions = new OxfordWordDefinition().parsedServiceResponse(html, "bound");
+		definitions = new OxfordWordDefinition().parsedServiceResponse(html).instances();
 	}
 
 	@Test

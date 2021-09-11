@@ -21,7 +21,7 @@
 		<encoding>UTF-8</encoding>
 		<java.version>1.8</java.version>
 		<spring-boot.version>2.2.4.RELEASE</spring-boot.version>
-		<http-client.version>2.1.5</http-client.version>
+		<http-client.version>3.1.0</http-client.version>
 		<common.version>1.7.0</common.version>
 	</properties>
 
@@ -64,24 +64,24 @@
 				<version>2.2.0</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.bogdanovmn.httpclient</groupId>
+				<groupId>com.github.bogdanovmn.httpclient.core</groupId>
 				<artifactId>http-client-core</artifactId>
 				<version>${http-client.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.bogdanovmn.httpclient</groupId>
+				<groupId>com.github.bogdanovmn.httpclient.diskcache</groupId>
+				<artifactId>http-client-with-disk-cache</artifactId>
+				<version>${http-client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.bogdanovmn.httpclient.simple</groupId>
 				<artifactId>http-client-simple</artifactId>
 				<version>${http-client.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.bogdanovmn.httpclient</groupId>
+				<groupId>com.github.bogdanovmn.httpclient.phantomjs</groupId>
 				<artifactId>http-client-phantomjs</artifactId>
 				<version>${http-client.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.bogdanovmn.dwlc</groupId>
-				<artifactId>download-with-local-cache</artifactId>
-				<version>1.7.1</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.bogdanovmn.common.core</groupId>
@@ -189,7 +189,7 @@
 			<dependency>
 				<groupId>com.github.ulisesbocchio</groupId>
 				<artifactId>jasypt-spring-boot-starter</artifactId>
-				<version>3.0.2</version>
+				<version>3.0.4</version>
 			</dependency>
 			<dependency>
 				<!-- Import dependency management from Spring Boot -->
@@ -219,8 +219,9 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.8.1</version>
 				<configuration>
 					<encoding>${encoding}</encoding>
 					<source>${java.version}</source>
@@ -232,7 +233,7 @@
 			<plugin>
 				<groupId>com.github.ulisesbocchio</groupId>
 				<artifactId>jasypt-maven-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.0.4</version>
 			</plugin>
 		</plugins>
 	</build>

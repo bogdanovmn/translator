@@ -17,7 +17,7 @@ import java.util.List;
 
 public class OxfordWordDefinition extends HttpWordDefinitionService {
 
-	public static final String URL_PREFIX = "https://en.oxforddictionaries.com/definition/";
+	private static final String URL_PREFIX = "https://en.oxforddictionaries.com/definition/";
 
 	public OxfordWordDefinition() {
 		super(
@@ -27,22 +27,13 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 	}
 
 	@Override
-	protected List<DefinitionInstance> parsedServiceResponse(String htmlText, String word)
+	protected Definition parsedServiceResponse(String htmlText)
 		throws ResponseException
 	{
 		List<DefinitionInstance> result = new ArrayList<>();
 		Document doc = Jsoup.parse(htmlText);
 
 		String articleWord = articleWord(doc);
-		boolean anotherWordForm = false;
-		if (!articleWord.equals(word)) {
-			if (Character.isUpperCase(articleWord.charAt(0))) {
-				throw new ResponseNotFoundException(
-					String.format("Proper name: '%s'", articleWord)
-				);
-			}
-			anotherWordForm = true;
-		}
 
 		DefinitionInstance.DefinitionInstanceBuilder currentDefInstBuilder = null;
 		Elements blocks = doc.select("div[class*=entryHead],section[class=gramb],section[class*=pronSection]");
@@ -74,13 +65,10 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 		}
 		result.add(currentDefInstBuilder.build());
 
-		if (anotherWordForm) {
-			throw new ResponseAnotherWordFormException(
-				articleWord, result
-			);
-		}
-
-		return result;
+		return Definition.builder()
+			.word(articleWord)
+			.instances(result)
+		.build();
 	}
 
 	private String articleWord(Document doc) throws ResponseException {
