@@ -1,5 +1,6 @@
 package com.github.bogdanovmn.translator.service.oxforddictionaries;
 
+import com.github.bogdanovmn.httpclient.core.HttpClient;
 import com.github.bogdanovmn.httpclient.core.ResponseException;
 import com.github.bogdanovmn.httpclient.core.ResponseNotFoundException;
 import com.github.bogdanovmn.httpclient.core.ResponseParseException;
@@ -19,17 +20,15 @@ public class OxfordWordDefinition extends HttpWordDefinitionService {
 
 	private static final String URL_PREFIX = "https://en.oxforddictionaries.com/definition/";
 
+	public OxfordWordDefinition(HttpClient httpClient) {
+		super(httpClient, URL_PREFIX);
+	}
 	public OxfordWordDefinition() {
-		super(
-			new SimpleHttpClient(),
-			URL_PREFIX
-		);
+		super(new SimpleHttpClient(), URL_PREFIX);
 	}
 
 	@Override
-	protected Definition parsedServiceResponse(String htmlText)
-		throws ResponseException
-	{
+	protected Definition parsedServiceResponse(String htmlText) throws ResponseException {
 		List<DefinitionInstance> result = new ArrayList<>();
 		Document doc = Jsoup.parse(htmlText);
 
